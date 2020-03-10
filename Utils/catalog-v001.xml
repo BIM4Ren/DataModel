@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://qudt.org/2.1/vocab/dimension" uri="file:/C:/Users/cnathalie/Dropbox/LinkedMDR%20owl%20file/B4R/BIM4Ren%20Model/QUDT/dimension2.1.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/def/basicsemantics-owl#" uri="basicsemantics-owl.ttl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
+</catalog>

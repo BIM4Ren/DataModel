@@ -1,0 +1,26 @@
+@prefix ex: <http://www.bim4ren.eu/example#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix b4r-prop: <http://www.bim4ren.eu/property#> .
+@prefix buildingelements: <https://pi.pauwel.be/voc/buildingelement#> .
+@prefix bs: <https://w3id.org/def/basicsemantics-owl#> . 
+@base <http://www.bim4ren.eu/example#> .
+
+<http://www.bim4ren.eu/example#> rdf:type owl:Ontology ;
+								owl:imports <http://www.bim4ren.eu/property#> ,
+											<https://pi.pauwel.be/voc/buildingelement#> ,
+											<https://w3id.org/def/basicsemantics-owl#> .
+ex:Window_1
+  a buildingelements:Window ;
+  b4r-prop:height [
+			rdf:value 44.0 ;
+			bs:unit unit:CentiM ;
+			b4r-prop:accuracy [
+						rdf:value 0.9 ;
+						] ;
+			] ;
+.
