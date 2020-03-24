@@ -1,1 +1,0 @@
-This is BIM4REN Data Model 
