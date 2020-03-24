@@ -15,19 +15,58 @@
 #################################################################
 
 ###  http://www.bim4ren.eu/domain/thermal#airTightness
-:airTightness rdf:type owl:ObjectProperty .
+:airTightness rdf:type owl:ObjectProperty ;
+              rdfs:label "air tighthness"@en ,
+                         "ermeticità all'aria"@it ,
+                         "estanqueidad"@es ,
+                         "étanchéité à l'air"@fr .
+
+
+###  http://www.bim4ren.eu/domain/thermal#capacity
+:capacity rdf:type owl:ObjectProperty ;
+          rdfs:label "Capacidad"@es ,
+                     "Capacity"@en ,
+                     "Capacité"@fr .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#infraredTransmittance
 :infraredTransmittance rdf:type owl:ObjectProperty .
 
 
+###  http://www.bim4ren.eu/domain/thermal#maxTemperature
+:maxTemperature rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :setPoint ;
+                rdfs:label "maximal temperature"@en ,
+                           "température maximale"@fr .
+
+
+###  http://www.bim4ren.eu/domain/thermal#minTemperature
+:minTemperature rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :setPoint ;
+                rdfs:label "minimal temperature"@en ,
+                           "température minimale"@fr .
+
+
+###  http://www.bim4ren.eu/domain/thermal#nominalPower
+:nominalPower rdf:type owl:ObjectProperty ;
+              rdfs:label "Nominal power"@en ,
+                         "Puissance nominale"@fr ,
+                         "Puissance utile"@fr .
+
+
 ###  http://www.bim4ren.eu/domain/thermal#setPoint
-:setPoint rdf:type owl:ObjectProperty .
+:setPoint rdf:type owl:ObjectProperty ;
+          rdfs:label "consigne"@fr ,
+                     "régulation"@fr ,
+                     "setpoint"@en .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#thermalEfficiency
-:thermalEfficiency rdf:type owl:ObjectProperty .
+:thermalEfficiency rdf:type owl:ObjectProperty ;
+                   rdfs:label "Rendement"@fr ,
+                              "Rendimento"@it ,
+                              "Rendimiento térmico"@es ,
+                              "Thermal efficiency"@en .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#thermalMass
@@ -53,13 +92,33 @@
 ###  http://www.bim4ren.eu/domain/thermal#HeatProducer
 :HeatProducer rdf:type owl:Class ;
               rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                owl:onProperty :setPoint ;
-                                owl:someValuesFrom <http://www.bim4ren.eu/property#Temperature>
-                              ] ,
-                              [ rdf:type owl:Restriction ;
                                 owl:onProperty :thermalEfficiency ;
                                 owl:someValuesFrom <http://www.bim4ren.eu/property#Ratio>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :maxTemperature ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :HeatProducer
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :minTemperature ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :HeatProducer
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :nominalPower ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :HeatProducer
                               ] .
+
+
+###  http://www.bim4ren.eu/domain/thermal#HeatStorage
+:HeatStorage rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :capacity ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :HeatStorage
+                             ] .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#HeatTransferElement
