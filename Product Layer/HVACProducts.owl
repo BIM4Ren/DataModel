@@ -22,11 +22,26 @@
                              "Condensing Boiler"@en .
 
 
+###  http://bim4ren.eu/distributionelements/hvac#FanCoilUnit
+:FanCoilUnit rdf:type owl:Class ;
+             rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#SpaceHeater> ;
+             rdfs:label "Fan Coil Unit"@en ,
+                        "Ventiloconvecteur"@fr ,
+                        "Ventiloconvector"@es .
+
+
 ###  http://bim4ren.eu/distributionelements/hvac#LowTemperatureBoiler
 :LowTemperatureBoiler rdf:type owl:Class ;
                       rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#Boiler> ;
                       rdfs:label "Chaudière basse température"@fr ,
                                  "Low temperature boiler"@en .
+
+
+###  http://bim4ren.eu/distributionelements/hvac#UnderfloorHeating
+:UnderfloorHeating rdf:type owl:Class ;
+                   rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#SpaceHeater> ;
+                   rdfs:label "Plancher chauffant"@fr ,
+                              "Underfloor heating"@en .
 
 
 ###  https://pi.pauwel.be/voc/distributionelement#Boiler-STEAM
