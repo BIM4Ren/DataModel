@@ -15,9 +15,9 @@
 
 ###  http://www.bim4ren.eu/sot#connectedWith
 :connectedWith rdf:type owl:ObjectProperty ;
-          rdfs:domain :SystemComponent ;
-          rdfs:range :SystemComponent ;
-          rdfs:label "connected with" .
+               rdfs:domain :SystemComponent ;
+               rdfs:range :SystemComponent ;
+               rdfs:label "connected with" .
 
 
 ###  http://www.bim4ren.eu/sot#hasElements
@@ -116,21 +116,20 @@ It is made of a) terminal elements that can either produce and emit the property
 
 ###  http://www.bim4ren.eu/sot#cool
 :cool rdf:type owl:NamedIndividual ,
-               :Function .
+               :Function ;
+      rdfs:comment "Climatisation"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#deliverDrinkableWater
 :deliverDrinkableWater rdf:type owl:NamedIndividual ,
-                                :Function .
+                                :Function ;
+                       rdfs:comment "Eau potable"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#deliverElectricty
 :deliverElectricty rdf:type owl:NamedIndividual ,
-                            :Function .
-
-
-###  http://www.bim4ren.eu/sot#drinkabelWater
-:drinkabelWater rdf:type owl:NamedIndividual .
+                            :Function ;
+                   rdfs:comment "Réseau électrique"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#electricty
@@ -145,7 +144,16 @@ It is made of a) terminal elements that can either produce and emit the property
 
 ###  http://www.bim4ren.eu/sot#heat
 :heat rdf:type owl:NamedIndividual ,
-               :Function .
+               :Function ;
+      rdfs:label "Chauffage"@fr .
+
+
+###  http://www.bim4ren.eu/sot#heatWater
+:heatWater rdf:type owl:NamedIndividual ,
+                    :Function ;
+           rdfs:label "ECS"@fr ,
+                      "Eau chaude"@fr ,
+                      "Eau chaude sanitaire"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#solarRadiance
@@ -155,7 +163,8 @@ It is made of a) terminal elements that can either produce and emit the property
 
 ###  http://www.bim4ren.eu/sot#ventilate
 :ventilate rdf:type owl:NamedIndividual ,
-                    :Function .
+                    :Function ;
+           rdfs:label "Ventilation"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#water
