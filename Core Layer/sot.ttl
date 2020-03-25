@@ -151,7 +151,9 @@ It is made of a) terminal elements that can either produce and emit the property
 ###  http://www.bim4ren.eu/sot#heatWater
 :heatWater rdf:type owl:NamedIndividual ,
                     :Function ;
-           rdfs:label "ECS"@fr ,
+           rdfs:label "ACS"@es ,
+                      "Agua caliente sanitaria"@es ,
+                      "ECS"@fr ,
                       "Eau chaude"@fr ,
                       "Eau chaude sanitaire"@fr .
 
