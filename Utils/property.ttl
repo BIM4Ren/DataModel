@@ -76,6 +76,16 @@ b4r-prop:thermalTransmittance rdf:type owl:ObjectProperty ;
 b4r-prop:volume rdf:type owl:ObjectProperty ;
                 rdfs:range bs:QuantityValue ;
                 bs:quantityKind quantitykind:Volume .
+				
+				
+###  http://www.bim4ren.eu/property#efficiency
+b4r-prop:efficiency rdf:type owl:ObjectProperty ;
+                    rdfs:range bs:QuantityValue ;
+                    bs:quantityKind quantitykind:Efficiency ;
+					rdfs:label "rendement"@fr ,
+                              "rendimento"@it ,
+                              "rendimiento"@es ,
+                              "efficiency"@en .
 
 
 ###  http://www.bim4ren.eu/property#accuracy

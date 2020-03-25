@@ -7,7 +7,9 @@
 @prefix unit: <http://qudt.org/vocab/unit/> .
 @prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @prefix buildingelements: <https://pi.pauwel.be/voc/buildingelement#> .
+@prefix distributionelements: <https://pi.pauwel.be/voc/distributionelement#>.
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> . 
+@prefix b4r-thermal: <http://www.bim4ren.eu/domain/thermal#> .
 @base <http://www.bim4ren.eu/example#> .
 
 <http://www.bim4ren.eu/example#> rdf:type owl:Ontology ;
@@ -23,4 +25,17 @@ ex:Window_1
 						rdf:value 0.9 ;
 						] ;
 			] ;
+.
+
+ex:Boiler_1 
+	a distributionelements:Boiler ; 
+	b4r-thermal:boilerEfficiency [
+					rdf:value 50 ;
+					bs:unit unit:PERCENT;
+					b4r-thermal:efficiencyType b4r-thermal:CERTIFIED;
+					b4r-thermal:load [ 
+						rdf:value 50;
+						bs:unit unit:PERCENT;
+						] ;
+				] ;
 .
