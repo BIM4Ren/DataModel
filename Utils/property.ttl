@@ -17,65 +17,81 @@
 #    Object Properties
 #################################################################
 
-###  http://www.bim4ren.eu/property#airTightness
-b4r-prop:airTightness rdf:type owl:ObjectProperty ;
-                      rdfs:range bs:QuantityValue .
-
 
 ###  http://www.bim4ren.eu/property#area
 b4r-prop:area rdf:type owl:ObjectProperty ;
               rdfs:range bs:QuantityValue ;
-              bs:quantityKind quantitykind:Area .
+              bs:quantityKind quantitykind:Area ;
+			  rdfs:label "surface"@fr ,
+                           "area"@it ,
+                           "área"@es ,
+                           "area"@en .
 			  
 
 ###  http://www.bim4ren.eu/property#grossArea
 b4r-prop:grossArea rdf:type owl:ObjectProperty ;
-			  rdfs:subPropertyOf b4r-prop:area .		  
+			  rdfs:subPropertyOf b4r-prop:area ;
+			  rdfs:label "surface brut"@fr ,
+                         "area lorda"@it ,
+                         "área bruta"@es ,
+                         "gross area"@en .  
 
 
 ###  http://www.bim4ren.eu/property#netArea
 b4r-prop:netArea rdf:type owl:ObjectProperty ;
-			     rdfs:subPropertyOf b4r-prop:area .	
+			     rdfs:subPropertyOf b4r-prop:area ;
+				 rdfs:label "area netta"@it ,
+							"surface net"@fr ,
+							"net area"@en ,
+							"área neta"@es .	
 			  
 
 ###  http://www.bim4ren.eu/property#height
 b4r-prop:height rdf:type owl:ObjectProperty ;
                 rdfs:range bs:QuantityValue ;
-                bs:quantityKind quantitykind:Length .
+                bs:quantityKind quantitykind:Length ;
+				rdfs:label "hauteur"@fr ,
+                           "altezza"@it ,
+                           "altura"@es ,
+                           "height"@en .
 
 
 ###  http://www.bim4ren.eu/property#power
 b4r-prop:power rdf:type owl:ObjectProperty ;
                rdfs:range bs:QuantityValue ;
-               bs:quantityKind quantitykind:Power .
+               bs:quantityKind quantitykind:Power ;
+			   rdfs:label "puissance"@fr ,
+                          "potere"@it ,
+                          "potencia"@es ,
+                          "power"@en .
 
 
 ###  http://www.bim4ren.eu/property#ratio
 b4r-prop:ratio rdf:type owl:ObjectProperty ;
-               rdfs:range bs:QuantityValue .
+               rdfs:range bs:QuantityValue ;
+			   rdfs:label "rapport"@fr ,
+                          "rapporto"@it ,
+                          "proporción"@es ,
+                          "ratio"@en .
 
 
 ###  http://www.bim4ren.eu/property#temperature
 b4r-prop:temperature rdf:type owl:ObjectProperty ;
                      rdfs:range bs:QuantityValue ;
-                     bs:quantityKind quantitykind:Temperature .
-
-
-###  http://www.bim4ren.eu/property#thermalResistance
-b4r-prop:thermalResistance rdf:type owl:ObjectProperty ;
-                           rdfs:range bs:QuantityValue ;
-                           bs:quantityKind quantitykind:ThermalResistance .
-
-
-###  http://www.bim4ren.eu/property#thermalTransmittance
-b4r-prop:thermalTransmittance rdf:type owl:ObjectProperty ;
-                              rdfs:range bs:QuantityValue .
-
+                     bs:quantityKind quantitykind:Temperature ;
+					 rdfs:label "température"@fr ,
+                                "temperatura"@it ,
+                                "temperatura"@es ,
+                                "temperature"@en .
 
 ###  http://www.bim4ren.eu/property#volume
 b4r-prop:volume rdf:type owl:ObjectProperty ;
                 rdfs:range bs:QuantityValue ;
-                bs:quantityKind quantitykind:Volume .
+                bs:quantityKind quantitykind:Volume ;
+				rdfs:label "volume"@fr ,
+                            "volume"@it ,
+                            "volumen"@es ,
+                            "volume"@en .
 				
 				
 ###  http://www.bim4ren.eu/property#efficiency
@@ -90,7 +106,11 @@ b4r-prop:efficiency rdf:type owl:ObjectProperty ;
 
 ###  http://www.bim4ren.eu/property#accuracy
 b4r-prop:accuracy rdf:type owl:ObjectProperty ;
-                  rdfs:range bs:QuantityValue .
+                  rdfs:range bs:QuantityValue ;
+				  rdfs:label "précision"@fr ,
+                              "accuratezza"@it ,
+                              "precisión"@es ,
+                              "accuracy"@en .
 
 
 
