@@ -1,12 +1,13 @@
-@prefix b4r-thermal: <http://www.bim4ren.eu/domain/thermal#> .
-@prefix b4r-prop: <http://www.bim4ren.eu/property#> .
+@prefix : <http://www.bim4ren.eu/domain/thermal#> .
+@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix b4r-prop: <http://www.bim4ren.eu/property#> .
+@prefix b4r-thermal: <http://www.bim4ren.eu/domain/thermal#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> . 
 @base <http://www.bim4ren.eu/domain/thermal> .
 
 <http://www.bim4ren.eu/domain/thermal> rdf:type owl:Ontology ;
@@ -14,265 +15,270 @@
                                         owl:imports <http://www.bim4ren.eu/property/0.1> .
 
 #################################################################
+#    Annotation properties
+#################################################################
+
+###  https://w3id.org/def/basicsemantics-owl#quantityKind
+bs:quantityKind rdf:type owl:AnnotationProperty .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 
 ###  http://www.bim4ren.eu/domain/thermal#airTightness
 b4r-thermal:airTightness rdf:type owl:ObjectProperty ;
-						 rdfs:range bs:QuantityValue ;
-						 rdfs:label "air tighthness"@en ,
+                         rdfs:range bs:QuantityValue ;
+                         rdfs:label "air tighthness"@en ,
                                     "ermeticità all'aria"@it ,
                                     "estanqueidad"@es ,
                                     "étanchéité à l'air"@fr .
 
 
-###  http://www.bim4ren.eu/domain/thermal#capacity
-b4r-thermal:capacity rdf:type owl:ObjectProperty ;
-					 rdfs:range bs:QuantityValue ;
-					 bs:quantityKind quantitykind:HeatCapacity ;
-					 rdfs:label "Capacidad"@es ,
-							   "Capacity"@en ,
-                               "Capacité"@fr ,
-							   "capacità"@it .
+###  http://www.bim4ren.eu/domain/thermal#boilerEfficiency
+b4r-thermal:boilerEfficiency rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf b4r-thermal:thermalEfficiency ;
+                             rdfs:label "boiler efficiency"@en ,
+                                        "rendement de la chaudière"@fr ,
+                                        "rendimento della caldaia"@it ,
+                                        "rendimiento de la caldera"@es .
 
 
-###  http://www.bim4ren.eu/domain/thermal#transmittance
-b4r-thermal:transmittance rdf:type owl:ObjectProperty ;
-						  rdfs:range bs:QuantityValue ;
-						  bs:quantityKind quantitykind:Transmittance ;
-						  rdfs:label "transmittance"@en ,
-								      "transmittance"@fr ,
-									  "transmitancia"@es ,
-									  "trasmissione"@it ,
-									  "T" .
+###  http://www.bim4ren.eu/domain/thermal#efficiencyType
+b4r-thermal:efficiencyType rdf:type owl:ObjectProperty ;
+                           rdfs:range b4r-thermal:EfficiencyType ;
+                           rdfs:label "efficiency type"@en ,
+                                      "tipo de rendimiento"@es ,
+                                      "tipo di rendimento"@it ,
+                                      "type du rendement"@fr .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#infraredTransmittance
 b4r-thermal:infraredTransmittance rdf:type owl:ObjectProperty ;
-								  rdfs:subPropertyOf b4r-thermal:transmittance ;
-								  rdfs:label "infrared transmittance"@en ,
-											 "transmittance infrarouge"@fr ,
-											 "transmitancia infrarroja"@es ,
-											 "trasmittanza infrarossa"@it .
+                                  rdfs:subPropertyOf b4r-thermal:transmittance ;
+                                  rdfs:label "infrared transmittance"@en ,
+                                             "transmitancia infrarroja"@es ,
+                                             "transmittance infrarouge"@fr ,
+                                             "trasmittanza infrarossa"@it .
+
+
+###  http://www.bim4ren.eu/domain/thermal#load
+b4r-thermal:load rdf:type owl:ObjectProperty ;
+                 rdfs:range bs:QuantityValue ;
+                 rdfs:label "carga"@es ,
+                            "carico"@it ,
+                            "charge"@fr ,
+                            "load"@en .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#maxTemperature
 b4r-thermal:maxTemperature rdf:type owl:ObjectProperty ;
-						   rdfs:subPropertyOf b4r-thermal:setPoint ;
+                           rdfs:subPropertyOf b4r-thermal:setPoint ;
                            rdfs:label "maximal temperature"@en ,
-								      "température maximale"@fr ,
-									  "temperatura massima"@it ,
-									  "temperatura máxima"@es .
+                                      "temperatura massima"@it ,
+                                      "temperatura máxima"@es ,
+                                      "température maximale"@fr .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#minTemperature
 b4r-thermal:minTemperature rdf:type owl:ObjectProperty ;
-						   rdfs:subPropertyOf b4r-thermal:setPoint ;
+                           rdfs:subPropertyOf b4r-thermal:setPoint ;
                            rdfs:label "minimal temperature"@en ,
-									  "température minimale"@fr ,
-									  "temperatura mínima"@es ,
-									  "temperatura minima"@it .
+                                      "temperatura minima"@it ,
+                                      "temperatura mínima"@es ,
+                                      "température minimale"@fr .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#nominalPower
 b4r-thermal:nominalPower rdf:type owl:ObjectProperty ;
-						 rdfs:subPropertyOf b4r-prop:power ;
-						 rdfs:label "Nominal power"@en ,
-									"Puissance nominale"@fr ,
-									"Puissance utile"@fr .
+                         rdfs:subPropertyOf b4r-prop:power ;
+                         rdfs:label "Nominal power"@en ,
+                                    "Puissance nominale"@fr ,
+                                    "Puissance utile"@fr .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#setPoint
 b4r-thermal:setPoint rdf:type owl:ObjectProperty ;
-					 rdfs:subPropertyOf b4r-prop:temperature ;
-					 rdfs:label "consigne"@fr ,
+                     rdfs:subPropertyOf b4r-prop:temperature ;
+                     rdfs:label "consigne"@fr ,
                                 "régulation"@fr ,
                                 "setpoint"@en .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#thermalEfficiency
 b4r-thermal:thermalEfficiency rdf:type owl:ObjectProperty ;
-							  rdfs:label "Rendement"@fr ,
-										 "Rendimento"@it ,
+                              rdfs:range bs:QuantityValue ;
+                              rdfs:label "Rendement"@fr ,
+                                         "Rendimento"@it ,
                                          "Rendimiento térmico"@es ,
                                          "Thermal efficiency"@en ;
-							rdfs:range bs:QuantityValue ;
-							bs:quantityKind quantitykind:ThermalEfficiency .
+                              bs:quantityKind quantitykind:ThermalEfficiency .
 
-
-###  http://www.bim4ren.eu/domain/thermal#boilerEfficiency
-b4r-thermal:boilerEfficiency rdf:type owl:ObjectProperty ;
-							  rdfs:subPropertyOf b4r-thermal:thermalEfficiency ;
-							  rdfs:label "rendement de la chaudière"@fr ,
-										 "rendimento della caldaia"@it ,
-                                         "rendimiento de la caldera"@es ,
-                                         "boiler efficiency"@en .
-										 
-###  http://www.bim4ren.eu/domain/thermal#efficiencyType
-b4r-thermal:efficiencyType rdf:type owl:ObjectProperty ;
-						   rdfs:range b4r-thermal:EfficiencyType ;
-						   rdfs:label "type du rendement"@fr ,
-									  "tipo di rendimento"@it ,
-                                      "tipo de rendimiento"@es ,
-                                      "efficiency type"@en .
-									  
-									  
-###  http://www.bim4ren.eu/domain/thermal#load
-b4r-thermal:load rdf:type owl:ObjectProperty ;
-				 rdfs:range bs:QuantityValue ;
-				 rdfs:label "charge"@fr ,
-							"carico"@it ,
-                            "carga"@es ,
-                            "load"@en .
-									  
 
 ###  http://www.bim4ren.eu/domain/thermal#thermalMass
 b4r-thermal:thermalMass rdf:type owl:ObjectProperty ;
-						rdfs:range bs:QuantityValue ;
-						rdfs:label "masse thermique"@fr ,
-								   "massa termica"@it ,
-                                   "masa térmica"@es ,
+                        rdfs:range bs:QuantityValue ;
+                        rdfs:label "masa térmica"@es ,
+                                   "massa termica"@it ,
+                                   "masse thermique"@fr ,
                                    "thermal mass"@en .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#thermalResistance
 b4r-thermal:thermalResistance rdf:type owl:ObjectProperty ;
-							  rdfs:range bs:QuantityValue ;
-                              bs:quantityKind quantitykind:ThermalResistance ;
-							  rdfs:label "résistence thermique"@fr ,
-										 "resistenza termica"@it ,
-										 "resistencia termica"@es ,
-										 "thermal resistance"@en ,
-										 "R" .
+                              rdfs:range bs:QuantityValue ;
+                              rdfs:label "R" ,
+                                         "resistencia termica"@es ,
+                                         "resistenza termica"@it ,
+                                         "résistence thermique"@fr ,
+                                         "thermal resistance"@en ;
+                              bs:quantityKind quantitykind:ThermalResistance .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#thermalTransmittance
 b4r-thermal:thermalTransmittance rdf:type owl:ObjectProperty ;
-								 rdfs:range bs:QuantityValue ;
-								 bs:quantityKind quantitykind:CoefficientOfHeatTransfer ;
-								 rdfs:label "transfert thermique"@fr ,
-										    "trasmittanza termica"@it ,
-										    "transmitancia térmica"@es ,
-										    "thermal transmittance"@en ,
-											"U",
-											"coefficient of heat transfer"@en,
-											"coefficient de transfert thermique"@fr .
+                                 rdfs:range bs:QuantityValue ;
+                                 rdfs:label "U" ,
+                                            "coefficient de transfert thermique"@fr ,
+                                            "coefficient of heat transfer"@en ,
+                                            "thermal transmittance"@en ,
+                                            "transfert thermique"@fr ,
+                                            "transmitancia térmica"@es ,
+                                            "trasmittanza termica"@it ;
+                                 bs:quantityKind quantitykind:CoefficientOfHeatTransfer .
+
+
+###  http://www.bim4ren.eu/domain/thermal#transmittance
+b4r-thermal:transmittance rdf:type owl:ObjectProperty ;
+                          rdfs:range bs:QuantityValue ;
+                          rdfs:label "T" ,
+                                     "transmitancia"@es ,
+                                     "transmittance"@en ,
+                                     "transmittance"@fr ,
+                                     "trasmissione"@it ;
+                          bs:quantityKind quantitykind:Transmittance .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#visibleTransmittance
 b4r-thermal:visibleTransmittance rdf:type owl:ObjectProperty ;
-								 rdfs:subPropertyOf b4r-thermal:transmittance ;
-								 rdfs:label "visible transmittance"@en ,
-											"transmittance visible"@fr ,
-											"transmitancia visible"@es ,
-											"trasmittanza visibile"@it .
+                                 rdfs:subPropertyOf b4r-thermal:transmittance ;
+                                 rdfs:label "transmitancia visible"@es ,
+                                            "transmittance visible"@fr ,
+                                            "trasmittanza visibile"@it ,
+                                            "visible transmittance"@en .
+
+
+###  http://www.bim4ren.eu/property#power
+b4r-prop:power rdf:type owl:ObjectProperty .
+
+
+###  http://www.bim4ren.eu/property#temperature
+b4r-prop:temperature rdf:type owl:ObjectProperty .
 
 
 #################################################################
 #    Classes
 #################################################################
 
+###  http://www.bim4ren.eu/domain/thermal#EfficiencyType
+b4r-thermal:EfficiencyType rdf:type owl:Class ;
+                           owl:equivalentClass [ rdf:type owl:Class ;
+                                                 owl:oneOf ( b4r-thermal:CERTIFIED
+                                                             b4r-thermal:DECLARED
+                                                             b4r-thermal:MEASURED
+                                                           )
+                                               ] ;
+                           rdfs:label "Efficiency type"@en ,
+                                      "Tipo de rendimiento"@es ,
+                                      "Tipo di rendimento"@it ,
+                                      "Type du rendement"@fr .
+
+
 ###  http://www.bim4ren.eu/domain/thermal#HeatProducer
 b4r-thermal:HeatProducer rdf:type owl:Class ;
-						 rdfs:subClassOf [ rdf:type owl:Restriction ;
-										   owl:onProperty b4r-thermal:thermalEfficiency ;
-										   owl:allValuesFrom bs:QuantityValue
-										 ] ,
-										 [ rdf:type owl:Restriction ;
-										   owl:onProperty b4r-thermal:maxTemperature ;
-										   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-										   owl:onClass b4r-thermal:HeatProducer
-										 ] ,
-										 [ rdf:type owl:Restriction ;
-										   owl:onProperty b4r-thermal:minTemperature ;
-										   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-										   owl:onClass b4r-thermal:HeatProducer
-										] ,
-										[ rdf:type owl:Restriction ;
-										  owl:onProperty b4r-thermal:nominalPower ;
-										  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-										  owl:onClass b4r-thermal:HeatProducer
-										] .
+                         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                           owl:onProperty b4r-thermal:thermalEfficiency ;
+                                           owl:allValuesFrom bs:QuantityValue
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty b4r-thermal:maxTemperature ;
+                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass b4r-thermal:HeatProducer
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty b4r-thermal:minTemperature ;
+                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass b4r-thermal:HeatProducer
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty b4r-thermal:nominalPower ;
+                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass b4r-thermal:HeatProducer
+                                         ] .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#HeatStorage
-b4r-thermal:HeatStorage rdf:type owl:Class ;
-             rdfs:subClassOf [ rdf:type owl:Restriction ;
-                               owl:onProperty b4r-thermal:capacity ;
-                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass b4r-thermal:HeatStorage
-                             ] .
+b4r-thermal:HeatStorage rdf:type owl:Class .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#HeatTransferElement
 b4r-thermal:HeatTransferElement rdf:type owl:Class ;
-							    rdfs:subClassOf [ rdf:type owl:Restriction ;
-												  owl:onProperty b4r-thermal:airTightness ;
-												  owl:allValuesFrom bs:QuantityValue;
-												] ,
-												[ rdf:type owl:Restriction ;
-												  owl:onProperty b4r-thermal:infraredTransmittance ;
-												  owl:someValuesFrom bs:QuantityValue ;
-												] ,
-												[ rdf:type owl:Restriction ;
-												  owl:onProperty b4r-thermal:thermalMass ;
-												  owl:allValuesFrom bs:QuantityValue ;
-												] ,
-												[ rdf:type owl:Restriction ;
-												  owl:onProperty b4r-thermal:thermalResistance ;
-												  owl:allValuesFrom bs:QuantityValue ;
-												] ,
-												[ rdf:type owl:Restriction ;
-												  owl:onProperty b4r-thermal:thermalTransmittance ;
-												  owl:allValuesFrom bs:QuantityValue ;
-												] ,
-												[ rdf:type owl:Restriction ;
-												  owl:onProperty b4r-thermal:visibleTransmittance ;
-												  owl:allValuesFrom bs:QuantityValue ;
-												] .
+                                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                  owl:onProperty b4r-thermal:infraredTransmittance ;
+                                                  owl:someValuesFrom bs:QuantityValue
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty b4r-thermal:airTightness ;
+                                                  owl:allValuesFrom bs:QuantityValue
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty b4r-thermal:thermalMass ;
+                                                  owl:allValuesFrom bs:QuantityValue
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty b4r-thermal:thermalResistance ;
+                                                  owl:allValuesFrom bs:QuantityValue
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty b4r-thermal:thermalTransmittance ;
+                                                  owl:allValuesFrom bs:QuantityValue
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty b4r-thermal:visibleTransmittance ;
+                                                  owl:allValuesFrom bs:QuantityValue
+                                                ] .
 
 
-###  http://www.bim4ren.eu/domain/thermal#EfficiencyType
-b4r-thermal:EfficiencyType rdf:type owl:Class ;
-						   owl:equivalentClass [ rdf:type owl:Class ;
-												 owl:oneOf ( b4r-thermal:CERTIFIED
-                                                       b4r-thermal:MEASURED
-                                                       b4r-thermal:DECLARED
-															)
-												] ;
-						   rdfs:label "Type du rendement"@fr ,
-									  "Tipo di rendimento"@it ,
-                                      "Tipo de rendimiento"@es ,
-                                      "Efficiency type"@en .
+###  https://w3id.org/def/basicsemantics-owl#QuantityValue
+bs:QuantityValue rdf:type owl:Class .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-
-###  http://www.bim4ren.eu/domain/thermal#MEASURED
-b4r-thermal:MEASURED rdf:type owl:NamedIndividual ;
-                     rdfs:label "Measured"@en ,
-                                "Mesuré"@fr ,
-								"Misurato"@it,
-								"Medido"@es .
-								
-								
 ###  http://www.bim4ren.eu/domain/thermal#CERTIFIED
 b4r-thermal:CERTIFIED rdf:type owl:NamedIndividual ;
-                      rdfs:label "Certified"@en ,
-                                 "Agréé"@fr ,
-								 "Certificato"@it,
-								 "Certificado"@es .
+                      rdfs:label "Agréé"@fr ,
+                                 "Certificado"@es ,
+                                 "Certificato"@it ,
+                                 "Certified"@en .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#DECLARED
 b4r-thermal:DECLARED rdf:type owl:NamedIndividual ;
                      rdfs:label "Certified"@en ,
-                                "Déclaré"@fr ,
-								"Dichiarato"@it,
-								"Declarado"@es .
-								 
-								 
+                                "Declarado"@es ,
+                                "Dichiarato"@it ,
+                                "Déclaré"@fr .
+
+
+###  http://www.bim4ren.eu/domain/thermal#MEASURED
+b4r-thermal:MEASURED rdf:type owl:NamedIndividual ;
+                     rdfs:label "Measured"@en ,
+                                "Medido"@es ,
+                                "Mesuré"@fr ,
+                                "Misurato"@it .
+
+
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -25,7 +25,17 @@
 
 
 ###  http://www.bim4ren.eu/domain/thermal#capacity
-:capacity rdf:type owl:ObjectProperty .
+:capacity rdf:type owl:ObjectProperty ;
+          rdfs:range [ rdf:type owl:Restriction ;
+                       owl:onProperty :capacity ;
+                       owl:allValuesFrom <http://qudt.org/schema/qudt#QuantityValue>
+                     ] ;
+          rdfs:label "capacidad"@es ,
+                     "capacity"@en ,
+                     "capacité"@fr ,
+                     "volume"@en ,
+                     "volume"@fr ,
+                     "volumen"@es .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#infraredTransmittance
