@@ -111,6 +111,44 @@ b4r-prop:accuracy rdf:type owl:ObjectProperty ;
                               "accuratezza"@it ,
                               "precisión"@es ,
                               "accuracy"@en .
+							  
+
+###  http://www.bim4ren.eu/property#price
+b4r-prop:price rdf:type owl:ObjectProperty ;
+               rdfs:range bs:QuantityValue ;
+			   bs:quantityKind quantitykind:Currency ;
+			   rdfs:label "prix"@fr ,
+                          "prezzo"@it ,
+                          "precio"@es ,
+                          "price"@en .
+						  
+
+###  http://www.bim4ren.eu/property#time
+b4r-prop:time rdf:type owl:ObjectProperty ;
+              rdfs:range bs:QuantityValue ;
+			  bs:quantityKind quantitykind:Time ;
+			  rdfs:label "temps"@fr ,
+                         "tempo"@it ,
+                         "tiempo"@es ,
+                         "time"@en .
+						 
+						 
+###  http://www.bim4ren.eu/property#fromTime
+b4r-prop:fromTime rdf:type owl:ObjectProperty ;
+				  rdfs:subPropertyOf b4r-prop:time ;
+				  rdfs:label "temps début"@fr ,
+							 "ora di inizio"@it ,
+							 "hora de inicio"@es ,
+							 "from time"@en .
+							 
+							 
+###  http://www.bim4ren.eu/property#toTime
+b4r-prop:toTime rdf:type owl:ObjectProperty ;
+				rdfs:subPropertyOf b4r-prop:time ;
+				rdfs:label "temps fin"@fr ,
+							"ora di fine"@it ,
+							"hora de finalización"@es ,
+							"to time"@en .
 
 
 
