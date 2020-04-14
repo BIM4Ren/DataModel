@@ -106,40 +106,35 @@ It is made of a) terminal elements that can either produce and emit the property
 #    Individuals
 #################################################################
 
-###  http://www.bim4ren.eu/sot#air
-:air rdf:type owl:NamedIndividual .
-
-
-###  http://www.bim4ren.eu/sot#cold
-:cold rdf:type owl:NamedIndividual .
-
-
 ###  http://www.bim4ren.eu/sot#cool
 :cool rdf:type owl:NamedIndividual ,
                :Function ;
-      rdfs:comment "Climatisation"@fr .
+      rdfs:comment "Climatisation"@fr ;
+      rdfs:label "Climatisation"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#deliverDrinkableWater
 :deliverDrinkableWater rdf:type owl:NamedIndividual ,
                                 :Function ;
-                       rdfs:comment "Eau potable"@fr .
+                       rdfs:label "Eau potable"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#deliverElectricty
 :deliverElectricty rdf:type owl:NamedIndividual ,
                             :Function ;
-                   rdfs:comment "Réseau électrique"@fr .
+                   rdfs:label "Réseau électrique"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#electricty
 :electricty rdf:type owl:NamedIndividual ,
-                     :Medium .
+                     :Medium ;
+            rdfs:label "Electricité"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#gas
 :gas rdf:type owl:NamedIndividual ,
-              :Medium .
+              :Medium ;
+     rdfs:label "Gaz"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#heat
@@ -160,7 +155,8 @@ It is made of a) terminal elements that can either produce and emit the property
 
 ###  http://www.bim4ren.eu/sot#solarRadiance
 :solarRadiance rdf:type owl:NamedIndividual ,
-                        :Medium .
+                        :Medium ;
+               rdfs:label "Raditation solaire"@fr .
 
 
 ###  http://www.bim4ren.eu/sot#ventilate
@@ -171,7 +167,8 @@ It is made of a) terminal elements that can either produce and emit the property
 
 ###  http://www.bim4ren.eu/sot#water
 :water rdf:type owl:NamedIndividual ,
-                :Medium .
+                :Medium ;
+       rdfs:label "Eau"@fr .
 
 
 #################################################################
