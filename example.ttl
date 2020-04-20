@@ -11,6 +11,8 @@
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> . 
 @prefix b4r-thermal: <http://www.bim4ren.eu/domain/thermal#> .
 @prefix b4r-elec: <http://www.bim4ren.eu/domain/electrical#> .
+@prefix dot: <https://w3id.org/dot#> .
+@prefix b4r-intervention: <http://www.bim4ren.eu/core/intervention#> .
 @base <http://www.bim4ren.eu/example#> .
 
 <http://www.bim4ren.eu/example#> rdf:type owl:Ontology ;
@@ -28,7 +30,7 @@ ex:Window_1
 			] ;
 .
 
-ex:Boiler_1 
+ex:boiler_1 
 	a distributionelements:Boiler ; 
 	b4r-thermal:boilerEfficiency [
 					rdf:value "50"^^xsd:decimal ;
@@ -178,4 +180,22 @@ ex:weekEndWeekDaystariff
 				] ;
 				b4r-elec:subscriptionType b4r-elec:MONTHLY ;
 		] ;
+.
+
+ex:boiler_1 dot:hasDamage [
+				dot:coveredByInspection [
+						b4r-intervention:performedBy ex:organisation_1 ;
+						b4r-intervention:startDate "2020-01-26T11:32:52"^^xsd:dateTime ;
+						b4r-intervention:endDate "2020-01-26T12:00:19"^^xsd:dateTime ; 
+						dot:hasDocumentation [
+								dot:descriptionContent "inspection related to boiler damage: Low-Water Condition"^^xsd:string ;
+								] ,
+								[
+								dot:filePath "http://organization1.com/projectx/interventions/damage1.html"^^xsd:anyURI ;
+								] ;
+							] ;
+			] ;
+. 
+
+ex:organisation_1 a b4r-intervention:Organization ;
 .
