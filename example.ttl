@@ -13,6 +13,7 @@
 @prefix b4r-elec: <http://www.bim4ren.eu/domain/electrical#> .
 @prefix dot: <https://w3id.org/dot#> .
 @prefix b4r-intervention: <http://www.bim4ren.eu/core/intervention#> .
+@prefix b4r-bldgs: <http://www.bim4ren.eu/buildings#> .
 @base <http://www.bim4ren.eu/example#> .
 
 <http://www.bim4ren.eu/example#> rdf:type owl:Ontology ;
@@ -43,41 +44,49 @@ ex:boiler_1
 				] ;
 .
 
-ex:fixedtariff
-		a b4r-elec:FixedTariff ;
-		b4r-elec:electricitySubscription [
-					b4r-elec:kwhPrice [
-						rdf:value "0.1546"^^xsd:decimal ;
-						bs:unit unit:Euro;
-						] ;
-					b4r-elec:subscriptionPrice [
-						rdf:value "8.26"^^xsd:decimal ;
-						bs:unit unit:Euro;
-						] ;
-					b4r-elec:meterPower [
-						rdf:value "3"^^xsd:integer ;
-						bs:unit unit:KiloV-A ;
-						] ;
-					b4r-elec:subscriptionType b4r-elec:MONTHLY ;
-					] ;
-		b4r-elec:electricitySubscription [
-					b4r-elec:kwhPrice [
-						rdf:value "0.1587"^^xsd:decimal ;
-						bs:unit unit:Euro;
-						] ;
-					b4r-elec:subscriptionPrice [
-						rdf:value "11.97"^^xsd:decimal ;
-						bs:unit unit:Euro;
-						] ;
-					b4r-elec:meterPower [
-						rdf:value "9"^^xsd:integer ;
-						bs:unit unit:KiloV-A ;
-						] ;
-					b4r-elec:subscriptionType b4r-elec:MONTHLY ;
-					] ;
+ex:appart_1 a b4r-bldgs:Appartment ;
+			b4r-elec:electricitySubscription ex:fixedtariffoption1 ;
 .
 
-ex:peakOffPeakHourstariff
+ex:appart_2 a b4r-bldgs:Appartment ;
+			b4r-elec:electricitySubscription ex:fixedtariffoption2 ;
+.
+
+ex:fixedtariffoption1
+		a b4r-elec:FixedTariff ;
+			b4r-elec:kwhPrice [
+				rdf:value "0.1546"^^xsd:decimal ;
+				bs:unit unit:Euro;
+				] ;
+			b4r-elec:subscriptionPrice [
+				rdf:value "8.26"^^xsd:decimal ;
+				bs:unit unit:Euro;
+				] ;
+			b4r-elec:subscriptionPower [
+				rdf:value "3"^^xsd:integer ;
+				bs:unit unit:KiloV-A ;
+				] ;
+			b4r-elec:subscriptionType b4r-elec:MONTHLY ;
+.
+
+ex:fixedtariffoption2
+		ex:fixedtariffoption1 ;
+			b4r-elec:kwhPrice [
+				rdf:value "0.1587"^^xsd:decimal ;
+				bs:unit unit:Euro;
+				] ;
+			b4r-elec:subscriptionPrice [
+				rdf:value "11.97"^^xsd:decimal ;
+				bs:unit unit:Euro;
+				] ;
+			b4r-elec:subscriptionPower [
+				rdf:value "9"^^xsd:integer ;
+				bs:unit unit:KiloV-A ;
+				] ;
+			b4r-elec:subscriptionType b4r-elec:MONTHLY ;
+.
+
+ex:peakOffPeakHourstariffoption1
 		a b4r-elec:PeakOffPeakHoursTariff ;
 		b4r-elec:peakHours [
 				b4r-prop:fromTime [
@@ -107,29 +116,29 @@ ex:peakOffPeakHourstariff
 						bs:unit unit:EURO ;
 						] ;
 				];
-		b4r-elec:electricitySubscription [
-				b4r-elec:meterPower [
-					rdf:value "6"^^xsd:integer ;
-					bs:unit unit:KiloV-A ;
-				] ;
-				b4r-elec:subscriptionPrice [
-					rdf:value "11.10"^^xsd:decimal ;
-					bs:unit unit:Euro;
-				] ;
-				b4r-elec:subscriptionType b4r-elec:MONTHLY ;
+				
+		b4r-elec:subscriptionPower [
+			rdf:value "6"^^xsd:integer ;
+			bs:unit unit:KiloV-A ;
 		] ;
-		b4r-elec:electricitySubscription [
-				b4r-elec:meterPower [
-					rdf:value "9"^^xsd:integer ;
-					bs:unit unit:KiloV-A ;
-				] ;
-				b4r-elec:subscriptionPrice [
-					rdf:value "13.62"^^xsd:decimal ;
-					bs:unit unit:Euro;
-				] ;
-				b4r-elec:subscriptionType b4r-elec:MONTHLY ;
+		b4r-elec:subscriptionPrice [
+			rdf:value "11.10"^^xsd:decimal ;
+			bs:unit unit:Euro;
 		] ;
-		
+		b4r-elec:subscriptionType b4r-elec:MONTHLY ;
+.
+
+ex:peakOffPeakHourstariffoption2
+		a b4r-elec:PeakOffPeakHoursTariff ;
+		b4r-elec:subscriptionPower [
+			rdf:value "9"^^xsd:integer ;
+			bs:unit unit:KiloV-A ;
+		] ;
+		b4r-elec:subscriptionPrice [
+			rdf:value "13.62"^^xsd:decimal ;
+			bs:unit unit:Euro;
+		] ;
+		b4r-elec:subscriptionType b4r-elec:MONTHLY ;		
 .
 
 ex:weekEndWeekDaystariff
@@ -183,19 +192,21 @@ ex:weekEndWeekDaystariff
 .
 
 ex:boiler_1 dot:hasDamage [
-				dot:coveredByInspection [
-						b4r-intervention:performedBy ex:organisation_1 ;
-						b4r-intervention:startDate "2020-01-26T11:32:52"^^xsd:dateTime ;
-						b4r-intervention:endDate "2020-01-26T12:00:19"^^xsd:dateTime ; 
-						dot:hasDocumentation [
-								dot:descriptionContent "inspection related to boiler damage: Low-Water Condition"^^xsd:string ;
-								] ,
-								[
-								dot:filePath "http://organization1.com/projectx/interventions/damage1.html"^^xsd:anyURI ;
-								] ;
-							] ;
+				dot:coveredByInspection ex:insepction_1 ;
 			] ;
 . 
 
+ex:insepction_1 a dot:Inspection ,
+				  b4r-intervention:Checking ;
+				b4r-intervention:performedBy ex:organisation_1 ;
+				b4r-intervention:startDate "2020-01-26T11:32:52"^^xsd:dateTime ;
+				b4r-intervention:endDate "2020-01-26T12:00:19"^^xsd:dateTime ; 
+				dot:hasDocumentation [
+						dot:descriptionContent "inspection related to boiler damage: Low-Water Condition"^^xsd:string ;
+						] ,
+						[
+						dot:filePath "http://organization1.com/projectx/interventions/damage1.html"^^xsd:anyURI ;
+						] ;
+				
 ex:organisation_1 a b4r-intervention:Organization ;
 .

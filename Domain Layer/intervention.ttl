@@ -5,7 +5,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix b4r-intervention: <http://www.bim4ren.eu/core/intervention#> .
-@prefix dot: <https://w3id.org/dot#> .
 @base <http://www.bim4ren.eu/core/intervention> .
 
 <http://www.bim4ren.eu/core/intervention> rdf:type owl:Ontology ;
@@ -99,10 +98,6 @@ b4r-intervention:Organization rdf:type owl:Class .
 ###  http://www.bim4ren.eu/core/intervention#Repair
 b4r-intervention:Repair rdf:type owl:Class ;
 						rdfs:subClassOf b4r-intervention:Event .
-
-
-###  https://w3id.org/dot#Inspection
-dot:Inspection rdfs:subClassOf b4r-intervention:Event .
 
 
 #################################################################
