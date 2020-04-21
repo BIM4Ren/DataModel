@@ -52,6 +52,18 @@ ex:appart_2 a b4r-bldgs:Appartment ;
 			b4r-elec:electricitySubscription ex:fixedtariff_option2 ;
 .
 
+ex:appart_3 a b4r-bldgs:Appartment ;
+			b4r-elec:electricitySubscription ex:peakOffPeakHourstariff_option1 ;
+.
+
+ex:appart_4 a b4r-bldgs:Appartment ;
+			b4r-elec:electricitySubscription ex:weekEndWeekDaystariff_option1 ;
+.
+
+ex:appart_5 a b4r-bldgs:Appartment ;
+			b4r-elec:electricitySubscription ex:weekEndWeekDaystariff_option2 ;
+.
+
 ex:fixedtariff_option1
 		a b4r-elec:FixedTariff ;
 			b4r-elec:kwhPrice [
