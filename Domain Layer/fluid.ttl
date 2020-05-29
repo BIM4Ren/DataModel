@@ -4,27 +4,27 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.bim4ren.eu/domain/thermal> .
+@base <http://www.bim4ren.eu/domain/fluid> .
 
-<http://www.bim4ren.eu/domain/thermal> rdf:type owl:Ontology ;
-                                        owl:versionIRI <http://www.bim4ren.eu/domain/thermal/0.1> ;
-                                        owl:imports <http://www.bim4ren.eu/property/0.1> .
+<http://www.bim4ren.eu/domain/fluid> rdf:type owl:Ontology ;
+                                      owl:versionIRI <http://www.bim4ren.eu/domain/fluid/0.1> ;
+                                      owl:imports <http://www.bim4ren.eu/property/0.1> .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.bim4ren.eu/domain/thermal#HMTnoFlow
+###  http://www.bim4ren.eu/domain/fluid#HMTnoFlow
 :HMTnoFlow rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :totalDynamicHead .
 
 
-###  http://www.bim4ren.eu/domain/thermal#HMTnominalFlow
+###  http://www.bim4ren.eu/domain/fluid#HMTnominalFlow
 :HMTnominalFlow rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :totalDynamicHead .
 
 
-###  http://www.bim4ren.eu/domain/thermal#capacity
+###  http://www.bim4ren.eu/domain/fluid#capacity
 :capacity rdf:type owl:ObjectProperty ;
           rdfs:range [ rdf:type owl:Restriction ;
                        owl:onProperty :capacity ;
@@ -38,35 +38,35 @@
                      "volumen"@es .
 
 
-###  http://www.bim4ren.eu/domain/thermal#infraredTransmittance
+###  http://www.bim4ren.eu/domain/fluid#infraredTransmittance
 :infraredTransmittance rdf:type owl:ObjectProperty .
 
 
-###  http://www.bim4ren.eu/domain/thermal#maxPressure
+###  http://www.bim4ren.eu/domain/fluid#maxPressure
 :maxPressure rdf:type owl:ObjectProperty ;
              rdfs:label "maximal pressure"@en ,
                         "pression maximale"@fr .
 
 
-###  http://www.bim4ren.eu/domain/thermal#nominalFlowRate
+###  http://www.bim4ren.eu/domain/fluid#nominalFlowRate
 :nominalFlowRate rdf:type owl:ObjectProperty ;
                  rdfs:label "débit nominal"@fr ,
                             "nominal flow rate"@en .
 
 
-###  http://www.bim4ren.eu/domain/thermal#thermalMass
+###  http://www.bim4ren.eu/domain/fluid#thermalMass
 :thermalMass rdf:type owl:ObjectProperty .
 
 
-###  http://www.bim4ren.eu/domain/thermal#thermalResistance
+###  http://www.bim4ren.eu/domain/fluid#thermalResistance
 :thermalResistance rdf:type owl:ObjectProperty .
 
 
-###  http://www.bim4ren.eu/domain/thermal#thermalTransmittance
+###  http://www.bim4ren.eu/domain/fluid#thermalTransmittance
 :thermalTransmittance rdf:type owl:ObjectProperty .
 
 
-###  http://www.bim4ren.eu/domain/thermal#totalDynamicHead
+###  http://www.bim4ren.eu/domain/fluid#totalDynamicHead
 :totalDynamicHead rdf:type owl:ObjectProperty ;
                   rdfs:label "HMT"@fr ,
                              "Hauteur manométrique totale"@fr ,
@@ -74,7 +74,7 @@
                              "Total dynamic head"@en .
 
 
-###  http://www.bim4ren.eu/domain/thermal#visibleTransmittance
+###  http://www.bim4ren.eu/domain/fluid#visibleTransmittance
 :visibleTransmittance rdf:type owl:ObjectProperty .
 
 
@@ -82,17 +82,17 @@
 #    Classes
 #################################################################
 
-###  http://www.bim4ren.eu/domain/thermal#FluidSegment
+###  http://www.bim4ren.eu/domain/fluid#FluidSegment
 :FluidSegment rdf:type owl:Class ;
               rdfs:label "Segment de transfert de fluide"@fr .
 
 
-###  http://www.bim4ren.eu/domain/thermal#FluidStorage
+###  http://www.bim4ren.eu/domain/fluid#FluidStorage
 :FluidStorage rdf:type owl:Class ;
               rdfs:label "Elément de stockage de fluide"@fr .
 
 
-###  http://www.bim4ren.eu/domain/thermal#FluidTerminal
+###  http://www.bim4ren.eu/domain/fluid#FluidTerminal
 :FluidTerminal rdf:type owl:Class ;
                rdfs:subClassOf [ rdf:type owl:Restriction ;
                                  owl:onProperty :capacity ;
@@ -101,7 +101,7 @@
                rdfs:label "Terminal de fluide"@fr .
 
 
-###  http://www.bim4ren.eu/domain/thermal#FluidTransferElement
+###  http://www.bim4ren.eu/domain/fluid#FluidTransferElement
 :FluidTransferElement rdf:type owl:Class ;
                       rdfs:subClassOf [ rdf:type owl:Restriction ;
                                         owl:onProperty :HMTnoFlow ;

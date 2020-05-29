@@ -1,3 +1,4 @@
+@prefix : <http://www.bim4ren.eu/domain/thermal#> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -7,7 +8,6 @@
 @prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @prefix b4r-thermal: <http://www.bim4ren.eu/domain/thermal#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
-@prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @base <http://www.bim4ren.eu/domain/thermal> .
 
 <http://www.bim4ren.eu/domain/thermal> rdf:type owl:Ontology ;
@@ -44,6 +44,19 @@ b4r-thermal:boilerEfficiency rdf:type owl:ObjectProperty ;
                                         "rendimiento de la caldera"@es .
 
 
+###  http://www.bim4ren.eu/domain/thermal#coefficientOfPerformance
+b4r-thermal:coefficientOfPerformance rdf:type owl:ObjectProperty ;
+                                     rdfs:domain b4r-thermal:HeatProducer ;
+                                     rdfs:label "COP" ,
+                                                "Coefficient de performance"@fr ,
+                                                "Coefficient of performance"@en .
+
+
+###  http://www.bim4ren.eu/domain/thermal#condensingTemperature
+b4r-thermal:condensingTemperature rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf b4r-prop:temperature .
+
+
 ###  http://www.bim4ren.eu/domain/thermal#efficiencyType
 b4r-thermal:efficiencyType rdf:type owl:ObjectProperty ;
                            rdfs:range b4r-thermal:EfficiencyType ;
@@ -51,6 +64,11 @@ b4r-thermal:efficiencyType rdf:type owl:ObjectProperty ;
                                       "tipo de rendimiento"@es ,
                                       "tipo di rendimento"@it ,
                                       "type du rendement"@fr .
+
+
+###  http://www.bim4ren.eu/domain/thermal#evaporatingTemperature
+b4r-thermal:evaporatingTemperature rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf b4r-prop:temperature .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#infraredTransmittance
@@ -92,9 +110,15 @@ b4r-thermal:minTemperature rdf:type owl:ObjectProperty ;
 ###  http://www.bim4ren.eu/domain/thermal#nominalPower
 b4r-thermal:nominalPower rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf b4r-prop:power ;
-                         rdfs:label "Nominal power"@en ,
-                                    "Puissance nominale"@fr ,
-                                    "Puissance utile"@fr .
+                         rdfs:label "nominal power"@en ,
+                                    "puissance nominale"@fr ,
+                                    "puissance utile"@fr .
+
+
+###  http://www.bim4ren.eu/domain/thermal#returnedTemperature
+b4r-thermal:returnedTemperature rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf b4r-prop:temperature ;
+                                rdfs:domain b4r-thermal:HeatProducer .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#setPoint
@@ -105,9 +129,16 @@ b4r-thermal:setPoint rdf:type owl:ObjectProperty ;
                                 "setpoint"@en .
 
 
+###  http://www.bim4ren.eu/domain/thermal#suppliedTemperature
+b4r-thermal:suppliedTemperature rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf b4r-prop:temperature ;
+                                rdfs:domain b4r-thermal:HeatProducer .
+
+
 ###  http://www.bim4ren.eu/domain/thermal#thermalEfficiency
 b4r-thermal:thermalEfficiency rdf:type owl:ObjectProperty ;
                               rdfs:range bs:QuantityValue ;
+                              rdfs:comment "Is this similar to Coefficient of Performance???"@en ;
                               rdfs:label "Rendement"@fr ,
                                          "Rendimento"@it ,
                                          "Rendimiento térmico"@es ,
@@ -214,7 +245,10 @@ b4r-thermal:HeatProducer rdf:type owl:Class ;
                                            owl:onProperty b4r-thermal:nominalPower ;
                                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                            owl:onClass b4r-thermal:HeatProducer
-                                         ] .
+                                         ] ;
+                         rdfs:comment "A heat producer asset."@fr ;
+                         rdfs:label "Heat producer"@en ,
+                                    "Producteur de chaleur"@fr .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#HeatStorage
@@ -246,7 +280,10 @@ b4r-thermal:HeatTransferElement rdf:type owl:Class ;
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty b4r-thermal:visibleTransmittance ;
                                                   owl:allValuesFrom bs:QuantityValue
-                                                ] .
+                                                ] ;
+                                rdfs:comment "A heat transfer element is a passive element that can restrict or ease the transfer of heat between different zones."@en ;
+                                rdfs:label "Elément de transfert de chaleur"@fr ,
+                                           "Heat transfer element"@en .
 
 
 ###  https://w3id.org/def/basicsemantics-owl#QuantityValue
