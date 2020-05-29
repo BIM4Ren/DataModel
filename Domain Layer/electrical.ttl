@@ -28,14 +28,14 @@ b4r-elec:powerOut rdf:type owl:ObjectProperty ;
 				  rdfs:subPropertyOf b4r-prop:power .
 				  
 				  
-###  http://www.bim4ren.eu/domain/electrical#meterPower
+###  http://www.bim4ren.eu/domain/electrical#subscriptionPower
 b4r-elec:meterPower rdf:type owl:ObjectProperty ;
 					rdf:range bs:QuantityValue;
 					bs:quantityKind quantitykind:ApparentPower ;
-					rdfs:label "puissance du compteur"@fr ,
-							   "potenza del misuratore"@it ,
-							   "medidor de potencia"@es ,
-							   "meter power"@en .
+					rdfs:label "puissance souscrite d'abonnement"@fr ,
+							   "potere di abbonamento"@it ,
+							   "poder de suscripción"@es ,
+							   "subscription power"@en .
 									
 
 ###  http://www.bim4ren.eu/domain/electrical#offPeakHours
@@ -94,7 +94,7 @@ b4r-prop:subscriptionPrice rdf:type owl:ObjectProperty ;
 						  
 ###  http://www.bim4ren.eu/domain/electrical#electricitySubscription
 b4r-prop:electricitySubscription rdf:type owl:ObjectProperty ;
-								 rdfs:range b4r-elec:ElectricitySubscription ;
+								 rdfs:range b4r-elec:ElectricityTariff ;
 							     rdfs:label "abonnement electricité"@fr ,
 											"abbonamento elettrico"@it ,
 											"suscripción de electricidad"@es ,
@@ -173,14 +173,6 @@ b4r-elec:PeakOffPeakHoursTariff rdf:type owl:Class ;
 										   "Tariffa ore di punta - non di punta"@it ,
 										   "Tarifa de horas pico - no pico"@es ,
 										   "Peak - off-peak hours tariff"@en .
-
-
-###  http://www.bim4ren.eu/domain/electrical#ElectricitySubscription
-b4r-elec:ElectricitySubscription rdf:type owl:Class ;
-							     rdfs:label "Abonnement electricité"@fr ,
-											"Abbonamento elettrico"@it ,
-											"Suscripción de electricidad"@es ,
-											"Electricity subscription"@en .
 											
 											
 ###  http://www.bim4ren.eu/domain/electrical#SubscriptionType
