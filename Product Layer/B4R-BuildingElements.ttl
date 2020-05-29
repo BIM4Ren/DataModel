@@ -79,9 +79,14 @@
                   "Wool"@en .
 
 
+###  http://bim4ren.eu/buildingelements#Material
+:Material rdf:type owl:Class .
+
+
 ###  http://bim4ren.eu/buildingelements#Mineralwool
 :Mineralwool rdf:type owl:Class ;
-             rdfs:subClassOf <https://pi.pauwel.be/voc/buildingelement#BuildingElementPart-INSULATION> ;
+             rdfs:subClassOf :Material ,
+                             <https://pi.pauwel.be/voc/buildingelement#BuildingElementPart-INSULATION> ;
              rdfs:comment "Mineral wool based insulation material"@en ;
              rdfs:label "Laine Minérale"@fr ,
                         "Mineral Wool"@en .
@@ -89,7 +94,8 @@
 
 ###  http://bim4ren.eu/buildingelements#NaturalFiber
 :NaturalFiber rdf:type owl:Class ;
-              rdfs:subClassOf <https://pi.pauwel.be/voc/buildingelement#BuildingElementPart-INSULATION> ;
+              rdfs:subClassOf :Material ,
+                              <https://pi.pauwel.be/voc/buildingelement#BuildingElementPart-INSULATION> ;
               rdfs:label "Fibre Naturelle"@fr ,
                          "Natural Fiber"@en .
 
@@ -155,7 +161,8 @@
 
 ###  http://bim4ren.eu/buildingelements#Synthetic
 :Synthetic rdf:type owl:Class ;
-           rdfs:subClassOf <https://pi.pauwel.be/voc/buildingelement#BuildingElementPart-INSULATION> ;
+           rdfs:subClassOf :Material ,
+                           <https://pi.pauwel.be/voc/buildingelement#BuildingElementPart-INSULATION> ;
            rdfs:label "Synthetic"@en ,
                       "Synthétique"@fr .
 
