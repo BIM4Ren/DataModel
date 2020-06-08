@@ -44,14 +44,34 @@
 
 ###  http://www.bim4ren.eu/domain/fluid#maxPressure
 :maxPressure rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :pressure ;
              rdfs:label "maximal pressure"@en ,
                         "pression maximale"@fr .
 
 
+###  http://www.bim4ren.eu/domain/fluid#minFlow
+:minFlow rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :pressure ;
+         rdfs:label "maximal pressure"@en ,
+                    "pression minimale"@fr .
+
+
 ###  http://www.bim4ren.eu/domain/fluid#nominalFlowRate
 :nominalFlowRate rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :pressure ;
                  rdfs:label "débit nominal"@fr ,
                             "nominal flow rate"@en .
+
+
+###  http://www.bim4ren.eu/domain/fluid#pressure
+:pressure rdf:type owl:ObjectProperty .
+
+
+###  http://www.bim4ren.eu/domain/fluid#pressureDrop
+:pressureDrop rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :pressure ;
+              rdfs:label "chute de pression"@fr ,
+                         "pressure drop"@en .
 
 
 ###  http://www.bim4ren.eu/domain/fluid#thermalMass

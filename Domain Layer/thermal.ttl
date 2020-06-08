@@ -35,21 +35,15 @@ b4r-thermal:airTightness rdf:type owl:ObjectProperty ;
                                     "étanchéité à l'air"@fr .
 
 
-###  http://www.bim4ren.eu/domain/thermal#boilerEfficiency
-b4r-thermal:boilerEfficiency rdf:type owl:ObjectProperty ;
-                             rdfs:subPropertyOf b4r-thermal:thermalEfficiency ;
-                             rdfs:label "boiler efficiency"@en ,
-                                        "rendement de la chaudière"@fr ,
-                                        "rendimento della caldaia"@it ,
-                                        "rendimiento de la caldera"@es .
-
-
 ###  http://www.bim4ren.eu/domain/thermal#coefficientOfPerformance
 b4r-thermal:coefficientOfPerformance rdf:type owl:ObjectProperty ;
                                      rdfs:domain b4r-thermal:HeatProducer ;
+                                     rdfs:comment "The coefficient of performance or COP (sometimes CP or CoP) of a heat pump, refrigerator or air conditioning system is a ratio of useful heating or cooling provided to work required."@en ;
                                      rdfs:label "COP" ,
-                                                "Coefficient de performance"@fr ,
-                                                "Coefficient of performance"@en .
+                                                "coefficient de performance"@fr ,
+                                                "coefficient of performance"@en ,
+                                                "coefficiente di prestazione"@it ,
+                                                "coeficiente de operatividad"@es .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#condensingTemperature
@@ -69,6 +63,24 @@ b4r-thermal:efficiencyType rdf:type owl:ObjectProperty ;
 ###  http://www.bim4ren.eu/domain/thermal#evaporatingTemperature
 b4r-thermal:evaporatingTemperature rdf:type owl:ObjectProperty ;
                                    rdfs:subPropertyOf b4r-prop:temperature .
+
+
+###  http://www.bim4ren.eu/domain/thermal#heatTransmissionCoefficient
+b4r-thermal:heatTransmissionCoefficient rdf:type owl:ObjectProperty ;
+                                        rdfs:comment "This factor describes thermal losses. The higher this value, the more losses the system has."@en ;
+                                        rdfs:label "a1" ,
+                                                   "facteur de transmission de chaleur"@fr ,
+                                                   "heat transmission factor"@en ,
+                                                   "pertes à pourcentage constant"@fr .
+
+
+###  http://www.bim4ren.eu/domain/thermal#heatTransmissionCoefficientPerTemperature
+b4r-thermal:heatTransmissionCoefficientPerTemperature rdf:type owl:ObjectProperty ;
+                                                      rdfs:comment "Coefficient for the calculation of the coefficient of heat transmission dependent on temperature. The higher this value, the greater is the curvature of the curve."@en ;
+                                                      rdfs:label "a2" ,
+                                                                 "coefficient de calcul de coefficient de transmission thermique selon la température."@fr ,
+                                                                 "coefficient for the calculation of the coefficient of heat transmission dependent on temperature"@en ,
+                                                                 "pertes dont le pourcentage augmente avec la température"@fr .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#infraredTransmittance
@@ -129,6 +141,17 @@ b4r-thermal:setPoint rdf:type owl:ObjectProperty ;
                                 "setpoint"@en .
 
 
+###  http://www.bim4ren.eu/domain/thermal#stagnationTemperature
+b4r-thermal:stagnationTemperature rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf b4r-prop:temperature ;
+                                  rdfs:comment """The temperature at a stagnation point in a fluid flow. At a stagnation point the speed of the fluid is zero and all of the kinetic energy has been converted to internal energy and is added to the local static enthalpy. In both compressible and incompressible fluid flow, the stagnation temperature is equal to the total temperature at all points on the streamline leading to the stagnation point.
+The stagnation temperature is the maximum temperature that the collector’s absorber can reach at an ambient temperature of 30°C and an irradiation of 1000 W/m2. Stagnation temperature is also a measure of thermal losses of the collector and therefore describes the efficiency of the collector at higher temperatures."""@en ;
+                                  rdfs:label "stagnation tempertaure"@en ,
+                                             "temperature de estancamiento"@es ,
+                                             "temperature de ristagno"@it ,
+                                             "température de stagnation"@fr .
+
+
 ###  http://www.bim4ren.eu/domain/thermal#suppliedTemperature
 b4r-thermal:suppliedTemperature rdf:type owl:ObjectProperty ;
                                 rdfs:subPropertyOf b4r-prop:temperature ;
@@ -139,10 +162,10 @@ b4r-thermal:suppliedTemperature rdf:type owl:ObjectProperty ;
 b4r-thermal:thermalEfficiency rdf:type owl:ObjectProperty ;
                               rdfs:range bs:QuantityValue ;
                               rdfs:comment "Is this similar to Coefficient of Performance???"@en ;
-                              rdfs:label "Rendement"@fr ,
-                                         "Rendimento"@it ,
-                                         "Rendimiento térmico"@es ,
-                                         "Thermal efficiency"@en ;
+                              rdfs:label "rendement"@fr ,
+                                         "rendimento"@it ,
+                                         "rendimiento térmico"@es ,
+                                         "thermal efficiency"@en ;
                               bs:quantityKind quantitykind:ThermalEfficiency .
 
 

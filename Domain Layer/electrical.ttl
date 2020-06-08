@@ -1,115 +1,135 @@
 @prefix : <http://www.bim4ren.eu/domain/electrical#> .
+@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix b4r-elec: <http://www.bim4ren.eu/domain/electrical#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @base <http://www.bim4ren.eu/domain/electrical#> .
 
 <http://www.bim4ren.eu/domain/electrical#> rdf:type owl:Ontology ;
-                                           owl:versionIRI <http://www.bim4ren.eu/domain/electrical/0.1> ;
-                                           owl:imports <http://www.bim4ren.eu/property/0.2> .
+                                            owl:versionIRI <http://www.bim4ren.eu/domain/electrical/0.1> ;
+                                            owl:imports <http://www.bim4ren.eu/property/0.2> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  https://w3id.org/def/basicsemantics-owl#quantityKind
+bs:quantityKind rdf:type owl:AnnotationProperty .
+
 
 #################################################################
 #    Object Properties
 #################################################################
 
+###  http://www.bim4ren.eu/domain/electrical#electricalEfficiency
+b4r-elec:electricalEfficiency rdf:type owl:ObjectProperty .
+
+
+###  http://www.bim4ren.eu/domain/electrical#meterPower
+b4r-elec:meterPower rdf:type owl:ObjectProperty ;
+                    rdfs:label "poder de suscripción"@es ,
+                               "potere di abbonamento"@it ,
+                               "puissance souscrite d'abonnement"@fr ,
+                               "subscription power"@en ;
+                    bs:quantityKind quantitykind:ApparentPower .
+
+
+###  http://www.bim4ren.eu/domain/electrical#offPeakHours
+b4r-elec:offPeakHours rdf:type owl:ObjectProperty ;
+                      rdfs:range bs:QuantityValue ;
+                      rdfs:label "heures creuses"@fr ,
+                                 "horas de poca actividad"@es ,
+                                 "off-peak hours"@en ,
+                                 "ore non di punta"@it .
+
+
+###  http://www.bim4ren.eu/domain/electrical#peakHours
+b4r-elec:peakHours rdf:type owl:ObjectProperty ;
+                   rdfs:range bs:QuantityValue ;
+                   rdfs:label "heures pleines"@fr ,
+                              "horas pico"@es ,
+                              "ore di punta"@it ,
+                              "peak hours"@en .
+
+
 ###  http://www.bim4ren.eu/domain/electrical#powerIn
 b4r-elec:powerIn rdf:type owl:ObjectProperty ;
-				 rdfs:subPropertyOf b4r-prop:power .
+                 rdfs:subPropertyOf b4r-prop:power .
 
 
 ###  http://www.bim4ren.eu/domain/electrical#powerOut
 b4r-elec:powerOut rdf:type owl:ObjectProperty ;
-				  rdfs:subPropertyOf b4r-prop:power .
-				  
-				  
-###  http://www.bim4ren.eu/domain/electrical#subscriptionPower
-b4r-elec:meterPower rdf:type owl:ObjectProperty ;
-					rdf:range bs:QuantityValue;
-					bs:quantityKind quantitykind:ApparentPower ;
-					rdfs:label "puissance souscrite d'abonnement"@fr ,
-							   "potere di abbonamento"@it ,
-							   "poder de suscripción"@es ,
-							   "subscription power"@en .
-									
+                  rdfs:subPropertyOf b4r-prop:power .
 
-###  http://www.bim4ren.eu/domain/electrical#offPeakHours
-b4r-elec:offPeakHours rdf:type owl:ObjectProperty ;
-					  rdfs:range bs:QuantityValue ;
-					  rdfs:label "heures creuses"@fr ,
-							     "ore non di punta"@it ,
-							     "horas de poca actividad"@es ,
-							     "off-peak hours"@en .
-								 
-								 
-###  http://www.bim4ren.eu/domain/electrical#peakHours
-b4r-elec:peakHours rdf:type owl:ObjectProperty ;
-				   rdfs:range bs:QuantityValue ;
-				   rdfs:label "heures pleines"@fr ,
-							  "ore di punta"@it ,
-							  "horas pico"@es ,
-							  "peak hours"@en .
-							  
-							  
-###  http://www.bim4ren.eu/domain/electrical#weekendHours
+
+###  http://www.bim4ren.eu/domain/electrical#solarConversionFactor
+b4r-elec:solarConversionFactor rdf:type owl:ObjectProperty ;
+                               rdfs:label "conversion factor"@en ,
+                                          "facteur de conversion solaire"@fr .
+
+
+###  http://www.bim4ren.eu/domain/electrical#weekEndHours
 b4r-elec:weekEndHours rdf:type owl:ObjectProperty ;
-					  rdfs:range bs:QuantityValue ;
-				      rdfs:label "heures week-end"@fr ,
-								 "ore del fine settimana"@it ,
-								 "horas de fin de semana"@es ,
-								 "weekend hours"@en .
-								 
+                      rdfs:range bs:QuantityValue ;
+                      rdfs:label "heures week-end"@fr ,
+                                 "horas de fin de semana"@es ,
+                                 "ore del fine settimana"@it ,
+                                 "weekend hours"@en .
+
 
 ###  http://www.bim4ren.eu/domain/electrical#weekdaysHours
 b4r-elec:weekdaysHours rdf:type owl:ObjectProperty ;
-					   rdfs:range bs:QuantityValue ;
-				       rdfs:label "heures semaine"@fr ,
-								  "ore feriali"@it ,
-								  "horas entre semana"@es ,
-								  "weekdays hours"@en .
-							  
-							  
-###  http://www.bim4ren.eu/domain/electrical##kwhPrice
+                       rdfs:range bs:QuantityValue ;
+                       rdfs:label "heures semaine"@fr ,
+                                  "horas entre semana"@es ,
+                                  "ore feriali"@it ,
+                                  "weekdays hours"@en .
+
+
+###  http://www.bim4ren.eu/property#electricitySubscription
+b4r-prop:electricitySubscription rdf:type owl:ObjectProperty ;
+                                 rdfs:range b4r-elec:ElectricityTariff ;
+                                 rdfs:label "abbonamento elettrico"@it ,
+                                            "abonnement electricité"@fr ,
+                                            "electricity subscription"@en ,
+                                            "suscripción de electricidad"@es .
+
+
+###  http://www.bim4ren.eu/property#power
+b4r-prop:power rdf:type owl:ObjectProperty .
+
+
+###  http://www.bim4ren.eu/property#price
 b4r-prop:price rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf b4r-prop:price ;
-			   rdfs:label "prix du kWh TTC"@fr ,
-                          "kWh prezzo"@it ,
+               rdfs:label "kWh prezzo"@it ,
+                          "kWh price"@en ,
                           "kwh precio"@es ,
-                          "kWh price"@en .
+                          "prix du kWh TTC"@fr .
 
 
-###  http://www.bim4ren.eu/domain/electrical#subscriptionPrice
+###  http://www.bim4ren.eu/property#subscriptionPrice
 b4r-prop:subscriptionPrice rdf:type owl:ObjectProperty ;
-						   rdfs:subPropertyOf b4r-prop:price ;
-						   rdfs:label "prix del'abonnement"@fr ,
-									  "abbonamento prezzo"@it ,
-									  "suscripción precio"@es ,
-									  "subscription price"@en .
-						  
-						  
-###  http://www.bim4ren.eu/domain/electrical#electricitySubscription
-b4r-prop:electricitySubscription rdf:type owl:ObjectProperty ;
-								 rdfs:range b4r-elec:ElectricityTariff ;
-							     rdfs:label "abonnement electricité"@fr ,
-											"abbonamento elettrico"@it ,
-											"suscripción de electricidad"@es ,
-											"electricity subscription"@en .
+                           rdfs:subPropertyOf b4r-prop:price ;
+                           rdfs:label "abbonamento prezzo"@it ,
+                                      "prix del'abonnement"@fr ,
+                                      "subscription price"@en ,
+                                      "suscripción precio"@es .
 
 
-###  http://www.bim4ren.eu/domain/electrical#subscriptionType
+###  http://www.bim4ren.eu/property#subscriptionType
 b4r-prop:subscriptionType rdf:type owl:ObjectProperty ;
-						  rdfs:range b4r-elec:SubscruptionType ;
-						  rdfs:label "type d'abonnement"@fr ,
-									 "tipo di abbonamento"@it ,
-									 "tipo de suscripción"@es ,
-									 "electricity subscription"@en .
+                          rdfs:range b4r-elec:SubscruptionType ;
+                          rdfs:label "electricity subscription"@en ,
+                                     "tipo de suscripción"@es ,
+                                     "tipo di abbonamento"@it ,
+                                     "type d'abonnement"@fr .
 
-										
 
 #################################################################
 #    Classes
@@ -117,14 +137,14 @@ b4r-prop:subscriptionType rdf:type owl:ObjectProperty ;
 
 ###  http://www.bim4ren.eu/domain/electrical#ElectricalConsumer
 b4r-elec:ElectricalConsumer rdf:type owl:Class ;
-							rdfs:subClassOf [ rdf:type owl:Restriction ;
-											owl:onProperty b4r-elec:powerIn ;
-											owl:allValuesFrom bs:QuantityValue 
-											] ,
-											[ rdf:type owl:Restriction ;
-											owl:onProperty b4r-elec:powerOut ;
-											owl:allValuesFrom bs:QuantityValue 
-											] .
+                            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                              owl:onProperty b4r-elec:powerIn ;
+                                              owl:allValuesFrom bs:QuantityValue
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty b4r-elec:powerOut ;
+                                              owl:allValuesFrom bs:QuantityValue
+                                            ] .
 
 
 ###  http://www.bim4ren.eu/domain/electrical#ElectricalProducer
@@ -132,60 +152,68 @@ b4r-elec:ElectricalProducer rdf:type owl:Class .
 
 
 ###  http://www.bim4ren.eu/domain/electrical#ElectricityTariff
-b4r-elec:ElectricityTariff rdf:type owl:Class ; 
-						   rdfs:label "Tarif d'électricité"@fr ,
-									  "Tariffa elettrica"@it ,
-									  "Tarifa de electricidad"@es ,
-									  "Electricity tariff"@en .
-									  
-									  
+b4r-elec:ElectricityTariff rdf:type owl:Class ;
+                           rdfs:label "Electricity tariff"@en ,
+                                      "Tarif d'électricité"@fr ,
+                                      "Tarifa de electricidad"@es ,
+                                      "Tariffa elettrica"@it .
+
+
 ###  http://www.bim4ren.eu/domain/electrical#FixedTariff
 b4r-elec:FixedTariff rdf:type owl:Class ;
-					 rdfs:subClassOf b4r-elec:ElectricityTariff ;
-					 rdfs:label "Tarif d'électricité fixe"@fr ,
-								"Tariffa elettrica fissa"@it ,
-								"Tarifa fija de electricidad"@es ,
-								"Fixed electricity tariff"@en .
-								
+                     rdfs:subClassOf b4r-elec:ElectricityTariff ;
+                     rdfs:label "Fixed electricity tariff"@en ,
+                                "Tarif d'électricité fixe"@fr ,
+                                "Tarifa fija de electricidad"@es ,
+                                "Tariffa elettrica fissa"@it .
+
+
+###  http://www.bim4ren.eu/domain/electrical#PeakOffPeakHoursTariff
+b4r-elec:PeakOffPeakHoursTariff rdf:type owl:Class ;
+                                rdfs:subClassOf b4r-elec:VariableTariff ;
+                                rdfs:label "Peak - off-peak hours tariff"@en ,
+                                           "Tarif heures pleines - heures creuses"@fr ,
+                                           "Tarifa de horas pico - no pico"@es ,
+                                           "Tariffa ore di punta - non di punta"@it .
+
+
+###  http://www.bim4ren.eu/domain/electrical#SubscruptionType
+b4r-elec:SubscruptionType rdf:type owl:Class .
+
 
 ###  http://www.bim4ren.eu/domain/electrical#VariableTariff
 b4r-elec:VariableTariff rdf:type owl:Class ;
-						rdfs:subClassOf b4r-elec:ElectricityTariff ;
-						rdfs:label "Tarif d'électricité variable"@fr ,
-								   "Tariffa elettrica variabile"@it ,
-								   "Tarifa variable de electricidad"@es ,
-								   "Variable electricity tariff"@en .
-								   
+                        rdfs:subClassOf b4r-elec:ElectricityTariff ;
+                        rdfs:label "Tarif d'électricité variable"@fr ,
+                                   "Tarifa variable de electricidad"@es ,
+                                   "Tariffa elettrica variabile"@it ,
+                                   "Variable electricity tariff"@en .
+
 
 ###  http://www.bim4ren.eu/domain/electrical#WeekEndWeekDaysTariff
 b4r-elec:WeekEndWeekDaysTariff rdf:type owl:Class ;
-							   rdfs:subClassOf b4r-elec:VariableTariff ;
-							   rdfs:label "Tarif week-end - semaine"@fr ,
-										  "Tariffa weekend - giorni feriali"@it ,
-										  "Tarifa de fin de semana - días laborables"@es ,
-										  "Weekend - weekdays tariff"@en .
-										  
-										  
-###  http://www.bim4ren.eu/domain/electrical#PeakOffPeakHoursTariff
-b4r-elec:PeakOffPeakHoursTariff rdf:type owl:Class ;
-							    rdfs:subClassOf b4r-elec:VariableTariff ;
-							    rdfs:label "Tarif heures pleines - heures creuses"@fr ,
-										   "Tariffa ore di punta - non di punta"@it ,
-										   "Tarifa de horas pico - no pico"@es ,
-										   "Peak - off-peak hours tariff"@en .
-											
-											
-###  http://www.bim4ren.eu/domain/electrical#SubscriptionType
-b4r-prop:SubscriptionType rdf:type owl:Class  ;
-						  owl:equivalentClass [ rdf:type owl:Class ;
-												owl:oneOf ( b4r-elec:ANNUAL
-                                                       b4r-elec:MONTHLY
-                                                     )
-                                         ] ;
-						  rdfs:label "Type d'abonnement"@fr ,
-									 "Tipo di abbonamento"@it ,
-									 "Tipo de suscripción"@es ,
-									 "Electricity subscription"@en .
+                               rdfs:subClassOf b4r-elec:VariableTariff ;
+                               rdfs:label "Tarif week-end - semaine"@fr ,
+                                          "Tarifa de fin de semana - días laborables"@es ,
+                                          "Tariffa weekend - giorni feriali"@it ,
+                                          "Weekend - weekdays tariff"@en .
+
+
+###  http://www.bim4ren.eu/property#SubscriptionType
+b4r-prop:SubscriptionType rdf:type owl:Class ;
+                          owl:equivalentClass [ rdf:type owl:Class ;
+                                                owl:oneOf ( b4r-elec:ANNUAL
+                                                            b4r-elec:MONTHLY
+                                                          )
+                                              ] ;
+                          rdfs:label "Electricity subscription"@en ,
+                                     "Tipo de suscripción"@es ,
+                                     "Tipo di abbonamento"@it ,
+                                     "Type d'abonnement"@fr .
+
+
+###  https://w3id.org/def/basicsemantics-owl#QuantityValue
+bs:QuantityValue rdf:type owl:Class .
 
 
 #################################################################
@@ -195,16 +223,17 @@ b4r-prop:SubscriptionType rdf:type owl:Class  ;
 ###  http://www.bim4ren.eu/domain/electrical#ANNUAL
 b4r-elec:ANNUAL rdf:type owl:NamedIndividual ;
                 rdfs:label "Annual"@en ,
-                           "Annuel"@fr ,
-						   "Annuale"@it,
-						   "Annuale"@es .
+                           "Annuale"@es ,
+                           "Annuale"@it ,
+                           "Annuel"@fr .
 
 
 ###  http://www.bim4ren.eu/domain/electrical#MONTHLY
 b4r-elec:MONTHLY rdf:type owl:NamedIndividual ;
-                 rdfs:label "Monthly"@en ,
+                 rdfs:label "Mensile"@it ,
+                            "Mensual"@es ,
                             "Mensuel"@fr ,
-							"Mensile"@it,
-							"Mensual"@es .							   
-								   
+                            "Monthly"@en .
+
+
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

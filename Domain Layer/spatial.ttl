@@ -26,13 +26,6 @@ bs:quantityKind rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://www.bim4ren.eu/domain/spatial#volumicMass
-:volumicMass rdf:type owl:ObjectProperty ;
-             rdfs:domain b4r-thermal:VolumeElement ;
-             rdfs:label "Masse volumique"@en ,
-                        "Volumic Mass"@en .
-
-
 ###  http://www.bim4ren.eu/domain/thermal#height
 b4r-thermal:height rdf:type owl:ObjectProperty .
 
@@ -43,12 +36,22 @@ b4r-thermal:length rdf:type owl:ObjectProperty .
 
 ###  http://www.bim4ren.eu/domain/thermal#surface
 b4r-thermal:surface rdf:type owl:ObjectProperty ;
-                    rdfs:domain b4r-thermal:PlaneElement .
+                    rdfs:domain b4r-thermal:PlaneElement ;
+                    rdfs:label "aire"@fr ,
+                               "area"@en ,
+                               "surface"@fr .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#volume
 b4r-thermal:volume rdf:type owl:ObjectProperty ;
                    rdfs:domain b4r-thermal:VolumeElement .
+
+
+###  http://www.bim4ren.eu/domain/thermal#volumicMass
+b4r-thermal:volumicMass rdf:type owl:ObjectProperty ;
+                        rdfs:domain b4r-thermal:VolumeElement ;
+                        rdfs:label "Masse volumique"@en ,
+                                   "Volumic Mass"@en .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#width

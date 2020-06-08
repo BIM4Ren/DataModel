@@ -1,15 +1,60 @@
 @prefix : <http://bim4ren.eu/distributionelements/hvac#> .
+@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @base <http://bim4ren.eu/distributionelements/hvac#> .
 
 <http://bim4ren.eu/distributionelements/hvac#> rdf:type owl:Ontology ;
-                                                owl:imports <https://pi.pauwel.be/voc/distributionelement> ;
-												owl:imports <http://www.bim4ren.eu/property/0.1> .
+                                                owl:imports <http://www.bim4ren.eu/property/0.1> ,
+                                                            <https://pi.pauwel.be/voc/distributionelement> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://bim4ren.eu/distributionelements/hvac#ObjectPSet_solarDevice
+:ObjectPSet_solarDevice rdf:type owl:ObjectProperty ;
+                        rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice> .
+
+
+###  http://bim4ren.eu/distributionelements/hvac#absorberArea
+:absorberArea rdf:type owl:ObjectProperty ;
+              rdfs:comment "The area of a collector which is heated by irradiation and is directly responsible for heating of the heat transfer fluid"@en ;
+              rdfs:label "absorber area"@en ,
+                         "surface d'absorbeur"@fr .
+
+
+###  http://bim4ren.eu/distributionelements/hvac#apertureArea
+:apertureArea rdf:type owl:ObjectProperty ;
+              rdfs:comment "The aperture indicates the area of the collector which allows light to enter"@en ;
+              rdfs:label "aperture area"@en ,
+                         "surface d'entrée"@fr .
+
+
+###  http://bim4ren.eu/distributionelements/hvac#azimuth
+:azimuth rdf:type owl:ObjectProperty ;
+         rdfs:range bs:QuantityValue ;
+         rdfs:comment "The azimuth angle is the compass direction from which the sunlight is coming."@fr ;
+         rdfs:label "azimuth"@fr ,
+                    "solar azimuth angle"@en .
+
+
+###  http://bim4ren.eu/distributionelements/hvac#grossArea
+:grossArea rdf:type owl:ObjectProperty ;
+           rdfs:comment "Tthe gross area refers to the external mass of the collector, therefore the area actually necessary for installation, that is simply the length times the width of the collector."@en ;
+           rdfs:label "Gross area"@en ,
+                      "surface hors tout"@fr .
+
+
+###  http://bim4ren.eu/distributionelements/hvac#tilt
+:tilt rdf:type owl:ObjectProperty ;
+      rdfs:range bs:QuantityValue ;
+      rdfs:label "inclinaison"@fr ,
+                 "tilt"@en .
+
 
 #################################################################
 #    Data properties
@@ -17,34 +62,15 @@
 
 ###  http://bim4ren.eu/distributionelements/hvac#DataPSet_solarDevice
 :DataPSet_solarDevice rdf:type owl:DatatypeProperty ;
-		rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice>.
+                      rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice> .
 
 
 ###  http://bim4ren.eu/distributionelements/hvac#nbCells
 :nbCells rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf :DataPSet_solarDevice ;
-		 rdfs:label "number of cells"@en ,
-                    "nombre de cellules"@fr .
-		 
-#################################################################
-#    Object Properties
-#################################################################
+         rdfs:label "nombre de cellules"@fr ,
+                    "number of cells"@en .
 
-###  http://bim4ren.eu/distributionelements/hvac#ObjectPSet_solarDevice
-:ObjectPSet_solarDevice rdf:type owl:ObjectProperty ;
-		rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice>.
-		
-###  http://bim4ren.eu/distributionelements/hvac#azimuth
-:azimuth rdf:type owl:ObjectProperty ;
-	rdfs:range bs:QuantityValue ;
-    rdfs:label "solar azimuth angle"@en ,
-			   "azimut"@fr .
-			   
-###  http://bim4ren.eu/distributionelements/hvac#tilt
-:tilt rdf:type owl:ObjectProperty ;
-	rdfs:range bs:QuantityValue ;
-    rdfs:label "tilt"@en ,
-			   "inclinaison"@fr .
 
 #################################################################
 #    Classes
@@ -67,6 +93,21 @@
                         "Ventiloconvector"@es .
 
 
+###  http://bim4ren.eu/distributionelements/hvac#FlatPlateCollector
+:FlatPlateCollector rdf:type owl:Class ;
+                    rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#SolarDevice-SOLARCOLLECTOR> ;
+                    rdfs:label "Capteur plan"@fr ,
+                               "Flat plate collector"@en .
+
+
+###  http://bim4ren.eu/distributionelements/hvac#HeatPump
+:HeatPump rdf:type owl:Class ;
+          rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#EnergyConversionDevice> ;
+          rdfs:label "Bomba de calor"@es ,
+                     "Heat Pump"@en ,
+                     "Pompe à chaleur"@fr .
+
+
 ###  http://bim4ren.eu/distributionelements/hvac#LowTemperatureBoiler
 :LowTemperatureBoiler rdf:type owl:Class ;
                       rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#Boiler> ;
@@ -81,6 +122,14 @@
                               "Underfloor heating"@en .
 
 
+###  http://bim4ren.eu/distributionelements/hvac#VaccumCollector
+:VaccumCollector rdf:type owl:Class ;
+                 rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#SolarDevice-SOLARCOLLECTOR> ;
+                 rdfs:label "Capteur à tube sous vide"@fr ,
+                            "Evacuated tube collector"@en ,
+                            "Vacuum collector"@en .
+
+
 ###  https://pi.pauwel.be/voc/distributionelement#Boiler-STEAM
 
 ###  https://pi.pauwel.be/voc/distributionelement#SolarDevice
@@ -89,6 +138,31 @@
                                                                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                              owl:onDataRange xsd:integer
                                                                            ] .
+
+
+###  https://pi.pauwel.be/voc/distributionelement#SolarDevice-SOLARCOLLECTOR
+<https://pi.pauwel.be/voc/distributionelement#SolarDevice-SOLARCOLLECTOR> rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty :absorberArea ;
+                                                                                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                            owl:onClass bs:QuantityValue
+                                                                                          ] ,
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty :apertureArea ;
+                                                                                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                            owl:onClass bs:QuantityValue
+                                                                                          ] ,
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty :grossArea ;
+                                                                                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                            owl:onClass bs:QuantityValue
+                                                                                          ] ;
+                                                                          rdfs:label "Pannello solare termico"@it ,
+                                                                                     "capteur solaire thermique"@fr ,
+                                                                                     "colector solar"@es .
+
+
+###  https://w3id.org/def/basicsemantics-owl#QuantityValue
+bs:QuantityValue rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
