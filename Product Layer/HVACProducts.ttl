@@ -100,6 +100,15 @@
                                "Flat plate collector"@en .
 
 
+###  http://bim4ren.eu/distributionelements/hvac#FuelCell
+:FuelCell rdf:type owl:Class ;
+          rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#ElectricGenerator-CHP> ;
+          rdfs:label "Fuel Cell"@en ,
+                     "Pila a combustible"@it ,
+                     "Pila de combustible"@es ,
+                     "Pile à combustible"@fr .
+
+
 ###  http://bim4ren.eu/distributionelements/hvac#HeatPump
 :HeatPump rdf:type owl:Class ;
           rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#EnergyConversionDevice> ;
