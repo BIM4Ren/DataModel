@@ -92,6 +92,15 @@ b4r-prop:volume rdf:type owl:ObjectProperty ;
                             "volume"@it ,
                             "volumen"@es ,
                             "volume"@en .
+							
+###  http://www.bim4ren.eu/property#speed
+b4r-prop:speed rdf:type owl:ObjectProperty ;
+               rdfs:range bs:QuantityValue ;
+               bs:quantityKind quantitykind:Speed ;
+			   rdfs:label "vitesse"@fr ,
+						  "velocità"@it ,
+						  "velocidad"@es ,
+						  "speed"@en .
 				
 				
 ###  http://www.bim4ren.eu/property#efficiency

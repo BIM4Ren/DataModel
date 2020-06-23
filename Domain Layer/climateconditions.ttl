@@ -1,0 +1,146 @@
+@prefix b4r-climate: <http://www.bim4ren.eu/domain/climateconditions#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix b4r-prop: <http://www.bim4ren.eu/property#> .
+@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+
+<http://www.bim4ren.eu/domain/climateconditions> rdf:type owl:Ontology ;
+												 owl:versionIRI <http://www.bim4ren.eu/domain/climateconditions/0.1> ;
+												 owl:imports <http://www.bim4ren.eu/property#> .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+
+###  http://www.bim4ren.eu/domain/climateconditions#irradiance
+b4r-climate:irradiance rdf:type owl:ObjectProperty ;
+                       rdfs:range bs:QuantityValue ;
+                       rdfs:label "E" ,
+                                  "irradiancia"@es ,
+                                  "irradiance"@en ,
+                                  "irradiance"@fr ,
+                                  "irradianza"@it ;
+                       bs:quantityKind quantitykind:Irradiance .
+					   
+					   
+###  http://www.bim4ren.eu/domain/climateconditions#directNormalSolarIrradiance
+b4r-climate:directNormalSolarIrradiance rdf:type owl:ObjectProperty ;
+										rdfs:subPropertyOf b4r-climate:irradiance ;
+										rdfs:label "FDIRN" ,
+												   "irradiancia solar normal directa"@es ,
+												   "direct normal solar irradiance"@en ,
+												   "irradiance solaire normale directe"@fr ,
+												   "irradiazione solare normale diretta"@it .
+					   
+
+###  http://www.bim4ren.eu/domain/climateconditions#diffuseHorizontalSolarIrradiance
+b4r-climate:diffuseHorizontalSolarIrradiance rdf:type owl:ObjectProperty ;
+											 rdfs:subPropertyOf b4r-climate:irradiance ;
+											 rdfs:label "FDIFH" ,
+														"irradiancia solar horizontal difusa"@es ,
+														"diffuse horizontal solar irradiance"@en ,
+														"irradiance solaire horizontale diffuse"@fr ,
+														"flux solaires"@fr ,
+														"irradiazione solare orizzontale diffusa"@it .
+												   
+
+###  http://www.bim4ren.eu/domain/climateconditions#dryAirTemperature
+b4r-climate:dryAirTemperature rdf:type owl:ObjectProperty ;
+									   rdfs:subPropertyOf b4r-prop:temperature ;
+									   rdfs:label "dry" ,
+												  "temperatura del aire seco"@es ,
+												  "dry air temperature"@en ,
+												  "température de l'air sec"@fr ,
+												  "température extérieure"@fr ,
+												  "temperatura dell'aria secca"@it .
+												  
+												  
+###  http://www.bim4ren.eu/domain/climateconditions#dewPointTemperature
+b4r-climate:dewPointTemperature rdf:type owl:ObjectProperty ;
+								rdfs:subPropertyOf b4r-prop:temperature ;
+								rdfs:label "Tdew" ,
+										   "temperatura de derretimiento"@es ,
+										   "dew point temperature"@en ,
+										   "température du point de rosée"@fr ,
+										   "temperatura del punto di rugiada"@it .
+
+
+###  http://www.bim4ren.eu/domain/climateconditions#skyTemperature
+b4r-climate:skyTemperature rdf:type owl:ObjectProperty ;
+						   rdfs:subPropertyOf b4r-prop:temperature ;
+						   rdfs:label "Tsky" ,
+									  "temperatura del cielo"@es ,
+									  "sky temperature"@en ,
+									  "température du ciel"@fr ,
+									  "temperatura del cielo"@it .
+									  
+
+###  http://www.bim4ren.eu/domain/climateconditions#atmosphericPressure
+b4r-climate:atmosphericPressure rdf:type owl:ObjectProperty ;
+								rdfs:range bs:QuantityValue ;
+								rdfs:label "Patm" ,
+										   "presión atmosférica"@es ,
+                                           "atmospheric pressure"@en ,
+                                           "pression atmosphérique"@fr ,
+                                           "pressione atmosferica"@it ;
+								bs:quantityKind quantitykind:AtmosphericPressure .
+
+	
+###  http://www.bim4ren.eu/domain/climateconditions#relativeHumidity
+b4r-climate:relativeHumidity rdf:type owl:ObjectProperty ;
+							 rdfs:range bs:QuantityValue ;
+							 rdfs:label "RH" ,
+										"humedad relativa"@es ,
+                                        "relative humidity"@en ,
+                                        "humidité relative"@fr ,
+                                        "umidità relativa"@it ;
+						    bs:quantityKind quantitykind:RelativeHumidity .
+
+	
+###  http://www.bim4ren.eu/domain/climateconditions#windSpeed
+b4r-climate:windSpeed rdf:type owl:ObjectProperty ;
+					  rdfs:subPropertyOf b4r-prop:speed ;
+					  rdfs:label "WindSpeed" ,
+								 "velocidad del viento"@es ,
+								 "wind speed"@en ,
+								 "vitesse du vent"@fr ,
+								 "velocità del vento"@it .
+
+								 
+###  http://www.bim4ren.eu/domain/climateconditions#windDirection
+b4r-climate:windDirection rdf:type owl:ObjectProperty ;
+                          rdfs:range bs:QuantityValue ;
+				          rdfs:label "WindDir" , 
+								     "direction du vent"@fr ,
+									 "direzione del vento"@it ,
+									 "dirección del viento"@es ,
+									 "wind direction"@en .
+								 
+
+###  http://www.bim4ren.eu/domain/climateconditions#longitude
+b4r-climate:longitude rdf:type owl:ObjectProperty ;
+                      rdfs:range bs:QuantityValue ;
+				      rdfs:label "Lon" , 
+								 "longitude"@fr ,
+                                 "longitudine"@it ,
+                                 "longitud"@es ,
+                                 "longitude"@en .
+
+
+###  http://www.bim4ren.eu/domain/climateconditions#latitude
+b4r-climate:latitude rdf:type owl:ObjectProperty ;
+                     rdfs:range bs:QuantityValue ;
+				     rdfs:label "Lat" , 
+								"latitude"@fr ,
+                                "latitudine"@it ,
+                                "latitud"@es ,
+                                "latitude"@en .
+								
+								
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
