@@ -14,13 +14,6 @@
                                         owl:versionIRI <http://www.bim4ren.eu/domain/thermal/0.1> ;
                                         owl:imports <http://www.bim4ren.eu/property/0.1> .
 
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  https://w3id.org/def/basicsemantics-owl#quantityKind
-bs:quantityKind rdf:type owl:AnnotationProperty .
-
 
 #################################################################
 #    Object Properties

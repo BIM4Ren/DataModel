@@ -7,19 +7,11 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @prefix b4r-thermal: <http://www.bim4ren.eu/domain/thermal#> .
-@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @base <http://www.bim4ren.eu/domain/spatial> .
 
 <http://www.bim4ren.eu/domain/spatial> rdf:type owl:Ontology ;
                                         owl:versionIRI <http://www.bim4ren.eu/domain/spatial/0.1> ;
-                                        owl:imports <http://www.bim4ren.eu/property/0.1> .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  https://w3id.org/def/basicsemantics-owl#quantityKind
-bs:quantityKind rdf:type owl:AnnotationProperty .
+                                        owl:imports <http://www.bim4ren.eu/property#> .
 
 
 #################################################################

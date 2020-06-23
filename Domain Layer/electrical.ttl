@@ -12,14 +12,7 @@
 
 <http://www.bim4ren.eu/domain/electrical#> rdf:type owl:Ontology ;
                                             owl:versionIRI <http://www.bim4ren.eu/domain/electrical/0.1> ;
-                                            owl:imports <http://www.bim4ren.eu/property/0.2> .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  https://w3id.org/def/basicsemantics-owl#quantityKind
-bs:quantityKind rdf:type owl:AnnotationProperty .
+                                            owl:imports <http://www.bim4ren.eu/property#> .
 
 
 #################################################################
