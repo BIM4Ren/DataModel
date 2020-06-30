@@ -76,7 +76,7 @@ bs:quantityKind rdf:type owl:AnnotationProperty .
                                         "consumo energetico normalizado"@es ,
                                         "consumo energetico normalizzato"@it ,
                                         "normalized energy consumption"@en ;
-                             bs:quantityKind quantitykind:Energy .
+                             bs:quantityKind quantitykind:EnergyPerArea .
 
 
 #################################################################
