@@ -262,7 +262,7 @@ b4r-thermal:HeatProducer rdf:type owl:Class ;
                                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                            owl:onClass b4r-thermal:HeatProducer
                                          ] ;
-                         rdfs:comment "A heat producer asset."@fr ;
+                         rdfs:comment "A heat producer asset."@en ;
                          rdfs:label "Heat producer"@en ,
                                     "Producteur de chaleur"@fr .
 
