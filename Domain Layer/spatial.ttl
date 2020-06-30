@@ -71,6 +71,14 @@
                                            owl:someValuesFrom bs:QuantityValue
                                          ] ,
 										 [ rdf:type owl:Restriction ;
+                                           owl:onProperty b4r-prop:height ;
+                                           owl:someValuesFrom bs:QuantityValue
+                                         ] ,
+										 [ rdf:type owl:Restriction ;
+                                           owl:onProperty b4r-prop:width ;
+                                           owl:someValuesFrom bs:QuantityValue
+                                         ] ,
+										 [ rdf:type owl:Restriction ;
                                            owl:onProperty :orientation ;
                                            owl:someValuesFrom bs:QuantityValue
                                          ] .
