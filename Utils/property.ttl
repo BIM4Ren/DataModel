@@ -9,7 +9,7 @@
 @base <http://www.bim4ren.eu/property#> .
 
 <http://www.bim4ren.eu/property#> rdf:type owl:Ontology ;
-                                   owl:versionIRI <http://www.bim4ren.eu/property/0.2> ;
+                                   owl:versionIRI <http://www.bim4ren.eu/property/0.1> ;
                                    owl:imports <http://qudt.org/vocab/quantitykind/> ,
 											   <https://w3id.org/def/basicsemantics-owl#> .
 
@@ -26,24 +26,6 @@ b4r-prop:area rdf:type owl:ObjectProperty ;
                            "area"@it ,
                            "área"@es ,
                            "area"@en .
-			  
-
-###  http://www.bim4ren.eu/property#grossArea
-b4r-prop:grossArea rdf:type owl:ObjectProperty ;
-			  rdfs:subPropertyOf b4r-prop:area ;
-			  rdfs:label "surface brut"@fr ,
-                         "area lorda"@it ,
-                         "área bruta"@es ,
-                         "gross area"@en .  
-
-
-###  http://www.bim4ren.eu/property#netArea
-b4r-prop:netArea rdf:type owl:ObjectProperty ;
-			     rdfs:subPropertyOf b4r-prop:area ;
-				 rdfs:label "area netta"@it ,
-							"surface net"@fr ,
-							"net area"@en ,
-							"área neta"@es .	
 			  
 
 ###  http://www.bim4ren.eu/property#height
