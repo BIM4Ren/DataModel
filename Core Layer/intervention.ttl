@@ -1,0 +1,120 @@
+@prefix : <http://www.bim4ren.eu/core/intervention#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix b4r-intervention: <http://www.bim4ren.eu/core/intervention#> .
+@base <http://www.bim4ren.eu/core/intervention> .
+
+<http://www.bim4ren.eu/core/intervention> rdf:type owl:Ontology ;
+                                           owl:versionIRI <http://www.bim4ren.eu/core/intervention/0.1> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.bim4ren.eu/core/intervention#associatedEvents
+b4r-intervention:associatedEvents rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf b4r-intervention:performedOn ;
+                                  rdfs:domain b4r-intervention:Element ;
+                                  rdfs:range b4r-intervention:Event .
+
+
+###  http://www.bim4ren.eu/core/intervention#performed
+b4r-intervention:performed rdf:type owl:ObjectProperty ;
+                           owl:inverseOf b4r-intervention:performedBy ;
+                           rdfs:domain b4r-intervention:Organization ;
+                           rdfs:range b4r-intervention:Event .
+
+
+###  http://www.bim4ren.eu/core/intervention#performedBy
+b4r-intervention:performedBy rdf:type owl:ObjectProperty ;
+                             rdfs:domain b4r-intervention:Event ;
+                             rdfs:range b4r-intervention:Organization .
+
+
+###  http://www.bim4ren.eu/core/intervention#performedOn
+b4r-intervention:performedOn rdf:type owl:ObjectProperty ;
+                             rdfs:domain b4r-intervention:Event ;
+                             rdfs:range b4r-intervention:Element .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.bim4ren.eu/core/intervention#endDate
+b4r-intervention:endDate rdf:type owl:DatatypeProperty .
+
+
+###  http://www.bim4ren.eu/core/intervention#startDate
+b4r-intervention:startDate rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.bim4ren.eu/core/intervention#Checking
+b4r-intervention:Checking rdf:type owl:Class ;
+                          rdfs:subClassOf b4r-intervention:Event ;
+                          rdfs:comment "A revision of some elements of the building. Some examples are: energy, accoustic audits, boiler manadatory check..."@en .
+
+
+###  http://www.bim4ren.eu/core/intervention#Element
+b4r-intervention:Element rdf:type owl:Class ;
+                         rdfs:comment "The element concerned by the intervention."@en .
+
+
+###  http://www.bim4ren.eu/core/intervention#Event
+b4r-intervention:Event rdf:type owl:Class ;
+                       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                         owl:onProperty b4r-intervention:performedBy ;
+                                         owl:someValuesFrom b4r-intervention:Organization
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty b4r-intervention:performedOn ;
+                                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass b4r-intervention:Element
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty b4r-intervention:endDate ;
+                                         owl:someValuesFrom xsd:dateTime
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty b4r-intervention:startDate ;
+                                         owl:someValuesFrom xsd:dateTime
+                                       ] ;
+                       rdfs:comment "An intervention event. It is characterized by the elements impacted by the intervention, the date of the intervention, and the person/organization who performed the intervention."@en .
+
+
+###  http://www.bim4ren.eu/core/intervention#Installation
+b4r-intervention:Installation rdf:type owl:Class ;
+                              rdfs:subClassOf b4r-intervention:Event ;
+                              rdfs:comment "Installation of the product/element. Includes a change (for instance, replacement of all radiators), or the installation of a bran new system (for instance, external insulation)."@en .
+
+
+###  http://www.bim4ren.eu/core/intervention#Organization
+b4r-intervention:Organization rdf:type owl:Class .
+
+
+###  http://www.bim4ren.eu/core/intervention#Repair
+b4r-intervention:Repair rdf:type owl:Class ;
+                        rdfs:subClassOf b4r-intervention:Event ;
+                        rdfs:comment "Maintenance of an already installed elements. Can include change of parameters for HVAC systems or change of part of the elements."@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( b4r-intervention:Element
+                b4r-intervention:Event
+                b4r-intervention:Organization
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
