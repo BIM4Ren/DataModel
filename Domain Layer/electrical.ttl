@@ -29,6 +29,7 @@ b4r-elec:meterPower rdf:type owl:ObjectProperty ;
                                "potere di abbonamento"@it ,
                                "puissance souscrite d'abonnement"@fr ,
                                "subscription power"@en ;
+					rdfs:range bs:QuantityValue ;
                     bs:quantityKind quantitykind:ApparentPower .
 
 
@@ -62,6 +63,7 @@ b4r-elec:powerOut rdf:type owl:ObjectProperty ;
 
 ###  http://www.bim4ren.eu/domain/electrical#solarConversionFactor
 b4r-elec:solarConversionFactor rdf:type owl:ObjectProperty ;
+							   rdfs:subPropertyOf b4r-prop:ratio ;
                                rdfs:label "conversion factor"@en ,
                                           "facteur de conversion solaire"@fr .
 
@@ -85,7 +87,7 @@ b4r-elec:weekdaysHours rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.bim4ren.eu/property#electricitySubscription
-b4r-prop:electricitySubscription rdf:type owl:ObjectProperty ;
+b4r-elec:electricitySubscription rdf:type owl:ObjectProperty ;
                                  rdfs:range b4r-elec:ElectricityTariff ;
                                  rdfs:label "abbonamento elettrico"@it ,
                                             "abonnement electricité"@fr ,
@@ -106,8 +108,8 @@ b4r-prop:price rdf:type owl:ObjectProperty ;
                           "prix du kWh TTC"@fr .
 
 
-###  http://www.bim4ren.eu/property#subscriptionPrice
-b4r-prop:subscriptionPrice rdf:type owl:ObjectProperty ;
+###  h###  http://www.bim4ren.eu/property#subscriptionPrice
+b4r-elec:subscriptionPrice rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf b4r-prop:price ;
                            rdfs:label "abbonamento prezzo"@it ,
                                       "prix del'abonnement"@fr ,
@@ -116,8 +118,8 @@ b4r-prop:subscriptionPrice rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.bim4ren.eu/property#subscriptionType
-b4r-prop:subscriptionType rdf:type owl:ObjectProperty ;
-                          rdfs:range b4r-elec:SubscruptionType ;
+b4r-elec:subscriptionType rdf:type owl:ObjectProperty ;
+                          rdfs:range b4r-elec:SubscriptionType ;
                           rdfs:label "electricity subscription"@en ,
                                      "tipo de suscripción"@es ,
                                      "tipo di abbonamento"@it ,

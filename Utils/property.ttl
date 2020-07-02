@@ -68,6 +68,7 @@ b4r-prop:power rdf:type owl:ObjectProperty ;
 ###  http://www.bim4ren.eu/property#ratio
 b4r-prop:ratio rdf:type owl:ObjectProperty ;
                rdfs:range bs:QuantityValue ;
+			   bs:quantityKind quantitykind:DimensionlessRatio ;
 			   rdfs:label "rapport"@fr ,
                           "rapporto"@it ,
                           "proporción"@es ,
@@ -82,6 +83,28 @@ b4r-prop:temperature rdf:type owl:ObjectProperty ;
                                 "temperatura"@it ,
                                 "temperatura"@es ,
                                 "temperature"@en .
+
+
+###  http://www.bim4ren.eu/property#flowRate
+b4r-prop:flowRate rdf:type owl:ObjectProperty ;
+                     rdfs:range bs:QuantityValue ;
+                     bs:quantityKind quantitykind:VolumeFlowRate ;
+					 rdfs:label "débit"@fr ,
+                                "temperatura"@it ,
+                                "flujo volumétrico"@es ,
+								"caudal volumétrico"@es ,
+								"flusso"@it , "portata"@it ,
+                                "flow rate"@en .
+
+								
+###  http://www.bim4ren.eu/property#pressure
+b4r-prop:pressure rdf:type owl:ObjectProperty ;
+                    rdfs:range bs:QuantityValue ;
+                    bs:quantityKind quantitykind:Pressure ;
+					rdfs:label "pression"@fr ,
+                              "pressione"@it ,
+                              "presión"@es ,
+                              "pressure"@en .
 
 ###  http://www.bim4ren.eu/property#volume
 b4r-prop:volume rdf:type owl:ObjectProperty ;

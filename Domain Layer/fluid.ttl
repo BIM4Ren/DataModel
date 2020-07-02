@@ -4,6 +4,8 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix b4r-prop: <http://www.bim4ren.eu/property#> .
+@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @base <http://www.bim4ren.eu/domain/fluid> .
 
 <http://www.bim4ren.eu/domain/fluid> rdf:type owl:Ontology ;
@@ -13,6 +15,14 @@
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://www.bim4ren.eu/domain/fluid#totalDynamicHead
+:totalDynamicHead rdf:type owl:ObjectProperty ;
+				  rdfs:subPropertyOf b4r-prop:height ;
+                  rdfs:label "HMT"@fr ,
+                             "Hauteur manométrique totale"@fr ,
+                             "TDH"@en ,
+                             "Total dynamic head"@en .
 
 ###  http://www.bim4ren.eu/domain/fluid#HMTnoFlow
 :HMTnoFlow rdf:type owl:ObjectProperty ;
@@ -26,10 +36,7 @@
 
 ###  http://www.bim4ren.eu/domain/fluid#capacity
 :capacity rdf:type owl:ObjectProperty ;
-          rdfs:range [ rdf:type owl:Restriction ;
-                       owl:onProperty :capacity ;
-                       owl:allValuesFrom <http://qudt.org/schema/qudt#QuantityValue>
-                     ] ;
+          rdfs:subPropertyOf b4r-prop:volume ;
           rdfs:label "capacidad"@es ,
                      "capacity"@en ,
                      "capacité"@fr ,
@@ -37,65 +44,40 @@
                      "volume"@fr ,
                      "volumen"@es .
 
-
-###  http://www.bim4ren.eu/domain/fluid#infraredTransmittance
-:infraredTransmittance rdf:type owl:ObjectProperty .
-
-
 ###  http://www.bim4ren.eu/domain/fluid#maxPressure
 :maxPressure rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :pressure ;
+             rdfs:subPropertyOf b4r-prop:pressure ;
              rdfs:label "maximal pressure"@en ,
-                        "pression maximale"@fr .
+                        "pression maximale"@fr ,
+						"massima pressione"@it ,
+						"presión máxima"@es.
 
 
-###  http://www.bim4ren.eu/domain/fluid#minFlow
-:minFlow rdf:type owl:ObjectProperty ;
+###  http://www.bim4ren.eu/domain/fluid#minPressure
+:minPressure rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :pressure ;
-         rdfs:label "maximal pressure"@en ,
-                    "pression minimale"@fr .
+         rdfs:label "minimal pressure"@en ,
+                    "pression minimale"@fr ,
+					"minima pressione"@it ,
+					"presión minima"@es.
 
 
 ###  http://www.bim4ren.eu/domain/fluid#nominalFlowRate
 :nominalFlowRate rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :pressure ;
+                 rdfs:subPropertyOf b4r-prop:flowRate ;
                  rdfs:label "débit nominal"@fr ,
-                            "nominal flow rate"@en .
-
-
-###  http://www.bim4ren.eu/domain/fluid#pressure
-:pressure rdf:type owl:ObjectProperty .
+                            "nominal flow rate"@en,
+							"portata nominale"@it,
+							"caudal nominal"@es.
 
 
 ###  http://www.bim4ren.eu/domain/fluid#pressureDrop
 :pressureDrop rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :pressure ;
-              rdfs:label "chute de pression"@fr ,
+              rdfs:subPropertyOf b4r-prop:pressure ;
+              rdfs:label "perte de charge"@fr ,
+						 "pérdida de carga"@es ,
+						 "perdita di carico"@it ,
                          "pressure drop"@en .
-
-
-###  http://www.bim4ren.eu/domain/fluid#thermalMass
-:thermalMass rdf:type owl:ObjectProperty .
-
-
-###  http://www.bim4ren.eu/domain/fluid#thermalResistance
-:thermalResistance rdf:type owl:ObjectProperty .
-
-
-###  http://www.bim4ren.eu/domain/fluid#thermalTransmittance
-:thermalTransmittance rdf:type owl:ObjectProperty .
-
-
-###  http://www.bim4ren.eu/domain/fluid#totalDynamicHead
-:totalDynamicHead rdf:type owl:ObjectProperty ;
-                  rdfs:label "HMT"@fr ,
-                             "Hauteur manométrique totale"@fr ,
-                             "TDH"@en ,
-                             "Total dynamic head"@en .
-
-
-###  http://www.bim4ren.eu/domain/fluid#visibleTransmittance
-:visibleTransmittance rdf:type owl:ObjectProperty .
 
 
 #################################################################
