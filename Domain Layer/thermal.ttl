@@ -14,6 +14,13 @@
                                         owl:versionIRI <http://www.bim4ren.eu/domain/thermal/0.1> ;
                                         owl:imports <http://www.bim4ren.eu/property/0.1> .
 
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  https://w3id.org/def/basicsemantics-owl#quantityKind
+bs:quantityKind rdf:type owl:AnnotationProperty .
+
 
 #################################################################
 #    Object Properties
@@ -300,6 +307,24 @@ b4r-thermal:HeatTransferElement rdf:type owl:Class ;
                                 rdfs:comment "A heat transfer element is a passive element that can restrict or ease the transfer of heat between different zones."@en ;
                                 rdfs:label "Elément de transfert de chaleur"@fr ,
                                            "Heat transfer element"@en .
+
+
+###  http://www.bim4ren.eu/domain/thermal#ThermoRegulatedElement
+b4r-thermal:ThermoRegulatedElement rdf:type owl:Class ;
+                                   rdfs:label "thermo-regulated element"@en ,
+                                              "élément thermo-régulé"@fr ,
+								   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                     owl:onProperty b4r-thermal:setPoint ;
+                                                     owl:someValuesFrom bs:QuantityValue
+                                                   ] ,
+												   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty b4r-thermal:minTemperature ;
+                                                     owl:someValuesFrom bs:QuantityValue
+                                                   ] ,
+												   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty b4r-thermal:maxTemperature ;
+                                                     owl:someValuesFrom bs:QuantityValue
+                                                   ] ,.
 
 
 ###  https://w3id.org/def/basicsemantics-owl#QuantityValue
