@@ -51,6 +51,14 @@ b4r-thermal:condensingTemperature rdf:type owl:ObjectProperty ;
                                   rdfs:subPropertyOf b4r-prop:temperature .
 
 
+###  http://www.bim4ren.eu/domain/thermal#dischargeTemperature
+b4r-thermal:dischargeTemperature rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf b4r-prop:temperature ;
+                                 rdfs:domain b4r-thermal:Producer ;
+                                 rdfs:comment "The temperature of the output medium in a thermal loop." ;
+                                 rdfs:label "discharge temperature"@en .
+
+
 ###  http://www.bim4ren.eu/domain/thermal#efficiencyType
 b4r-thermal:efficiencyType rdf:type owl:ObjectProperty ;
                            rdfs:range b4r-thermal:EfficiencyType ;
@@ -127,10 +135,12 @@ b4r-thermal:nominalPower rdf:type owl:ObjectProperty ;
                                     "puissance utile"@fr .
 
 
-###  http://www.bim4ren.eu/domain/thermal#returnedTemperature
-b4r-thermal:returnedTemperature rdf:type owl:ObjectProperty ;
-                                rdfs:subPropertyOf b4r-prop:temperature ;
-                                rdfs:domain b4r-thermal:HeatProducer .
+###  http://www.bim4ren.eu/domain/thermal#returnTemperature
+b4r-thermal:returnTemperature rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf b4r-prop:temperature ;
+                              rdfs:domain b4r-thermal:Producer ;
+                              rdfs:comment "The temperature of the input medium in a thermal loop." ;
+                              rdfs:label "return temperature"@en .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#setPoint
@@ -234,6 +244,14 @@ b4r-prop:temperature rdf:type owl:ObjectProperty .
 #    Classes
 #################################################################
 
+###  http://www.bim4ren.eu/domain/thermal#CoolProducer
+b4r-thermal:CoolProducer rdf:type owl:Class ;
+                         rdfs:subClassOf b4r-thermal:Producer ;
+                         rdfs:comment "A cool producer asset."@en ;
+                         rdfs:label "Cool producer"@en ,
+                                    "Producteur de froid"@fr .
+
+
 ###  http://www.bim4ren.eu/domain/thermal#EfficiencyType
 b4r-thermal:EfficiencyType rdf:type owl:Class ;
                            owl:equivalentClass [ rdf:type owl:Class ;
@@ -250,25 +268,7 @@ b4r-thermal:EfficiencyType rdf:type owl:Class ;
 
 ###  http://www.bim4ren.eu/domain/thermal#HeatProducer
 b4r-thermal:HeatProducer rdf:type owl:Class ;
-                         rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                           owl:onProperty b4r-thermal:thermalEfficiency ;
-                                           owl:allValuesFrom bs:QuantityValue
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty b4r-thermal:maxTemperature ;
-                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                           owl:onClass b4r-thermal:HeatProducer
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty b4r-thermal:minTemperature ;
-                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                           owl:onClass b4r-thermal:HeatProducer
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty b4r-thermal:nominalPower ;
-                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                           owl:onClass b4r-thermal:HeatProducer
-                                         ] ;
+                         rdfs:subClassOf b4r-thermal:Producer ;
                          rdfs:comment "A heat producer asset."@en ;
                          rdfs:label "Heat producer"@en ,
                                     "Producteur de chaleur"@fr .
@@ -309,22 +309,45 @@ b4r-thermal:HeatTransferElement rdf:type owl:Class ;
                                            "Heat transfer element"@en .
 
 
+###  http://www.bim4ren.eu/domain/thermal#Producer
+b4r-thermal:Producer rdf:type owl:Class ;
+                     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                       owl:onProperty b4r-thermal:thermalEfficiency ;
+                                       owl:allValuesFrom bs:QuantityValue
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty b4r-thermal:maxTemperature ;
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass b4r-thermal:HeatProducer
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty b4r-thermal:minTemperature ;
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass b4r-thermal:HeatProducer
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty b4r-thermal:nominalPower ;
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass b4r-thermal:HeatProducer
+                                     ] .
+
+
 ###  http://www.bim4ren.eu/domain/thermal#ThermoRegulatedElement
 b4r-thermal:ThermoRegulatedElement rdf:type owl:Class ;
-                                   rdfs:label "thermo-regulated element"@en ,
-                                              "élément thermo-régulé"@fr ,
-								   rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                     owl:onProperty b4r-thermal:setPoint ;
+                                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                     owl:onProperty b4r-thermal:maxTemperature ;
                                                      owl:someValuesFrom bs:QuantityValue
                                                    ] ,
-												   [ rdf:type owl:Restriction ;
+                                                   [ rdf:type owl:Restriction ;
                                                      owl:onProperty b4r-thermal:minTemperature ;
                                                      owl:someValuesFrom bs:QuantityValue
                                                    ] ,
-												   [ rdf:type owl:Restriction ;
-                                                     owl:onProperty b4r-thermal:maxTemperature ;
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty b4r-thermal:setPoint ;
                                                      owl:someValuesFrom bs:QuantityValue
-                                                   ] ,.
+                                                   ] ;
+                                   rdfs:label "thermo-regulated element"@en ,
+                                              "élément thermo-régulé"@fr .
 
 
 ###  https://w3id.org/def/basicsemantics-owl#QuantityValue

@@ -127,7 +127,8 @@ b4r-prop:area rdf:type owl:ObjectProperty .
           rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#EnergyConversionDevice> ;
           rdfs:label "Bomba de calor"@es ,
                      "Heat Pump"@en ,
-                     "Pompe à chaleur"@fr .
+                     "Pompe à chaleur"@fr ,
+                     "pompa di calore"@it .
 
 
 ###  http://bim4ren.eu/distributionelements/hvac#LowTemperatureBoiler
