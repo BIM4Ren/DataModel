@@ -26,6 +26,15 @@ b4r-prop:area rdf:type owl:ObjectProperty ;
                            "area"@it ,
                            "área"@es ,
                            "area"@en .
+						   
+###  http://www.bim4ren.eu/domain/property#angle
+:angle rdf:type owl:ObjectProperty ;
+				rdfs:range bs:QuantityValue ;
+				bs:quantityKind quantitykind:Angle ;
+				rdfs:label "angle"@fr ,
+						   "angolo"@it ,
+						   "angulo"@es ,
+						   "angle"@en .
 			  
 
 ###  http://www.bim4ren.eu/property#height

@@ -48,10 +48,9 @@
                                    "Volumic Mass"@en .
 
 
-###  http://www.bim4ren.eu/domain/spatial#Orientation
+###  http://www.bim4ren.eu/domain/spatial#orientation
 :orientation rdf:type owl:ObjectProperty ;
-				rdfs:range bs:QuantityValue ;
-				bs:quantityKind quantitykind:Angle ;
+				rdfs:subPropertyOf b4r-prop:angle ;
 				rdfs:comment "The orientation is determined as the azimuth angle of a surface relative to true north."@en ;
 				rdfs:label "orientation"@fr ,
 							"orientamento"@it ,
