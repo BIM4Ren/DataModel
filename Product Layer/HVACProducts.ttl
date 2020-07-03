@@ -5,6 +5,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @base <http://bim4ren.eu/distributionelements/hvac#> .
 
 <http://bim4ren.eu/distributionelements/hvac#> rdf:type owl:Ontology ;
@@ -20,8 +21,15 @@
                         rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice> .
 
 
+###  http://bim4ren.eu/distributionelements/hvac#PSet_solarCollector
+:PSet_solarCollector rdf:type owl:ObjectProperty ;
+                     rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice-SOLARCOLLECTOR> .
+
+
 ###  http://bim4ren.eu/distributionelements/hvac#absorberArea
 :absorberArea rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :PSet_solarCollector ,
+                                 b4r-prop:area ;
               rdfs:comment "The area of a collector which is heated by irradiation and is directly responsible for heating of the heat transfer fluid"@en ;
               rdfs:label "absorber area"@en ,
                          "surface d'absorbeur"@fr .
@@ -29,31 +37,36 @@
 
 ###  http://bim4ren.eu/distributionelements/hvac#apertureArea
 :apertureArea rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :PSet_solarCollector ,
+                                 b4r-prop:area ;
               rdfs:comment "The aperture indicates the area of the collector which allows light to enter"@en ;
               rdfs:label "aperture area"@en ,
                          "surface d'entrée"@fr .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#azimuth
-:azimuth rdf:type owl:ObjectProperty ;
-         rdfs:range bs:QuantityValue ;
-         rdfs:comment "The azimuth angle is the compass direction from which the sunlight is coming."@fr ;
-         rdfs:label "azimuth"@fr ,
-                    "solar azimuth angle"@en .
-
-
 ###  http://bim4ren.eu/distributionelements/hvac#grossArea
 :grossArea rdf:type owl:ObjectProperty ;
-           rdfs:comment "Tthe gross area refers to the external mass of the collector, therefore the area actually necessary for installation, that is simply the length times the width of the collector."@en ;
-           rdfs:label "Gross area"@en ,
+           rdfs:subPropertyOf :PSet_solarCollector ,
+                              b4r-prop:area ;
+           rdfs:comment "The gross area refers to the external mass of the collector, therefore the area actually necessary for installation, that is simply the length times the width of the collector."@en ;
+           rdfs:label "gross area"@en ,
                       "surface hors tout"@fr .
 
 
 ###  http://bim4ren.eu/distributionelements/hvac#tilt
 :tilt rdf:type owl:ObjectProperty ;
-      rdfs:range bs:QuantityValue ;
+      rdfs:subPropertyOf b4r-prop:angle ;
+      rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice> ;
       rdfs:label "inclinaison"@fr ,
                  "tilt"@en .
+
+
+###  http://www.bim4ren.eu/property#angle
+b4r-prop:angle rdf:type owl:ObjectProperty .
+
+
+###  http://www.bim4ren.eu/property#area
+b4r-prop:area rdf:type owl:ObjectProperty .
 
 
 #################################################################
