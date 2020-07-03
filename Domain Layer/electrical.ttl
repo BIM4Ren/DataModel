@@ -159,6 +159,10 @@ b4r-elec:ElectricalProducer rdf:type owl:Class ;
                             rdfs:subClassOf [ rdf:type owl:Restriction ;
                                               owl:onProperty b4r-elec:electricalEfficiency ;
                                               owl:someValuesFrom bs:QuantityValue
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty b4r-elec:powerOut ;
+                                              owl:someValuesFrom bs:QuantityValue
                                             ] .
 
 
