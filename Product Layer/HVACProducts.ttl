@@ -89,6 +89,16 @@ b4r-prop:area rdf:type owl:ObjectProperty .
 #    Classes
 #################################################################
 
+###  http://bim4ren.eu/distributionelements/hvac#ChilledWaterPump
+:ChilledWaterPump rdf:type owl:Class ;
+                  rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#Pump> .
+
+
+###  http://bim4ren.eu/distributionelements/hvac#CondenserPump
+:CondenserPump rdf:type owl:Class ;
+               rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#Pump> .
+
+
 ###  http://bim4ren.eu/distributionelements/hvac#CondensingBoiler
 :CondensingBoiler rdf:type owl:Class ;
                   owl:equivalentClass <https://pi.pauwel.be/voc/distributionelement#Boiler-STEAM> ;

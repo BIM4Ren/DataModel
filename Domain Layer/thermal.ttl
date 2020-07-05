@@ -165,7 +165,7 @@ The stagnation temperature is the maximum temperature that the collector’s abs
 ###  http://www.bim4ren.eu/domain/thermal#suppliedTemperature
 b4r-thermal:suppliedTemperature rdf:type owl:ObjectProperty ;
                                 rdfs:subPropertyOf b4r-prop:temperature ;
-                                rdfs:domain b4r-thermal:HeatProducer .
+                                rdfs:domain b4r-thermal:Producer .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#thermalEfficiency
@@ -318,17 +318,17 @@ b4r-thermal:Producer rdf:type owl:Class ;
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty b4r-thermal:maxTemperature ;
                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                       owl:onClass b4r-thermal:HeatProducer
+                                       owl:onClass b4r-thermal:Producer
                                      ] ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty b4r-thermal:minTemperature ;
                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                       owl:onClass b4r-thermal:HeatProducer
+                                       owl:onClass b4r-thermal:Producer
                                      ] ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty b4r-thermal:nominalPower ;
                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                       owl:onClass b4r-thermal:HeatProducer
+                                       owl:onClass b4r-thermal:Producer
                                      ] .
 
 

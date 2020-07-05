@@ -148,6 +148,10 @@ b4r-elec:ElectricalConsumer rdf:type owl:Class ;
                                               owl:onProperty b4r-elec:powerIn ;
                                               owl:allValuesFrom bs:QuantityValue
                                             ] ,
+											[ rdf:type owl:Restriction ;
+                                              owl:onProperty b4r-elec:electricalEfficiency ;
+                                              owl:someValuesFrom bs:QuantityValue
+                                            ] ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty b4r-elec:powerOut ;
                                               owl:allValuesFrom bs:QuantityValue
