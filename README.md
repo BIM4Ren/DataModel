@@ -25,16 +25,17 @@ It contains ontologies that are used to gather building components according to 
 ### The Product layer
 
 The product layer is made of taxonomies extracted from the IFC4 standard, to categorize building products.
-- the distributionelement ontology contains a type hierarchy for HVAC systems and monitoring devices.
-- the buildingelement ontology contains a type hierarchy for building products.
+- the distributionelement ontology contains a type hierarchy for HVAC systems and monitoring devices. The HVACElements is an extension of distributionelement.
+- the buildingelement ontology contains a type hierarchy for building products. The B4R-BuildingElements is an extension of buildingelement.
 - the domesticappliance ontology contains a type hierarchy for domestic appliances.
 
-Each of this taxonomies was extended, potentially into ontologies, adding properties that are specific to some of the concepts described.
+Each of these taxonomies can be extended, potentially into ontologies, adding properties that are specific to some of the concepts described.
 
 ### The Domain layer
 
 The domain layer contains ontologies for each specific domain. They can be associated to Property sets in the IFC standard. The different domains identified are:
-- thermal: to model thermal properties of the different building assets.
-- electrical: to model properties of electrical components.
-- manufacturer properties
-- fluid-related properties.
+- thermal: to model thermal properties of the different building assets (i.e. enveloppe parts, thermal zones, heating/cooling systems...)
+- electrical: to model properties of electrical components (i.e. those that can produce, consume, store... electricity).
+- manufacturer properties, so as to refer to the manufacturer and the branding references.
+- fluid-related properties: flow rates, volumes, pressure, capacities...
+- spatial properties such as orientation, dimensions...
