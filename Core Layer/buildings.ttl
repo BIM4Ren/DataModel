@@ -13,7 +13,11 @@
 <http://www.bim4ren.eu/buildings#> rdf:type owl:Ontology ;
                                     owl:versionIRI <http://www.bim4ren.eu/buildings/0.1> ;
                                     owl:imports <http://www.bim4ren.eu/property/0.1> ,
-                                                <https://w3c-lbd-cg.github.io/bot/bot.ttl> .
+                                                <https://w3c-lbd-cg.github.io/bot/bot.ttl> ;
+                                    <http://purl.org/dc/terms/contributor> "Nathalie Charbel" ,
+                                                                           "Pierre Bourreau" ;
+                                    <http://purl.org/dc/terms/description> "The buildings ontology is part of the BIM4Ren project. It belongs to the core layer, and is an extension of the BOT ontology (Building Ontology Topology). Additional concepts are the possibility to describe a building enveloppe, and to classify buildings and rooms according to their usage."@en ;
+                                    <http://purl.org/dc/terms/title> "The BIM4Ren buildings ontology"@en .
 
 #################################################################
 #    Annotation properties
@@ -278,13 +282,13 @@ b4r-bldgs:VolumetricZone rdf:type owl:Class ;
 <https://w3id.org/bot#Storey> rdfs:subClassOf b4r-bldgs:VolumetricZone .
 
 
-[ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+[ owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
 ] .
 
 [ owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
  ] .
 
-[ owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+[ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
  ] .
 
 [ owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
