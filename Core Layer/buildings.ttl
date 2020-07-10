@@ -63,22 +63,6 @@ b4r-bldgs:constructionYear rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
-###  http://org.semanticweb.owlapi/error#Error101
-<http://org.semanticweb.owlapi/error#Error101> rdf:type owl:Class .
-
-
-###  http://org.semanticweb.owlapi/error#Error102
-<http://org.semanticweb.owlapi/error#Error102> rdf:type owl:Class .
-
-
-###  http://org.semanticweb.owlapi/error#Error103
-<http://org.semanticweb.owlapi/error#Error103> rdf:type owl:Class .
-
-
-###  http://org.semanticweb.owlapi/error#Error104
-<http://org.semanticweb.owlapi/error#Error104> rdf:type owl:Class .
-
-
 ###  http://www.bim4ren.eu/buildings#Allotment
 b4r-bldgs:Allotment rdf:type owl:Class ;
                     rdfs:subClassOf b4r-bldgs:SingleFamilyHousing .
@@ -154,7 +138,9 @@ b4r-bldgs:Dormitory rdf:type owl:Class ;
 ###  http://www.bim4ren.eu/buildings#Enveloppe
 b4r-bldgs:Enveloppe rdf:type owl:Class ;
                     rdfs:label "Enveloppe"@en ,
-                               "Enveloppe"@fr .
+                               "Enveloppe"@fr ,
+                               "Envolvente de edificación"@es ,
+                               "Involucro edilizio"@it .
 
 
 ###  http://www.bim4ren.eu/buildings#Garage
@@ -256,15 +242,11 @@ b4r-bldgs:Toilets rdf:type owl:Class ;
 
 ###  http://www.bim4ren.eu/buildings#VolumetricZone
 b4r-bldgs:VolumetricZone rdf:type owl:Class ;
-                         rdfs:subClassOf <http://org.semanticweb.owlapi/error#Error101> ,
-                                         <http://org.semanticweb.owlapi/error#Error102> ,
-                                         <http://org.semanticweb.owlapi/error#Error103> ,
-                                         <https://w3id.org/bot#Zone> .
+                         rdfs:subClassOf <https://w3id.org/bot#Zone> .
 
 
 ###  https://w3id.org/bot#Building
-<https://w3id.org/bot#Building> rdfs:subClassOf <http://org.semanticweb.owlapi/error#Error104> ,
-                                                b4r-bldgs:VolumetricZone ,
+<https://w3id.org/bot#Building> rdfs:subClassOf b4r-bldgs:VolumetricZone ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty b4r-bldgs:constructionYear ;
                                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -285,10 +267,10 @@ b4r-bldgs:VolumetricZone rdf:type owl:Class ;
 [ owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
 ] .
 
-[ owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+[ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
  ] .
 
-[ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+[ owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
  ] .
 
 [ owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
