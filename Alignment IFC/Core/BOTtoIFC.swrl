@@ -9,10 +9,10 @@
 
 [relHasElement-IFC2x3: (?z a bot:Zone)
 					   (?c ifc2x3:relatingStructure_IfcRelContainedInSpatialStructure ?z)
-					   (?c ifc2x3:relatedElements_IfcRelContainedInSpatialStructure ?p)-> (?z bot:hasElement ?p)]
+					   (?c ifc2x3:relatedElements_IfcRelContainedInSpatialStructure ?p) -> (?z bot:hasElement ?p)]
 [relHasElement-IFC4: (?z a bot:Zone)
 					 (?c ifc4:relatingStructure_IfcRelContainedInSpatialStructure ?z)
-					 (?c ifc4:relatedElements_IfcRelContainedInSpatialStructure ?p)-> (?z bot:hasElement ?p)]
+					 (?c ifc4:relatedElements_IfcRelContainedInSpatialStructure ?p) -> (?z bot:hasElement ?p)]
 
 [relContainsZone-IFC4: (?z1 a bot:Zone) (?z2 a bot:Zone)
 					   (?rel ifc4:relatingObject_IfcRelAggregates ?z1)
