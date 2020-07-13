@@ -1,0 +1,19 @@
+@prefix : <https://bim4ren.eu/alignment/sot-IFC#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .  
+@prefix sot: <http://www.bim4ren.eu/sot#> .
+@prefix ifc4: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
+@prefix ifc2x3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
+
+[connectedWith-IFC4: (?c a ifc4:IfcRelConnectsPorts) (?c ifc4:relatingPort_IfcRelConnectsPorts ?p1) (?c ifc4:relatedPort_IfcRelConnectsPorts ?p2)
+					 (?elt1 a sot:SystemComponent) (?elt2 a sot:SystemComponent)
+					 (?n1 ifc4:relatingObject_IfcRelNests ?elt1) (?n1 ifc4:relatedObjects_IfcRelNests ?p1)	//Need to be changed because of the list definition...
+					 (?n2 ifc4:relatingObject_IfcRelNests ?elt2) (?n2 ifc4:relatedObjects_IfcRelNests ?p2)
+					 (?rel ifc4:relatingPort_IfcRelConnectsPorts ?p1) (?rel ifc4:relatedPort_IfcRelConnectsPorts ?p2)
+					 -> (?elt1 sot:connectedWith ?elt2)]
+[hasElements-IFC4: (?s a sot:System) (?c ifc4:relatingGroup_IfcRelAssignsToGroup ?s)
+					(?c ifc4:relatedObjects_IfcRelAssigns ?elt) (?elt a sot:SystemComponent)
+					-> (?s sot:hasElements ?elt)]
