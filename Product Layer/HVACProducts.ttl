@@ -1,4 +1,4 @@
-@prefix : <http://bim4ren.eu/distributionelements/hvac#> .
+@prefix : <http://bim4ren.eu/distributionelements/#> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -6,27 +6,27 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix b4r-prop: <http://www.bim4ren.eu/property#> .
-@base <http://bim4ren.eu/distributionelements/hvac#> .
+@base <http://bim4ren.eu/distributionelements/#> .
 
-<http://bim4ren.eu/distributionelements/hvac#> rdf:type owl:Ontology ;
-                                                owl:imports <http://www.bim4ren.eu/property/0.1> ,
-                                                            <https://pi.pauwel.be/voc/distributionelement> .
+<http://bim4ren.eu/distributionelements/#> rdf:type owl:Ontology ;
+                                               owl:imports <http://www.bim4ren.eu/property/0.1> ,
+                                                           <https://buildingsmart.org/ifc4-voc/distributionelement> .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://bim4ren.eu/distributionelements/hvac#ObjectPSet_solarDevice
+###  http://bim4ren.eu/distributionelements/#ObjectPSet_solarDevice
 :ObjectPSet_solarDevice rdf:type owl:ObjectProperty ;
-                        rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice> .
+                        rdfs:domain <https://buildingsmart.org/ifc4-voc/distributionelement#SolarDevice> .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#PSet_solarCollector
+###  http://bim4ren.eu/distributionelements/#PSet_solarCollector
 :PSet_solarCollector rdf:type owl:ObjectProperty ;
-                     rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice-SOLARCOLLECTOR> .
+                     rdfs:domain <https://buildingsmart.org/ifc4-voc/distributionelement#SolarDevice-SOLARCOLLECTOR> .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#absorberArea
+###  http://bim4ren.eu/distributionelements/#absorberArea
 :absorberArea rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :PSet_solarCollector ,
                                  b4r-prop:area ;
@@ -35,7 +35,7 @@
                          "surface d'absorbeur"@fr .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#apertureArea
+###  http://bim4ren.eu/distributionelements/#apertureArea
 :apertureArea rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :PSet_solarCollector ,
                                  b4r-prop:area ;
@@ -44,7 +44,7 @@
                          "surface d'entrée"@fr .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#grossArea
+###  http://bim4ren.eu/distributionelements/#grossArea
 :grossArea rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :PSet_solarCollector ,
                               b4r-prop:area ;
@@ -53,10 +53,10 @@
                       "surface hors tout"@fr .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#tilt
+###  http://bim4ren.eu/distributionelements/#tilt
 :tilt rdf:type owl:ObjectProperty ;
       rdfs:subPropertyOf b4r-prop:angle ;
-      rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice> ;
+      rdfs:domain <https://buildingsmart.org/ifc4-voc/distributionelement#SolarDevice> ;
       rdfs:label "inclinaison"@fr ,
                  "tilt"@en .
 
@@ -73,12 +73,12 @@ b4r-prop:area rdf:type owl:ObjectProperty .
 #    Data properties
 #################################################################
 
-###  http://bim4ren.eu/distributionelements/hvac#DataPSet_solarDevice
+###  http://bim4ren.eu/distributionelements/#DataPSet_solarDevice
 :DataPSet_solarDevice rdf:type owl:DatatypeProperty ;
-                      rdfs:domain <https://pi.pauwel.be/voc/distributionelement#SolarDevice> .
+                      rdfs:domain <https://buildingsmart.org/ifc4-voc/distributionelement#SolarDevice> .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#nbCells
+###  http://bim4ren.eu/distributionelements/#nbCells
 :nbCells rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf :DataPSet_solarDevice ;
          rdfs:label "nombre de cellules"@fr ,
@@ -89,92 +89,92 @@ b4r-prop:area rdf:type owl:ObjectProperty .
 #    Classes
 #################################################################
 
-###  http://bim4ren.eu/distributionelements/hvac#ChilledWaterPump
+###  http://bim4ren.eu/distributionelements/#ChilledWaterPump
 :ChilledWaterPump rdf:type owl:Class ;
-                  rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#Pump> .
+                  rdfs:subClassOf <https://buildingsmart.org/ifc4-voc/distributionelement#Pump> .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#CondenserPump
+###  http://bim4ren.eu/distributionelements/#CondenserPump
 :CondenserPump rdf:type owl:Class ;
-               rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#Pump> .
+               rdfs:subClassOf <https://buildingsmart.org/ifc4-voc/distributionelement#Pump> .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#CondensingBoiler
+###  http://bim4ren.eu/distributionelements/#CondensingBoiler
 :CondensingBoiler rdf:type owl:Class ;
-                  owl:equivalentClass <https://pi.pauwel.be/voc/distributionelement#Boiler-STEAM> ;
-                  rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#Boiler> ;
+                  owl:equivalentClass <https://buildingsmart.org/ifc4-voc/distributionelement#Boiler-STEAM> ;
+                  rdfs:subClassOf <https://buildingsmart.org/ifc4-voc/distributionelement#Boiler> ;
                   rdfs:label "Caldera de condensación"@es ,
                              "Chaudière à condensation"@fr ,
                              "Condensing Boiler"@en .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#FanCoilUnit
+###  http://bim4ren.eu/distributionelements/#FanCoilUnit
 :FanCoilUnit rdf:type owl:Class ;
-             rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#SpaceHeater> ;
+             rdfs:subClassOf <https://buildingsmart.org/ifc4-voc/distributionelement#SpaceHeater> ;
              rdfs:label "Fan Coil Unit"@en ,
                         "Ventiloconvecteur"@fr ,
                         "Ventiloconvector"@es .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#FlatPlateCollector
+###  http://bim4ren.eu/distributionelements/#FlatPlateCollector
 :FlatPlateCollector rdf:type owl:Class ;
-                    rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#SolarDevice-SOLARCOLLECTOR> ;
+                    rdfs:subClassOf <https://buildingsmart.org/ifc4-voc/distributionelement#SolarDevice-SOLARCOLLECTOR> ;
                     rdfs:label "Capteur plan"@fr ,
                                "Flat plate collector"@en .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#FuelCell
+###  http://bim4ren.eu/distributionelements/#FuelCell
 :FuelCell rdf:type owl:Class ;
-          rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#ElectricGenerator-CHP> ;
+          rdfs:subClassOf <https://buildingsmart.org/ifc4-voc/distributionelement#ElectricGenerator-CHP> ;
           rdfs:label "Fuel Cell"@en ,
                      "Pila a combustible"@it ,
                      "Pila de combustible"@es ,
                      "Pile à combustible"@fr .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#HeatPump
+###  http://bim4ren.eu/distributionelements/#HeatPump
 :HeatPump rdf:type owl:Class ;
-          rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#EnergyConversionDevice> ;
+          rdfs:subClassOf <https://buildingsmart.org/ifc4-voc/distributionelement#EnergyConversionDevice> ;
           rdfs:label "Bomba de calor"@es ,
                      "Heat Pump"@en ,
                      "Pompe à chaleur"@fr ,
                      "pompa di calore"@it .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#LowTemperatureBoiler
+###  http://bim4ren.eu/distributionelements/#LowTemperatureBoiler
 :LowTemperatureBoiler rdf:type owl:Class ;
-                      rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#Boiler> ;
+                      rdfs:subClassOf <https://buildingsmart.org/ifc4-voc/distributionelement#Boiler> ;
                       rdfs:label "Chaudière basse température"@fr ,
                                  "Low temperature boiler"@en .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#UnderfloorHeating
+###  http://bim4ren.eu/distributionelements/#UnderfloorHeating
 :UnderfloorHeating rdf:type owl:Class ;
-                   rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#SpaceHeater> ;
+                   rdfs:subClassOf <https://buildingsmart.org/ifc4-voc/distributionelement#SpaceHeater> ;
                    rdfs:label "Plancher chauffant"@fr ,
                               "Underfloor heating"@en .
 
 
-###  http://bim4ren.eu/distributionelements/hvac#VaccumCollector
+###  http://bim4ren.eu/distributionelements/#VaccumCollector
 :VaccumCollector rdf:type owl:Class ;
-                 rdfs:subClassOf <https://pi.pauwel.be/voc/distributionelement#SolarDevice-SOLARCOLLECTOR> ;
+                 rdfs:subClassOf <https://buildingsmart.org/ifc4-voc/distributionelement#SolarDevice-SOLARCOLLECTOR> ;
                  rdfs:label "Capteur à tube sous vide"@fr ,
                             "Evacuated tube collector"@en ,
                             "Vacuum collector"@en .
 
 
-###  https://pi.pauwel.be/voc/distributionelement#Boiler-STEAM
+###  https://buildingsmart.org/ifc4-voc/distributionelement#Boiler-STEAM
 
-###  https://pi.pauwel.be/voc/distributionelement#SolarDevice
-<https://pi.pauwel.be/voc/distributionelement#SolarDevice> rdfs:subClassOf [ rdf:type owl:Restriction ;
+###  https://buildingsmart.org/ifc4-voc/distributionelement#SolarDevice
+<https://buildingsmart.org/ifc4-voc/distributionelement#SolarDevice> rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :nbCells ;
                                                                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                              owl:onDataRange xsd:integer
                                                                            ] .
 
 
-###  https://pi.pauwel.be/voc/distributionelement#SolarDevice-SOLARCOLLECTOR
-<https://pi.pauwel.be/voc/distributionelement#SolarDevice-SOLARCOLLECTOR> rdfs:subClassOf [ rdf:type owl:Restriction ;
+###  https://buildingsmart.org/ifc4-voc/distributionelement#SolarDevice-SOLARCOLLECTOR
+<https://buildingsmart.org/ifc4-voc/distributionelement#SolarDevice-SOLARCOLLECTOR> rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                                                             owl:onProperty :absorberArea ;
                                                                                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                             owl:onClass bs:QuantityValue
