@@ -34,8 +34,8 @@ dcterms:license a owl:AnnotationProperty .
 
 bot:Site owl:equivalentClass ifc4:IfcSite ;
 		 owl:equivalentClass ifc2x3:IfcSite.
-bot:Building owl:equivalentClass ifc4:IfcSite ;
-			 owl:equivalentClass ifc2x3:IfcSite .
+bot:Building owl:equivalentClass ifc4:IfcBuilding ;
+			 owl:equivalentClass ifc2x3:IfcBuilding .
 bot:Storey owl:equivalentClass ifc4:IfcBuildingStorey  ;
 			 owl:equivalentClass ifc2x3:IfcBuildingStorey .
 bot:Space owl:equivalentClass ifc4:IfcSpace ;
