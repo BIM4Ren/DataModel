@@ -138,6 +138,11 @@ It is made of a) terminal elements that can either produce and emit the property
 #    Individuals
 #################################################################
 
+###  http://www.bim4ren.eu/sot#air
+:air rdf:type owl:NamedIndividual ,
+              :Medium .
+
+
 ###  http://www.bim4ren.eu/sot#cool
 :cool rdf:type owl:NamedIndividual ,
                :Function ;
