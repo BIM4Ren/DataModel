@@ -6,6 +6,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core/> .
 @base <http://www.bim4ren.eu/domain/fluid> .
 
 <http://www.bim4ren.eu/domain/fluid> rdf:type owl:Ontology ;
@@ -69,6 +70,7 @@
                             "nominal flow rate"@en,
 							"portata nominale"@it,
 							"caudal nominal"@es.
+				 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0ANYHfXw16TO4AaI9tvudX>
 
 
 ###  http://www.bim4ren.eu/domain/fluid#pressureDrop

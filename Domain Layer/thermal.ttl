@@ -5,6 +5,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core/> .
 @prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @prefix b4r-thermal: <http://www.bim4ren.eu/domain/thermal#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
@@ -12,7 +13,8 @@
 
 <http://www.bim4ren.eu/domain/thermal> rdf:type owl:Ontology ;
                                         owl:versionIRI <http://www.bim4ren.eu/domain/thermal/0.1> ;
-                                        owl:imports <http://www.bim4ren.eu/property/0.1> .
+                                        owl:imports <http://www.bim4ren.eu/property/0.1> ,
+                                                    <http://www.w3.org/2004/02/skos/core> .
 
 #################################################################
 #    Annotation properties
@@ -140,7 +142,9 @@ b4r-thermal:returnTemperature rdf:type owl:ObjectProperty ;
                               rdfs:subPropertyOf b4r-prop:temperature ;
                               rdfs:domain b4r-thermal:Producer ;
                               rdfs:comment "The temperature of the input medium in a thermal loop." ;
-                              rdfs:label "return temperature"@en .
+                              rdfs:label "return temperature"@en ;
+					 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1PxGW0qSuHuO00025QrE$V>,
+							<http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1WUt_0qSuHuO00025QrE$V>.
 
 
 ###  http://www.bim4ren.eu/domain/thermal#setPoint
@@ -162,10 +166,14 @@ The stagnation temperature is the maximum temperature that the collector’s abs
                                              "température de stagnation"@fr .
 
 
-###  http://www.bim4ren.eu/domain/thermal#suppliedTemperature
-b4r-thermal:suppliedTemperature rdf:type owl:ObjectProperty ;
+###  http://www.bim4ren.eu/domain/thermal#supplyTemperature
+b4r-thermal:supplyTemperature rdf:type owl:ObjectProperty ;
                                 rdfs:subPropertyOf b4r-prop:temperature ;
-                                rdfs:domain b4r-thermal:Producer .
+                                rdfs:domain b4r-thermal:Producer; 
+								skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1NYgu0qSuHuO00025QrE$V>
+										<http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0osme0qRyHuO00025QrE$V>,
+										<http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0sRf40qRyHuO00025QrE$V>,
+										<http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1Sv$Y0qSuHuO00025QrE$V>.
 
 
 ###  http://www.bim4ren.eu/domain/thermal#thermalEfficiency
