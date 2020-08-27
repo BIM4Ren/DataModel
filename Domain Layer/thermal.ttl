@@ -40,7 +40,7 @@
                                                 "coefficiente di prestazione"@it ,
                                                 "coeficiente de operatividad"@es ;
 									 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3W1b00qSWHuO00025QrE$V>, # fuel related. On Chiller
-									 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3Wd_O0qSeHuO00025QrE$V>. # on compressor
+													  <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3Wd_O0qSeHuO00025QrE$V>. # on compressor
 
 
 ###  http://www.bim4ren.eu/domain/thermal#condensingTemperature
@@ -64,7 +64,7 @@
                               rdfs:comment "the difference between the ambient temperature and the desire room temperature. The range of temperature a heat pump needs to provide" ;
                               rdfs:label "temperature spread"@en ;
 							  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3k_Vm0qU8HuO00025QrE$V> , #on compressor/evaporator
-							  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1w6yU0qSmHuO00025QrE$V>.  # on compressor/condenser
+											   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1w6yU0qSmHuO00025QrE$V>.  # on compressor/condenser
 
 
 ###  http://www.bim4ren.eu/domain/thermal#efficiencyType
