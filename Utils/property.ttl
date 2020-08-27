@@ -3,7 +3,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> . 
 @base <http://www.bim4ren.eu/property#> .
@@ -19,7 +18,7 @@
 
 
 ###  http://www.bim4ren.eu/property#area
-b4r-prop:area rdf:type owl:ObjectProperty ;
+:area rdf:type owl:ObjectProperty ;
               rdfs:range bs:QuantityValue ;
               bs:quantityKind quantitykind:Area ;
 			  rdfs:label "surface"@fr ,
@@ -38,7 +37,7 @@ b4r-prop:area rdf:type owl:ObjectProperty ;
 			  
 
 ###  http://www.bim4ren.eu/property#height
-b4r-prop:height rdf:type owl:ObjectProperty ;
+:height rdf:type owl:ObjectProperty ;
                 rdfs:range bs:QuantityValue ;
                 bs:quantityKind quantitykind:Length ;
 				rdfs:label "hauteur"@fr ,
@@ -47,7 +46,7 @@ b4r-prop:height rdf:type owl:ObjectProperty ;
                            "height"@en .
 						   
 ###  http://www.bim4ren.eu/property#width
-b4r-prop:width rdf:type owl:ObjectProperty ;
+:width rdf:type owl:ObjectProperty ;
                 rdfs:range bs:QuantityValue ;
                 bs:quantityKind quantitykind:Length ;
 				rdfs:label "largeur"@fr ,
@@ -56,7 +55,7 @@ b4r-prop:width rdf:type owl:ObjectProperty ;
                            "width"@en .
 
 ###  http://www.bim4ren.eu/property#thickness
-b4r-prop:thickness rdf:type owl:ObjectProperty ;
+:thickness rdf:type owl:ObjectProperty ;
                 rdfs:range bs:QuantityValue ;
                 bs:quantityKind quantitykind:Length ;
 				rdfs:label "épaisseur"@fr ,
@@ -65,7 +64,7 @@ b4r-prop:thickness rdf:type owl:ObjectProperty ;
                            "thickness"@en .
 
 ###  http://www.bim4ren.eu/property#power
-b4r-prop:power rdf:type owl:ObjectProperty ;
+:power rdf:type owl:ObjectProperty ;
                rdfs:range bs:QuantityValue ;
                bs:quantityKind quantitykind:Power ;
 			   rdfs:label "puissance"@fr ,
@@ -75,7 +74,7 @@ b4r-prop:power rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.bim4ren.eu/property#ratio
-b4r-prop:ratio rdf:type owl:ObjectProperty ;
+:ratio rdf:type owl:ObjectProperty ;
                rdfs:range bs:QuantityValue ;
 			   bs:quantityKind quantitykind:DimensionlessRatio ;
 			   rdfs:label "rapport"@fr ,
@@ -85,7 +84,7 @@ b4r-prop:ratio rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.bim4ren.eu/property#temperature
-b4r-prop:temperature rdf:type owl:ObjectProperty ;
+:temperature rdf:type owl:ObjectProperty ;
                      rdfs:range bs:QuantityValue ;
                      bs:quantityKind quantitykind:Temperature ;
 					 rdfs:label "température"@fr ,
@@ -95,7 +94,7 @@ b4r-prop:temperature rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.bim4ren.eu/property#flowRate
-b4r-prop:flowRate rdf:type owl:ObjectProperty ;
+:flowRate rdf:type owl:ObjectProperty ;
                      rdfs:range bs:QuantityValue ;
                      bs:quantityKind quantitykind:VolumeFlowRate ;
 					 rdfs:label "débit"@fr ,
@@ -107,7 +106,7 @@ b4r-prop:flowRate rdf:type owl:ObjectProperty ;
 
 								
 ###  http://www.bim4ren.eu/property#pressure
-b4r-prop:pressure rdf:type owl:ObjectProperty ;
+:pressure rdf:type owl:ObjectProperty ;
                     rdfs:range bs:QuantityValue ;
                     bs:quantityKind quantitykind:Pressure ;
 					rdfs:label "pression"@fr ,
@@ -116,7 +115,7 @@ b4r-prop:pressure rdf:type owl:ObjectProperty ;
                               "pressure"@en .
 
 ###  http://www.bim4ren.eu/property#volume
-b4r-prop:volume rdf:type owl:ObjectProperty ;
+:volume rdf:type owl:ObjectProperty ;
                 rdfs:range bs:QuantityValue ;
                 bs:quantityKind quantitykind:Volume ;
 				rdfs:label "volume"@fr ,
@@ -125,7 +124,7 @@ b4r-prop:volume rdf:type owl:ObjectProperty ;
                             "volume"@en .
 							
 ###  http://www.bim4ren.eu/property#speed
-b4r-prop:speed rdf:type owl:ObjectProperty ;
+:speed rdf:type owl:ObjectProperty ;
                rdfs:range bs:QuantityValue ;
                bs:quantityKind quantitykind:Speed ;
 			   rdfs:label "vitesse"@fr ,
@@ -135,7 +134,7 @@ b4r-prop:speed rdf:type owl:ObjectProperty ;
 				
 				
 ###  http://www.bim4ren.eu/property#efficiency
-b4r-prop:efficiency rdf:type owl:ObjectProperty ;
+:efficiency rdf:type owl:ObjectProperty ;
                     rdfs:range bs:QuantityValue ;
                     bs:quantityKind quantitykind:Efficiency ;
 					rdfs:label "rendement"@fr ,
@@ -145,7 +144,7 @@ b4r-prop:efficiency rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.bim4ren.eu/property#accuracy
-b4r-prop:accuracy rdf:type owl:ObjectProperty ;
+:accuracy rdf:type owl:ObjectProperty ;
                   rdfs:range bs:QuantityValue ;
 				  rdfs:label "précision"@fr ,
                               "accuratezza"@it ,
@@ -154,7 +153,7 @@ b4r-prop:accuracy rdf:type owl:ObjectProperty ;
 							  
 
 ###  http://www.bim4ren.eu/property#price
-b4r-prop:price rdf:type owl:ObjectProperty ;
+:price rdf:type owl:ObjectProperty ;
                rdfs:range bs:QuantityValue ;
 			   bs:quantityKind quantitykind:Currency ;
 			   rdfs:label "prix"@fr ,
@@ -164,7 +163,7 @@ b4r-prop:price rdf:type owl:ObjectProperty ;
 						  
 
 ###  http://www.bim4ren.eu/property#time
-b4r-prop:time rdf:type owl:ObjectProperty ;
+:time rdf:type owl:ObjectProperty ;
               rdfs:range bs:QuantityValue ;
 			  bs:quantityKind quantitykind:Time ;
 			  rdfs:label "temps"@fr ,
@@ -174,8 +173,8 @@ b4r-prop:time rdf:type owl:ObjectProperty ;
 						 
 						 
 ###  http://www.bim4ren.eu/property#fromTime
-b4r-prop:fromTime rdf:type owl:ObjectProperty ;
-				  rdfs:subPropertyOf b4r-prop:time ;
+:fromTime rdf:type owl:ObjectProperty ;
+				  rdfs:subPropertyOf :time ;
 				  rdfs:label "temps début"@fr ,
 							 "ora di inizio"@it ,
 							 "hora de inicio"@es ,
@@ -183,8 +182,8 @@ b4r-prop:fromTime rdf:type owl:ObjectProperty ;
 							 
 							 
 ###  http://www.bim4ren.eu/property#toTime
-b4r-prop:toTime rdf:type owl:ObjectProperty ;
-				rdfs:subPropertyOf b4r-prop:time ;
+:toTime rdf:type owl:ObjectProperty ;
+				rdfs:subPropertyOf :time ;
 				rdfs:label "temps fin"@fr ,
 							"ora di fine"@it ,
 							"hora de finalización"@es ,

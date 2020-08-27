@@ -14,13 +14,6 @@
                                             owl:versionIRI <http://www.bim4ren.eu/domain/electrical/0.1> ;
                                             owl:imports b4r-prop: .
 
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  https://w3id.org/def/basicsemantics-owl#quantityKind
-bs:quantityKind rdf:type owl:AnnotationProperty .
-
 
 #################################################################
 #    Object Properties
@@ -89,7 +82,7 @@ bs:quantityKind rdf:type owl:AnnotationProperty .
 
 ###  http://www.bim4ren.eu/domain/electrical#subscriptionPrice
 :subscriptionPrice rdf:type owl:ObjectProperty ;
-                           rdfs:subPropertyOf b4r-prop:price ;
+                           rdfs:subPropertyOf b4r-prop:kWhprice ;
                            rdfs:label "abbonamento prezzo"@it ,
                                       "prix del'abonnement"@fr ,
                                       "subscription price"@en ,
@@ -123,21 +116,13 @@ bs:quantityKind rdf:type owl:AnnotationProperty .
                                   "weekdays hours"@en .
 
 
-###  http://www.bim4ren.eu/property#power
-b4r-prop:power rdf:type owl:ObjectProperty .
-
-
 ###  http://www.bim4ren.eu/property#price
-b4r-prop:price rdf:type owl:ObjectProperty ;
+b4r-prop:kWhprice rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf b4r-prop:price ;
                rdfs:label "kWh prezzo"@it ,
                           "kWh price"@en ,
                           "kwh precio"@es ,
                           "prix du kWh TTC"@fr .
-
-
-###  http://www.bim4ren.eu/property#ratio
-b4r-prop:ratio rdf:type owl:ObjectProperty .
 
 
 #################################################################
