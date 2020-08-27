@@ -15,13 +15,6 @@
                                         owl:imports <http://www.bim4ren.eu/property/0.1> ,
                                                     <http://www.w3.org/2004/02/skos/core> .
 
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  https://w3id.org/def/basicsemantics-owl#quantityKind
-bs:quantityKind rdf:type owl:AnnotationProperty .
-
 
 #################################################################
 #    Object Properties
