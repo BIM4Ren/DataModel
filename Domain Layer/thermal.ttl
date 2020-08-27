@@ -45,12 +45,15 @@ b4r-thermal:coefficientOfPerformance rdf:type owl:ObjectProperty ;
                                                 "coefficient de performance"@fr ,
                                                 "coefficient of performance"@en ,
                                                 "coefficiente di prestazione"@it ,
-                                                "coeficiente de operatividad"@es .
+                                                "coeficiente de operatividad"@es ;
+									 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3W1b00qSWHuO00025QrE$V>, # fuel related. On Chiller
+									 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3Wd_O0qSeHuO00025QrE$V>. # on compressor
 
 
 ###  http://www.bim4ren.eu/domain/thermal#condensingTemperature
 b4r-thermal:condensingTemperature rdf:type owl:ObjectProperty ;
-                                  rdfs:subPropertyOf b4r-prop:temperature .
+                                  rdfs:subPropertyOf b4r-prop:temperature ;
+								  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1ko9m0qSmHuO00025QrE$V>. #on condenser
 
 
 ###  http://www.bim4ren.eu/domain/thermal#dischargeTemperature
@@ -59,6 +62,15 @@ b4r-thermal:dischargeTemperature rdf:type owl:ObjectProperty ;
                                  rdfs:domain b4r-thermal:Producer ;
                                  rdfs:comment "The temperature of the output medium in a thermal loop." ;
                                  rdfs:label "discharge temperature"@en .
+								 
+###  http://www.bim4ren.eu/domain/thermal#temperatureSpread
+b4r-thermal:temperatureSpread rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf b4r-prop:temperature ;
+                              rdfs:domain b4r-thermal:Producer ;
+                              rdfs:comment "the difference between the ambient temperature and the desire room temperature. The range of temperature a heat pump needs to provide" ;
+                              rdfs:label "temperature spread"@en ;
+							  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3k_Vm0qU8HuO00025QrE$V> , #on compressor/evaporator
+							  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1w6yU0qSmHuO00025QrE$V>.  # on compressor/condenser
 
 
 ###  http://www.bim4ren.eu/domain/thermal#efficiencyType
@@ -72,7 +84,8 @@ b4r-thermal:efficiencyType rdf:type owl:ObjectProperty ;
 
 ###  http://www.bim4ren.eu/domain/thermal#evaporatingTemperature
 b4r-thermal:evaporatingTemperature rdf:type owl:ObjectProperty ;
-                                   rdfs:subPropertyOf b4r-prop:temperature .
+                                   rdfs:subPropertyOf b4r-prop:temperature ;
+								   skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3Rvom0qU8HuO00025QrE$V> .
 
 
 ###  http://www.bim4ren.eu/domain/thermal#heatTransmissionCoefficient
@@ -128,24 +141,12 @@ b4r-thermal:minTemperature rdf:type owl:ObjectProperty ;
                                       "temperatura mínima"@es ,
                                       "température minimale"@fr .
 
-
 ###  http://www.bim4ren.eu/domain/thermal#nominalPower
 b4r-thermal:nominalPower rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf b4r-prop:power ;
                          rdfs:label "nominal power"@en ,
                                     "puissance nominale"@fr ,
                                     "puissance utile"@fr .
-
-
-###  http://www.bim4ren.eu/domain/thermal#returnTemperature
-b4r-thermal:returnTemperature rdf:type owl:ObjectProperty ;
-                              rdfs:subPropertyOf b4r-prop:temperature ;
-                              rdfs:domain b4r-thermal:Producer ;
-                              rdfs:comment "The temperature of the input medium in a thermal loop." ;
-                              rdfs:label "return temperature"@en ;
-					 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1PxGW0qSuHuO00025QrE$V>,
-							<http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1WUt_0qSuHuO00025QrE$V>.
-
 
 ###  http://www.bim4ren.eu/domain/thermal#setPoint
 b4r-thermal:setPoint rdf:type owl:ObjectProperty ;
@@ -165,26 +166,45 @@ The stagnation temperature is the maximum temperature that the collector’s abs
                                              "temperature de ristagno"@it ,
                                              "température de stagnation"@fr .
 
+###  http://www.bim4ren.eu/domain/thermal#returnTemperature
+b4r-thermal:returnTemperature rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf b4r-prop:temperature ;
+                              rdfs:domain b4r-thermal:Producer ;
+                              rdfs:comment "The temperature of the input medium in a thermal loop." ;
+                              rdfs:label "return temperature"@en ;
+							  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1PxGW0qSuHuO00025QrE$V>, # Pset_CooledBeamPHistory.ReturnWaterTemperatureCooling
+											   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1WUt_0qSuHuO00025QrE$V>, # Pset_CooledBeamPHistory.ReturnWaterTemperatureHeating
+											   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/2ZqF20qSGHuO00025QrE$V>. # Pset_BoilerTypeCommon.OutletTemperatureRange
 
 ###  http://www.bim4ren.eu/domain/thermal#supplyTemperature
 b4r-thermal:supplyTemperature rdf:type owl:ObjectProperty ;
                                 rdfs:subPropertyOf b4r-prop:temperature ;
                                 rdfs:domain b4r-thermal:Producer; 
-								skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1NYgu0qSuHuO00025QrE$V>
-										<http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0osme0qRyHuO00025QrE$V>,
-										<http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0sRf40qRyHuO00025QrE$V>,
-										<http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1Sv$Y0qSuHuO00025QrE$V>.
+								skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1NYgu0qSuHuO00025QrE$V>, # cooled beam water/cooling
+												 <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0osme0qRyHuO00025QrE$V>, # air terminal/heating
+												 <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0sRf40qRyHuO00025QrE$V>, # air terminal/cooling
+												 <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1Sv$Y0qSuHuO00025QrE$V>, # cooled beam water/heating
+												 <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/03n9Y0qRyHuO00025QrE$V>, # air terminal/heating
+												 <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/2Ez5q0qSGHuO00025QrE$V> # Pset_BoilerTypeCommon.WaterInletTemperatureRange 
 
+###  http://www.bim4ren.eu/domain/thermal#exhaustTemperature
+b4r-thermal:exhaustTemperature rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf b4r-prop:temperature ;
+                               rdfs:domain b4r-thermal:Producer ;
+                               rdfs:comment "The temperature rejected by a thermal producer." ;
+                               rdfs:label "exhaust temperature"@en .
 
 ###  http://www.bim4ren.eu/domain/thermal#thermalEfficiency
 b4r-thermal:thermalEfficiency rdf:type owl:ObjectProperty ;
                               rdfs:range bs:QuantityValue ;
-                              rdfs:comment "Is this similar to Coefficient of Performance???"@en ;
                               rdfs:label "rendement"@fr ,
                                          "rendimento"@it ,
                                          "rendimiento térmico"@es ,
                                          "thermal efficiency"@en ;
-                              bs:quantityKind quantitykind:ThermalEfficiency .
+                              bs:quantityKind quantitykind:ThermalEfficiency,
+							  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/04OYo0qSaHuO00025QrE$V>, # Pset_ChillerTypeCommon.NominalEfficiency
+											   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3CMEg0qSGHuO00025QrE$V>, # Pset_BoilerTypeSteam.NominalEfficiency
+											   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3UEes0qSGHuO00025QrE$V>. # Pset_BoilerTypeWater.NominalEfficiency
 
 
 ###  http://www.bim4ren.eu/domain/thermal#thermalMass

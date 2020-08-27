@@ -43,7 +43,12 @@
                      "capacité"@fr ,
                      "volume"@en ,
                      "volume"@fr ,
-                     "volumen"@es .
+                     "volumen"@es ;
+		  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/06cwc0qX0HuO00025QrE$V>, # on tank
+						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1Tori0qSiHuO00025QrE$V>, # on compressor
+						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1rfDu0qSyHuO00025QrE$V>, # on cooling tower
+						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3_R4k0qSWHuO00025QrE$V>, # on chiller
+						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/2KKQU0qSGHuO00025QrE$V>, # on boiler
 
 ###  http://www.bim4ren.eu/domain/fluid#maxPressure
 :maxPressure rdf:type owl:ObjectProperty ;
@@ -70,7 +75,16 @@
                             "nominal flow rate"@en,
 							"portata nominale"@it,
 							"caudal nominal"@es.
-				 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0ANYHfXw16TO4AaI9tvudX>
+				 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0ANYHfXw16TO4AaI9tvudX>,
+								  <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3uE9W0qUKHuO00025QrE$V>.
+								  
+###  http://www.bim4ren.eu/domain/fluid#exhaustAirFlowRate
+:exhaustAirFlowRate rdf:type owl:ObjectProperty ;
+					rdfs:subPropertyOf b4r-prop:flowRate ;
+					rdfs:label "débit d'air rejeté"@fr ,
+                               "exhaust air flow rate"@en.
+				 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1K_dc0qWiHuO00025QrE$V>, # Pset_SpaceThermalDesign.ExhaustAirFlowrate
+								  <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0nW$w0qWmHuO00025QrE$V>. # Pset_SpaceThermalPHistory.ExhaustAirFlowRate
 
 
 ###  http://www.bim4ren.eu/domain/fluid#pressureDrop
@@ -80,6 +94,12 @@
 						 "pérdida de carga"@es ,
 						 "perdita di carico"@it ,
                          "pressure drop"@en .
+			  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0e3BGOgiD4xP50b$9C2nmB>, # nominal on AirTerminal
+							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0wcgw0qRyHuO00025QrE$V>, # idem
+							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/39$8s0qT0HuO00025QrE$V>, # Damper
+							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3iNp8gWkT9lgs6vawZQK$0>, # nominal on AirTerminal
+							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3plh00qU8HuO00025QrE$V>,
+							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1zhqw0qSmHuO00025QrE$V>. # Compressor/Condenser
 
 
 #################################################################
