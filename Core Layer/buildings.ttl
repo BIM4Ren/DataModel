@@ -8,12 +8,12 @@
 @prefix b4r-add: <http://www.bim4ren.eu/address#> .
 @prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @prefix b4r-bldgs: <http://www.bim4ren.eu/buildings#> .
+@prefix bot: <https://w3id.org/bot#> .
 @base <http://www.bim4ren.eu/buildings#> .
 
 <http://www.bim4ren.eu/buildings#> rdf:type owl:Ontology ;
                                     owl:versionIRI <http://www.bim4ren.eu/buildings/0.1> ;
-                                    owl:imports <http://www.bim4ren.eu/property/0.1> ,
-                                                <https://w3c-lbd-cg.github.io/bot/bot.ttl> ;
+                                    owl:imports b4r-prop: ;
                                     <http://purl.org/dc/terms/contributor> "Nathalie Charbel" ,
                                                                            "Pierre Bourreau" ;
                                     <http://purl.org/dc/terms/description> "The buildings ontology is part of the BIM4Ren project. It belongs to the core layer, and is an extension of the BOT ontology (Building Ontology Topology). Additional concepts are the possibility to describe a building enveloppe, and to classify buildings and rooms according to their usage."@en ;
