@@ -1,0 +1,126 @@
+# baseURI: http://bim4ren.eu/domain/airQuality
+# imports: http://qudt.org/2.1/vocab/quantitykind
+# imports: http://www.bim4ren.eu/property#
+# imports: https://w3id.org/def/basicsemantics-owl
+
+@prefix : <http://bim4ren.eu/domain/airQuality#> .
+@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix property: <http://www.bim4ren.eu/property#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix qudt-v1: <http://qudt.org/schema/qudt#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://bim4ren.eu/domain/airQuality>
+  rdf:type owl:Ontology ;
+  owl:imports <http://qudt.org/2.1/vocab/quantitykind> ;
+  owl:imports property: ;
+  owl:imports <https://w3id.org/def/basicsemantics-owl> ;
+.
+:C6H6
+  rdf:type :Pollutant ;
+  rdfs:label "C6H6" ;
+  rdfs:label "benceno"@es ;
+  rdfs:label "benzene"@en ;
+  rdfs:label "benzene"@it ;
+  rdfs:label "benzène"@fr ;
+.
+:CH2O
+  rdf:type :Pollutant ;
+  rdfs:label "CH2O" ;
+  rdfs:label "formaldehyde"@en ;
+  rdfs:label "formaldehído"@es ;
+  rdfs:label "formaldeide"@it ;
+  rdfs:label "formaldéhyde"@fr ;
+  rdfs:label "methanal"@en ;
+  rdfs:label "methanal"@es ;
+  rdfs:label "méthanal"@fr ;
+.
+:CO2
+  rdf:type :Pollutant ;
+  rdfs:label "CO2" ;
+  rdfs:label "anidride carbonica"@it ;
+  rdfs:label "biossido di carbonio"@it ;
+  rdfs:label "carbon dioxide"@en ;
+  rdfs:label "diossido di carbonio"@it ;
+  rdfs:label "dioxide de carbone"@fr ;
+  rdfs:label "dióxido de carbono"@es ;
+  rdfs:label "gaz carbonique"@fr ;
+.
+:ComponentRelativeAbundance
+  rdf:type qudt:QuantityKind ;
+  dcterms:description "The \"Absolute Activity\" is the exponential of the ratio of the chemical potential to \\(RT\\) where \\(R\\) is the gas constant and \\(T\\) the thermodynamic temperature."^^qudt:LatexString ;
+  qudt:applicableUnit :PartsPerMillion ;
+  qudt:applicableUnit <http://qudt.org/vocab/unit#KilogramPerCubicMeter> ;
+  qudt:hasDimensionVector <http://qudt.org/vocab/dimensionvector/A0E0L-3I0M0H0T0D0> ;
+  rdfs:isDefinedBy <http://qudt.org/2.1/vocab/quantitykind> ;
+  rdfs:isDefinedBy <http://qudt.org/vocab/quantitykind> ;
+  rdfs:label "Absolute Activity" ;
+  rdfs:label "Absolute Activity"@en ;
+  skos:broader <http://qudt.org/vocab/quantitykind/InverseVolume> ;
+.
+:NO2
+  rdf:type :Pollutant ;
+  rdfs:label "NO2" ;
+  rdfs:label "diossido di azoto"@it ;
+  rdfs:label "dioxide d'azote"@fr ;
+  rdfs:label "dióxido de nitrógeno"@es ;
+  rdfs:label "nitrogen dioxide"@en ;
+.
+:O3
+  rdf:type :Pollutant ;
+  rdfs:label "ozone"@en ;
+  rdfs:label "ozone"@fr ;
+  rdfs:label "ozono"@es ;
+  rdfs:label "ozono"@it ;
+.
+:PM10
+  rdf:type :Pollutant ;
+  rdfs:label "PM" ;
+  rdfs:label "PM10" ;
+  rdfs:label "atmospheric aerosol particles"@en ;
+  rdfs:label "atmospheric particulate matter"@en ;
+  rdfs:label "particolato"@it ;
+  rdfs:label "particulate matter"@en ;
+  rdfs:label "particules en suspension"@fr ;
+  rdfs:label "partículas en suspensión"@es ;
+  rdfs:label "suspended particulate matter"@en ;
+.
+:PartsPerMillion
+  rdf:type qudt-v1:ChemistryUnit ;
+  rdf:type qudt-v1:DimensionlessUnit ;
+  rdfs:label "Parts per Million" ;
+.
+:Pollutant
+  rdf:type owl:Class ;
+  rdfs:subClassOf owl:Thing ;
+.
+:PollutantSource
+  rdf:type owl:Class ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SO2
+  rdf:type :Pollutant ;
+  rdfs:label "SO2" ;
+  rdfs:label "anidride solforosa"@it ;
+  rdfs:label "diossido di zolfo"@it ;
+  rdfs:label "dioxide de souffre"@fr ;
+  rdfs:label "dióxido de azufre"@es ;
+  rdfs:label "sulfure dioxide"@en ;
+  rdfs:label "óxido de azufre"@es ;
+.
+:pollutant
+  rdf:type owl:ObjectProperty ;
+  rdfs:range :Pollutant ;
+.
+:pollutantEmission
+  rdf:type owl:ObjectProperty ;
+  :pollutant :Pollutant ;
+  rdfs:label "pression"@fr ;
+  rdfs:range bs:QuantityValue ;
+  bs:quantityKind :ComponentRelativeAbundance ;
+.
