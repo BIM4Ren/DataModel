@@ -1,0 +1,230 @@
+# baseURI: http://bim4ren.eu/urban
+# imports: http://www.bim4ren.eu/property#
+# imports: https://w3id.org/def/basicsemantics-owl
+
+@prefix : <http://bim4ren.eu/urban#> .
+@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix property: <http://www.bim4ren.eu/property#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://bim4ren.eu/urban>
+  rdf:type owl:Ontology ;
+  owl:imports property: ;
+  owl:imports <https://w3id.org/def/basicsemantics-owl> ;
+.
+:Agriculture
+  rdf:type owl:Class ;
+  rdfs:subClassOf :GreenZone ;
+.
+:Airport
+  rdf:type owl:Class ;
+  rdfs:subClassOf :CirculationZone ;
+.
+:BlockOfBuilding
+  rdf:type owl:Class ;
+  rdfs:subClassOf :BuiltArea ;
+.
+:Building
+  rdf:type owl:Class ;
+  rdfs:label "Building"@en ;
+  rdfs:label "Bâtiment"@fr ;
+  rdfs:label "Edificio"@es ;
+  rdfs:subClassOf :Object ;
+.
+:BuiltArea
+  rdf:type owl:Class ;
+  rdfs:label "Zone construite"@fr ;
+  rdfs:subClassOf :Zone ;
+.
+:CirculationZone
+  rdf:type owl:Class ;
+  rdfs:label "Aménagement routier"@fr ;
+  rdfs:subClassOf :Zone ;
+.
+:CommunicationNetwork
+  rdf:type owl:Class ;
+  rdfs:subClassOf :FlowInfrastructure ;
+.
+:Cone
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Shape ;
+.
+:Cuboid
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Shape ;
+.
+:CyclingRoad
+  rdf:type owl:Class ;
+  rdfs:subClassOf :CirculationZone ;
+.
+:Cylinder
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Shape ;
+.
+:ElectrictyNetwork
+  rdf:type owl:Class ;
+  rdfs:subClassOf :FlowInfrastructure ;
+.
+:FlowInfrastructure
+  rdf:type owl:Class ;
+  rdfs:label "Réseau"@fr ;
+  rdfs:subClassOf :Object ;
+.
+:Forest
+  rdf:type owl:Class ;
+  rdfs:subClassOf :GreenZone ;
+.
+:GazNetwork
+  rdf:type owl:Class ;
+  rdfs:subClassOf :FlowInfrastructure ;
+.
+:GreenZone
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Zone ;
+.
+:HeatNetwork
+  rdf:type owl:Class ;
+  rdfs:subClassOf :FlowInfrastructure ;
+.
+:Lake
+  rdf:type owl:Class ;
+  rdfs:subClassOf :WaterBody ;
+.
+:Object
+  rdf:type owl:Class ;
+  rdfs:comment "An object of importance in the urban environment, regarding the thermal reonvation of a specific buildings."@en ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Park
+  rdf:type owl:Class ;
+  rdfs:subClassOf :GreenZone ;
+.
+:Parking
+  rdf:type owl:Class ;
+  rdfs:subClassOf :BuiltArea ;
+.
+:ParkingPlace
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Object ;
+.
+:PeatonalStreet
+  rdf:type owl:Class ;
+  rdfs:subClassOf :CirculationZone ;
+.
+:Positioning
+  rdf:type owl:Class ;
+  rdfs:label "Positioning "@en ;
+  rdfs:subClassOf owl:Thing ;
+.
+:PrivateParkingPlace
+  rdf:type owl:Class ;
+  rdfs:subClassOf :ParkingPlace ;
+.
+:PublicParkingPlace
+  rdf:type owl:Class ;
+  rdfs:subClassOf :ParkingPlace ;
+.
+:Pyramid
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Shape ;
+.
+:Railway
+  rdf:type owl:Class ;
+  rdfs:subClassOf :CirculationZone ;
+.
+:River
+  rdf:type owl:Class ;
+  rdfs:subClassOf :WaterBody ;
+.
+:Road
+  rdf:type owl:Class ;
+  rdfs:subClassOf :CirculationZone ;
+.
+:Sea
+  rdf:type owl:Class ;
+  rdfs:subClassOf :WaterBody ;
+.
+:Shade
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Object ;
+.
+:Shape
+  rdf:type owl:Class ;
+  rdfs:comment "A predefined 3D shape that can be associated to an urban object. All the predefined shapes are basic vomumetric objects."@en ;
+  rdfs:label "Forma"@es ;
+  rdfs:label "Forme"@fr ;
+  rdfs:label "Shape"@en ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Sphere
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Shape ;
+.
+:Tree
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Object ;
+.
+:VerticalProjection
+  rdf:type owl:Class ;
+  rdfs:label "proiezione verticale"@it ;
+  rdfs:label "projection verticale"@fr ;
+  rdfs:label "proyección vertical"@es ;
+  rdfs:label "vertical projection"@en ;
+  rdfs:label "vue du ciel"@fr ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WaterBody
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Zone ;
+.
+:WaterNetwork
+  rdf:type owl:Class ;
+  rdfs:subClassOf :FlowInfrastructure ;
+.
+:Zone
+  rdf:type owl:Class ;
+  rdfs:subClassOf owl:Thing ;
+.
+:altitude
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Positioning ;
+  rdfs:label "Altitude "@en ;
+  bs:quantityKind <http://qudt.org/vocab/quantitykind/Length> ;
+.
+:greenZoneRatio
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "part de végétalisation"@fr ;
+  rdfs:label "part of vegetalisation"@en ;
+  rdfs:subPropertyOf property:ratio ;
+.
+:hasPosition
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Object ;
+  rdfs:range :Positioning ;
+.
+:hasVerticalProjection
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Object ;
+  rdfs:range :VerticalProjection ;
+.
+:latitude
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Positioning ;
+  rdfs:label "Latitude "@en ;
+  rdfs:subPropertyOf property:angle ;
+.
+:longitude
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Positioning ;
+  rdfs:label "Longitude "@en ;
+  rdfs:subPropertyOf property:angle ;
+.
+:urbanZoneRatio
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "part de végétalisation"@fr ;
+  rdfs:label "urban density"@en ;
+  rdfs:subPropertyOf property:ratio ;
+.

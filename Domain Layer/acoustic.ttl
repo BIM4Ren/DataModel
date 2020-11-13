@@ -75,7 +75,7 @@
 ###  http://www.bim4ren.eu/domain/acoustic#AerialNoise
 :AerialNoise rdf:type owl:Class ;
              rdfs:subClassOf :Noise ;
-			 rdfs:label "bruits aériens"@fr", "pollution sonore"@fr, 
+			 rdfs:label "bruits aériens"@fr, "pollution sonore"@fr, 
 						"environmental noise"@en, "sound pollution"@en ,
 						"contaminación acústica ambiental"@es, "contaminación sónica ambiental"@es, "contaminación sonora ambiental"@es ,
 						"inquinamento acustico"@it,

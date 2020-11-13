@@ -46,11 +46,4 @@ ifc2x3:IfcFlowTerminal rdfs:subClassOf sot:TerminalElement.
 ifc4:IfcFlowTerminal rdfs:subClassOf sot:TerminalElement.
 
 
-
-#################################################################
-#    Property
-#################################################################
-
-ifc4:IfcRelAssignsToGroup rdfs:subPropertyOf sot:hasElements.
-ifc2x3:IfcRelAssignsToGroup rdfs:subPropertyOf sot:hasElements.
 				

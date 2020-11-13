@@ -32,7 +32,7 @@
   rdfs:label "angolo"@it ;
   rdfs:label "angulo"@es ;
   rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Angle ;
+  bs:quantityKind quantitykind:PlaneAngle ;
 .
 :area
   rdf:type owl:ObjectProperty ;

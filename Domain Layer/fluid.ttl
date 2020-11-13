@@ -7,11 +7,11 @@
 @prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core/> .
-@base <http://www.bim4ren.eu/domain/fluid> .
+@base <http://www.bim4ren.eu/domain/fluid#> .
 
-<http://www.bim4ren.eu/domain/fluid> rdf:type owl:Ontology ;
+<http://www.bim4ren.eu/domain/fluid#> rdf:type owl:Ontology ;
                                       owl:versionIRI <http://www.bim4ren.eu/domain/fluid/0.1> ;
-                                      owl:imports <http://www.bim4ren.eu/property/0.1> .
+                                      owl:imports b4r-prop: .
 
 #################################################################
 #    Object Properties
@@ -44,11 +44,16 @@
                      "volume"@en ,
                      "volume"@fr ,
                      "volumen"@es ;
-		  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/06cwc0qX0HuO00025QrE$V>, # on tank
-						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1Tori0qSiHuO00025QrE$V>, # on compressor
-						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1rfDu0qSyHuO00025QrE$V>, # on cooling tower
-						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3_R4k0qSWHuO00025QrE$V>, # on chiller
-						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/2KKQU0qSGHuO00025QrE$V>, # on boiler
+		  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/06cwc0qX0HuO00025QrE$V>, 
+						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1Tori0qSiHuO00025QrE$V>,
+						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1rfDu0qSyHuO00025QrE$V>, 
+						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3_R4k0qSWHuO00025QrE$V>,
+						   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/2KKQU0qSGHuO00025QrE$V>.
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/06cwc0qX0HuO00025QrE$V>,	 on tank
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1Tori0qSiHuO00025QrE$V>, # on compressor
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1rfDu0qSyHuO00025QrE$V>, # on cooling tower
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3_R4k0qSWHuO00025QrE$V>, # on chiller
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/2KKQU0qSGHuO00025QrE$V>, # on boiler
 
 ###  http://www.bim4ren.eu/domain/fluid#maxPressure
 :maxPressure rdf:type owl:ObjectProperty ;
@@ -74,7 +79,7 @@
                  rdfs:label "débit nominal"@fr ,
                             "nominal flow rate"@en,
 							"portata nominale"@it,
-							"caudal nominal"@es.
+							"caudal nominal"@es;
 				 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0ANYHfXw16TO4AaI9tvudX>,
 								  <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3uE9W0qUKHuO00025QrE$V>.
 								  
@@ -82,9 +87,11 @@
 :exhaustAirFlowRate rdf:type owl:ObjectProperty ;
 					rdfs:subPropertyOf b4r-prop:flowRate ;
 					rdfs:label "débit d'air rejeté"@fr ,
-                               "exhaust air flow rate"@en.
-				 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1K_dc0qWiHuO00025QrE$V>, # Pset_SpaceThermalDesign.ExhaustAirFlowrate
-								  <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0nW$w0qWmHuO00025QrE$V>. # Pset_SpaceThermalPHistory.ExhaustAirFlowRate
+                               "exhaust air flow rate"@en;
+				 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1K_dc0qWiHuO00025QrE$V>, 
+								  <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0nW$w0qWmHuO00025QrE$V>.
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1K_dc0qWiHuO00025QrE$V>, # Pset_SpaceThermalDesign.ExhaustAirFlowrate
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0nW$w0qWmHuO00025QrE$V>. # Pset_SpaceThermalPHistory.ExhaustAirFlowRate
 
 
 ###  http://www.bim4ren.eu/domain/fluid#pressureDrop
@@ -93,13 +100,19 @@
               rdfs:label "perte de charge"@fr ,
 						 "pérdida de carga"@es ,
 						 "perdita di carico"@it ,
-                         "pressure drop"@en .
-			  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0e3BGOgiD4xP50b$9C2nmB>, # nominal on AirTerminal
-							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0wcgw0qRyHuO00025QrE$V>, # idem
-							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/39$8s0qT0HuO00025QrE$V>, # Damper
-							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3iNp8gWkT9lgs6vawZQK$0>, # nominal on AirTerminal
+                         "pressure drop"@en ;
+			  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0e3BGOgiD4xP50b$9C2nmB>, 
+							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0wcgw0qRyHuO00025QrE$V>, 
+							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/39$8s0qT0HuO00025QrE$V>, 
+							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3iNp8gWkT9lgs6vawZQK$0>, 
 							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3plh00qU8HuO00025QrE$V>,
-							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1zhqw0qSmHuO00025QrE$V>. # Compressor/Condenser
+							   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1zhqw0qSmHuO00025QrE$V>. 
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0e3BGOgiD4xP50b$9C2nmB>, # nominal on AirTerminal
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0wcgw0qRyHuO00025QrE$V>, # idem
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/39$8s0qT0HuO00025QrE$V>, # Damper
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3iNp8gWkT9lgs6vawZQK$0>, # nominal on AirTerminal
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3plh00qU8HuO00025QrE$V>,
+# <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/1zhqw0qSmHuO00025QrE$V>. # Compressor/Condenser
 
 
 #################################################################

@@ -1,0 +1,69 @@
+# baseURI: http://www.bim4ren.eu/domain/luminosity
+# imports: http://www.bim4ren.eu/property#
+
+@prefix : <http://www.bim4ren.eu/domain/luminosity#> .
+@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prop: <http://bim4ren.eu/property#> .
+@prefix property: <http://www.bim4ren.eu/property#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.bim4ren.eu/domain/luminosity>
+  rdf:type owl:Ontology ;
+  owl:imports property: ;
+.
+:OpaqueElement
+  rdf:type owl:Class ;
+  rdfs:label "elemento opaco"@es ;
+  rdfs:label "elemento opaco"@it ;
+  rdfs:label "opaque element"@en ;
+  rdfs:label "élément opaque"@fr ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty :reflection ;
+      owl:someValuesFrom bs:QuantityValue ;
+    ] ;
+.
+:TransparentElement
+  rdf:type owl:Class ;
+  rdfs:label "element transparent"@fr ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty :skyAngle ;
+      owl:someValuesFrom bs:QuantityValue ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty :transmittance ;
+      owl:someValuesFrom bs:QuantityValue ;
+    ] ;
+.
+:reflection
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "R"@fr ;
+  rdfs:label "facteur de réflexion moyen"@fr ;
+  rdfs:label "reflection"@en ;
+  rdfs:label "reflexión"@es ;
+  rdfs:label "riflessione"@it ;
+  rdfs:label "réflexion"@fr ;
+  rdfs:subPropertyOf property:ratio ;
+.
+:transmittance
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "TL"@fr ;
+  rdfs:label "coefficient de transmission lumineuse"@fr ;
+  rdfs:label "transmittance"@en ;
+  rdfs:label "transmittance"@fr ;
+  rdfs:label "transmittancia"@es ;
+  rdfs:label "transmittanza"@it ;
+  rdfs:subPropertyOf property:ratio ;
+.
+:visibleSkyAngle
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "angle de ciel visible"@fr ;
+  rdfs:subPropertyOf property:angle ;
+.
