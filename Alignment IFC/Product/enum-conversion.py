@@ -8,9 +8,11 @@ PREFIXES = ["prefix owl: <http://www.w3.org/2002/07/owl#>",
   "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
   "prefix ifc: <"+IFC+">"]
 
-PATTERN = "[ifcToLbd[XXX]-[YYY]:\
-    (?z rdf:type ifc:Ifc[XXX]) (?z ifc:predefinedType_[XXX] ifc:[YYY])\
-    -> (?z rdf:type goal:[XXX]-[YYY])."
+IFC_TYPE_PATTERN = "(?z rdf:type ifc:Ifc[XXX]) (?z ifc:predefinedType_[XXX] ifc:[YYY])"
+LBD_TYPE_PATTERN = "(?z rdf:type goal:[XXX]-[YYY])"
+PATTERN_IFC2LBD = "[ifcToLbd[XXX]-[YYY]:" +IFC_TYPE_PATTERN + " -> " + LBD_TYPE_PATTERN + " ."
+PATTERN_LBD2IFC = "[LbdToIfc[XXX]-[YYY]:" +LBD_TYPE_PATTERN + " -> " + IFC_TYPE_PATTERN + " ."
+PATTERNS = {PATTERN_IFC2LBD: "IfcTo{ontoname}.swrl", PATTERN_LBD2IFC: "{ontoname}ToIfc.swrl"}
 
 IFCOWL_ENDPOINT = 'http://localhost:3030/ifcOwl/query'
 SPARQL_QUERY = """select ?distribType (group_concat(DISTINCT ?value; separator=' & ') as ?values) where {\
@@ -25,10 +27,11 @@ SPARQL_QUERY = """select ?distribType (group_concat(DISTINCT ?value; separator='
 DISTRIBUTION = 'IfcDistributionElement'
 BUILDING = 'IfcBuildingElement'
 
-ONTOLOGIES = {DISTRIBUTION: 'https://pi.pauwel.be/voc/distributionelement#',
+ONTOLOGIES = {
+    DISTRIBUTION: 'https://pi.pauwel.be/voc/distributionelement#',
     BUILDING: 'https://pi.pauwel.be/voc/buildingelement#'}
 
-PARENT_CLASS = [DISTRIBUTION, BUILDING]
+PARENT_CLASS = {DISTRIBUTION: "Distribution", BUILDING: "Building"}
 
 def remove_prefix(text, prefix):
     '''Simple process of the URIs, to remove the prefix.'''
@@ -61,20 +64,21 @@ def extract_enums(parent_class):
             res[k] = v
     return res
 
-def create_rule(classname, enumname):
-    return PATTERN.replace('[XXX]', classname).replace('[YYY]', enumname)
+def create_rule(classname, enumname, pattern):
+    return pattern.replace('[XXX]', classname).replace('[YYY]', enumname)
 
-def create_rules(dico):
+def create_rules(dico, pattern):
     str = '\n'.join(['@'+prefix+'.' for prefix in PREFIXES]) + '\n'
     for classname, enums in dico.items():
         str += '\n'
         for enum in enums:
-            str += create_rule(classname, enum) + '\n'
+            str += create_rule(classname, enum, pattern) + '\n'
     return str
 
 if __name__ == "__main__":
-    for parent_class in PARENT_CLASS:
-        rules = "prefix goal:<"+ONTOLOGIES[parent_class]+">.\n"
-        rules += create_rules(extract_enums(parent_class))
-        with open("IFCto"+parent_class+".swrl","w+") as f:
-            f.write(rules)
+    for pattern in PATTERNS.keys():
+        for parent_class in PARENT_CLASS.keys():
+            rules = "prefix goal:<"+ONTOLOGIES[parent_class]+">.\n"
+            rules += create_rules(extract_enums(parent_class), pattern)
+            with open(PATTERNS[pattern].format(ontoname=PARENT_CLASS[parent_class]), "w+") as f:
+                f.write(rules)

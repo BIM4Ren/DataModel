@@ -1,0 +1,181 @@
+prefix goal:<https://pi.pauwel.be/voc/buildingelement#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ifc: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#>.
+
+[LbdToIfcRamp-HALF_TURN_RAMP:(?z rdf:type goal:Ramp-HALF_TURN_RAMP) -> (?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:HALF_TURN_RAMP) .
+[LbdToIfcRamp-USERDEFINED:(?z rdf:type goal:Ramp-USERDEFINED) -> (?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:USERDEFINED) .
+[LbdToIfcRamp-TWO_STRAIGHT_RUN_RAMP:(?z rdf:type goal:Ramp-TWO_STRAIGHT_RUN_RAMP) -> (?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:TWO_STRAIGHT_RUN_RAMP) .
+[LbdToIfcRamp-SPIRAL_RAMP:(?z rdf:type goal:Ramp-SPIRAL_RAMP) -> (?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:SPIRAL_RAMP) .
+[LbdToIfcRamp-QUARTER_TURN_RAMP:(?z rdf:type goal:Ramp-QUARTER_TURN_RAMP) -> (?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:QUARTER_TURN_RAMP) .
+[LbdToIfcRamp-TWO_QUARTER_TURN_RAMP:(?z rdf:type goal:Ramp-TWO_QUARTER_TURN_RAMP) -> (?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:TWO_QUARTER_TURN_RAMP) .
+[LbdToIfcRamp-STRAIGHT_RUN_RAMP:(?z rdf:type goal:Ramp-STRAIGHT_RUN_RAMP) -> (?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:STRAIGHT_RUN_RAMP) .
+[LbdToIfcRamp-NOTDEFINED:(?z rdf:type goal:Ramp-NOTDEFINED) -> (?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:NOTDEFINED) .
+
+[LbdToIfcWindow-USERDEFINED:(?z rdf:type goal:Window-USERDEFINED) -> (?z rdf:type ifc:IfcWindow) (?z ifc:predefinedType_Window ifc:USERDEFINED) .
+[LbdToIfcWindow-LIGHTDOME:(?z rdf:type goal:Window-LIGHTDOME) -> (?z rdf:type ifc:IfcWindow) (?z ifc:predefinedType_Window ifc:LIGHTDOME) .
+[LbdToIfcWindow-SKYLIGHT:(?z rdf:type goal:Window-SKYLIGHT) -> (?z rdf:type ifc:IfcWindow) (?z ifc:predefinedType_Window ifc:SKYLIGHT) .
+[LbdToIfcWindow-WINDOW:(?z rdf:type goal:Window-WINDOW) -> (?z rdf:type ifc:IfcWindow) (?z ifc:predefinedType_Window ifc:WINDOW) .
+[LbdToIfcWindow-NOTDEFINED:(?z rdf:type goal:Window-NOTDEFINED) -> (?z rdf:type ifc:IfcWindow) (?z ifc:predefinedType_Window ifc:NOTDEFINED) .
+
+[LbdToIfcBuildingElementProxy-PROVISIONFORSPACE:(?z rdf:type goal:BuildingElementProxy-PROVISIONFORSPACE) -> (?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:PROVISIONFORSPACE) .
+[LbdToIfcBuildingElementProxy-USERDEFINED:(?z rdf:type goal:BuildingElementProxy-USERDEFINED) -> (?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:USERDEFINED) .
+[LbdToIfcBuildingElementProxy-PARTIAL:(?z rdf:type goal:BuildingElementProxy-PARTIAL) -> (?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:PARTIAL) .
+[LbdToIfcBuildingElementProxy-PROVISIONFORVOID:(?z rdf:type goal:BuildingElementProxy-PROVISIONFORVOID) -> (?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:PROVISIONFORVOID) .
+[LbdToIfcBuildingElementProxy-COMPLEX:(?z rdf:type goal:BuildingElementProxy-COMPLEX) -> (?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:COMPLEX) .
+[LbdToIfcBuildingElementProxy-ELEMENT:(?z rdf:type goal:BuildingElementProxy-ELEMENT) -> (?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:ELEMENT) .
+[LbdToIfcBuildingElementProxy-NOTDEFINED:(?z rdf:type goal:BuildingElementProxy-NOTDEFINED) -> (?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:NOTDEFINED) .
+
+[LbdToIfcFooting-STRIP_FOOTING:(?z rdf:type goal:Footing-STRIP_FOOTING) -> (?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:STRIP_FOOTING) .
+[LbdToIfcFooting-USERDEFINED:(?z rdf:type goal:Footing-USERDEFINED) -> (?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:USERDEFINED) .
+[LbdToIfcFooting-PILE_CAP:(?z rdf:type goal:Footing-PILE_CAP) -> (?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:PILE_CAP) .
+[LbdToIfcFooting-FOOTING_BEAM:(?z rdf:type goal:Footing-FOOTING_BEAM) -> (?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:FOOTING_BEAM) .
+[LbdToIfcFooting-PAD_FOOTING:(?z rdf:type goal:Footing-PAD_FOOTING) -> (?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:PAD_FOOTING) .
+[LbdToIfcFooting-CAISSON_FOUNDATION:(?z rdf:type goal:Footing-CAISSON_FOUNDATION) -> (?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:CAISSON_FOUNDATION) .
+[LbdToIfcFooting-NOTDEFINED:(?z rdf:type goal:Footing-NOTDEFINED) -> (?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:NOTDEFINED) .
+
+[LbdToIfcStairFlight-SPIRAL:(?z rdf:type goal:StairFlight-SPIRAL) -> (?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:SPIRAL) .
+[LbdToIfcStairFlight-USERDEFINED:(?z rdf:type goal:StairFlight-USERDEFINED) -> (?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:USERDEFINED) .
+[LbdToIfcStairFlight-FREEFORM:(?z rdf:type goal:StairFlight-FREEFORM) -> (?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:FREEFORM) .
+[LbdToIfcStairFlight-CURVED:(?z rdf:type goal:StairFlight-CURVED) -> (?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:CURVED) .
+[LbdToIfcStairFlight-STRAIGHT:(?z rdf:type goal:StairFlight-STRAIGHT) -> (?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:STRAIGHT) .
+[LbdToIfcStairFlight-NOTDEFINED:(?z rdf:type goal:StairFlight-NOTDEFINED) -> (?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:NOTDEFINED) .
+[LbdToIfcStairFlight-WINDER:(?z rdf:type goal:StairFlight-WINDER) -> (?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:WINDER) .
+
+[LbdToIfcBeam-BEAM:(?z rdf:type goal:Beam-BEAM) -> (?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:BEAM) .
+[LbdToIfcBeam-SPANDREL:(?z rdf:type goal:Beam-SPANDREL) -> (?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:SPANDREL) .
+[LbdToIfcBeam-LINTEL:(?z rdf:type goal:Beam-LINTEL) -> (?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:LINTEL) .
+[LbdToIfcBeam-USERDEFINED:(?z rdf:type goal:Beam-USERDEFINED) -> (?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:USERDEFINED) .
+[LbdToIfcBeam-HOLLOWCORE:(?z rdf:type goal:Beam-HOLLOWCORE) -> (?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:HOLLOWCORE) .
+[LbdToIfcBeam-JOIST:(?z rdf:type goal:Beam-JOIST) -> (?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:JOIST) .
+[LbdToIfcBeam-T_BEAM:(?z rdf:type goal:Beam-T_BEAM) -> (?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:T_BEAM) .
+[LbdToIfcBeam-NOTDEFINED:(?z rdf:type goal:Beam-NOTDEFINED) -> (?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:NOTDEFINED) .
+
+[LbdToIfcWall-SHEAR:(?z rdf:type goal:Wall-SHEAR) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:SHEAR) .
+[LbdToIfcWall-STANDARD:(?z rdf:type goal:Wall-STANDARD) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:STANDARD) .
+[LbdToIfcWall-SOLIDWALL:(?z rdf:type goal:Wall-SOLIDWALL) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:SOLIDWALL) .
+[LbdToIfcWall-PLUMBINGWALL:(?z rdf:type goal:Wall-PLUMBINGWALL) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:PLUMBINGWALL) .
+[LbdToIfcWall-PARAPET:(?z rdf:type goal:Wall-PARAPET) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:PARAPET) .
+[LbdToIfcWall-USERDEFINED:(?z rdf:type goal:Wall-USERDEFINED) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:USERDEFINED) .
+[LbdToIfcWall-MOVABLE:(?z rdf:type goal:Wall-MOVABLE) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:MOVABLE) .
+[LbdToIfcWall-POLYGONAL:(?z rdf:type goal:Wall-POLYGONAL) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:POLYGONAL) .
+[LbdToIfcWall-PARTITIONING:(?z rdf:type goal:Wall-PARTITIONING) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:PARTITIONING) .
+[LbdToIfcWall-ELEMENTEDWALL:(?z rdf:type goal:Wall-ELEMENTEDWALL) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:ELEMENTEDWALL) .
+[LbdToIfcWall-NOTDEFINED:(?z rdf:type goal:Wall-NOTDEFINED) -> (?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:NOTDEFINED) .
+
+[LbdToIfcDoor-DOOR:(?z rdf:type goal:Door-DOOR) -> (?z rdf:type ifc:IfcDoor) (?z ifc:predefinedType_Door ifc:DOOR) .
+[LbdToIfcDoor-TRAPDOOR:(?z rdf:type goal:Door-TRAPDOOR) -> (?z rdf:type ifc:IfcDoor) (?z ifc:predefinedType_Door ifc:TRAPDOOR) .
+[LbdToIfcDoor-USERDEFINED:(?z rdf:type goal:Door-USERDEFINED) -> (?z rdf:type ifc:IfcDoor) (?z ifc:predefinedType_Door ifc:USERDEFINED) .
+[LbdToIfcDoor-GATE:(?z rdf:type goal:Door-GATE) -> (?z rdf:type ifc:IfcDoor) (?z ifc:predefinedType_Door ifc:GATE) .
+[LbdToIfcDoor-NOTDEFINED:(?z rdf:type goal:Door-NOTDEFINED) -> (?z rdf:type ifc:IfcDoor) (?z ifc:predefinedType_Door ifc:NOTDEFINED) .
+
+[LbdToIfcStair-HALF_TURN_STAIR:(?z rdf:type goal:Stair-HALF_TURN_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:HALF_TURN_STAIR) .
+[LbdToIfcStair-QUARTER_WINDING_STAIR:(?z rdf:type goal:Stair-QUARTER_WINDING_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:QUARTER_WINDING_STAIR) .
+[LbdToIfcStair-SPIRAL_STAIR:(?z rdf:type goal:Stair-SPIRAL_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:SPIRAL_STAIR) .
+[LbdToIfcStair-TWO_STRAIGHT_RUN_STAIR:(?z rdf:type goal:Stair-TWO_STRAIGHT_RUN_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:TWO_STRAIGHT_RUN_STAIR) .
+[LbdToIfcStair-USERDEFINED:(?z rdf:type goal:Stair-USERDEFINED) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:USERDEFINED) .
+[LbdToIfcStair-TWO_CURVED_RUN_STAIR:(?z rdf:type goal:Stair-TWO_CURVED_RUN_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:TWO_CURVED_RUN_STAIR) .
+[LbdToIfcStair-CURVED_RUN_STAIR:(?z rdf:type goal:Stair-CURVED_RUN_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:CURVED_RUN_STAIR) .
+[LbdToIfcStair-DOUBLE_RETURN_STAIR:(?z rdf:type goal:Stair-DOUBLE_RETURN_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:DOUBLE_RETURN_STAIR) .
+[LbdToIfcStair-STRAIGHT_RUN_STAIR:(?z rdf:type goal:Stair-STRAIGHT_RUN_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:STRAIGHT_RUN_STAIR) .
+[LbdToIfcStair-THREE_QUARTER_TURN_STAIR:(?z rdf:type goal:Stair-THREE_QUARTER_TURN_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:THREE_QUARTER_TURN_STAIR) .
+[LbdToIfcStair-TWO_QUARTER_TURN_STAIR:(?z rdf:type goal:Stair-TWO_QUARTER_TURN_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:TWO_QUARTER_TURN_STAIR) .
+[LbdToIfcStair-QUARTER_TURN_STAIR:(?z rdf:type goal:Stair-QUARTER_TURN_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:QUARTER_TURN_STAIR) .
+[LbdToIfcStair-THREE_QUARTER_WINDING_STAIR:(?z rdf:type goal:Stair-THREE_QUARTER_WINDING_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:THREE_QUARTER_WINDING_STAIR) .
+[LbdToIfcStair-HALF_WINDING_STAIR:(?z rdf:type goal:Stair-HALF_WINDING_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:HALF_WINDING_STAIR) .
+[LbdToIfcStair-TWO_QUARTER_WINDING_STAIR:(?z rdf:type goal:Stair-TWO_QUARTER_WINDING_STAIR) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:TWO_QUARTER_WINDING_STAIR) .
+[LbdToIfcStair-NOTDEFINED:(?z rdf:type goal:Stair-NOTDEFINED) -> (?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:NOTDEFINED) .
+
+[LbdToIfcRailing-USERDEFINED:(?z rdf:type goal:Railing-USERDEFINED) -> (?z rdf:type ifc:IfcRailing) (?z ifc:predefinedType_Railing ifc:USERDEFINED) .
+[LbdToIfcRailing-GUARDRAIL:(?z rdf:type goal:Railing-GUARDRAIL) -> (?z rdf:type ifc:IfcRailing) (?z ifc:predefinedType_Railing ifc:GUARDRAIL) .
+[LbdToIfcRailing-BALUSTRADE:(?z rdf:type goal:Railing-BALUSTRADE) -> (?z rdf:type ifc:IfcRailing) (?z ifc:predefinedType_Railing ifc:BALUSTRADE) .
+[LbdToIfcRailing-HANDRAIL:(?z rdf:type goal:Railing-HANDRAIL) -> (?z rdf:type ifc:IfcRailing) (?z ifc:predefinedType_Railing ifc:HANDRAIL) .
+[LbdToIfcRailing-NOTDEFINED:(?z rdf:type goal:Railing-NOTDEFINED) -> (?z rdf:type ifc:IfcRailing) (?z ifc:predefinedType_Railing ifc:NOTDEFINED) .
+
+[LbdToIfcChimney-USERDEFINED:(?z rdf:type goal:Chimney-USERDEFINED) -> (?z rdf:type ifc:IfcChimney) (?z ifc:predefinedType_Chimney ifc:USERDEFINED) .
+[LbdToIfcChimney-NOTDEFINED:(?z rdf:type goal:Chimney-NOTDEFINED) -> (?z rdf:type ifc:IfcChimney) (?z ifc:predefinedType_Chimney ifc:NOTDEFINED) .
+
+[LbdToIfcShadingDevice-USERDEFINED:(?z rdf:type goal:ShadingDevice-USERDEFINED) -> (?z rdf:type ifc:IfcShadingDevice) (?z ifc:predefinedType_ShadingDevice ifc:USERDEFINED) .
+[LbdToIfcShadingDevice-JALOUSIE:(?z rdf:type goal:ShadingDevice-JALOUSIE) -> (?z rdf:type ifc:IfcShadingDevice) (?z ifc:predefinedType_ShadingDevice ifc:JALOUSIE) .
+[LbdToIfcShadingDevice-SHUTTER:(?z rdf:type goal:ShadingDevice-SHUTTER) -> (?z rdf:type ifc:IfcShadingDevice) (?z ifc:predefinedType_ShadingDevice ifc:SHUTTER) .
+[LbdToIfcShadingDevice-AWNING:(?z rdf:type goal:ShadingDevice-AWNING) -> (?z rdf:type ifc:IfcShadingDevice) (?z ifc:predefinedType_ShadingDevice ifc:AWNING) .
+[LbdToIfcShadingDevice-NOTDEFINED:(?z rdf:type goal:ShadingDevice-NOTDEFINED) -> (?z rdf:type ifc:IfcShadingDevice) (?z ifc:predefinedType_ShadingDevice ifc:NOTDEFINED) .
+
+[LbdToIfcSlab-ROOF:(?z rdf:type goal:Slab-ROOF) -> (?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:ROOF) .
+[LbdToIfcSlab-FLOOR:(?z rdf:type goal:Slab-FLOOR) -> (?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:FLOOR) .
+[LbdToIfcSlab-BASESLAB:(?z rdf:type goal:Slab-BASESLAB) -> (?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:BASESLAB) .
+[LbdToIfcSlab-LANDING:(?z rdf:type goal:Slab-LANDING) -> (?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:LANDING) .
+[LbdToIfcSlab-USERDEFINED:(?z rdf:type goal:Slab-USERDEFINED) -> (?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:USERDEFINED) .
+[LbdToIfcSlab-NOTDEFINED:(?z rdf:type goal:Slab-NOTDEFINED) -> (?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:NOTDEFINED) .
+
+[LbdToIfcPlate-CURTAIN_PANEL:(?z rdf:type goal:Plate-CURTAIN_PANEL) -> (?z rdf:type ifc:IfcPlate) (?z ifc:predefinedType_Plate ifc:CURTAIN_PANEL) .
+[LbdToIfcPlate-USERDEFINED:(?z rdf:type goal:Plate-USERDEFINED) -> (?z rdf:type ifc:IfcPlate) (?z ifc:predefinedType_Plate ifc:USERDEFINED) .
+[LbdToIfcPlate-SHEET:(?z rdf:type goal:Plate-SHEET) -> (?z rdf:type ifc:IfcPlate) (?z ifc:predefinedType_Plate ifc:SHEET) .
+[LbdToIfcPlate-NOTDEFINED:(?z rdf:type goal:Plate-NOTDEFINED) -> (?z rdf:type ifc:IfcPlate) (?z ifc:predefinedType_Plate ifc:NOTDEFINED) .
+
+[LbdToIfcRampFlight-SPIRAL:(?z rdf:type goal:RampFlight-SPIRAL) -> (?z rdf:type ifc:IfcRampFlight) (?z ifc:predefinedType_RampFlight ifc:SPIRAL) .
+[LbdToIfcRampFlight-USERDEFINED:(?z rdf:type goal:RampFlight-USERDEFINED) -> (?z rdf:type ifc:IfcRampFlight) (?z ifc:predefinedType_RampFlight ifc:USERDEFINED) .
+[LbdToIfcRampFlight-STRAIGHT:(?z rdf:type goal:RampFlight-STRAIGHT) -> (?z rdf:type ifc:IfcRampFlight) (?z ifc:predefinedType_RampFlight ifc:STRAIGHT) .
+[LbdToIfcRampFlight-NOTDEFINED:(?z rdf:type goal:RampFlight-NOTDEFINED) -> (?z rdf:type ifc:IfcRampFlight) (?z ifc:predefinedType_RampFlight ifc:NOTDEFINED) .
+
+[LbdToIfcPile-DRIVEN:(?z rdf:type goal:Pile-DRIVEN) -> (?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:DRIVEN) .
+[LbdToIfcPile-SUPPORT:(?z rdf:type goal:Pile-SUPPORT) -> (?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:SUPPORT) .
+[LbdToIfcPile-USERDEFINED:(?z rdf:type goal:Pile-USERDEFINED) -> (?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:USERDEFINED) .
+[LbdToIfcPile-COHESION:(?z rdf:type goal:Pile-COHESION) -> (?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:COHESION) .
+[LbdToIfcPile-FRICTION:(?z rdf:type goal:Pile-FRICTION) -> (?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:FRICTION) .
+[LbdToIfcPile-BORED:(?z rdf:type goal:Pile-BORED) -> (?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:BORED) .
+[LbdToIfcPile-JETGROUTING:(?z rdf:type goal:Pile-JETGROUTING) -> (?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:JETGROUTING) .
+[LbdToIfcPile-NOTDEFINED:(?z rdf:type goal:Pile-NOTDEFINED) -> (?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:NOTDEFINED) .
+
+[LbdToIfcCurtainWall-USERDEFINED:(?z rdf:type goal:CurtainWall-USERDEFINED) -> (?z rdf:type ifc:IfcCurtainWall) (?z ifc:predefinedType_CurtainWall ifc:USERDEFINED) .
+[LbdToIfcCurtainWall-NOTDEFINED:(?z rdf:type goal:CurtainWall-NOTDEFINED) -> (?z rdf:type ifc:IfcCurtainWall) (?z ifc:predefinedType_CurtainWall ifc:NOTDEFINED) .
+
+[LbdToIfcMember-MEMBER:(?z rdf:type goal:Member-MEMBER) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:MEMBER) .
+[LbdToIfcMember-BRACE:(?z rdf:type goal:Member-BRACE) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:BRACE) .
+[LbdToIfcMember-MULLION:(?z rdf:type goal:Member-MULLION) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:MULLION) .
+[LbdToIfcMember-STUD:(?z rdf:type goal:Member-STUD) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:STUD) .
+[LbdToIfcMember-POST:(?z rdf:type goal:Member-POST) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:POST) .
+[LbdToIfcMember-STRUT:(?z rdf:type goal:Member-STRUT) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:STRUT) .
+[LbdToIfcMember-PLATE:(?z rdf:type goal:Member-PLATE) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:PLATE) .
+[LbdToIfcMember-COLLAR:(?z rdf:type goal:Member-COLLAR) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:COLLAR) .
+[LbdToIfcMember-USERDEFINED:(?z rdf:type goal:Member-USERDEFINED) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:USERDEFINED) .
+[LbdToIfcMember-PURLIN:(?z rdf:type goal:Member-PURLIN) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:PURLIN) .
+[LbdToIfcMember-CHORD:(?z rdf:type goal:Member-CHORD) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:CHORD) .
+[LbdToIfcMember-RAFTER:(?z rdf:type goal:Member-RAFTER) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:RAFTER) .
+[LbdToIfcMember-STRINGER:(?z rdf:type goal:Member-STRINGER) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:STRINGER) .
+[LbdToIfcMember-NOTDEFINED:(?z rdf:type goal:Member-NOTDEFINED) -> (?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:NOTDEFINED) .
+
+[LbdToIfcColumn-USERDEFINED:(?z rdf:type goal:Column-USERDEFINED) -> (?z rdf:type ifc:IfcColumn) (?z ifc:predefinedType_Column ifc:USERDEFINED) .
+[LbdToIfcColumn-COLUMN:(?z rdf:type goal:Column-COLUMN) -> (?z rdf:type ifc:IfcColumn) (?z ifc:predefinedType_Column ifc:COLUMN) .
+[LbdToIfcColumn-PILASTER:(?z rdf:type goal:Column-PILASTER) -> (?z rdf:type ifc:IfcColumn) (?z ifc:predefinedType_Column ifc:PILASTER) .
+[LbdToIfcColumn-NOTDEFINED:(?z rdf:type goal:Column-NOTDEFINED) -> (?z rdf:type ifc:IfcColumn) (?z ifc:predefinedType_Column ifc:NOTDEFINED) .
+
+[LbdToIfcCovering-SKIRTINGBOARD:(?z rdf:type goal:Covering-SKIRTINGBOARD) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:SKIRTINGBOARD) .
+[LbdToIfcCovering-CEILING:(?z rdf:type goal:Covering-CEILING) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:CEILING) .
+[LbdToIfcCovering-USERDEFINED:(?z rdf:type goal:Covering-USERDEFINED) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:USERDEFINED) .
+[LbdToIfcCovering-MEMBRANE:(?z rdf:type goal:Covering-MEMBRANE) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:MEMBRANE) .
+[LbdToIfcCovering-MOLDING:(?z rdf:type goal:Covering-MOLDING) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:MOLDING) .
+[LbdToIfcCovering-WRAPPING:(?z rdf:type goal:Covering-WRAPPING) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:WRAPPING) .
+[LbdToIfcCovering-CLADDING:(?z rdf:type goal:Covering-CLADDING) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:CLADDING) .
+[LbdToIfcCovering-INSULATION:(?z rdf:type goal:Covering-INSULATION) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:INSULATION) .
+[LbdToIfcCovering-ROOFING:(?z rdf:type goal:Covering-ROOFING) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:ROOFING) .
+[LbdToIfcCovering-SLEEVING:(?z rdf:type goal:Covering-SLEEVING) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:SLEEVING) .
+[LbdToIfcCovering-FLOORING:(?z rdf:type goal:Covering-FLOORING) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:FLOORING) .
+[LbdToIfcCovering-NOTDEFINED:(?z rdf:type goal:Covering-NOTDEFINED) -> (?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:NOTDEFINED) .
+
+[LbdToIfcRoof-GABLE_ROOF:(?z rdf:type goal:Roof-GABLE_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:GABLE_ROOF) .
+[LbdToIfcRoof-DOME_ROOF:(?z rdf:type goal:Roof-DOME_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:DOME_ROOF) .
+[LbdToIfcRoof-BUTTERFLY_ROOF:(?z rdf:type goal:Roof-BUTTERFLY_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:BUTTERFLY_ROOF) .
+[LbdToIfcRoof-FLAT_ROOF:(?z rdf:type goal:Roof-FLAT_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:FLAT_ROOF) .
+[LbdToIfcRoof-BARREL_ROOF:(?z rdf:type goal:Roof-BARREL_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:BARREL_ROOF) .
+[LbdToIfcRoof-GAMBREL_ROOF:(?z rdf:type goal:Roof-GAMBREL_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:GAMBREL_ROOF) .
+[LbdToIfcRoof-SHED_ROOF:(?z rdf:type goal:Roof-SHED_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:SHED_ROOF) .
+[LbdToIfcRoof-USERDEFINED:(?z rdf:type goal:Roof-USERDEFINED) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:USERDEFINED) .
+[LbdToIfcRoof-MANSARD_ROOF:(?z rdf:type goal:Roof-MANSARD_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:MANSARD_ROOF) .
+[LbdToIfcRoof-FREEFORM:(?z rdf:type goal:Roof-FREEFORM) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:FREEFORM) .
+[LbdToIfcRoof-PAVILION_ROOF:(?z rdf:type goal:Roof-PAVILION_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:PAVILION_ROOF) .
+[LbdToIfcRoof-RAINBOW_ROOF:(?z rdf:type goal:Roof-RAINBOW_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:RAINBOW_ROOF) .
+[LbdToIfcRoof-HIP_ROOF:(?z rdf:type goal:Roof-HIP_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:HIP_ROOF) .
+[LbdToIfcRoof-HIPPED_GABLE_ROOF:(?z rdf:type goal:Roof-HIPPED_GABLE_ROOF) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:HIPPED_GABLE_ROOF) .
+[LbdToIfcRoof-NOTDEFINED:(?z rdf:type goal:Roof-NOTDEFINED) -> (?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:NOTDEFINED) .
