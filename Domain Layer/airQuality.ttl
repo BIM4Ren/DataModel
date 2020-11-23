@@ -1,13 +1,13 @@
-# baseURI: http://bim4ren.eu/domain/airQuality
+# baseURI: https://models.bim4ren.eu/domain/airQuality
 # imports: http://qudt.org/2.1/vocab/quantitykind
-# imports: http://www.bim4ren.eu/property#
+# imports: https://models.bim4ren.eu/property#
 # imports: https://w3id.org/def/basicsemantics-owl
 
-@prefix : <http://bim4ren.eu/domain/airQuality#> .
+@prefix : <https://models.bim4ren.eu/domain/airQuality#> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix property: <http://www.bim4ren.eu/property#> .
+@prefix property: <https://models.bim4ren.eu/property#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix qudt-v1: <http://qudt.org/schema/qudt#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -15,7 +15,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://bim4ren.eu/domain/airQuality>
+<https://models.bim4ren.eu/domain/airQuality>
   rdf:type owl:Ontology ;
   owl:imports <http://qudt.org/2.1/vocab/quantitykind> ;
   owl:imports property: ;

@@ -1,8 +1,8 @@
-# baseURI: http://www.bim4ren.eu/property#
+# baseURI: https://models.bim4ren.eu/property#
 # imports: http://qudt.org/vocab/quantitykind/
 # imports: https://w3id.org/def/basicsemantics-owl
 
-@prefix : <http://www.bim4ren.eu/property#> .
+@prefix : <https://models.bim4ren.eu/property#> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
@@ -15,7 +15,7 @@
   rdf:type owl:Ontology ;
   owl:imports quantitykind: ;
   owl:imports <https://w3id.org/def/basicsemantics-owl> ;
-  owl:versionIRI <http://www.bim4ren.eu/property/0.1> ;
+  owl:versionIRI <https://models.bim4ren.eu/property/0.1> ;
 .
 :accuracy
   rdf:type owl:ObjectProperty ;

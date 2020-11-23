@@ -1,18 +1,18 @@
-# baseURI: http://bim4ren.eu/urban
-# imports: http://www.bim4ren.eu/property#
+# baseURI: https://models.bim4ren.eu/urban
+# imports: https://models.bim4ren.eu/property#
 # imports: https://w3id.org/def/basicsemantics-owl
 
-@prefix : <http://bim4ren.eu/urban#> .
+@prefix : <https://models.bim4ren.eu/urban#> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix property: <http://www.bim4ren.eu/property#> .
+@prefix property: <https://models.bim4ren.eu/property#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://bim4ren.eu/urban>
+<https://models.bim4ren.eu/urban>
   rdf:type owl:Ontology ;
-  owl:imports property: ;
+  owl:imports <https://models.bim4ren.eu/property#> ;
   owl:imports <https://w3id.org/def/basicsemantics-owl> ;
 .
 :Agriculture

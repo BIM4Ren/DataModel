@@ -1,23 +1,23 @@
-@prefix : <http://www.bim4ren.eu/domain/fluid#> .
+@prefix : <https://models.bim4ren.eu/domain/fluid#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix b4r-prop: <http://www.bim4ren.eu/property#> .
+@prefix b4r-prop: <https://models.bim4ren.eu/property#> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core/> .
-@base <http://www.bim4ren.eu/domain/fluid#> .
+@base <https://models.bim4ren.eu/domain/fluid#> .
 
-<http://www.bim4ren.eu/domain/fluid#> rdf:type owl:Ontology ;
-                                      owl:versionIRI <http://www.bim4ren.eu/domain/fluid/0.1> ;
+<https://models.bim4ren.eu/domain/fluid#> rdf:type owl:Ontology ;
+                                      owl:versionIRI <https://models.bim4ren.eu/domain/fluid/0.1> ;
                                       owl:imports b4r-prop: .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.bim4ren.eu/domain/fluid#totalDynamicHead
+###  https://models.bim4ren.eu/domain/fluid#totalDynamicHead
 :totalDynamicHead rdf:type owl:ObjectProperty ;
 				  rdfs:subPropertyOf b4r-prop:height ;
                   rdfs:label "HMT"@fr ,
@@ -25,17 +25,17 @@
                              "TDH"@en ,
                              "Total dynamic head"@en .
 
-###  http://www.bim4ren.eu/domain/fluid#HMTnoFlow
+###  https://models.bim4ren.eu/domain/fluid#HMTnoFlow
 :HMTnoFlow rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :totalDynamicHead .
 
 
-###  http://www.bim4ren.eu/domain/fluid#HMTnominalFlow
+###  https://models.bim4ren.eu/domain/fluid#HMTnominalFlow
 :HMTnominalFlow rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :totalDynamicHead .
 
 
-###  http://www.bim4ren.eu/domain/fluid#capacity
+###  https://models.bim4ren.eu/domain/fluid#capacity
 :capacity rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf b4r-prop:volume ;
           rdfs:label "capacidad"@es ,
@@ -55,7 +55,7 @@
 # <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3_R4k0qSWHuO00025QrE$V>, # on chiller
 # <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/2KKQU0qSGHuO00025QrE$V>, # on boiler
 
-###  http://www.bim4ren.eu/domain/fluid#maxPressure
+###  https://models.bim4ren.eu/domain/fluid#maxPressure
 :maxPressure rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf b4r-prop:pressure ;
              rdfs:label "maximal pressure"@en ,
@@ -64,7 +64,7 @@
 						"presión máxima"@es.
 
 
-###  http://www.bim4ren.eu/domain/fluid#minPressure
+###  https://models.bim4ren.eu/domain/fluid#minPressure
 :minPressure rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :pressure ;
          rdfs:label "minimal pressure"@en ,
@@ -73,7 +73,7 @@
 					"presión minima"@es.
 
 
-###  http://www.bim4ren.eu/domain/fluid#nominalFlowRate
+###  https://models.bim4ren.eu/domain/fluid#nominalFlowRate
 :nominalFlowRate rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf b4r-prop:flowRate ;
                  rdfs:label "débit nominal"@fr ,
@@ -83,7 +83,7 @@
 				 skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0ANYHfXw16TO4AaI9tvudX>,
 								  <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3uE9W0qUKHuO00025QrE$V>.
 								  
-###  http://www.bim4ren.eu/domain/fluid#exhaustAirFlowRate
+###  https://models.bim4ren.eu/domain/fluid#exhaustAirFlowRate
 :exhaustAirFlowRate rdf:type owl:ObjectProperty ;
 					rdfs:subPropertyOf b4r-prop:flowRate ;
 					rdfs:label "débit d'air rejeté"@fr ,
@@ -94,7 +94,7 @@
 # <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/0nW$w0qWmHuO00025QrE$V>. # Pset_SpaceThermalPHistory.ExhaustAirFlowRate
 
 
-###  http://www.bim4ren.eu/domain/fluid#pressureDrop
+###  https://models.bim4ren.eu/domain/fluid#pressureDrop
 :pressureDrop rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf b4r-prop:pressure ;
               rdfs:label "perte de charge"@fr ,
@@ -119,46 +119,46 @@
 #    Classes
 #################################################################
 
-###  http://www.bim4ren.eu/domain/fluid#FluidSegment
+###  https://models.bim4ren.eu/domain/fluid#FluidSegment
 :FluidSegment rdf:type owl:Class ;
               rdfs:label "Segment de transfert de fluide"@fr .
 
 
-###  http://www.bim4ren.eu/domain/fluid#FluidStorage
+###  https://models.bim4ren.eu/domain/fluid#FluidStorage
 :FluidStorage rdf:type owl:Class ;
               rdfs:label "Elément de stockage de fluide"@fr .
 
 
-###  http://www.bim4ren.eu/domain/fluid#FluidTerminal
+###  https://models.bim4ren.eu/domain/fluid#FluidTerminal
 :FluidTerminal rdf:type owl:Class ;
                rdfs:subClassOf [ rdf:type owl:Restriction ;
                                  owl:onProperty :capacity ;
-                                 owl:someValuesFrom <http://www.bim4ren.eu/property#Property>
+                                 owl:someValuesFrom <https://models.bim4ren.eu/property#Property>
                                ] ;
                rdfs:label "Terminal de fluide"@fr .
 
 
-###  http://www.bim4ren.eu/domain/fluid#FluidTransferElement
+###  https://models.bim4ren.eu/domain/fluid#FluidTransferElement
 :FluidTransferElement rdf:type owl:Class ;
                       rdfs:subClassOf [ rdf:type owl:Restriction ;
                                         owl:onProperty :HMTnoFlow ;
-                                        owl:someValuesFrom <http://www.bim4ren.eu/property#Property>
+                                        owl:someValuesFrom <https://models.bim4ren.eu/property#Property>
                                       ] ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :HMTnominalFlow ;
-                                        owl:someValuesFrom <http://www.bim4ren.eu/property#Property>
+                                        owl:someValuesFrom <https://models.bim4ren.eu/property#Property>
                                       ] ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :maxPressure ;
-                                        owl:someValuesFrom <http://www.bim4ren.eu/property#Property>
+                                        owl:someValuesFrom <https://models.bim4ren.eu/property#Property>
                                       ] ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :nominalFlowRate ;
-                                        owl:someValuesFrom <http://www.bim4ren.eu/property#Property>
+                                        owl:someValuesFrom <https://models.bim4ren.eu/property#Property>
                                       ] ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :totalDynamicHead ;
-                                        owl:someValuesFrom <http://www.bim4ren.eu/property#Property>
+                                        owl:someValuesFrom <https://models.bim4ren.eu/property#Property>
                                       ] ;
                       rdfs:comment "An element that is used to transfer a fluid fro one point to another through a mechanical action. Typically, this includes pumps or circulators."@en ;
                       rdfs:label "Elément de transfert de fluide"@fr .

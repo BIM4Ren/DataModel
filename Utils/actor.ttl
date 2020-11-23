@@ -1,387 +1,351 @@
-@prefix : <http://www.bim4ren.eu/actors#> .
+# baseURI: https://models.bim4ren.eu/actors
+
+@prefix : <https://models.bim4ren.eu/actors#> .
 @prefix bot: <https://w3id.org/bot#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix b4r-act: <http://www.bim4ren.eu/actors#> .
-@base <http://www.bim4ren.eu/actors> .
 
-<http://www.bim4ren.eu/actors> rdf:type owl:Ontology ;
-                                owl:versionIRI <http://www.bim4ren.eu/actors/0.1> .
-
-#################################################################
-#    Object Properties
-#################################################################
-
-###  http://www.bim4ren.eu/actors#ageCategory
-b4r-act:ageCategory rdf:type owl:ObjectProperty ;
-                    rdfs:domain b4r-act:Actor ;
-                    rdfs:range b4r-act:AgeCategory ;
-                    rdfs:comment "Relation describing the link between an actor and the corresponding age category"@fr ,
-                                 "Relation décrivant le lien entre un acteur et la catégorie d'âge correspondante"@fr ;
-                    rdfs:label "age category"@en ,
-                               "catégorie d'âge"@fr .
-
-
-###  http://www.bim4ren.eu/actors#associatedActor
-b4r-act:associatedActor rdf:type owl:ObjectProperty ;
-                        rdfs:domain bot:Zone ;
-                        rdfs:range b4r-act:Actor ;
-                        rdfs:comment "Relation describing the link between a zone and the associated actor, which could be the occupant or any actor having a specific role associated to the zone"@en ,
-                                     "Relation décrivant le lien entre une zone et un acteur associé, qui peut être l'occupant ou tout acteur ayant un rôle spécifique associé à cette zone"@fr ;
-                        rdfs:label "acteur associé"@fr ,
-                                   "associated actor"@en .
-
-
-###  http://www.bim4ren.eu/actors#associatedZone
-b4r-act:associatedZone rdf:type owl:ObjectProperty ;
-                       rdfs:range bot:Zone ;
-                       rdfs:comment "Relation pouvant décrire le lien entre un occupant et une zone associée à travers le profile d'occupation ou tout simplement le lien entre un acteur en général et une zone pour laquelle il a un role spécifique"@fr ,
-                                    "Relation that can describe the link between an occupant and an associated zone through the occupation profile or simply the link between an actor in general and a zone for which he has a specific role"@en ;
-                       rdfs:label "associated zone"@en ,
-                                  "zone associée"@fr .
-
-
-###  http://www.bim4ren.eu/actors#occupancyProfile
-b4r-act:occupancyProfile rdf:type owl:ObjectProperty ;
-                         rdfs:domain b4r-act:Occupant ;
-                         rdfs:range b4r-act:OccupancyProfile ;
-                         rdfs:comment "Relation describing the link between an occupant and its occupancy profile associated to a particular zone"@en ,
-                                      "Relation décrivant le lien entre un occupant et son profile d'occupation associé à une zone particulière"@fr ;
-                         rdfs:label "occupancy profile"@fr ,
-                                    "profile d'occupation"@fr .
-
-
-###  http://www.bim4ren.eu/actors#occupancyTime
-b4r-act:occupancyTime rdf:type owl:ObjectProperty ;
-                      rdfs:domain b4r-act:OccupancyProfile ;
-                      rdfs:range b4r-act:OccupancyTimeRange ;
-                      rdfs:comment "Relation describing the link between an occupancy profile (associated to an occupant and a given zone) and the corresponding occupancy time range"@en ,
-                                   "Relation décrivant le lien entre un profile d'occupation (associé à un occupant et une zone donnée) et l'intervalle d'occupation correspondant"@fr ;
-                      rdfs:label "occupancy time"@fr ,
-                                 "temps d'occupation"@en .
-
-
-###  http://www.bim4ren.eu/actors#workSituation
-b4r-act:workSituation rdf:type owl:ObjectProperty ;
-                      rdfs:domain b4r-act:Occupant ;
-                      rdfs:range b4r-act:WorkSituation ;
-                      rdfs:comment "Relation describing the link between an occupant and its work situation"@en ,
-                                   "Relation décrivant le lien entre un occupant et la situation de travail correspondate"@fr ;
-                      rdfs:label "situation de travail"@fr ,
-                                 "work situation"@en .
-
-
-###  http://www.bim4ren.eu/actors#workType
-b4r-act:workType rdf:type owl:ObjectProperty ;
-                 rdfs:domain b4r-act:WorkSituation ;
-                 rdfs:range b4r-act:WorkType ;
-                 rdfs:comment "Relation describing the link between a work situation associated to an occupant and the corresponding work type"@en ,
-                              "Relation décrivant le lien entre la situation de travail associée à un occupant et le type de ce travail"@en ;
-                 rdfs:label "type de travail"@fr ,
-                            "work type"@en .
-							
-
-###  http://www.bim4ren.eu/actors#energyPolicy
-b4r-act:hasEnergyPolicy rdf:type owl:ObjectProperty ;
-					    rdfs:domain b4r-act:Occupant ;
-						rdfs:range b4r-act:EnergyPolicy ;
-                        rdfs:comment "Property linking an occupant to the energy policy that he adopts"@en ,
-                                     "Propriété liant un occupant à la politique d'énergie qu'il adopte"@fr ;
-						rdfs:label "energy policy"@en ,
-								   "politique énergétique"@fr ,
-								   "política energética"@es ,
-								   "politica energetica"@it.
-
-
-#################################################################
-#    Data properties
-#################################################################
-
-###  http://www.bim4ren.eu/actors#fromDateTime
-b4r-act:fromDateTime rdf:type owl:DatatypeProperty ;
-                     rdfs:range xsd:dateTime ;
-                     rdfs:comment "Property describing the start date and time related to an occupancy profile"@en ,
-                                  "Propriété décrivant la date et l'heure de début liées à un profil d'occupation"@fr ;
-                     rdfs:label "depuis date heure"@fr ,
-                                "from date time"@en .
-
-
-###  http://www.bim4ren.eu/actors#income
-b4r-act:income rdf:type owl:DatatypeProperty ;
-               rdfs:range xsd:decimal ;
-               rdfs:comment "Property describing the gross annual salary of an occupant"@en ,
-                            "Propriété décrivant le salaire annuel brut d'un occupant"@fr ,
-                            "salaire"@fr ;
-               rdfs:label "income"@en .
-
-
-###  http://www.bim4ren.eu/actors#toDateTime
-b4r-act:toDateTime rdf:type owl:DatatypeProperty ;
-                   rdfs:range xsd:dateTime ;
-                   rdfs:comment "Property describing the end date and time related to an occupancy profile"@en ,
-                                "Propriété décrivant la date et l'heure de fin liées à un profil d'occupation"@fr ;
-                   rdfs:label "jusqu'au date heure"@fr ,
-                              "to date time"@en .
-							  
-
-
-#################################################################
-#    Classes
-#################################################################
-
-###  http://www.bim4ren.eu/actors#Actor
-b4r-act:Actor rdf:type owl:Class ;
-              rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                owl:onProperty b4r-act:ageCategory ;
-                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass b4r-act:AgeCategory
-                              ] ;
-              rdfs:comment "A building actor, which comes down to a building manager, a building owner or an occupant"@en ,
-                           "Un acteur du bâtiment, qui peut être un maître d'oeuvre, un maître d'ouvrage ou un occupant"@fr ;
-              rdfs:isDefinedBy "http://bsdd.buildingsmart.org/#concept/details/3xQru0qRmHuO00025QrE$V"@en ;
-              rdfs:label "Acteur"@fr ,
-                         "Actor"@en .
-
-
-###  http://www.bim4ren.eu/actors#AgeCategory
-b4r-act:AgeCategory rdf:type owl:Class ;
-                    rdfs:comment "Correspond à une classification selon les tranches d'ages de personnes"@fr ,
-                                 "Corresponds to a classification according to people age groups"@en ;
-                    rdfs:label "Age category"@en ,
-                               "Catégorie d'âge"@fr .
-
-
-###  http://www.bim4ren.eu/actors#BuildingManager
-b4r-act:BuildingManager rdf:type owl:Class ;
-                        rdfs:subClassOf b4r-act:Actor ;
-                        owl:disjointWith b4r-act:BuildingOwner ,
-                                         b4r-act:Occupant ;
-                        rdfs:comment "Person or entity chosen by the building owner for the operational management of the work"@en ,
-                                     "Personne physique ou morale choisie par le maître d'ouvrage pour la conduite opérationnelle des travaux"@fr ;
-                        rdfs:label "Building manager"@en ,
-                                   "Maître d'oeuvre"@fr .
-
-
-###  http://www.bim4ren.eu/actors#BuildingOwner
-b4r-act:BuildingOwner rdf:type owl:Class ;
-                      rdfs:subClassOf b4r-act:Actor ;
-                      rdfs:comment "Person or entity for whom the project is carried out"@en ,
-                                   "Personne physique ou morale pour laquelle le projet est réalisé"@fr ;
-                      rdfs:isDefinedBy "http://bsdd.buildingsmart.org/#concept/details/1B9uxpQzj5KBf25MREZyEH"@fr ;
-                      rdfs:label "Building owner"@en ,
-                                 "Maître d'ouvrage"@fr .
-
-
-###  http://www.bim4ren.eu/actors#OccupancyProfile
-b4r-act:OccupancyProfile rdf:type owl:Class ;
-                         rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                           owl:onProperty b4r-act:occupancyTime ;
-                                           owl:allValuesFrom b4r-act:OccupancyTimeRange
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty b4r-act:associatedZone ;
-                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                           owl:onClass bot:Zone
-                                         ] ;
-                         rdfs:comment "An occupancy profile describes some useful occupancy information (e.g., the occupancy time range) related to an occuppant associated to a given zone"@en ,
-                                      "Le profil d'occupation décrit certaines informations utiles (par exemple,les intervales d'occupation) liées à un occupant pour une zone donnée"@fr ;
-                         rdfs:label "Occupancy profile"@en ,
-                                    "Profile d'occupation"@fr .
-
-
-###  http://www.bim4ren.eu/actors#OccupancyTimeRange
-b4r-act:OccupancyTimeRange rdf:type owl:Class ;
-                           rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                             owl:onProperty b4r-act:fromDateTime ;
-                                             owl:allValuesFrom xsd:dateTime
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty b4r-act:toDateTime ;
-                                             owl:allValuesFrom xsd:dateTime
-                                           ] ;
-                           rdfs:comment "L'intervalle de temps d'occupation lié à un occupant et une zone donnée"@fr ,
-                                        "The occupancy time range related to an occupant and a given area"@en ;
-                           rdfs:label "Intervalle de temps d'occupation"@fr ,
-                                      "Occupancy time range"@en .
-
-
-###  http://www.bim4ren.eu/actors#Occupant
-b4r-act:Occupant rdf:type owl:Class ;
-                 rdfs:subClassOf b4r-act:Actor ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty b4r-act:occupancyProfile ;
-                                   owl:allValuesFrom b4r-act:OccupancyProfile
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty b4r-act:workSituation ;
-                                   owl:allValuesFrom b4r-act:WorkSituation
-                                 ] ;
-                 rdfs:comment "A type of actor that defines the form of occupancy of a property"@en ,
-                              "Un type d'acteur qui définit la forme d'occupation d'une propriété"@fr ;
-                 rdfs:isDefinedBy "http://bsdd.buildingsmart.org/#concept/details/289KpOp8L4MBqIToXk2Uxq"@en ;
-                 rdfs:label "Occupant"@en ,
-                            "Occupant"@fr .
-
-
-###  http://www.bim4ren.eu/actors#WorkSituation
-b4r-act:WorkSituation rdf:type owl:Class ;
-                      rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                        owl:onProperty b4r-act:workType ;
-                                        owl:allValuesFrom b4r-act:WorkType
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty b4r-act:income ;
-                                        owl:allValuesFrom xsd:decimal
-                                      ] ;
-                      rdfs:comment "Describes the work situation of an occupant, mainly the type of work (if any), and its related income"@en ,
-                                   "Décrit la situation de travail d'un occupant, principalement le type de travail (le cas échéant) et son revenu"@fr ;
-                      rdfs:label "Situation de travail"@fr ,
-                                 "Work situation"@en .
-
-
-###  http://www.bim4ren.eu/actors#WorkType
-b4r-act:WorkType rdf:type owl:Class ;
-                 owl:equivalentClass [ rdf:type owl:Class ;
-                                       owl:oneOf ( b4r-act:EMPLOYED
-                                                   b4r-act:SELF_EMPLOYED
-                                                   b4r-act:UNEMPLOYED
-                                                 )
-                                     ] ;
-                 rdfs:comment "Describes the occupant type of work"@en ,
-                              "Décrit le type de travail d'un occupant"@fr ;
-                 rdfs:label "Type de travail"@fr ,
-                            "Work type"@en .
-							
-							
-###  http://www.bim4ren.eu/actors#EnergyPolicy
-b4r-act:EnergyPolicy rdf:type owl:Class ;
-                     owl:equivalentClass [ rdf:type owl:Class ;
-										   owl:oneOf ( b4r-act:ECO
-													   b4r-act:ECO_PLUS
-                                                       b4r-act:COMFORT
-                                                 )
-                                     ] ;
-                 rdfs:comment "Defines to what extent the occupant pays attention to energy, and therefore has impacts on the heating or the use of certain devices during the simulation."@en ,
-                              "Définit à quel point les occupants font attention ou non à l’énergie, et donc ont des impacts sur le chauffage ou l’utilisation de certains appareils durant la simulation. "@fr ;
-                 rdfs:label "Energy policy"@en ,
-							"Politique énergétique"@fr ,
-                            "Política energética"@es ,
-							"Politica energetica"@it.
-
-
-###  https://w3id.org/bot#Zone
-bot:Zone rdf:type owl:Class .
-
-
-#################################################################
-#    Individuals
-#################################################################
-
-###  http://www.bim4ren.eu/actors#ADULT
-b4r-act:ADULT rdf:type owl:NamedIndividual ,
-                       b4r-act:AgeCategory ;
-              rdfs:comment "An adult is a person aged between 18 and 64 inclusive"@en ,
-                           "Un adulte est une personne âgée antre 18 et 64 ans inclus"@fr ;
-              rdfs:label "Adult"@en ,
-                         "Adulte"@fr .
-
-
-###  http://www.bim4ren.eu/actors#BABY
-b4r-act:BABY rdf:type owl:NamedIndividual ,
-                      b4r-act:AgeCategory ;
-             rdfs:comment "A baby is a person who is less than a year old"@en ,
-                          "Un bébé est une personne qui a moins d'un an"@fr ;
-             rdfs:label "Baby"@en ,
-                        "Bébé"@fr .
-
-
-###  http://www.bim4ren.eu/actors#CHILD
-b4r-act:CHILD rdf:type owl:NamedIndividual ,
-                       b4r-act:AgeCategory ;
-              rdfs:comment "A child is a person aged between 1 year and 11 years inclusive"@en ,
-                           "Un enfant est une personne âgée entre 1 an et 11 ans inclus"@fr ;
-              rdfs:label "Child"@en ,
-                         "Enfant"@fr .
-
-
-###  http://www.bim4ren.eu/actors#ELDERLY
-b4r-act:ELDERLY rdf:type owl:NamedIndividual ,
-                         b4r-act:AgeCategory ;
-                rdfs:comment "An elderly is a person aged 65 and over"@en ,
-                             "Un personne âgée est une personne qui a 65 ans et plus"@fr ;
-                rdfs:label "Elderly"@en ,
-                           "Personne âgée"@fr .
-
-
-###  http://www.bim4ren.eu/actors#EMPLOYED
-b4r-act:EMPLOYED rdf:type owl:NamedIndividual ,
-                          b4r-act:WorkType ;
-                 rdfs:comment "An occupant having a paid job"@en ,
-                              "Un occupant ayant un emploi rémunéré"@fr ;
-                 rdfs:label "Employed"@en ,
-                            "Employé"@fr .
-
-
-###  http://www.bim4ren.eu/actors#SELF_EMPLOYED
-b4r-act:SELF_EMPLOYED rdf:type owl:NamedIndividual ,
-                               b4r-act:WorkType ;
-                      rdfs:comment "An occupant who is working for oneself as a freelance or who is the owner of a business"@en ,
-                                   "Un occupant qui travaille pour soi-même en tant que freelance ou qui est le propriétaire d'une entreprise"@fr ;
-                      rdfs:label "Self employed"@en ,
-                                 "Travailleur indépendant"@fr .
-
-
-###  http://www.bim4ren.eu/actors#TEENAGER
-b4r-act:TEENAGER rdf:type owl:NamedIndividual ,
-                          b4r-act:AgeCategory ;
-                 rdfs:comment "A teenager is a person aged between 12 and 17 years inclusive"@en ,
-                              "Un adolescent est une personne âgée entre 12 et 17 ans inclus"@fr ;
-                 rdfs:label "Adolescent"@fr ,
-                            "Teenager"@en .
-
-
-###  http://www.bim4ren.eu/actors#UNEMPLOYED
-b4r-act:UNEMPLOYED rdf:type owl:NamedIndividual ,
-                            b4r-act:WorkType ;
-                   rdfs:comment "An occupant without a paid job"@en ,
-                                "Un occupant sans emploi"@fr ;
-                   rdfs:label "Unemployed"@en ,
-                              "sans emploi"@fr .
-							  
-							  
-###  http://www.bim4ren.eu/actors#ECO
-b4r-act:ECO rdf:type owl:NamedIndividual ,
-                     b4r-act:EnergyPolicy ;
-			rdfs:comment "An occupant who is eco friendly"@en ,
-                         "Un occupant éco-responsable"@fr ;
-            rdfs:label "Eco-responsable"@fr ,
-					   "Eco friendly"@en ,
-					   "Ecológico"@es ,
-					   "Ecológico"@it .
-					 
-					 
-###  http://www.bim4ren.eu/actors#ECO_PLUS
-b4r-act:ECO_PLUS rdf:type owl:NamedIndividual ,
-						  b4r-act:EnergyPolicy ;
-				 rdfs:comment "An occupant who is eco friendly++"@en ,
-                              "Un occupant éco-responsable++"@fr ;
-                 rdfs:label "Eco-responsable++"@fr ,
-					        "Eco friendly++"@en ,
-					        "Ecológico++"@es ,
-					        "Ecológico++"@it .
-
-
-###  http://www.bim4ren.eu/actors#COMFORT
-b4r-act:COMFORT rdf:type owl:NamedIndividual ,
-						  b4r-act:EnergyPolicy ;
-				 rdfs:comment "An occupant who is not eco friendly"@en ,
-                              "Un occupant qui n'est pas éco-responsable"@fr ;
-                 rdfs:label "Confort"@fr ,
-					        "Comfort"@en ,
-					        "Comodidad"@es ,
-					        "Comodità"@it .
-							
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+<https://models.bim4ren.eu/actors>
+  rdf:type owl:Ontology ;
+  owl:versionIRI <https://models.bim4ren.eu/actors/0.1> ;
+.
+:ADULT
+  rdf:type owl:NamedIndividual ;
+  rdf:type :AgeCategory ;
+  rdfs:comment "An adult is a person aged between 18 and 64 inclusive"@en ;
+  rdfs:comment "Un adulte est une personne âgée antre 18 et 64 ans inclus"@fr ;
+  rdfs:label "Adult"@en ;
+  rdfs:label "Adulte"@fr ;
+.
+:Actor
+  rdf:type owl:Class ;
+  rdfs:comment "A building actor, which comes down to a building manager, a building owner or an occupant"@en ;
+  rdfs:comment "Un acteur du bâtiment, qui peut être un maître d'oeuvre, un maître d'ouvrage ou un occupant"@fr ;
+  rdfs:isDefinedBy "http://bsdd.buildingsmart.org/#concept/details/3xQru0qRmHuO00025QrE$V"@en ;
+  rdfs:label "Acteur"@fr ;
+  rdfs:label "Actor"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass :AgeCategory ;
+      owl:onProperty :ageCategory ;
+    ] ;
+.
+:AgeCategory
+  rdf:type owl:Class ;
+  rdfs:comment "Correspond à une classification selon les tranches d'ages de personnes"@fr ;
+  rdfs:comment "Corresponds to a classification according to people age groups"@en ;
+  rdfs:label "Age category"@en ;
+  rdfs:label "Catégorie d'âge"@fr ;
+.
+:BABY
+  rdf:type owl:NamedIndividual ;
+  rdf:type :AgeCategory ;
+  rdfs:comment "A baby is a person who is less than a year old"@en ;
+  rdfs:comment "Un bébé est une personne qui a moins d'un an"@fr ;
+  rdfs:label "Baby"@en ;
+  rdfs:label "Bébé"@fr ;
+.
+:BuildingManager
+  rdf:type owl:Class ;
+  rdfs:comment "Person or entity chosen by the building owner for the operational management of the work"@en ;
+  rdfs:comment "Personne physique ou morale choisie par le maître d'ouvrage pour la conduite opérationnelle des travaux"@fr ;
+  rdfs:label "Building manager"@en ;
+  rdfs:label "Maître d'oeuvre"@fr ;
+  rdfs:subClassOf :Actor ;
+  owl:disjointWith :BuildingOwner ;
+  owl:disjointWith :Occupant ;
+.
+:BuildingOwner
+  rdf:type owl:Class ;
+  rdfs:comment "Person or entity for whom the project is carried out"@en ;
+  rdfs:comment "Personne physique ou morale pour laquelle le projet est réalisé"@fr ;
+  rdfs:isDefinedBy "http://bsdd.buildingsmart.org/#concept/details/1B9uxpQzj5KBf25MREZyEH"@fr ;
+  rdfs:label "Building owner"@en ;
+  rdfs:label "Maître d'ouvrage"@fr ;
+  rdfs:subClassOf :Actor ;
+.
+:CHILD
+  rdf:type owl:NamedIndividual ;
+  rdf:type :AgeCategory ;
+  rdfs:comment "A child is a person aged between 1 year and 11 years inclusive"@en ;
+  rdfs:comment "Un enfant est une personne âgée entre 1 an et 11 ans inclus"@fr ;
+  rdfs:label "Child"@en ;
+  rdfs:label "Enfant"@fr ;
+.
+:COMFORT
+  rdf:type owl:NamedIndividual ;
+  rdf:type :EnergyPolicy ;
+  rdfs:comment "An occupant who is not eco friendly"@en ;
+  rdfs:comment "Un occupant qui n'est pas éco-responsable"@fr ;
+  rdfs:label "Comfort"@en ;
+  rdfs:label "Comodidad"@es ;
+  rdfs:label "Comodità"@it ;
+  rdfs:label "Confort"@fr ;
+.
+:ECO
+  rdf:type owl:NamedIndividual ;
+  rdf:type :EnergyPolicy ;
+  rdfs:comment "An occupant who is eco friendly"@en ;
+  rdfs:comment "Un occupant éco-responsable"@fr ;
+  rdfs:label "Eco friendly"@en ;
+  rdfs:label "Eco-responsable"@fr ;
+  rdfs:label "Ecológico"@es ;
+  rdfs:label "Ecológico"@it ;
+.
+:ECO_PLUS
+  rdf:type owl:NamedIndividual ;
+  rdf:type :EnergyPolicy ;
+  rdfs:comment "An occupant who is eco friendly++"@en ;
+  rdfs:comment "Un occupant éco-responsable++"@fr ;
+  rdfs:label "Eco friendly++"@en ;
+  rdfs:label "Eco-responsable++"@fr ;
+  rdfs:label "Ecológico++"@es ;
+  rdfs:label "Ecológico++"@it ;
+.
+:ELDERLY
+  rdf:type owl:NamedIndividual ;
+  rdf:type :AgeCategory ;
+  rdfs:comment "An elderly is a person aged 65 and over"@en ;
+  rdfs:comment "Un personne âgée est une personne qui a 65 ans et plus"@fr ;
+  rdfs:label "Elderly"@en ;
+  rdfs:label "Personne âgée"@fr ;
+.
+:EMPLOYED
+  rdf:type owl:NamedIndividual ;
+  rdf:type :WorkType ;
+  rdfs:comment "An occupant having a paid job"@en ;
+  rdfs:comment "Un occupant ayant un emploi rémunéré"@fr ;
+  rdfs:label "Employed"@en ;
+  rdfs:label "Employé"@fr ;
+.
+:EnergyPolicy
+  rdf:type owl:Class ;
+  rdfs:comment "Defines to what extent the occupant pays attention to energy, and therefore has impacts on the heating or the use of certain devices during the simulation."@en ;
+  rdfs:comment "Définit à quel point les occupants font attention ou non à l’énergie, et donc ont des impacts sur le chauffage ou l’utilisation de certains appareils durant la simulation. "@fr ;
+  rdfs:label "Energy policy"@en ;
+  rdfs:label "Politica energetica"@it ;
+  rdfs:label "Politique énergétique"@fr ;
+  rdfs:label "Política energética"@es ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:oneOf (
+          :ECO
+          :ECO_PLUS
+          :COMFORT
+        ) ;
+    ] ;
+.
+:OccupancyProfile
+  rdf:type owl:Class ;
+  rdfs:comment "An occupancy profile describes some useful occupancy information (e.g., the occupancy time range) related to an occuppant associated to a given zone"@en ;
+  rdfs:comment "Le profil d'occupation décrit certaines informations utiles (par exemple,les intervales d'occupation) liées à un occupant pour une zone donnée"@fr ;
+  rdfs:label "Occupancy profile"@en ;
+  rdfs:label "Profile d'occupation"@fr ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom :OccupancyTimeRange ;
+      owl:onProperty :occupancyTime ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass bot:Zone ;
+      owl:onProperty :associatedZone ;
+    ] ;
+.
+:OccupancyTimeRange
+  rdf:type owl:Class ;
+  rdfs:comment "L'intervalle de temps d'occupation lié à un occupant et une zone donnée"@fr ;
+  rdfs:comment "The occupancy time range related to an occupant and a given area"@en ;
+  rdfs:label "Intervalle de temps d'occupation"@fr ;
+  rdfs:label "Occupancy time range"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom xsd:dateTime ;
+      owl:onProperty :fromDateTime ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom xsd:dateTime ;
+      owl:onProperty :toDateTime ;
+    ] ;
+.
+:Occupant
+  rdf:type owl:Class ;
+  rdfs:comment "A type of actor that defines the form of occupancy of a property"@en ;
+  rdfs:comment "Un type d'acteur qui définit la forme d'occupation d'une propriété"@fr ;
+  rdfs:isDefinedBy "http://bsdd.buildingsmart.org/#concept/details/289KpOp8L4MBqIToXk2Uxq"@en ;
+  rdfs:label "Occupant"@en ;
+  rdfs:label "Occupant"@fr ;
+  rdfs:subClassOf :Actor ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom :OccupancyProfile ;
+      owl:onProperty :occupancyProfile ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom :WorkSituation ;
+      owl:onProperty :workSituation ;
+    ] ;
+.
+:SELF_EMPLOYED
+  rdf:type owl:NamedIndividual ;
+  rdf:type :WorkType ;
+  rdfs:comment "An occupant who is working for oneself as a freelance or who is the owner of a business"@en ;
+  rdfs:comment "Un occupant qui travaille pour soi-même en tant que freelance ou qui est le propriétaire d'une entreprise"@fr ;
+  rdfs:label "Self employed"@en ;
+  rdfs:label "Travailleur indépendant"@fr ;
+.
+:TEENAGER
+  rdf:type owl:NamedIndividual ;
+  rdf:type :AgeCategory ;
+  rdfs:comment "A teenager is a person aged between 12 and 17 years inclusive"@en ;
+  rdfs:comment "Un adolescent est une personne âgée entre 12 et 17 ans inclus"@fr ;
+  rdfs:label "Adolescent"@fr ;
+  rdfs:label "Teenager"@en ;
+.
+:UNEMPLOYED
+  rdf:type owl:NamedIndividual ;
+  rdf:type :WorkType ;
+  rdfs:comment "An occupant without a paid job"@en ;
+  rdfs:comment "Un occupant sans emploi"@fr ;
+  rdfs:label "Unemployed"@en ;
+  rdfs:label "sans emploi"@fr ;
+.
+:WorkSituation
+  rdf:type owl:Class ;
+  rdfs:comment "Describes the work situation of an occupant, mainly the type of work (if any), and its related income"@en ;
+  rdfs:comment "Décrit la situation de travail d'un occupant, principalement le type de travail (le cas échéant) et son revenu"@fr ;
+  rdfs:label "Situation de travail"@fr ;
+  rdfs:label "Work situation"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom xsd:decimal ;
+      owl:onProperty :income ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom :WorkType ;
+      owl:onProperty :workType ;
+    ] ;
+.
+:WorkType
+  rdf:type owl:Class ;
+  rdfs:comment "Describes the occupant type of work"@en ;
+  rdfs:comment "Décrit le type de travail d'un occupant"@fr ;
+  rdfs:label "Type de travail"@fr ;
+  rdfs:label "Work type"@en ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:oneOf (
+          :EMPLOYED
+          :SELF_EMPLOYED
+          :UNEMPLOYED
+        ) ;
+    ] ;
+.
+:ageCategory
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relation describing the link between an actor and the corresponding age category"@fr ;
+  rdfs:comment "Relation décrivant le lien entre un acteur et la catégorie d'âge correspondante"@fr ;
+  rdfs:domain :Actor ;
+  rdfs:label "age category"@en ;
+  rdfs:label "catégorie d'âge"@fr ;
+  rdfs:range :AgeCategory ;
+.
+:associatedActor
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relation describing the link between a zone and the associated actor, which could be the occupant or any actor having a specific role associated to the zone"@en ;
+  rdfs:comment "Relation décrivant le lien entre une zone et un acteur associé, qui peut être l'occupant ou tout acteur ayant un rôle spécifique associé à cette zone"@fr ;
+  rdfs:domain bot:Zone ;
+  rdfs:label "acteur associé"@fr ;
+  rdfs:label "associated actor"@en ;
+  rdfs:range :Actor ;
+.
+:associatedZone
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relation pouvant décrire le lien entre un occupant et une zone associée à travers le profile d'occupation ou tout simplement le lien entre un acteur en général et une zone pour laquelle il a un role spécifique"@fr ;
+  rdfs:comment "Relation that can describe the link between an occupant and an associated zone through the occupation profile or simply the link between an actor in general and a zone for which he has a specific role"@en ;
+  rdfs:label "associated zone"@en ;
+  rdfs:label "zone associée"@fr ;
+  rdfs:range bot:Zone ;
+.
+:fromDateTime
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Property describing the start date and time related to an occupancy profile"@en ;
+  rdfs:comment "Propriété décrivant la date et l'heure de début liées à un profil d'occupation"@fr ;
+  rdfs:label "depuis date heure"@fr ;
+  rdfs:label "from date time"@en ;
+  rdfs:range xsd:dateTime ;
+.
+:hasEnergyPolicy
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Property linking an occupant to the energy policy that he adopts"@en ;
+  rdfs:comment "Propriété liant un occupant à la politique d'énergie qu'il adopte"@fr ;
+  rdfs:domain :Occupant ;
+  rdfs:label "energy policy"@en ;
+  rdfs:label "politica energetica"@it ;
+  rdfs:label "politique énergétique"@fr ;
+  rdfs:label "política energética"@es ;
+  rdfs:range :EnergyPolicy ;
+.
+:income
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Property describing the gross annual salary of an occupant"@en ;
+  rdfs:comment "Propriété décrivant le salaire annuel brut d'un occupant"@fr ;
+  rdfs:comment "salaire"@fr ;
+  rdfs:label "income"@en ;
+  rdfs:range xsd:decimal ;
+.
+:occupancyProfile
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relation describing the link between an occupant and its occupancy profile associated to a particular zone"@en ;
+  rdfs:comment "Relation décrivant le lien entre un occupant et son profile d'occupation associé à une zone particulière"@fr ;
+  rdfs:domain :Occupant ;
+  rdfs:label "occupancy profile"@fr ;
+  rdfs:label "profile d'occupation"@fr ;
+  rdfs:range :OccupancyProfile ;
+.
+:occupancyTime
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relation describing the link between an occupancy profile (associated to an occupant and a given zone) and the corresponding occupancy time range"@en ;
+  rdfs:comment "Relation décrivant le lien entre un profile d'occupation (associé à un occupant et une zone donnée) et l'intervalle d'occupation correspondant"@fr ;
+  rdfs:domain :OccupancyProfile ;
+  rdfs:label "occupancy time"@fr ;
+  rdfs:label "temps d'occupation"@en ;
+  rdfs:range :OccupancyTimeRange ;
+.
+:toDateTime
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Property describing the end date and time related to an occupancy profile"@en ;
+  rdfs:comment "Propriété décrivant la date et l'heure de fin liées à un profil d'occupation"@fr ;
+  rdfs:label "jusqu'au date heure"@fr ;
+  rdfs:label "to date time"@en ;
+  rdfs:range xsd:dateTime ;
+.
+:workSituation
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relation describing the link between an occupant and its work situation"@en ;
+  rdfs:comment "Relation décrivant le lien entre un occupant et la situation de travail correspondate"@fr ;
+  rdfs:domain :Occupant ;
+  rdfs:label "situation de travail"@fr ;
+  rdfs:label "work situation"@en ;
+  rdfs:range :WorkSituation ;
+.
+:workType
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relation describing the link between a work situation associated to an occupant and the corresponding work type"@en ;
+  rdfs:comment "Relation décrivant le lien entre la situation de travail associée à un occupant et le type de ce travail"@en ;
+  rdfs:domain :WorkSituation ;
+  rdfs:label "type de travail"@fr ;
+  rdfs:label "work type"@en ;
+  rdfs:range :WorkType ;
+.
+bot:Zone
+  rdf:type owl:Class ;
+.

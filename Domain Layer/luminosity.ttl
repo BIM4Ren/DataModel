@@ -1,16 +1,16 @@
-# baseURI: http://www.bim4ren.eu/domain/luminosity
-# imports: http://www.bim4ren.eu/property#
+# baseURI: https://models.bim4ren.eu/domain/luminosity
+# imports: https://models.bim4ren.eu/property#
 
-@prefix : <http://www.bim4ren.eu/domain/luminosity#> .
+@prefix : <https://models.bim4ren.eu/domain/luminosity#> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix prop: <http://bim4ren.eu/property#> .
-@prefix property: <http://www.bim4ren.eu/property#> .
+@prefix prop: <https://models.bim4ren.eu/property#> .
+@prefix property: <https://models.bim4ren.eu/property#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.bim4ren.eu/domain/luminosity>
+<https://models.bim4ren.eu/domain/luminosity>
   rdf:type owl:Ontology ;
   owl:imports property: ;
 .

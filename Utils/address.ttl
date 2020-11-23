@@ -3,14 +3,14 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix b4r-add: <http://www.bim4ren.eu/address#> .
-@base <http://www.bim4ren.eu/address#> .
+@prefix b4r-add: <https://models.bim4ren.eu/address#> .
+@base <https://models.bim4ren.eu/address#> .
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://www.bim4ren.eu/address#Address
+###  https://models.bim4ren.eu/address#Address
 b4r-add:Address rdf:type owl:Class ;
 				rdfs:subClassOf [ rdf:type owl:Restriction ;
                            owl:onProperty b4r-add:streetNumber ;
@@ -36,7 +36,7 @@ b4r-add:Address rdf:type owl:Class ;
 #################################################################
 #    Object properties
 #################################################################
-###  http://www.bim4ren.eu/address#address
+###  https://models.bim4ren.eu/address#address
 b4r-add:address rdf:type owl:ObjectProperty ;
                 rdfs:range b4r-add:Address .
 
@@ -46,17 +46,17 @@ b4r-add:address rdf:type owl:ObjectProperty ;
 #################################################################
 
 
-###  http://www.bim4ren.eu/address#city
+###  https://models.bim4ren.eu/address#city
 b4r-add:city rdf:type owl:DatatypeProperty .
 
 
-###  http://www.bim4ren.eu/address#streetName
+###  https://models.bim4ren.eu/address#streetName
 b4r-add:streetName rdf:type owl:DatatypeProperty .
 
 
-###  http://www.bim4ren.eu/address#streetNumber
+###  https://models.bim4ren.eu/address#streetNumber
 b4r-add:streetNumber rdf:type owl:DatatypeProperty .
 
 
-###  http://www.bim4ren.eu/address#zipCode
+###  https://models.bim4ren.eu/address#zipCode
 b4r-add:zipCode rdf:type owl:DatatypeProperty .

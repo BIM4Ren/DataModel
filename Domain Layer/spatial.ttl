@@ -1,18 +1,18 @@
-@prefix : <http://www.bim4ren.eu/domain/spatial#> .
+@prefix : <https://models.bim4ren.eu/domain/spatial#> .
 @prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix b4r-prop: <http://www.bim4ren.eu/property#> .
+@prefix b4r-prop: <https://models.bim4ren.eu/property#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix unit: <http://qudt.org/vocab/unit/> .
-@base <http://www.bim4ren.eu/domain/spatial> .
+@base <https://models.bim4ren.eu/domain/spatial> .
 
-<http://www.bim4ren.eu/domain/spatial> rdf:type owl:Ontology ;
-                                        owl:versionIRI <http://www.bim4ren.eu/domain/spatial/0.1> ;
-                                        owl:imports <http://www.bim4ren.eu/property#> ,
+<https://models.bim4ren.eu/domain/spatial> rdf:type owl:Ontology ;
+                                        owl:versionIRI <https://models.bim4ren.eu/domain/spatial/0.1> ;
+                                        owl:imports <https://models.bim4ren.eu/property#> ,
 													<http://qudt.org/vocab/quantitykind/> ,
 													<http://qudt.org/vocab/unit/> .
 
@@ -22,7 +22,7 @@
 #################################################################
 
 							   
-###  http://www.bim4ren.eu/property#grossArea
+###  https://models.bim4ren.eu/property#grossArea
 :grossArea rdf:type owl:ObjectProperty ;
 			  rdfs:subPropertyOf b4r-prop:area ;
 			  rdfs:label "surface brut"@fr ,
@@ -31,7 +31,7 @@
                          "gross area"@en .  
 
 
-###  http://www.bim4ren.eu/property#netArea
+###  https://models.bim4ren.eu/property#netArea
 :netArea rdf:type owl:ObjectProperty ;
 			     rdfs:subPropertyOf b4r-prop:area ;
 				 rdfs:label "area netta"@it ,
@@ -41,14 +41,14 @@
 
 
 
-###  http://www.bim4ren.eu/domain/spatial#volumicMass
+###  https://models.bim4ren.eu/domain/spatial#volumicMass
 :volumicMass rdf:type owl:ObjectProperty ;
                         rdfs:domain :VolumeElement ;
                         rdfs:label "Masse volumique"@en ,
                                    "Volumic Mass"@en .
 
 
-###  http://www.bim4ren.eu/domain/spatial#orientation
+###  https://models.bim4ren.eu/domain/spatial#orientation
 :orientation rdf:type owl:ObjectProperty ;
 				rdfs:subPropertyOf b4r-prop:angle ;
 				rdfs:comment "The orientation is determined as the azimuth angle of a surface relative to true north."@en ;
@@ -62,7 +62,7 @@
 #    Classes
 #################################################################
 
-###  http://www.bim4ren.eu/domain/spatial#PlaneElement
+###  https://models.bim4ren.eu/domain/spatial#PlaneElement
 :PlaneElement rdf:type owl:Class ;
                          rdfs:comment "An element that is characterized by its surface. For instance windows or space boundaries."@en ;
 						 rdfs:subClassOf [ rdf:type owl:Restriction ;
@@ -83,7 +83,7 @@
                                          ] .
 
 
-###  http://www.bim4ren.eu/domain/spatial#VolumeElement
+###  https://models.bim4ren.eu/domain/spatial#VolumeElement
 :VolumeElement rdf:type owl:Class ;
 						rdfs:comment "An element that is characterized by a volume (i.e. for which the thickness is important."@en ;
 						rdfs:subClassOf [ rdf:type owl:Restriction ;
