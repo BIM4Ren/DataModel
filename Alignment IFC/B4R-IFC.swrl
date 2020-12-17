@@ -33,3 +33,803 @@
 		  (?rel ifc2x3:relatingObject_IfcRelDecomposes ?z1)
 		  (?rel ifc2x3:relatedObjects_IfcRelDecomposes ?z2)
 		-> (?z1 bot:containsZone ?z2)]
+
+[connectedWith-IFC:
+	(?c rdf:type ifc:IfcRelConnectsPorts) (?c ifc:relatingPort_IfcRelConnectsPorts ?p1) (?c ifc:relatedPort_IfcRelConnectsPorts ?p2)
+	(?elt1 rdf:type ?cls1) (?cls1 rdfs:subClassOf sot:SystemComponent)
+	(?elt2 rdf:type ?cls2) (?cls2 rdfs:subClassOf sot:SystemComponent)
+	(?n1 ifc:relatingObject_IfcRelNests ?elt1) (?n1 ifc:relatedObjects_IfcRelNests ?list1) (?p1 list:isIn ?list1)
+	(?n2 ifc:relatingObject_IfcRelNests ?elt2) (?n2 ifc:relatedObjects_IfcRelNests ?list2) (?p2 list:isIn ?list2)
+	(?rel ifc:relatingPort_IfcRelConnectsPorts ?p1) (?rel ifc:relatedPort_IfcRelConnectsPorts ?p2)
+					 -> (?elt1 sot:connectedWith ?elt2)]
+
+[hasElements-IFC:
+	(?s rdf:type ?cls) (?cls rdfs:subClassOf sot:System)
+	(?c ifc:relatingGroup_IfcRelAssignsToGroup ?s)
+	(?c ifc:relatedObjects_IfcRelAssigns ?elt)
+	(?elt rdf:type ?clse) (?clse rdfs:subClassOf sot:SystemComponent)
+					-> (?s sot:hasElements ?elt)]
+
+[isIn1: (?l list:hasNext ?elt) -> (?elt list:isIn ?l)]
+[isIn2: (?l list:isFollowedBy ?queue) (?elt list:isIn ?queue) -> (?elt list:isIn ?l)]
+
+[ifcToLbdAirTerminalBox-USERDEFINED:(?z rdf:type ifc:IfcAirTerminalBox) (?z ifc:predefinedType_AirTerminalBox ifc:USERDEFINED) -> (?z rdf:type distribution:AirTerminalBox-USERDEFINED) .
+[ifcToLbdAirTerminalBox-VARIABLEFLOWPRESSUREDEPENDANT:(?z rdf:type ifc:IfcAirTerminalBox) (?z ifc:predefinedType_AirTerminalBox ifc:VARIABLEFLOWPRESSUREDEPENDANT) -> (?z rdf:type distribution:AirTerminalBox-VARIABLEFLOWPRESSUREDEPENDANT) .
+[ifcToLbdAirTerminalBox-VARIABLEFLOWPRESSUREINDEPENDANT:(?z rdf:type ifc:IfcAirTerminalBox) (?z ifc:predefinedType_AirTerminalBox ifc:VARIABLEFLOWPRESSUREINDEPENDANT) -> (?z rdf:type distribution:AirTerminalBox-VARIABLEFLOWPRESSUREINDEPENDANT) .
+[ifcToLbdAirTerminalBox-CONSTANTFLOW:(?z rdf:type ifc:IfcAirTerminalBox) (?z ifc:predefinedType_AirTerminalBox ifc:CONSTANTFLOW) -> (?z rdf:type distribution:AirTerminalBox-CONSTANTFLOW) .
+[ifcToLbdAirTerminalBox-NOTDEFINED:(?z rdf:type ifc:IfcAirTerminalBox) (?z ifc:predefinedType_AirTerminalBox ifc:NOTDEFINED) -> (?z rdf:type distribution:AirTerminalBox-NOTDEFINED) .
+
+[ifcToLbdValve-ANTIVACUUM:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:ANTIVACUUM) -> (?z rdf:type distribution:Valve-ANTIVACUUM) .
+[ifcToLbdValve-FAUCET:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:FAUCET) -> (?z rdf:type distribution:Valve-FAUCET) .
+[ifcToLbdValve-DIVERTING:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:DIVERTING) -> (?z rdf:type distribution:Valve-DIVERTING) .
+[ifcToLbdValve-STOPCOCK:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:STOPCOCK) -> (?z rdf:type distribution:Valve-STOPCOCK) .
+[ifcToLbdValve-AIRRELEASE:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:AIRRELEASE) -> (?z rdf:type distribution:Valve-AIRRELEASE) .
+[ifcToLbdValve-MIXING:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:MIXING) -> (?z rdf:type distribution:Valve-MIXING) .
+[ifcToLbdValve-USERDEFINED:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:USERDEFINED) -> (?z rdf:type distribution:Valve-USERDEFINED) .
+[ifcToLbdValve-REGULATING:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:REGULATING) -> (?z rdf:type distribution:Valve-REGULATING) .
+[ifcToLbdValve-DOUBLEREGULATING:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:DOUBLEREGULATING) -> (?z rdf:type distribution:Valve-DOUBLEREGULATING) .
+[ifcToLbdValve-PRESSURERELIEF:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:PRESSURERELIEF) -> (?z rdf:type distribution:Valve-PRESSURERELIEF) .
+[ifcToLbdValve-SAFETYCUTOFF:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:SAFETYCUTOFF) -> (?z rdf:type distribution:Valve-SAFETYCUTOFF) .
+[ifcToLbdValve-CHECK:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:CHECK) -> (?z rdf:type distribution:Valve-CHECK) .
+[ifcToLbdValve-PRESSUREREDUCING:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:PRESSUREREDUCING) -> (?z rdf:type distribution:Valve-PRESSUREREDUCING) .
+[ifcToLbdValve-ISOLATING:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:ISOLATING) -> (?z rdf:type distribution:Valve-ISOLATING) .
+[ifcToLbdValve-GASTAP:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:GASTAP) -> (?z rdf:type distribution:Valve-GASTAP) .
+[ifcToLbdValve-CHANGEOVER:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:CHANGEOVER) -> (?z rdf:type distribution:Valve-CHANGEOVER) .
+[ifcToLbdValve-DOUBLECHECK:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:DOUBLECHECK) -> (?z rdf:type distribution:Valve-DOUBLECHECK) .
+[ifcToLbdValve-STEAMTRAP:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:STEAMTRAP) -> (?z rdf:type distribution:Valve-STEAMTRAP) .
+[ifcToLbdValve-GASCOCK:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:GASCOCK) -> (?z rdf:type distribution:Valve-GASCOCK) .
+[ifcToLbdValve-COMMISSIONING:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:COMMISSIONING) -> (?z rdf:type distribution:Valve-COMMISSIONING) .
+[ifcToLbdValve-FLUSHING:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:FLUSHING) -> (?z rdf:type distribution:Valve-FLUSHING) .
+[ifcToLbdValve-DRAWOFFCOCK:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:DRAWOFFCOCK) -> (?z rdf:type distribution:Valve-DRAWOFFCOCK) .
+[ifcToLbdValve-NOTDEFINED:(?z rdf:type ifc:IfcValve) (?z ifc:predefinedType_Valve ifc:NOTDEFINED) -> (?z rdf:type distribution:Valve-NOTDEFINED) .
+
+[ifcToLbdPipeSegment-SPOOL:(?z rdf:type ifc:IfcPipeSegment) (?z ifc:predefinedType_PipeSegment ifc:SPOOL) -> (?z rdf:type distribution:PipeSegment-SPOOL) .
+[ifcToLbdPipeSegment-CULVERT:(?z rdf:type ifc:IfcPipeSegment) (?z ifc:predefinedType_PipeSegment ifc:CULVERT) -> (?z rdf:type distribution:PipeSegment-CULVERT) .
+[ifcToLbdPipeSegment-USERDEFINED:(?z rdf:type ifc:IfcPipeSegment) (?z ifc:predefinedType_PipeSegment ifc:USERDEFINED) -> (?z rdf:type distribution:PipeSegment-USERDEFINED) .
+[ifcToLbdPipeSegment-FLEXIBLESEGMENT:(?z rdf:type ifc:IfcPipeSegment) (?z ifc:predefinedType_PipeSegment ifc:FLEXIBLESEGMENT) -> (?z rdf:type distribution:PipeSegment-FLEXIBLESEGMENT) .
+[ifcToLbdPipeSegment-RIGIDSEGMENT:(?z rdf:type ifc:IfcPipeSegment) (?z ifc:predefinedType_PipeSegment ifc:RIGIDSEGMENT) -> (?z rdf:type distribution:PipeSegment-RIGIDSEGMENT) .
+[ifcToLbdPipeSegment-NOTDEFINED:(?z rdf:type ifc:IfcPipeSegment) (?z ifc:predefinedType_PipeSegment ifc:NOTDEFINED) -> (?z rdf:type distribution:PipeSegment-NOTDEFINED) .
+[ifcToLbdPipeSegment-GUTTER:(?z rdf:type ifc:IfcPipeSegment) (?z ifc:predefinedType_PipeSegment ifc:GUTTER) -> (?z rdf:type distribution:PipeSegment-GUTTER) .
+
+[ifcToLbdProtectiveDevice-VARISTOR:(?z rdf:type ifc:IfcProtectiveDevice) (?z ifc:predefinedType_ProtectiveDevice ifc:VARISTOR) -> (?z rdf:type distribution:ProtectiveDevice-VARISTOR) .
+[ifcToLbdProtectiveDevice-USERDEFINED:(?z rdf:type ifc:IfcProtectiveDevice) (?z ifc:predefinedType_ProtectiveDevice ifc:USERDEFINED) -> (?z rdf:type distribution:ProtectiveDevice-USERDEFINED) .
+[ifcToLbdProtectiveDevice-RESIDUALCURRENTSWITCH:(?z rdf:type ifc:IfcProtectiveDevice) (?z ifc:predefinedType_ProtectiveDevice ifc:RESIDUALCURRENTSWITCH) -> (?z rdf:type distribution:ProtectiveDevice-RESIDUALCURRENTSWITCH) .
+[ifcToLbdProtectiveDevice-CIRCUITBREAKER:(?z rdf:type ifc:IfcProtectiveDevice) (?z ifc:predefinedType_ProtectiveDevice ifc:CIRCUITBREAKER) -> (?z rdf:type distribution:ProtectiveDevice-CIRCUITBREAKER) .
+[ifcToLbdProtectiveDevice-EARTHLEAKAGECIRCUITBREAKER:(?z rdf:type ifc:IfcProtectiveDevice) (?z ifc:predefinedType_ProtectiveDevice ifc:EARTHLEAKAGECIRCUITBREAKER) -> (?z rdf:type distribution:ProtectiveDevice-EARTHLEAKAGECIRCUITBREAKER) .
+[ifcToLbdProtectiveDevice-EARTHINGSWITCH:(?z rdf:type ifc:IfcProtectiveDevice) (?z ifc:predefinedType_ProtectiveDevice ifc:EARTHINGSWITCH) -> (?z rdf:type distribution:ProtectiveDevice-EARTHINGSWITCH) .
+[ifcToLbdProtectiveDevice-RESIDUALCURRENTCIRCUITBREAKER:(?z rdf:type ifc:IfcProtectiveDevice) (?z ifc:predefinedType_ProtectiveDevice ifc:RESIDUALCURRENTCIRCUITBREAKER) -> (?z rdf:type distribution:ProtectiveDevice-RESIDUALCURRENTCIRCUITBREAKER) .
+[ifcToLbdProtectiveDevice-FUSEDISCONNECTOR:(?z rdf:type ifc:IfcProtectiveDevice) (?z ifc:predefinedType_ProtectiveDevice ifc:FUSEDISCONNECTOR) -> (?z rdf:type distribution:ProtectiveDevice-FUSEDISCONNECTOR) .
+[ifcToLbdProtectiveDevice-NOTDEFINED:(?z rdf:type ifc:IfcProtectiveDevice) (?z ifc:predefinedType_ProtectiveDevice ifc:NOTDEFINED) -> (?z rdf:type distribution:ProtectiveDevice-NOTDEFINED) .
+
+[ifcToLbdAirToAirHeatRecovery-THERMOSIPHONSEALEDTUBEHEATEXCHANGERS:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:THERMOSIPHONSEALEDTUBEHEATEXCHANGERS) -> (?z rdf:type distribution:AirToAirHeatRecovery-THERMOSIPHONSEALEDTUBEHEATEXCHANGERS) .
+[ifcToLbdAirToAirHeatRecovery-FIXEDPLATEPARALLELFLOWEXCHANGER:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:FIXEDPLATEPARALLELFLOWEXCHANGER) -> (?z rdf:type distribution:AirToAirHeatRecovery-FIXEDPLATEPARALLELFLOWEXCHANGER) .
+[ifcToLbdAirToAirHeatRecovery-FIXEDPLATECROSSFLOWEXCHANGER:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:FIXEDPLATECROSSFLOWEXCHANGER) -> (?z rdf:type distribution:AirToAirHeatRecovery-FIXEDPLATECROSSFLOWEXCHANGER) .
+[ifcToLbdAirToAirHeatRecovery-USERDEFINED:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:USERDEFINED) -> (?z rdf:type distribution:AirToAirHeatRecovery-USERDEFINED) .
+[ifcToLbdAirToAirHeatRecovery-ROTARYWHEEL:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:ROTARYWHEEL) -> (?z rdf:type distribution:AirToAirHeatRecovery-ROTARYWHEEL) .
+[ifcToLbdAirToAirHeatRecovery-HEATPIPE:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:HEATPIPE) -> (?z rdf:type distribution:AirToAirHeatRecovery-HEATPIPE) .
+[ifcToLbdAirToAirHeatRecovery-FIXEDPLATECOUNTERFLOWEXCHANGER:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:FIXEDPLATECOUNTERFLOWEXCHANGER) -> (?z rdf:type distribution:AirToAirHeatRecovery-FIXEDPLATECOUNTERFLOWEXCHANGER) .
+[ifcToLbdAirToAirHeatRecovery-THERMOSIPHONCOILTYPEHEATEXCHANGERS:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:THERMOSIPHONCOILTYPEHEATEXCHANGERS) -> (?z rdf:type distribution:AirToAirHeatRecovery-THERMOSIPHONCOILTYPEHEATEXCHANGERS) .
+[ifcToLbdAirToAirHeatRecovery-RUNAROUNDCOILLOOP:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:RUNAROUNDCOILLOOP) -> (?z rdf:type distribution:AirToAirHeatRecovery-RUNAROUNDCOILLOOP) .
+[ifcToLbdAirToAirHeatRecovery-TWINTOWERENTHALPYRECOVERYLOOPS:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:TWINTOWERENTHALPYRECOVERYLOOPS) -> (?z rdf:type distribution:AirToAirHeatRecovery-TWINTOWERENTHALPYRECOVERYLOOPS) .
+[ifcToLbdAirToAirHeatRecovery-NOTDEFINED:(?z rdf:type ifc:IfcAirToAirHeatRecovery) (?z ifc:predefinedType_AirToAirHeatRecovery ifc:NOTDEFINED) -> (?z rdf:type distribution:AirToAirHeatRecovery-NOTDEFINED) .
+
+[ifcToLbdSwitchingDevice-SWITCHDISCONNECTOR:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:SWITCHDISCONNECTOR) -> (?z rdf:type distribution:SwitchingDevice-SWITCHDISCONNECTOR) .
+[ifcToLbdSwitchingDevice-MOMENTARYSWITCH:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:MOMENTARYSWITCH) -> (?z rdf:type distribution:SwitchingDevice-MOMENTARYSWITCH) .
+[ifcToLbdSwitchingDevice-DIMMERSWITCH:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:DIMMERSWITCH) -> (?z rdf:type distribution:SwitchingDevice-DIMMERSWITCH) .
+[ifcToLbdSwitchingDevice-STARTER:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:STARTER) -> (?z rdf:type distribution:SwitchingDevice-STARTER) .
+[ifcToLbdSwitchingDevice-EMERGENCYSTOP:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:EMERGENCYSTOP) -> (?z rdf:type distribution:SwitchingDevice-EMERGENCYSTOP) .
+[ifcToLbdSwitchingDevice-USERDEFINED:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:USERDEFINED) -> (?z rdf:type distribution:SwitchingDevice-USERDEFINED) .
+[ifcToLbdSwitchingDevice-KEYPAD:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:KEYPAD) -> (?z rdf:type distribution:SwitchingDevice-KEYPAD) .
+[ifcToLbdSwitchingDevice-SELECTORSWITCH:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:SELECTORSWITCH) -> (?z rdf:type distribution:SwitchingDevice-SELECTORSWITCH) .
+[ifcToLbdSwitchingDevice-CONTACTOR:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:CONTACTOR) -> (?z rdf:type distribution:SwitchingDevice-CONTACTOR) .
+[ifcToLbdSwitchingDevice-TOGGLESWITCH:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:TOGGLESWITCH) -> (?z rdf:type distribution:SwitchingDevice-TOGGLESWITCH) .
+[ifcToLbdSwitchingDevice-NOTDEFINED:(?z rdf:type ifc:IfcSwitchingDevice) (?z ifc:predefinedType_SwitchingDevice ifc:NOTDEFINED) -> (?z rdf:type distribution:SwitchingDevice-NOTDEFINED) .
+
+[ifcToLbdWasteTerminal-USERDEFINED:(?z rdf:type ifc:IfcWasteTerminal) (?z ifc:predefinedType_WasteTerminal ifc:USERDEFINED) -> (?z rdf:type distribution:WasteTerminal-USERDEFINED) .
+[ifcToLbdWasteTerminal-ROOFDRAIN:(?z rdf:type ifc:IfcWasteTerminal) (?z ifc:predefinedType_WasteTerminal ifc:ROOFDRAIN) -> (?z rdf:type distribution:WasteTerminal-ROOFDRAIN) .
+[ifcToLbdWasteTerminal-GULLYTRAP:(?z rdf:type ifc:IfcWasteTerminal) (?z ifc:predefinedType_WasteTerminal ifc:GULLYTRAP) -> (?z rdf:type distribution:WasteTerminal-GULLYTRAP) .
+[ifcToLbdWasteTerminal-GULLYSUMP:(?z rdf:type ifc:IfcWasteTerminal) (?z ifc:predefinedType_WasteTerminal ifc:GULLYSUMP) -> (?z rdf:type distribution:WasteTerminal-GULLYSUMP) .
+[ifcToLbdWasteTerminal-WASTEDISPOSALUNIT:(?z rdf:type ifc:IfcWasteTerminal) (?z ifc:predefinedType_WasteTerminal ifc:WASTEDISPOSALUNIT) -> (?z rdf:type distribution:WasteTerminal-WASTEDISPOSALUNIT) .
+[ifcToLbdWasteTerminal-FLOORTRAP:(?z rdf:type ifc:IfcWasteTerminal) (?z ifc:predefinedType_WasteTerminal ifc:FLOORTRAP) -> (?z rdf:type distribution:WasteTerminal-FLOORTRAP) .
+[ifcToLbdWasteTerminal-FLOORWASTE:(?z rdf:type ifc:IfcWasteTerminal) (?z ifc:predefinedType_WasteTerminal ifc:FLOORWASTE) -> (?z rdf:type distribution:WasteTerminal-FLOORWASTE) .
+[ifcToLbdWasteTerminal-WASTETRAP:(?z rdf:type ifc:IfcWasteTerminal) (?z ifc:predefinedType_WasteTerminal ifc:WASTETRAP) -> (?z rdf:type distribution:WasteTerminal-WASTETRAP) .
+[ifcToLbdWasteTerminal-NOTDEFINED:(?z rdf:type ifc:IfcWasteTerminal) (?z ifc:predefinedType_WasteTerminal ifc:NOTDEFINED) -> (?z rdf:type distribution:WasteTerminal-NOTDEFINED) .
+
+[ifcToLbdTubeBundle-USERDEFINED:(?z rdf:type ifc:IfcTubeBundle) (?z ifc:predefinedType_TubeBundle ifc:USERDEFINED) -> (?z rdf:type distribution:TubeBundle-USERDEFINED) .
+[ifcToLbdTubeBundle-FINNED:(?z rdf:type ifc:IfcTubeBundle) (?z ifc:predefinedType_TubeBundle ifc:FINNED) -> (?z rdf:type distribution:TubeBundle-FINNED) .
+[ifcToLbdTubeBundle-NOTDEFINED:(?z rdf:type ifc:IfcTubeBundle) (?z ifc:predefinedType_TubeBundle ifc:NOTDEFINED) -> (?z rdf:type distribution:TubeBundle-NOTDEFINED) .
+
+[ifcToLbdTransformer-USERDEFINED:(?z rdf:type ifc:IfcTransformer) (?z ifc:predefinedType_Transformer ifc:USERDEFINED) -> (?z rdf:type distribution:Transformer-USERDEFINED) .
+[ifcToLbdTransformer-VOLTAGE:(?z rdf:type ifc:IfcTransformer) (?z ifc:predefinedType_Transformer ifc:VOLTAGE) -> (?z rdf:type distribution:Transformer-VOLTAGE) .
+[ifcToLbdTransformer-RECTIFIER:(?z rdf:type ifc:IfcTransformer) (?z ifc:predefinedType_Transformer ifc:RECTIFIER) -> (?z rdf:type distribution:Transformer-RECTIFIER) .
+[ifcToLbdTransformer-FREQUENCY:(?z rdf:type ifc:IfcTransformer) (?z ifc:predefinedType_Transformer ifc:FREQUENCY) -> (?z rdf:type distribution:Transformer-FREQUENCY) .
+[ifcToLbdTransformer-CURRENT:(?z rdf:type ifc:IfcTransformer) (?z ifc:predefinedType_Transformer ifc:CURRENT) -> (?z rdf:type distribution:Transformer-CURRENT) .
+[ifcToLbdTransformer-INVERTER:(?z rdf:type ifc:IfcTransformer) (?z ifc:predefinedType_Transformer ifc:INVERTER) -> (?z rdf:type distribution:Transformer-INVERTER) .
+[ifcToLbdTransformer-NOTDEFINED:(?z rdf:type ifc:IfcTransformer) (?z ifc:predefinedType_Transformer ifc:NOTDEFINED) -> (?z rdf:type distribution:Transformer-NOTDEFINED) .
+
+[ifcToLbdElectricFlowStorageDevice-HARMONICFILTER:(?z rdf:type ifc:IfcElectricFlowStorageDevice) (?z ifc:predefinedType_ElectricFlowStorageDevice ifc:HARMONICFILTER) -> (?z rdf:type distribution:ElectricFlowStorageDevice-HARMONICFILTER) .
+[ifcToLbdElectricFlowStorageDevice-INDUCTORBANK:(?z rdf:type ifc:IfcElectricFlowStorageDevice) (?z ifc:predefinedType_ElectricFlowStorageDevice ifc:INDUCTORBANK) -> (?z rdf:type distribution:ElectricFlowStorageDevice-INDUCTORBANK) .
+[ifcToLbdElectricFlowStorageDevice-USERDEFINED:(?z rdf:type ifc:IfcElectricFlowStorageDevice) (?z ifc:predefinedType_ElectricFlowStorageDevice ifc:USERDEFINED) -> (?z rdf:type distribution:ElectricFlowStorageDevice-USERDEFINED) .
+[ifcToLbdElectricFlowStorageDevice-CAPACITORBANK:(?z rdf:type ifc:IfcElectricFlowStorageDevice) (?z ifc:predefinedType_ElectricFlowStorageDevice ifc:CAPACITORBANK) -> (?z rdf:type distribution:ElectricFlowStorageDevice-CAPACITORBANK) .
+[ifcToLbdElectricFlowStorageDevice-BATTERY:(?z rdf:type ifc:IfcElectricFlowStorageDevice) (?z ifc:predefinedType_ElectricFlowStorageDevice ifc:BATTERY) -> (?z rdf:type distribution:ElectricFlowStorageDevice-BATTERY) .
+[ifcToLbdElectricFlowStorageDevice-UPS:(?z rdf:type ifc:IfcElectricFlowStorageDevice) (?z ifc:predefinedType_ElectricFlowStorageDevice ifc:UPS) -> (?z rdf:type distribution:ElectricFlowStorageDevice-UPS) .
+[ifcToLbdElectricFlowStorageDevice-NOTDEFINED:(?z rdf:type ifc:IfcElectricFlowStorageDevice) (?z ifc:predefinedType_ElectricFlowStorageDevice ifc:NOTDEFINED) -> (?z rdf:type distribution:ElectricFlowStorageDevice-NOTDEFINED) .
+
+[ifcToLbdBoiler-WATER:(?z rdf:type ifc:IfcBoiler) (?z ifc:predefinedType_Boiler ifc:WATER) -> (?z rdf:type distribution:Boiler-WATER) .
+[ifcToLbdBoiler-USERDEFINED:(?z rdf:type ifc:IfcBoiler) (?z ifc:predefinedType_Boiler ifc:USERDEFINED) -> (?z rdf:type distribution:Boiler-USERDEFINED) .
+[ifcToLbdBoiler-STEAM:(?z rdf:type ifc:IfcBoiler) (?z ifc:predefinedType_Boiler ifc:STEAM) -> (?z rdf:type distribution:Boiler-STEAM) .
+[ifcToLbdBoiler-NOTDEFINED:(?z rdf:type ifc:IfcBoiler) (?z ifc:predefinedType_Boiler ifc:NOTDEFINED) -> (?z rdf:type distribution:Boiler-NOTDEFINED) .
+
+[ifcToLbdAudioVisualAppliance-MICROPHONE:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:MICROPHONE) -> (?z rdf:type distribution:AudioVisualAppliance-MICROPHONE) .
+[ifcToLbdAudioVisualAppliance-SPEAKER:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:SPEAKER) -> (?z rdf:type distribution:AudioVisualAppliance-SPEAKER) .
+[ifcToLbdAudioVisualAppliance-DISPLAY:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:DISPLAY) -> (?z rdf:type distribution:AudioVisualAppliance-DISPLAY) .
+[ifcToLbdAudioVisualAppliance-RECEIVER:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:RECEIVER) -> (?z rdf:type distribution:AudioVisualAppliance-RECEIVER) .
+[ifcToLbdAudioVisualAppliance-USERDEFINED:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:USERDEFINED) -> (?z rdf:type distribution:AudioVisualAppliance-USERDEFINED) .
+[ifcToLbdAudioVisualAppliance-PROJECTOR:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:PROJECTOR) -> (?z rdf:type distribution:AudioVisualAppliance-PROJECTOR) .
+[ifcToLbdAudioVisualAppliance-SWITCHER:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:SWITCHER) -> (?z rdf:type distribution:AudioVisualAppliance-SWITCHER) .
+[ifcToLbdAudioVisualAppliance-TELEPHONE:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:TELEPHONE) -> (?z rdf:type distribution:AudioVisualAppliance-TELEPHONE) .
+[ifcToLbdAudioVisualAppliance-CAMERA:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:CAMERA) -> (?z rdf:type distribution:AudioVisualAppliance-CAMERA) .
+[ifcToLbdAudioVisualAppliance-PLAYER:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:PLAYER) -> (?z rdf:type distribution:AudioVisualAppliance-PLAYER) .
+[ifcToLbdAudioVisualAppliance-AMPLIFIER:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:AMPLIFIER) -> (?z rdf:type distribution:AudioVisualAppliance-AMPLIFIER) .
+[ifcToLbdAudioVisualAppliance-TUNER:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:TUNER) -> (?z rdf:type distribution:AudioVisualAppliance-TUNER) .
+[ifcToLbdAudioVisualAppliance-NOTDEFINED:(?z rdf:type ifc:IfcAudioVisualAppliance) (?z ifc:predefinedType_AudioVisualAppliance ifc:NOTDEFINED) -> (?z rdf:type distribution:AudioVisualAppliance-NOTDEFINED) .
+
+[ifcToLbdElectricMotor-DC:(?z rdf:type ifc:IfcElectricMotor) (?z ifc:predefinedType_ElectricMotor ifc:DC) -> (?z rdf:type distribution:ElectricMotor-DC) .
+[ifcToLbdElectricMotor-POLYPHASE:(?z rdf:type ifc:IfcElectricMotor) (?z ifc:predefinedType_ElectricMotor ifc:POLYPHASE) -> (?z rdf:type distribution:ElectricMotor-POLYPHASE) .
+[ifcToLbdElectricMotor-USERDEFINED:(?z rdf:type ifc:IfcElectricMotor) (?z ifc:predefinedType_ElectricMotor ifc:USERDEFINED) -> (?z rdf:type distribution:ElectricMotor-USERDEFINED) .
+[ifcToLbdElectricMotor-SYNCHRONOUS:(?z rdf:type ifc:IfcElectricMotor) (?z ifc:predefinedType_ElectricMotor ifc:SYNCHRONOUS) -> (?z rdf:type distribution:ElectricMotor-SYNCHRONOUS) .
+[ifcToLbdElectricMotor-RELUCTANCESYNCHRONOUS:(?z rdf:type ifc:IfcElectricMotor) (?z ifc:predefinedType_ElectricMotor ifc:RELUCTANCESYNCHRONOUS) -> (?z rdf:type distribution:ElectricMotor-RELUCTANCESYNCHRONOUS) .
+[ifcToLbdElectricMotor-INDUCTION:(?z rdf:type ifc:IfcElectricMotor) (?z ifc:predefinedType_ElectricMotor ifc:INDUCTION) -> (?z rdf:type distribution:ElectricMotor-INDUCTION) .
+[ifcToLbdElectricMotor-NOTDEFINED:(?z rdf:type ifc:IfcElectricMotor) (?z ifc:predefinedType_ElectricMotor ifc:NOTDEFINED) -> (?z rdf:type distribution:ElectricMotor-NOTDEFINED) .
+
+[ifcToLbdController-PROPORTIONAL:(?z rdf:type ifc:IfcController) (?z ifc:predefinedType_Controller ifc:PROPORTIONAL) -> (?z rdf:type distribution:Controller-PROPORTIONAL) .
+[ifcToLbdController-PROGRAMMABLE:(?z rdf:type ifc:IfcController) (?z ifc:predefinedType_Controller ifc:PROGRAMMABLE) -> (?z rdf:type distribution:Controller-PROGRAMMABLE) .
+[ifcToLbdController-TWOPOSITION:(?z rdf:type ifc:IfcController) (?z ifc:predefinedType_Controller ifc:TWOPOSITION) -> (?z rdf:type distribution:Controller-TWOPOSITION) .
+[ifcToLbdController-USERDEFINED:(?z rdf:type ifc:IfcController) (?z ifc:predefinedType_Controller ifc:USERDEFINED) -> (?z rdf:type distribution:Controller-USERDEFINED) .
+[ifcToLbdController-MULTIPOSITION:(?z rdf:type ifc:IfcController) (?z ifc:predefinedType_Controller ifc:MULTIPOSITION) -> (?z rdf:type distribution:Controller-MULTIPOSITION) .
+[ifcToLbdController-FLOATING:(?z rdf:type ifc:IfcController) (?z ifc:predefinedType_Controller ifc:FLOATING) -> (?z rdf:type distribution:Controller-FLOATING) .
+[ifcToLbdController-NOTDEFINED:(?z rdf:type ifc:IfcController) (?z ifc:predefinedType_Controller ifc:NOTDEFINED) -> (?z rdf:type distribution:Controller-NOTDEFINED) .
+
+[ifcToLbdEvaporativeCooler-INDIRECTDIRECTCOMBINATION:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:INDIRECTDIRECTCOMBINATION) -> (?z rdf:type distribution:EvaporativeCooler-INDIRECTDIRECTCOMBINATION) .
+[ifcToLbdEvaporativeCooler-INDIRECTEVAPORATIVEPACKAGEAIRCOOLER:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:INDIRECTEVAPORATIVEPACKAGEAIRCOOLER) -> (?z rdf:type distribution:EvaporativeCooler-INDIRECTEVAPORATIVEPACKAGEAIRCOOLER) .
+[ifcToLbdEvaporativeCooler-DIRECTEVAPORATIVERIGIDMEDIAAIRCOOLER:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:DIRECTEVAPORATIVERIGIDMEDIAAIRCOOLER) -> (?z rdf:type distribution:EvaporativeCooler-DIRECTEVAPORATIVERIGIDMEDIAAIRCOOLER) .
+[ifcToLbdEvaporativeCooler-DIRECTEVAPORATIVEPACKAGEDROTARYAIRCOOLER:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:DIRECTEVAPORATIVEPACKAGEDROTARYAIRCOOLER) -> (?z rdf:type distribution:EvaporativeCooler-DIRECTEVAPORATIVEPACKAGEDROTARYAIRCOOLER) .
+[ifcToLbdEvaporativeCooler-DIRECTEVAPORATIVESLINGERSPACKAGEDAIRCOOLER:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:DIRECTEVAPORATIVESLINGERSPACKAGEDAIRCOOLER) -> (?z rdf:type distribution:EvaporativeCooler-DIRECTEVAPORATIVESLINGERSPACKAGEDAIRCOOLER) .
+[ifcToLbdEvaporativeCooler-USERDEFINED:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:USERDEFINED) -> (?z rdf:type distribution:EvaporativeCooler-USERDEFINED) .
+[ifcToLbdEvaporativeCooler-DIRECTEVAPORATIVERANDOMMEDIAAIRCOOLER:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:DIRECTEVAPORATIVERANDOMMEDIAAIRCOOLER) -> (?z rdf:type distribution:EvaporativeCooler-DIRECTEVAPORATIVERANDOMMEDIAAIRCOOLER) .
+[ifcToLbdEvaporativeCooler-DIRECTEVAPORATIVEAIRWASHER:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:DIRECTEVAPORATIVEAIRWASHER) -> (?z rdf:type distribution:EvaporativeCooler-DIRECTEVAPORATIVEAIRWASHER) .
+[ifcToLbdEvaporativeCooler-INDIRECTEVAPORATIVEWETCOIL:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:INDIRECTEVAPORATIVEWETCOIL) -> (?z rdf:type distribution:EvaporativeCooler-INDIRECTEVAPORATIVEWETCOIL) .
+[ifcToLbdEvaporativeCooler-INDIRECTEVAPORATIVECOOLINGTOWERORCOILCOOLER:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:INDIRECTEVAPORATIVECOOLINGTOWERORCOILCOOLER) -> (?z rdf:type distribution:EvaporativeCooler-INDIRECTEVAPORATIVECOOLINGTOWERORCOILCOOLER) .
+[ifcToLbdEvaporativeCooler-NOTDEFINED:(?z rdf:type ifc:IfcEvaporativeCooler) (?z ifc:predefinedType_EvaporativeCooler ifc:NOTDEFINED) -> (?z rdf:type distribution:EvaporativeCooler-NOTDEFINED) .
+
+[ifcToLbdCoil-DXCOOLINGCOIL:(?z rdf:type ifc:IfcCoil) (?z ifc:predefinedType_Coil ifc:DXCOOLINGCOIL) -> (?z rdf:type distribution:Coil-DXCOOLINGCOIL) .
+[ifcToLbdCoil-STEAMHEATINGCOIL:(?z rdf:type ifc:IfcCoil) (?z ifc:predefinedType_Coil ifc:STEAMHEATINGCOIL) -> (?z rdf:type distribution:Coil-STEAMHEATINGCOIL) .
+[ifcToLbdCoil-WATERHEATINGCOIL:(?z rdf:type ifc:IfcCoil) (?z ifc:predefinedType_Coil ifc:WATERHEATINGCOIL) -> (?z rdf:type distribution:Coil-WATERHEATINGCOIL) .
+[ifcToLbdCoil-HYDRONICCOIL:(?z rdf:type ifc:IfcCoil) (?z ifc:predefinedType_Coil ifc:HYDRONICCOIL) -> (?z rdf:type distribution:Coil-HYDRONICCOIL) .
+[ifcToLbdCoil-USERDEFINED:(?z rdf:type ifc:IfcCoil) (?z ifc:predefinedType_Coil ifc:USERDEFINED) -> (?z rdf:type distribution:Coil-USERDEFINED) .
+[ifcToLbdCoil-ELECTRICHEATINGCOIL:(?z rdf:type ifc:IfcCoil) (?z ifc:predefinedType_Coil ifc:ELECTRICHEATINGCOIL) -> (?z rdf:type distribution:Coil-ELECTRICHEATINGCOIL) .
+[ifcToLbdCoil-GASHEATINGCOIL:(?z rdf:type ifc:IfcCoil) (?z ifc:predefinedType_Coil ifc:GASHEATINGCOIL) -> (?z rdf:type distribution:Coil-GASHEATINGCOIL) .
+[ifcToLbdCoil-WATERCOOLINGCOIL:(?z rdf:type ifc:IfcCoil) (?z ifc:predefinedType_Coil ifc:WATERCOOLINGCOIL) -> (?z rdf:type distribution:Coil-WATERCOOLINGCOIL) .
+[ifcToLbdCoil-NOTDEFINED:(?z rdf:type ifc:IfcCoil) (?z ifc:predefinedType_Coil ifc:NOTDEFINED) -> (?z rdf:type distribution:Coil-NOTDEFINED) .
+
+[ifcToLbdElectricDistributionBoard-DISTRIBUTIONBOARD:(?z rdf:type ifc:IfcElectricDistributionBoard) (?z ifc:predefinedType_ElectricDistributionBoard ifc:DISTRIBUTIONBOARD) -> (?z rdf:type distribution:ElectricDistributionBoard-DISTRIBUTIONBOARD) .
+[ifcToLbdElectricDistributionBoard-USERDEFINED:(?z rdf:type ifc:IfcElectricDistributionBoard) (?z ifc:predefinedType_ElectricDistributionBoard ifc:USERDEFINED) -> (?z rdf:type distribution:ElectricDistributionBoard-USERDEFINED) .
+[ifcToLbdElectricDistributionBoard-SWITCHBOARD:(?z rdf:type ifc:IfcElectricDistributionBoard) (?z ifc:predefinedType_ElectricDistributionBoard ifc:SWITCHBOARD) -> (?z rdf:type distribution:ElectricDistributionBoard-SWITCHBOARD) .
+[ifcToLbdElectricDistributionBoard-MOTORCONTROLCENTRE:(?z rdf:type ifc:IfcElectricDistributionBoard) (?z ifc:predefinedType_ElectricDistributionBoard ifc:MOTORCONTROLCENTRE) -> (?z rdf:type distribution:ElectricDistributionBoard-MOTORCONTROLCENTRE) .
+[ifcToLbdElectricDistributionBoard-CONSUMERUNIT:(?z rdf:type ifc:IfcElectricDistributionBoard) (?z ifc:predefinedType_ElectricDistributionBoard ifc:CONSUMERUNIT) -> (?z rdf:type distribution:ElectricDistributionBoard-CONSUMERUNIT) .
+[ifcToLbdElectricDistributionBoard-NOTDEFINED:(?z rdf:type ifc:IfcElectricDistributionBoard) (?z ifc:predefinedType_ElectricDistributionBoard ifc:NOTDEFINED) -> (?z rdf:type distribution:ElectricDistributionBoard-NOTDEFINED) .
+
+[ifcToLbdFan-CENTRIFUGALFORWARDCURVED:(?z rdf:type ifc:IfcFan) (?z ifc:predefinedType_Fan ifc:CENTRIFUGALFORWARDCURVED) -> (?z rdf:type distribution:Fan-CENTRIFUGALFORWARDCURVED) .
+[ifcToLbdFan-PROPELLORAXIAL:(?z rdf:type ifc:IfcFan) (?z ifc:predefinedType_Fan ifc:PROPELLORAXIAL) -> (?z rdf:type distribution:Fan-PROPELLORAXIAL) .
+[ifcToLbdFan-CENTRIFUGALBACKWARDINCLINEDCURVED:(?z rdf:type ifc:IfcFan) (?z ifc:predefinedType_Fan ifc:CENTRIFUGALBACKWARDINCLINEDCURVED) -> (?z rdf:type distribution:Fan-CENTRIFUGALBACKWARDINCLINEDCURVED) .
+[ifcToLbdFan-USERDEFINED:(?z rdf:type ifc:IfcFan) (?z ifc:predefinedType_Fan ifc:USERDEFINED) -> (?z rdf:type distribution:Fan-USERDEFINED) .
+[ifcToLbdFan-TUBEAXIAL:(?z rdf:type ifc:IfcFan) (?z ifc:predefinedType_Fan ifc:TUBEAXIAL) -> (?z rdf:type distribution:Fan-TUBEAXIAL) .
+[ifcToLbdFan-CENTRIFUGALRADIAL:(?z rdf:type ifc:IfcFan) (?z ifc:predefinedType_Fan ifc:CENTRIFUGALRADIAL) -> (?z rdf:type distribution:Fan-CENTRIFUGALRADIAL) .
+[ifcToLbdFan-CENTRIFUGALAIRFOIL:(?z rdf:type ifc:IfcFan) (?z ifc:predefinedType_Fan ifc:CENTRIFUGALAIRFOIL) -> (?z rdf:type distribution:Fan-CENTRIFUGALAIRFOIL) .
+[ifcToLbdFan-VANEAXIAL:(?z rdf:type ifc:IfcFan) (?z ifc:predefinedType_Fan ifc:VANEAXIAL) -> (?z rdf:type distribution:Fan-VANEAXIAL) .
+[ifcToLbdFan-NOTDEFINED:(?z rdf:type ifc:IfcFan) (?z ifc:predefinedType_Fan ifc:NOTDEFINED) -> (?z rdf:type distribution:Fan-NOTDEFINED) .
+
+[ifcToLbdFlowMeter-ENERGYMETER:(?z rdf:type ifc:IfcFlowMeter) (?z ifc:predefinedType_FlowMeter ifc:ENERGYMETER) -> (?z rdf:type distribution:FlowMeter-ENERGYMETER) .
+[ifcToLbdFlowMeter-USERDEFINED:(?z rdf:type ifc:IfcFlowMeter) (?z ifc:predefinedType_FlowMeter ifc:USERDEFINED) -> (?z rdf:type distribution:FlowMeter-USERDEFINED) .
+[ifcToLbdFlowMeter-GASMETER:(?z rdf:type ifc:IfcFlowMeter) (?z ifc:predefinedType_FlowMeter ifc:GASMETER) -> (?z rdf:type distribution:FlowMeter-GASMETER) .
+[ifcToLbdFlowMeter-WATERMETER:(?z rdf:type ifc:IfcFlowMeter) (?z ifc:predefinedType_FlowMeter ifc:WATERMETER) -> (?z rdf:type distribution:FlowMeter-WATERMETER) .
+[ifcToLbdFlowMeter-OILMETER:(?z rdf:type ifc:IfcFlowMeter) (?z ifc:predefinedType_FlowMeter ifc:OILMETER) -> (?z rdf:type distribution:FlowMeter-OILMETER) .
+[ifcToLbdFlowMeter-NOTDEFINED:(?z rdf:type ifc:IfcFlowMeter) (?z ifc:predefinedType_FlowMeter ifc:NOTDEFINED) -> (?z rdf:type distribution:FlowMeter-NOTDEFINED) .
+
+[ifcToLbdMotorConnection-COUPLING:(?z rdf:type ifc:IfcMotorConnection) (?z ifc:predefinedType_MotorConnection ifc:COUPLING) -> (?z rdf:type distribution:MotorConnection-COUPLING) .
+[ifcToLbdMotorConnection-USERDEFINED:(?z rdf:type ifc:IfcMotorConnection) (?z ifc:predefinedType_MotorConnection ifc:USERDEFINED) -> (?z rdf:type distribution:MotorConnection-USERDEFINED) .
+[ifcToLbdMotorConnection-BELTDRIVE:(?z rdf:type ifc:IfcMotorConnection) (?z ifc:predefinedType_MotorConnection ifc:BELTDRIVE) -> (?z rdf:type distribution:MotorConnection-BELTDRIVE) .
+[ifcToLbdMotorConnection-DIRECTDRIVE:(?z rdf:type ifc:IfcMotorConnection) (?z ifc:predefinedType_MotorConnection ifc:DIRECTDRIVE) -> (?z rdf:type distribution:MotorConnection-DIRECTDRIVE) .
+[ifcToLbdMotorConnection-NOTDEFINED:(?z rdf:type ifc:IfcMotorConnection) (?z ifc:predefinedType_MotorConnection ifc:NOTDEFINED) -> (?z rdf:type distribution:MotorConnection-NOTDEFINED) .
+
+[ifcToLbdStackTerminal-COWL:(?z rdf:type ifc:IfcStackTerminal) (?z ifc:predefinedType_StackTerminal ifc:COWL) -> (?z rdf:type distribution:StackTerminal-COWL) .
+[ifcToLbdStackTerminal-RAINWATERHOPPER:(?z rdf:type ifc:IfcStackTerminal) (?z ifc:predefinedType_StackTerminal ifc:RAINWATERHOPPER) -> (?z rdf:type distribution:StackTerminal-RAINWATERHOPPER) .
+[ifcToLbdStackTerminal-USERDEFINED:(?z rdf:type ifc:IfcStackTerminal) (?z ifc:predefinedType_StackTerminal ifc:USERDEFINED) -> (?z rdf:type distribution:StackTerminal-USERDEFINED) .
+[ifcToLbdStackTerminal-BIRDCAGE:(?z rdf:type ifc:IfcStackTerminal) (?z ifc:predefinedType_StackTerminal ifc:BIRDCAGE) -> (?z rdf:type distribution:StackTerminal-BIRDCAGE) .
+[ifcToLbdStackTerminal-NOTDEFINED:(?z rdf:type ifc:IfcStackTerminal) (?z ifc:predefinedType_StackTerminal ifc:NOTDEFINED) -> (?z rdf:type distribution:StackTerminal-NOTDEFINED) .
+
+[ifcToLbdActuator-ELECTRICACTUATOR:(?z rdf:type ifc:IfcActuator) (?z ifc:predefinedType_Actuator ifc:ELECTRICACTUATOR) -> (?z rdf:type distribution:Actuator-ELECTRICACTUATOR) .
+[ifcToLbdActuator-THERMOSTATICACTUATOR:(?z rdf:type ifc:IfcActuator) (?z ifc:predefinedType_Actuator ifc:THERMOSTATICACTUATOR) -> (?z rdf:type distribution:Actuator-THERMOSTATICACTUATOR) .
+[ifcToLbdActuator-PNEUMATICACTUATOR:(?z rdf:type ifc:IfcActuator) (?z ifc:predefinedType_Actuator ifc:PNEUMATICACTUATOR) -> (?z rdf:type distribution:Actuator-PNEUMATICACTUATOR) .
+[ifcToLbdActuator-USERDEFINED:(?z rdf:type ifc:IfcActuator) (?z ifc:predefinedType_Actuator ifc:USERDEFINED) -> (?z rdf:type distribution:Actuator-USERDEFINED) .
+[ifcToLbdActuator-HANDOPERATEDACTUATOR:(?z rdf:type ifc:IfcActuator) (?z ifc:predefinedType_Actuator ifc:HANDOPERATEDACTUATOR) -> (?z rdf:type distribution:Actuator-HANDOPERATEDACTUATOR) .
+[ifcToLbdActuator-HYDRAULICACTUATOR:(?z rdf:type ifc:IfcActuator) (?z ifc:predefinedType_Actuator ifc:HYDRAULICACTUATOR) -> (?z rdf:type distribution:Actuator-HYDRAULICACTUATOR) .
+[ifcToLbdActuator-NOTDEFINED:(?z rdf:type ifc:IfcActuator) (?z ifc:predefinedType_Actuator ifc:NOTDEFINED) -> (?z rdf:type distribution:Actuator-NOTDEFINED) .
+
+[ifcToLbdCableCarrierFitting-USERDEFINED:(?z rdf:type ifc:IfcCableCarrierFitting) (?z ifc:predefinedType_CableCarrierFitting ifc:USERDEFINED) -> (?z rdf:type distribution:CableCarrierFitting-USERDEFINED) .
+[ifcToLbdCableCarrierFitting-BEND:(?z rdf:type ifc:IfcCableCarrierFitting) (?z ifc:predefinedType_CableCarrierFitting ifc:BEND) -> (?z rdf:type distribution:CableCarrierFitting-BEND) .
+[ifcToLbdCableCarrierFitting-REDUCER:(?z rdf:type ifc:IfcCableCarrierFitting) (?z ifc:predefinedType_CableCarrierFitting ifc:REDUCER) -> (?z rdf:type distribution:CableCarrierFitting-REDUCER) .
+[ifcToLbdCableCarrierFitting-TEE:(?z rdf:type ifc:IfcCableCarrierFitting) (?z ifc:predefinedType_CableCarrierFitting ifc:TEE) -> (?z rdf:type distribution:CableCarrierFitting-TEE) .
+[ifcToLbdCableCarrierFitting-CROSS:(?z rdf:type ifc:IfcCableCarrierFitting) (?z ifc:predefinedType_CableCarrierFitting ifc:CROSS) -> (?z rdf:type distribution:CableCarrierFitting-CROSS) .
+[ifcToLbdCableCarrierFitting-NOTDEFINED:(?z rdf:type ifc:IfcCableCarrierFitting) (?z ifc:predefinedType_CableCarrierFitting ifc:NOTDEFINED) -> (?z rdf:type distribution:CableCarrierFitting-NOTDEFINED) .
+
+[ifcToLbdChiller-WATERCOOLED:(?z rdf:type ifc:IfcChiller) (?z ifc:predefinedType_Chiller ifc:WATERCOOLED) -> (?z rdf:type distribution:Chiller-WATERCOOLED) .
+[ifcToLbdChiller-AIRCOOLED:(?z rdf:type ifc:IfcChiller) (?z ifc:predefinedType_Chiller ifc:AIRCOOLED) -> (?z rdf:type distribution:Chiller-AIRCOOLED) .
+[ifcToLbdChiller-USERDEFINED:(?z rdf:type ifc:IfcChiller) (?z ifc:predefinedType_Chiller ifc:USERDEFINED) -> (?z rdf:type distribution:Chiller-USERDEFINED) .
+[ifcToLbdChiller-HEATRECOVERY:(?z rdf:type ifc:IfcChiller) (?z ifc:predefinedType_Chiller ifc:HEATRECOVERY) -> (?z rdf:type distribution:Chiller-HEATRECOVERY) .
+[ifcToLbdChiller-NOTDEFINED:(?z rdf:type ifc:IfcChiller) (?z ifc:predefinedType_Chiller ifc:NOTDEFINED) -> (?z rdf:type distribution:Chiller-NOTDEFINED) .
+
+[ifcToLbdDuctSilencer-RECTANGULAR:(?z rdf:type ifc:IfcDuctSilencer) (?z ifc:predefinedType_DuctSilencer ifc:RECTANGULAR) -> (?z rdf:type distribution:DuctSilencer-RECTANGULAR) .
+[ifcToLbdDuctSilencer-FLATOVAL:(?z rdf:type ifc:IfcDuctSilencer) (?z ifc:predefinedType_DuctSilencer ifc:FLATOVAL) -> (?z rdf:type distribution:DuctSilencer-FLATOVAL) .
+[ifcToLbdDuctSilencer-USERDEFINED:(?z rdf:type ifc:IfcDuctSilencer) (?z ifc:predefinedType_DuctSilencer ifc:USERDEFINED) -> (?z rdf:type distribution:DuctSilencer-USERDEFINED) .
+[ifcToLbdDuctSilencer-ROUND:(?z rdf:type ifc:IfcDuctSilencer) (?z ifc:predefinedType_DuctSilencer ifc:ROUND) -> (?z rdf:type distribution:DuctSilencer-ROUND) .
+[ifcToLbdDuctSilencer-NOTDEFINED:(?z rdf:type ifc:IfcDuctSilencer) (?z ifc:predefinedType_DuctSilencer ifc:NOTDEFINED) -> (?z rdf:type distribution:DuctSilencer-NOTDEFINED) .
+
+[ifcToLbdUnitaryControlElement-ALARMPANEL:(?z rdf:type ifc:IfcUnitaryControlElement) (?z ifc:predefinedType_UnitaryControlElement ifc:ALARMPANEL) -> (?z rdf:type distribution:UnitaryControlElement-ALARMPANEL) .
+[ifcToLbdUnitaryControlElement-HUMIDISTAT:(?z rdf:type ifc:IfcUnitaryControlElement) (?z ifc:predefinedType_UnitaryControlElement ifc:HUMIDISTAT) -> (?z rdf:type distribution:UnitaryControlElement-HUMIDISTAT) .
+[ifcToLbdUnitaryControlElement-MIMICPANEL:(?z rdf:type ifc:IfcUnitaryControlElement) (?z ifc:predefinedType_UnitaryControlElement ifc:MIMICPANEL) -> (?z rdf:type distribution:UnitaryControlElement-MIMICPANEL) .
+[ifcToLbdUnitaryControlElement-USERDEFINED:(?z rdf:type ifc:IfcUnitaryControlElement) (?z ifc:predefinedType_UnitaryControlElement ifc:USERDEFINED) -> (?z rdf:type distribution:UnitaryControlElement-USERDEFINED) .
+[ifcToLbdUnitaryControlElement-GASDETECTIONPANEL:(?z rdf:type ifc:IfcUnitaryControlElement) (?z ifc:predefinedType_UnitaryControlElement ifc:GASDETECTIONPANEL) -> (?z rdf:type distribution:UnitaryControlElement-GASDETECTIONPANEL) .
+[ifcToLbdUnitaryControlElement-CONTROLPANEL:(?z rdf:type ifc:IfcUnitaryControlElement) (?z ifc:predefinedType_UnitaryControlElement ifc:CONTROLPANEL) -> (?z rdf:type distribution:UnitaryControlElement-CONTROLPANEL) .
+[ifcToLbdUnitaryControlElement-INDICATORPANEL:(?z rdf:type ifc:IfcUnitaryControlElement) (?z ifc:predefinedType_UnitaryControlElement ifc:INDICATORPANEL) -> (?z rdf:type distribution:UnitaryControlElement-INDICATORPANEL) .
+[ifcToLbdUnitaryControlElement-WEATHERSTATION:(?z rdf:type ifc:IfcUnitaryControlElement) (?z ifc:predefinedType_UnitaryControlElement ifc:WEATHERSTATION) -> (?z rdf:type distribution:UnitaryControlElement-WEATHERSTATION) .
+[ifcToLbdUnitaryControlElement-THERMOSTAT:(?z rdf:type ifc:IfcUnitaryControlElement) (?z ifc:predefinedType_UnitaryControlElement ifc:THERMOSTAT) -> (?z rdf:type distribution:UnitaryControlElement-THERMOSTAT) .
+[ifcToLbdUnitaryControlElement-NOTDEFINED:(?z rdf:type ifc:IfcUnitaryControlElement) (?z ifc:predefinedType_UnitaryControlElement ifc:NOTDEFINED) -> (?z rdf:type distribution:UnitaryControlElement-NOTDEFINED) .
+
+[ifcToLbdCoolingTower-NATURALDRAFT:(?z rdf:type ifc:IfcCoolingTower) (?z ifc:predefinedType_CoolingTower ifc:NATURALDRAFT) -> (?z rdf:type distribution:CoolingTower-NATURALDRAFT) .
+[ifcToLbdCoolingTower-USERDEFINED:(?z rdf:type ifc:IfcCoolingTower) (?z ifc:predefinedType_CoolingTower ifc:USERDEFINED) -> (?z rdf:type distribution:CoolingTower-USERDEFINED) .
+[ifcToLbdCoolingTower-MECHANICALFORCEDDRAFT:(?z rdf:type ifc:IfcCoolingTower) (?z ifc:predefinedType_CoolingTower ifc:MECHANICALFORCEDDRAFT) -> (?z rdf:type distribution:CoolingTower-MECHANICALFORCEDDRAFT) .
+[ifcToLbdCoolingTower-MECHANICALINDUCEDDRAFT:(?z rdf:type ifc:IfcCoolingTower) (?z ifc:predefinedType_CoolingTower ifc:MECHANICALINDUCEDDRAFT) -> (?z rdf:type distribution:CoolingTower-MECHANICALINDUCEDDRAFT) .
+[ifcToLbdCoolingTower-NOTDEFINED:(?z rdf:type ifc:IfcCoolingTower) (?z ifc:predefinedType_CoolingTower ifc:NOTDEFINED) -> (?z rdf:type distribution:CoolingTower-NOTDEFINED) .
+
+[ifcToLbdAirTerminal-LOUVRE:(?z rdf:type ifc:IfcAirTerminal) (?z ifc:predefinedType_AirTerminal ifc:LOUVRE) -> (?z rdf:type distribution:AirTerminal-LOUVRE) .
+[ifcToLbdAirTerminal-USERDEFINED:(?z rdf:type ifc:IfcAirTerminal) (?z ifc:predefinedType_AirTerminal ifc:USERDEFINED) -> (?z rdf:type distribution:AirTerminal-USERDEFINED) .
+[ifcToLbdAirTerminal-DIFFUSER:(?z rdf:type ifc:IfcAirTerminal) (?z ifc:predefinedType_AirTerminal ifc:DIFFUSER) -> (?z rdf:type distribution:AirTerminal-DIFFUSER) .
+[ifcToLbdAirTerminal-REGISTER:(?z rdf:type ifc:IfcAirTerminal) (?z ifc:predefinedType_AirTerminal ifc:REGISTER) -> (?z rdf:type distribution:AirTerminal-REGISTER) .
+[ifcToLbdAirTerminal-GRILLE:(?z rdf:type ifc:IfcAirTerminal) (?z ifc:predefinedType_AirTerminal ifc:GRILLE) -> (?z rdf:type distribution:AirTerminal-GRILLE) .
+[ifcToLbdAirTerminal-NOTDEFINED:(?z rdf:type ifc:IfcAirTerminal) (?z ifc:predefinedType_AirTerminal ifc:NOTDEFINED) -> (?z rdf:type distribution:AirTerminal-NOTDEFINED) .
+
+[ifcToLbdCableSegment-USERDEFINED:(?z rdf:type ifc:IfcCableSegment) (?z ifc:predefinedType_CableSegment ifc:USERDEFINED) -> (?z rdf:type distribution:CableSegment-USERDEFINED) .
+[ifcToLbdCableSegment-CONDUCTORSEGMENT:(?z rdf:type ifc:IfcCableSegment) (?z ifc:predefinedType_CableSegment ifc:CONDUCTORSEGMENT) -> (?z rdf:type distribution:CableSegment-CONDUCTORSEGMENT) .
+[ifcToLbdCableSegment-BUSBARSEGMENT:(?z rdf:type ifc:IfcCableSegment) (?z ifc:predefinedType_CableSegment ifc:BUSBARSEGMENT) -> (?z rdf:type distribution:CableSegment-BUSBARSEGMENT) .
+[ifcToLbdCableSegment-CORESEGMENT:(?z rdf:type ifc:IfcCableSegment) (?z ifc:predefinedType_CableSegment ifc:CORESEGMENT) -> (?z rdf:type distribution:CableSegment-CORESEGMENT) .
+[ifcToLbdCableSegment-CABLESEGMENT:(?z rdf:type ifc:IfcCableSegment) (?z ifc:predefinedType_CableSegment ifc:CABLESEGMENT) -> (?z rdf:type distribution:CableSegment-CABLESEGMENT) .
+[ifcToLbdCableSegment-NOTDEFINED:(?z rdf:type ifc:IfcCableSegment) (?z ifc:predefinedType_CableSegment ifc:NOTDEFINED) -> (?z rdf:type distribution:CableSegment-NOTDEFINED) .
+
+[ifcToLbdPump-SUBMERSIBLEPUMP:(?z rdf:type ifc:IfcPump) (?z ifc:predefinedType_Pump ifc:SUBMERSIBLEPUMP) -> (?z rdf:type distribution:Pump-SUBMERSIBLEPUMP) .
+[ifcToLbdPump-USERDEFINED:(?z rdf:type ifc:IfcPump) (?z ifc:predefinedType_Pump ifc:USERDEFINED) -> (?z rdf:type distribution:Pump-USERDEFINED) .
+[ifcToLbdPump-ENDSUCTION:(?z rdf:type ifc:IfcPump) (?z ifc:predefinedType_Pump ifc:ENDSUCTION) -> (?z rdf:type distribution:Pump-ENDSUCTION) .
+[ifcToLbdPump-VERTICALTURBINE:(?z rdf:type ifc:IfcPump) (?z ifc:predefinedType_Pump ifc:VERTICALTURBINE) -> (?z rdf:type distribution:Pump-VERTICALTURBINE) .
+[ifcToLbdPump-SPLITCASE:(?z rdf:type ifc:IfcPump) (?z ifc:predefinedType_Pump ifc:SPLITCASE) -> (?z rdf:type distribution:Pump-SPLITCASE) .
+[ifcToLbdPump-SUMPPUMP:(?z rdf:type ifc:IfcPump) (?z ifc:predefinedType_Pump ifc:SUMPPUMP) -> (?z rdf:type distribution:Pump-SUMPPUMP) .
+[ifcToLbdPump-CIRCULATOR:(?z rdf:type ifc:IfcPump) (?z ifc:predefinedType_Pump ifc:CIRCULATOR) -> (?z rdf:type distribution:Pump-CIRCULATOR) .
+[ifcToLbdPump-VERTICALINLINE:(?z rdf:type ifc:IfcPump) (?z ifc:predefinedType_Pump ifc:VERTICALINLINE) -> (?z rdf:type distribution:Pump-VERTICALINLINE) .
+[ifcToLbdPump-NOTDEFINED:(?z rdf:type ifc:IfcPump) (?z ifc:predefinedType_Pump ifc:NOTDEFINED) -> (?z rdf:type distribution:Pump-NOTDEFINED) .
+
+[ifcToLbdInterceptor-USERDEFINED:(?z rdf:type ifc:IfcInterceptor) (?z ifc:predefinedType_Interceptor ifc:USERDEFINED) -> (?z rdf:type distribution:Interceptor-USERDEFINED) .
+[ifcToLbdInterceptor-OIL:(?z rdf:type ifc:IfcInterceptor) (?z ifc:predefinedType_Interceptor ifc:OIL) -> (?z rdf:type distribution:Interceptor-OIL) .
+[ifcToLbdInterceptor-CYCLONIC:(?z rdf:type ifc:IfcInterceptor) (?z ifc:predefinedType_Interceptor ifc:CYCLONIC) -> (?z rdf:type distribution:Interceptor-CYCLONIC) .
+[ifcToLbdInterceptor-GREASE:(?z rdf:type ifc:IfcInterceptor) (?z ifc:predefinedType_Interceptor ifc:GREASE) -> (?z rdf:type distribution:Interceptor-GREASE) .
+[ifcToLbdInterceptor-PETROL:(?z rdf:type ifc:IfcInterceptor) (?z ifc:predefinedType_Interceptor ifc:PETROL) -> (?z rdf:type distribution:Interceptor-PETROL) .
+[ifcToLbdInterceptor-NOTDEFINED:(?z rdf:type ifc:IfcInterceptor) (?z ifc:predefinedType_Interceptor ifc:NOTDEFINED) -> (?z rdf:type distribution:Interceptor-NOTDEFINED) .
+
+[ifcToLbdCableCarrierSegment-USERDEFINED:(?z rdf:type ifc:IfcCableCarrierSegment) (?z ifc:predefinedType_CableCarrierSegment ifc:USERDEFINED) -> (?z rdf:type distribution:CableCarrierSegment-USERDEFINED) .
+[ifcToLbdCableCarrierSegment-CABLETRUNKINGSEGMENT:(?z rdf:type ifc:IfcCableCarrierSegment) (?z ifc:predefinedType_CableCarrierSegment ifc:CABLETRUNKINGSEGMENT) -> (?z rdf:type distribution:CableCarrierSegment-CABLETRUNKINGSEGMENT) .
+[ifcToLbdCableCarrierSegment-CONDUITSEGMENT:(?z rdf:type ifc:IfcCableCarrierSegment) (?z ifc:predefinedType_CableCarrierSegment ifc:CONDUITSEGMENT) -> (?z rdf:type distribution:CableCarrierSegment-CONDUITSEGMENT) .
+[ifcToLbdCableCarrierSegment-CABLETRAYSEGMENT:(?z rdf:type ifc:IfcCableCarrierSegment) (?z ifc:predefinedType_CableCarrierSegment ifc:CABLETRAYSEGMENT) -> (?z rdf:type distribution:CableCarrierSegment-CABLETRAYSEGMENT) .
+[ifcToLbdCableCarrierSegment-CABLELADDERSEGMENT:(?z rdf:type ifc:IfcCableCarrierSegment) (?z ifc:predefinedType_CableCarrierSegment ifc:CABLELADDERSEGMENT) -> (?z rdf:type distribution:CableCarrierSegment-CABLELADDERSEGMENT) .
+[ifcToLbdCableCarrierSegment-NOTDEFINED:(?z rdf:type ifc:IfcCableCarrierSegment) (?z ifc:predefinedType_CableCarrierSegment ifc:NOTDEFINED) -> (?z rdf:type distribution:CableCarrierSegment-NOTDEFINED) .
+
+[ifcToLbdEngine-USERDEFINED:(?z rdf:type ifc:IfcEngine) (?z ifc:predefinedType_Engine ifc:USERDEFINED) -> (?z rdf:type distribution:Engine-USERDEFINED) .
+[ifcToLbdEngine-EXTERNALCOMBUSTION:(?z rdf:type ifc:IfcEngine) (?z ifc:predefinedType_Engine ifc:EXTERNALCOMBUSTION) -> (?z rdf:type distribution:Engine-EXTERNALCOMBUSTION) .
+[ifcToLbdEngine-INTERNALCOMBUSTION:(?z rdf:type ifc:IfcEngine) (?z ifc:predefinedType_Engine ifc:INTERNALCOMBUSTION) -> (?z rdf:type distribution:Engine-INTERNALCOMBUSTION) .
+[ifcToLbdEngine-NOTDEFINED:(?z rdf:type ifc:IfcEngine) (?z ifc:predefinedType_Engine ifc:NOTDEFINED) -> (?z rdf:type distribution:Engine-NOTDEFINED) .
+
+[ifcToLbdHeatExchanger-PLATE:(?z rdf:type ifc:IfcHeatExchanger) (?z ifc:predefinedType_HeatExchanger ifc:PLATE) -> (?z rdf:type distribution:HeatExchanger-PLATE) .
+[ifcToLbdHeatExchanger-USERDEFINED:(?z rdf:type ifc:IfcHeatExchanger) (?z ifc:predefinedType_HeatExchanger ifc:USERDEFINED) -> (?z rdf:type distribution:HeatExchanger-USERDEFINED) .
+[ifcToLbdHeatExchanger-SHELLANDTUBE:(?z rdf:type ifc:IfcHeatExchanger) (?z ifc:predefinedType_HeatExchanger ifc:SHELLANDTUBE) -> (?z rdf:type distribution:HeatExchanger-SHELLANDTUBE) .
+[ifcToLbdHeatExchanger-NOTDEFINED:(?z rdf:type ifc:IfcHeatExchanger) (?z ifc:predefinedType_HeatExchanger ifc:NOTDEFINED) -> (?z rdf:type distribution:HeatExchanger-NOTDEFINED) .
+
+[ifcToLbdDamper-RELIEFDAMPER:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:RELIEFDAMPER) -> (?z rdf:type distribution:Damper-RELIEFDAMPER) .
+[ifcToLbdDamper-GRAVITYRELIEFDAMPER:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:GRAVITYRELIEFDAMPER) -> (?z rdf:type distribution:Damper-GRAVITYRELIEFDAMPER) .
+[ifcToLbdDamper-SMOKEDAMPER:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:SMOKEDAMPER) -> (?z rdf:type distribution:Damper-SMOKEDAMPER) .
+[ifcToLbdDamper-FUMEHOODEXHAUST:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:FUMEHOODEXHAUST) -> (?z rdf:type distribution:Damper-FUMEHOODEXHAUST) .
+[ifcToLbdDamper-USERDEFINED:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:USERDEFINED) -> (?z rdf:type distribution:Damper-USERDEFINED) .
+[ifcToLbdDamper-BALANCINGDAMPER:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:BALANCINGDAMPER) -> (?z rdf:type distribution:Damper-BALANCINGDAMPER) .
+[ifcToLbdDamper-FIREDAMPER:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:FIREDAMPER) -> (?z rdf:type distribution:Damper-FIREDAMPER) .
+[ifcToLbdDamper-GRAVITYDAMPER:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:GRAVITYDAMPER) -> (?z rdf:type distribution:Damper-GRAVITYDAMPER) .
+[ifcToLbdDamper-BACKDRAFTDAMPER:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:BACKDRAFTDAMPER) -> (?z rdf:type distribution:Damper-BACKDRAFTDAMPER) .
+[ifcToLbdDamper-BLASTDAMPER:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:BLASTDAMPER) -> (?z rdf:type distribution:Damper-BLASTDAMPER) .
+[ifcToLbdDamper-FIRESMOKEDAMPER:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:FIRESMOKEDAMPER) -> (?z rdf:type distribution:Damper-FIRESMOKEDAMPER) .
+[ifcToLbdDamper-CONTROLDAMPER:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:CONTROLDAMPER) -> (?z rdf:type distribution:Damper-CONTROLDAMPER) .
+[ifcToLbdDamper-NOTDEFINED:(?z rdf:type ifc:IfcDamper) (?z ifc:predefinedType_Damper ifc:NOTDEFINED) -> (?z rdf:type distribution:Damper-NOTDEFINED) .
+
+[ifcToLbdSanitaryTerminal-URINAL:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:URINAL) -> (?z rdf:type distribution:SanitaryTerminal-URINAL) .
+[ifcToLbdSanitaryTerminal-TOILETPAN:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:TOILETPAN) -> (?z rdf:type distribution:SanitaryTerminal-TOILETPAN) .
+[ifcToLbdSanitaryTerminal-USERDEFINED:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:USERDEFINED) -> (?z rdf:type distribution:SanitaryTerminal-USERDEFINED) .
+[ifcToLbdSanitaryTerminal-SANITARYFOUNTAIN:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:SANITARYFOUNTAIN) -> (?z rdf:type distribution:SanitaryTerminal-SANITARYFOUNTAIN) .
+[ifcToLbdSanitaryTerminal-WCSEAT:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:WCSEAT) -> (?z rdf:type distribution:SanitaryTerminal-WCSEAT) .
+[ifcToLbdSanitaryTerminal-SHOWER:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:SHOWER) -> (?z rdf:type distribution:SanitaryTerminal-SHOWER) .
+[ifcToLbdSanitaryTerminal-SINK:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:SINK) -> (?z rdf:type distribution:SanitaryTerminal-SINK) .
+[ifcToLbdSanitaryTerminal-WASHHANDBASIN:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:WASHHANDBASIN) -> (?z rdf:type distribution:SanitaryTerminal-WASHHANDBASIN) .
+[ifcToLbdSanitaryTerminal-BATH:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:BATH) -> (?z rdf:type distribution:SanitaryTerminal-BATH) .
+[ifcToLbdSanitaryTerminal-CISTERN:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:CISTERN) -> (?z rdf:type distribution:SanitaryTerminal-CISTERN) .
+[ifcToLbdSanitaryTerminal-BIDET:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:BIDET) -> (?z rdf:type distribution:SanitaryTerminal-BIDET) .
+[ifcToLbdSanitaryTerminal-NOTDEFINED:(?z rdf:type ifc:IfcSanitaryTerminal) (?z ifc:predefinedType_SanitaryTerminal ifc:NOTDEFINED) -> (?z rdf:type distribution:SanitaryTerminal-NOTDEFINED) .
+
+[ifcToLbdDistributionChamberElement-MANHOLE:(?z rdf:type ifc:IfcDistributionChamberElement) (?z ifc:predefinedType_DistributionChamberElement ifc:MANHOLE) -> (?z rdf:type distribution:DistributionChamberElement-MANHOLE) .
+[ifcToLbdDistributionChamberElement-USERDEFINED:(?z rdf:type ifc:IfcDistributionChamberElement) (?z ifc:predefinedType_DistributionChamberElement ifc:USERDEFINED) -> (?z rdf:type distribution:DistributionChamberElement-USERDEFINED) .
+[ifcToLbdDistributionChamberElement-FORMEDDUCT:(?z rdf:type ifc:IfcDistributionChamberElement) (?z ifc:predefinedType_DistributionChamberElement ifc:FORMEDDUCT) -> (?z rdf:type distribution:DistributionChamberElement-FORMEDDUCT) .
+[ifcToLbdDistributionChamberElement-VALVECHAMBER:(?z rdf:type ifc:IfcDistributionChamberElement) (?z ifc:predefinedType_DistributionChamberElement ifc:VALVECHAMBER) -> (?z rdf:type distribution:DistributionChamberElement-VALVECHAMBER) .
+[ifcToLbdDistributionChamberElement-TRENCH:(?z rdf:type ifc:IfcDistributionChamberElement) (?z ifc:predefinedType_DistributionChamberElement ifc:TRENCH) -> (?z rdf:type distribution:DistributionChamberElement-TRENCH) .
+[ifcToLbdDistributionChamberElement-METERCHAMBER:(?z rdf:type ifc:IfcDistributionChamberElement) (?z ifc:predefinedType_DistributionChamberElement ifc:METERCHAMBER) -> (?z rdf:type distribution:DistributionChamberElement-METERCHAMBER) .
+[ifcToLbdDistributionChamberElement-SUMP:(?z rdf:type ifc:IfcDistributionChamberElement) (?z ifc:predefinedType_DistributionChamberElement ifc:SUMP) -> (?z rdf:type distribution:DistributionChamberElement-SUMP) .
+[ifcToLbdDistributionChamberElement-INSPECTIONCHAMBER:(?z rdf:type ifc:IfcDistributionChamberElement) (?z ifc:predefinedType_DistributionChamberElement ifc:INSPECTIONCHAMBER) -> (?z rdf:type distribution:DistributionChamberElement-INSPECTIONCHAMBER) .
+[ifcToLbdDistributionChamberElement-INSPECTIONPIT:(?z rdf:type ifc:IfcDistributionChamberElement) (?z ifc:predefinedType_DistributionChamberElement ifc:INSPECTIONPIT) -> (?z rdf:type distribution:DistributionChamberElement-INSPECTIONPIT) .
+[ifcToLbdDistributionChamberElement-NOTDEFINED:(?z rdf:type ifc:IfcDistributionChamberElement) (?z ifc:predefinedType_DistributionChamberElement ifc:NOTDEFINED) -> (?z rdf:type distribution:DistributionChamberElement-NOTDEFINED) .
+
+[ifcToLbdDuctSegment-USERDEFINED:(?z rdf:type ifc:IfcDuctSegment) (?z ifc:predefinedType_DuctSegment ifc:USERDEFINED) -> (?z rdf:type distribution:DuctSegment-USERDEFINED) .
+[ifcToLbdDuctSegment-FLEXIBLESEGMENT:(?z rdf:type ifc:IfcDuctSegment) (?z ifc:predefinedType_DuctSegment ifc:FLEXIBLESEGMENT) -> (?z rdf:type distribution:DuctSegment-FLEXIBLESEGMENT) .
+[ifcToLbdDuctSegment-RIGIDSEGMENT:(?z rdf:type ifc:IfcDuctSegment) (?z ifc:predefinedType_DuctSegment ifc:RIGIDSEGMENT) -> (?z rdf:type distribution:DuctSegment-RIGIDSEGMENT) .
+[ifcToLbdDuctSegment-NOTDEFINED:(?z rdf:type ifc:IfcDuctSegment) (?z ifc:predefinedType_DuctSegment ifc:NOTDEFINED) -> (?z rdf:type distribution:DuctSegment-NOTDEFINED) .
+
+[ifcToLbdElectricTimeControl-TIMECLOCK:(?z rdf:type ifc:IfcElectricTimeControl) (?z ifc:predefinedType_ElectricTimeControl ifc:TIMECLOCK) -> (?z rdf:type distribution:ElectricTimeControl-TIMECLOCK) .
+[ifcToLbdElectricTimeControl-USERDEFINED:(?z rdf:type ifc:IfcElectricTimeControl) (?z ifc:predefinedType_ElectricTimeControl ifc:USERDEFINED) -> (?z rdf:type distribution:ElectricTimeControl-USERDEFINED) .
+[ifcToLbdElectricTimeControl-RELAY:(?z rdf:type ifc:IfcElectricTimeControl) (?z ifc:predefinedType_ElectricTimeControl ifc:RELAY) -> (?z rdf:type distribution:ElectricTimeControl-RELAY) .
+[ifcToLbdElectricTimeControl-TIMEDELAY:(?z rdf:type ifc:IfcElectricTimeControl) (?z ifc:predefinedType_ElectricTimeControl ifc:TIMEDELAY) -> (?z rdf:type distribution:ElectricTimeControl-TIMEDELAY) .
+[ifcToLbdElectricTimeControl-NOTDEFINED:(?z rdf:type ifc:IfcElectricTimeControl) (?z ifc:predefinedType_ElectricTimeControl ifc:NOTDEFINED) -> (?z rdf:type distribution:ElectricTimeControl-NOTDEFINED) .
+
+[ifcToLbdTank-VESSEL:(?z rdf:type ifc:IfcTank) (?z ifc:predefinedType_Tank ifc:VESSEL) -> (?z rdf:type distribution:Tank-VESSEL) .
+[ifcToLbdTank-USERDEFINED:(?z rdf:type ifc:IfcTank) (?z ifc:predefinedType_Tank ifc:USERDEFINED) -> (?z rdf:type distribution:Tank-USERDEFINED) .
+[ifcToLbdTank-BREAKPRESSURE:(?z rdf:type ifc:IfcTank) (?z ifc:predefinedType_Tank ifc:BREAKPRESSURE) -> (?z rdf:type distribution:Tank-BREAKPRESSURE) .
+[ifcToLbdTank-EXPANSION:(?z rdf:type ifc:IfcTank) (?z ifc:predefinedType_Tank ifc:EXPANSION) -> (?z rdf:type distribution:Tank-EXPANSION) .
+[ifcToLbdTank-STORAGE:(?z rdf:type ifc:IfcTank) (?z ifc:predefinedType_Tank ifc:STORAGE) -> (?z rdf:type distribution:Tank-STORAGE) .
+[ifcToLbdTank-BASIN:(?z rdf:type ifc:IfcTank) (?z ifc:predefinedType_Tank ifc:BASIN) -> (?z rdf:type distribution:Tank-BASIN) .
+[ifcToLbdTank-PRESSUREVESSEL:(?z rdf:type ifc:IfcTank) (?z ifc:predefinedType_Tank ifc:PRESSUREVESSEL) -> (?z rdf:type distribution:Tank-PRESSUREVESSEL) .
+[ifcToLbdTank-NOTDEFINED:(?z rdf:type ifc:IfcTank) (?z ifc:predefinedType_Tank ifc:NOTDEFINED) -> (?z rdf:type distribution:Tank-NOTDEFINED) .
+[ifcToLbdTank-FEEDANDEXPANSION:(?z rdf:type ifc:IfcTank) (?z ifc:predefinedType_Tank ifc:FEEDANDEXPANSION) -> (?z rdf:type distribution:Tank-FEEDANDEXPANSION) .
+
+[ifcToLbdCondenser-WATERCOOLED:(?z rdf:type ifc:IfcCondenser) (?z ifc:predefinedType_Condenser ifc:WATERCOOLED) -> (?z rdf:type distribution:Condenser-WATERCOOLED) .
+[ifcToLbdCondenser-AIRCOOLED:(?z rdf:type ifc:IfcCondenser) (?z ifc:predefinedType_Condenser ifc:AIRCOOLED) -> (?z rdf:type distribution:Condenser-AIRCOOLED) .
+[ifcToLbdCondenser-WATERCOOLEDBRAZEDPLATE:(?z rdf:type ifc:IfcCondenser) (?z ifc:predefinedType_Condenser ifc:WATERCOOLEDBRAZEDPLATE) -> (?z rdf:type distribution:Condenser-WATERCOOLEDBRAZEDPLATE) .
+[ifcToLbdCondenser-USERDEFINED:(?z rdf:type ifc:IfcCondenser) (?z ifc:predefinedType_Condenser ifc:USERDEFINED) -> (?z rdf:type distribution:Condenser-USERDEFINED) .
+[ifcToLbdCondenser-EVAPORATIVECOOLED:(?z rdf:type ifc:IfcCondenser) (?z ifc:predefinedType_Condenser ifc:EVAPORATIVECOOLED) -> (?z rdf:type distribution:Condenser-EVAPORATIVECOOLED) .
+[ifcToLbdCondenser-WATERCOOLEDTUBEINTUBE:(?z rdf:type ifc:IfcCondenser) (?z ifc:predefinedType_Condenser ifc:WATERCOOLEDTUBEINTUBE) -> (?z rdf:type distribution:Condenser-WATERCOOLEDTUBEINTUBE) .
+[ifcToLbdCondenser-WATERCOOLEDSHELLTUBE:(?z rdf:type ifc:IfcCondenser) (?z ifc:predefinedType_Condenser ifc:WATERCOOLEDSHELLTUBE) -> (?z rdf:type distribution:Condenser-WATERCOOLEDSHELLTUBE) .
+[ifcToLbdCondenser-WATERCOOLEDSHELLCOIL:(?z rdf:type ifc:IfcCondenser) (?z ifc:predefinedType_Condenser ifc:WATERCOOLEDSHELLCOIL) -> (?z rdf:type distribution:Condenser-WATERCOOLEDSHELLCOIL) .
+[ifcToLbdCondenser-NOTDEFINED:(?z rdf:type ifc:IfcCondenser) (?z ifc:predefinedType_Condenser ifc:NOTDEFINED) -> (?z rdf:type distribution:Condenser-NOTDEFINED) .
+
+[ifcToLbdMedicalDevice-USERDEFINED:(?z rdf:type ifc:IfcMedicalDevice) (?z ifc:predefinedType_MedicalDevice ifc:USERDEFINED) -> (?z rdf:type distribution:MedicalDevice-USERDEFINED) .
+[ifcToLbdMedicalDevice-OXYGENGENERATOR:(?z rdf:type ifc:IfcMedicalDevice) (?z ifc:predefinedType_MedicalDevice ifc:OXYGENGENERATOR) -> (?z rdf:type distribution:MedicalDevice-OXYGENGENERATOR) .
+[ifcToLbdMedicalDevice-AIRSTATION:(?z rdf:type ifc:IfcMedicalDevice) (?z ifc:predefinedType_MedicalDevice ifc:AIRSTATION) -> (?z rdf:type distribution:MedicalDevice-AIRSTATION) .
+[ifcToLbdMedicalDevice-FEEDAIRUNIT:(?z rdf:type ifc:IfcMedicalDevice) (?z ifc:predefinedType_MedicalDevice ifc:FEEDAIRUNIT) -> (?z rdf:type distribution:MedicalDevice-FEEDAIRUNIT) .
+[ifcToLbdMedicalDevice-OXYGENPLANT:(?z rdf:type ifc:IfcMedicalDevice) (?z ifc:predefinedType_MedicalDevice ifc:OXYGENPLANT) -> (?z rdf:type distribution:MedicalDevice-OXYGENPLANT) .
+[ifcToLbdMedicalDevice-VACUUMSTATION:(?z rdf:type ifc:IfcMedicalDevice) (?z ifc:predefinedType_MedicalDevice ifc:VACUUMSTATION) -> (?z rdf:type distribution:MedicalDevice-VACUUMSTATION) .
+[ifcToLbdMedicalDevice-NOTDEFINED:(?z rdf:type ifc:IfcMedicalDevice) (?z ifc:predefinedType_MedicalDevice ifc:NOTDEFINED) -> (?z rdf:type distribution:MedicalDevice-NOTDEFINED) .
+
+[ifcToLbdSensor-SOUNDSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:SOUNDSENSOR) -> (?z rdf:type distribution:Sensor-SOUNDSENSOR) .
+[ifcToLbdSensor-GASSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:GASSENSOR) -> (?z rdf:type distribution:Sensor-GASSENSOR) .
+[ifcToLbdSensor-LEVELSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:LEVELSENSOR) -> (?z rdf:type distribution:Sensor-LEVELSENSOR) .
+[ifcToLbdSensor-IDENTIFIERSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:IDENTIFIERSENSOR) -> (?z rdf:type distribution:Sensor-IDENTIFIERSENSOR) .
+[ifcToLbdSensor-WINDSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:WINDSENSOR) -> (?z rdf:type distribution:Sensor-WINDSENSOR) .
+[ifcToLbdSensor-PHSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:PHSENSOR) -> (?z rdf:type distribution:Sensor-PHSENSOR) .
+[ifcToLbdSensor-HEATSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:HEATSENSOR) -> (?z rdf:type distribution:Sensor-HEATSENSOR) .
+[ifcToLbdSensor-LIGHTSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:LIGHTSENSOR) -> (?z rdf:type distribution:Sensor-LIGHTSENSOR) .
+[ifcToLbdSensor-FIRESENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:FIRESENSOR) -> (?z rdf:type distribution:Sensor-FIRESENSOR) .
+[ifcToLbdSensor-RADIOACTIVITYSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:RADIOACTIVITYSENSOR) -> (?z rdf:type distribution:Sensor-RADIOACTIVITYSENSOR) .
+[ifcToLbdSensor-USERDEFINED:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:USERDEFINED) -> (?z rdf:type distribution:Sensor-USERDEFINED) .
+[ifcToLbdSensor-FROSTSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:FROSTSENSOR) -> (?z rdf:type distribution:Sensor-FROSTSENSOR) .
+[ifcToLbdSensor-HUMIDITYSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:HUMIDITYSENSOR) -> (?z rdf:type distribution:Sensor-HUMIDITYSENSOR) .
+[ifcToLbdSensor-TEMPERATURESENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:TEMPERATURESENSOR) -> (?z rdf:type distribution:Sensor-TEMPERATURESENSOR) .
+[ifcToLbdSensor-COSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:COSENSOR) -> (?z rdf:type distribution:Sensor-COSENSOR) .
+[ifcToLbdSensor-IONCONCENTRATIONSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:IONCONCENTRATIONSENSOR) -> (?z rdf:type distribution:Sensor-IONCONCENTRATIONSENSOR) .
+[ifcToLbdSensor-PRESSURESENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:PRESSURESENSOR) -> (?z rdf:type distribution:Sensor-PRESSURESENSOR) .
+[ifcToLbdSensor-RADIATIONSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:RADIATIONSENSOR) -> (?z rdf:type distribution:Sensor-RADIATIONSENSOR) .
+[ifcToLbdSensor-FLOWSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:FLOWSENSOR) -> (?z rdf:type distribution:Sensor-FLOWSENSOR) .
+[ifcToLbdSensor-CONTACTSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:CONTACTSENSOR) -> (?z rdf:type distribution:Sensor-CONTACTSENSOR) .
+[ifcToLbdSensor-CO2SENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:CO2SENSOR) -> (?z rdf:type distribution:Sensor-CO2SENSOR) .
+[ifcToLbdSensor-MOISTURESENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:MOISTURESENSOR) -> (?z rdf:type distribution:Sensor-MOISTURESENSOR) .
+[ifcToLbdSensor-MOVEMENTSENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:MOVEMENTSENSOR) -> (?z rdf:type distribution:Sensor-MOVEMENTSENSOR) .
+[ifcToLbdSensor-CONDUCTANCESENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:CONDUCTANCESENSOR) -> (?z rdf:type distribution:Sensor-CONDUCTANCESENSOR) .
+[ifcToLbdSensor-SMOKESENSOR:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:SMOKESENSOR) -> (?z rdf:type distribution:Sensor-SMOKESENSOR) .
+[ifcToLbdSensor-NOTDEFINED:(?z rdf:type ifc:IfcSensor) (?z ifc:predefinedType_Sensor ifc:NOTDEFINED) -> (?z rdf:type distribution:Sensor-NOTDEFINED) .
+
+[ifcToLbdBurner-USERDEFINED:(?z rdf:type ifc:IfcBurner) (?z ifc:predefinedType_Burner ifc:USERDEFINED) -> (?z rdf:type distribution:Burner-USERDEFINED) .
+[ifcToLbdBurner-NOTDEFINED:(?z rdf:type ifc:IfcBurner) (?z ifc:predefinedType_Burner ifc:NOTDEFINED) -> (?z rdf:type distribution:Burner-NOTDEFINED) .
+
+[ifcToLbdProtectiveDeviceTrippingUnit-ELECTRONIC:(?z rdf:type ifc:IfcProtectiveDeviceTrippingUnit) (?z ifc:predefinedType_ProtectiveDeviceTrippingUnit ifc:ELECTRONIC) -> (?z rdf:type distribution:ProtectiveDeviceTrippingUnit-ELECTRONIC) .
+[ifcToLbdProtectiveDeviceTrippingUnit-ELECTROMAGNETIC:(?z rdf:type ifc:IfcProtectiveDeviceTrippingUnit) (?z ifc:predefinedType_ProtectiveDeviceTrippingUnit ifc:ELECTROMAGNETIC) -> (?z rdf:type distribution:ProtectiveDeviceTrippingUnit-ELECTROMAGNETIC) .
+[ifcToLbdProtectiveDeviceTrippingUnit-USERDEFINED:(?z rdf:type ifc:IfcProtectiveDeviceTrippingUnit) (?z ifc:predefinedType_ProtectiveDeviceTrippingUnit ifc:USERDEFINED) -> (?z rdf:type distribution:ProtectiveDeviceTrippingUnit-USERDEFINED) .
+[ifcToLbdProtectiveDeviceTrippingUnit-RESIDUALCURRENT:(?z rdf:type ifc:IfcProtectiveDeviceTrippingUnit) (?z ifc:predefinedType_ProtectiveDeviceTrippingUnit ifc:RESIDUALCURRENT) -> (?z rdf:type distribution:ProtectiveDeviceTrippingUnit-RESIDUALCURRENT) .
+[ifcToLbdProtectiveDeviceTrippingUnit-THERMAL:(?z rdf:type ifc:IfcProtectiveDeviceTrippingUnit) (?z ifc:predefinedType_ProtectiveDeviceTrippingUnit ifc:THERMAL) -> (?z rdf:type distribution:ProtectiveDeviceTrippingUnit-THERMAL) .
+[ifcToLbdProtectiveDeviceTrippingUnit-NOTDEFINED:(?z rdf:type ifc:IfcProtectiveDeviceTrippingUnit) (?z ifc:predefinedType_ProtectiveDeviceTrippingUnit ifc:NOTDEFINED) -> (?z rdf:type distribution:ProtectiveDeviceTrippingUnit-NOTDEFINED) .
+
+[ifcToLbdFilter-USERDEFINED:(?z rdf:type ifc:IfcFilter) (?z ifc:predefinedType_Filter ifc:USERDEFINED) -> (?z rdf:type distribution:Filter-USERDEFINED) .
+[ifcToLbdFilter-OILFILTER:(?z rdf:type ifc:IfcFilter) (?z ifc:predefinedType_Filter ifc:OILFILTER) -> (?z rdf:type distribution:Filter-OILFILTER) .
+[ifcToLbdFilter-AIRPARTICLEFILTER:(?z rdf:type ifc:IfcFilter) (?z ifc:predefinedType_Filter ifc:AIRPARTICLEFILTER) -> (?z rdf:type distribution:Filter-AIRPARTICLEFILTER) .
+[ifcToLbdFilter-WATERFILTER:(?z rdf:type ifc:IfcFilter) (?z ifc:predefinedType_Filter ifc:WATERFILTER) -> (?z rdf:type distribution:Filter-WATERFILTER) .
+[ifcToLbdFilter-COMPRESSEDAIRFILTER:(?z rdf:type ifc:IfcFilter) (?z ifc:predefinedType_Filter ifc:COMPRESSEDAIRFILTER) -> (?z rdf:type distribution:Filter-COMPRESSEDAIRFILTER) .
+[ifcToLbdFilter-STRAINER:(?z rdf:type ifc:IfcFilter) (?z ifc:predefinedType_Filter ifc:STRAINER) -> (?z rdf:type distribution:Filter-STRAINER) .
+[ifcToLbdFilter-ODORFILTER:(?z rdf:type ifc:IfcFilter) (?z ifc:predefinedType_Filter ifc:ODORFILTER) -> (?z rdf:type distribution:Filter-ODORFILTER) .
+[ifcToLbdFilter-NOTDEFINED:(?z rdf:type ifc:IfcFilter) (?z ifc:predefinedType_Filter ifc:NOTDEFINED) -> (?z rdf:type distribution:Filter-NOTDEFINED) .
+
+[ifcToLbdEvaporator-DIRECTEXPANSION:(?z rdf:type ifc:IfcEvaporator) (?z ifc:predefinedType_Evaporator ifc:DIRECTEXPANSION) -> (?z rdf:type distribution:Evaporator-DIRECTEXPANSION) .
+[ifcToLbdEvaporator-SHELLANDCOIL:(?z rdf:type ifc:IfcEvaporator) (?z ifc:predefinedType_Evaporator ifc:SHELLANDCOIL) -> (?z rdf:type distribution:Evaporator-SHELLANDCOIL) .
+[ifcToLbdEvaporator-USERDEFINED:(?z rdf:type ifc:IfcEvaporator) (?z ifc:predefinedType_Evaporator ifc:USERDEFINED) -> (?z rdf:type distribution:Evaporator-USERDEFINED) .
+[ifcToLbdEvaporator-DIRECTEXPANSIONSHELLANDTUBE:(?z rdf:type ifc:IfcEvaporator) (?z ifc:predefinedType_Evaporator ifc:DIRECTEXPANSIONSHELLANDTUBE) -> (?z rdf:type distribution:Evaporator-DIRECTEXPANSIONSHELLANDTUBE) .
+[ifcToLbdEvaporator-FLOODEDSHELLANDTUBE:(?z rdf:type ifc:IfcEvaporator) (?z ifc:predefinedType_Evaporator ifc:FLOODEDSHELLANDTUBE) -> (?z rdf:type distribution:Evaporator-FLOODEDSHELLANDTUBE) .
+[ifcToLbdEvaporator-DIRECTEXPANSIONTUBEINTUBE:(?z rdf:type ifc:IfcEvaporator) (?z ifc:predefinedType_Evaporator ifc:DIRECTEXPANSIONTUBEINTUBE) -> (?z rdf:type distribution:Evaporator-DIRECTEXPANSIONTUBEINTUBE) .
+[ifcToLbdEvaporator-DIRECTEXPANSIONBRAZEDPLATE:(?z rdf:type ifc:IfcEvaporator) (?z ifc:predefinedType_Evaporator ifc:DIRECTEXPANSIONBRAZEDPLATE) -> (?z rdf:type distribution:Evaporator-DIRECTEXPANSIONBRAZEDPLATE) .
+[ifcToLbdEvaporator-NOTDEFINED:(?z rdf:type ifc:IfcEvaporator) (?z ifc:predefinedType_Evaporator ifc:NOTDEFINED) -> (?z rdf:type distribution:Evaporator-NOTDEFINED) .
+
+[ifcToLbdElectricAppliance-FREESTANDINGWATERCOOLER:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:FREESTANDINGWATERCOOLER) -> (?z rdf:type distribution:ElectricAppliance-FREESTANDINGWATERCOOLER) .
+[ifcToLbdElectricAppliance-FREESTANDINGFAN:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:FREESTANDINGFAN) -> (?z rdf:type distribution:ElectricAppliance-FREESTANDINGFAN) .
+[ifcToLbdElectricAppliance-PHOTOCOPIER:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:PHOTOCOPIER) -> (?z rdf:type distribution:ElectricAppliance-PHOTOCOPIER) .
+[ifcToLbdElectricAppliance-DISHWASHER:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:DISHWASHER) -> (?z rdf:type distribution:ElectricAppliance-DISHWASHER) .
+[ifcToLbdElectricAppliance-FREESTANDINGWATERHEATER:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:FREESTANDINGWATERHEATER) -> (?z rdf:type distribution:ElectricAppliance-FREESTANDINGWATERHEATER) .
+[ifcToLbdElectricAppliance-USERDEFINED:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:USERDEFINED) -> (?z rdf:type distribution:ElectricAppliance-USERDEFINED) .
+[ifcToLbdElectricAppliance-KITCHENMACHINE:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:KITCHENMACHINE) -> (?z rdf:type distribution:ElectricAppliance-KITCHENMACHINE) .
+[ifcToLbdElectricAppliance-MICROWAVE:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:MICROWAVE) -> (?z rdf:type distribution:ElectricAppliance-MICROWAVE) .
+[ifcToLbdElectricAppliance-REFRIGERATOR:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:REFRIGERATOR) -> (?z rdf:type distribution:ElectricAppliance-REFRIGERATOR) .
+[ifcToLbdElectricAppliance-HANDDRYER:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:HANDDRYER) -> (?z rdf:type distribution:ElectricAppliance-HANDDRYER) .
+[ifcToLbdElectricAppliance-ELECTRICCOOKER:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:ELECTRICCOOKER) -> (?z rdf:type distribution:ElectricAppliance-ELECTRICCOOKER) .
+[ifcToLbdElectricAppliance-FREESTANDINGELECTRICHEATER:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:FREESTANDINGELECTRICHEATER) -> (?z rdf:type distribution:ElectricAppliance-FREESTANDINGELECTRICHEATER) .
+[ifcToLbdElectricAppliance-TUMBLEDRYER:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:TUMBLEDRYER) -> (?z rdf:type distribution:ElectricAppliance-TUMBLEDRYER) .
+[ifcToLbdElectricAppliance-FREEZER:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:FREEZER) -> (?z rdf:type distribution:ElectricAppliance-FREEZER) .
+[ifcToLbdElectricAppliance-FRIDGE_FREEZER:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:FRIDGE_FREEZER) -> (?z rdf:type distribution:ElectricAppliance-FRIDGE_FREEZER) .
+[ifcToLbdElectricAppliance-WASHINGMACHINE:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:WASHINGMACHINE) -> (?z rdf:type distribution:ElectricAppliance-WASHINGMACHINE) .
+[ifcToLbdElectricAppliance-VENDINGMACHINE:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:VENDINGMACHINE) -> (?z rdf:type distribution:ElectricAppliance-VENDINGMACHINE) .
+[ifcToLbdElectricAppliance-NOTDEFINED:(?z rdf:type ifc:IfcElectricAppliance) (?z ifc:predefinedType_ElectricAppliance ifc:NOTDEFINED) -> (?z rdf:type distribution:ElectricAppliance-NOTDEFINED) .
+
+[ifcToLbdElectricGenerator-CHP:(?z rdf:type ifc:IfcElectricGenerator) (?z ifc:predefinedType_ElectricGenerator ifc:CHP) -> (?z rdf:type distribution:ElectricGenerator-CHP) .
+[ifcToLbdElectricGenerator-USERDEFINED:(?z rdf:type ifc:IfcElectricGenerator) (?z ifc:predefinedType_ElectricGenerator ifc:USERDEFINED) -> (?z rdf:type distribution:ElectricGenerator-USERDEFINED) .
+[ifcToLbdElectricGenerator-STANDALONE:(?z rdf:type ifc:IfcElectricGenerator) (?z ifc:predefinedType_ElectricGenerator ifc:STANDALONE) -> (?z rdf:type distribution:ElectricGenerator-STANDALONE) .
+[ifcToLbdElectricGenerator-ENGINEGENERATOR:(?z rdf:type ifc:IfcElectricGenerator) (?z ifc:predefinedType_ElectricGenerator ifc:ENGINEGENERATOR) -> (?z rdf:type distribution:ElectricGenerator-ENGINEGENERATOR) .
+[ifcToLbdElectricGenerator-NOTDEFINED:(?z rdf:type ifc:IfcElectricGenerator) (?z ifc:predefinedType_ElectricGenerator ifc:NOTDEFINED) -> (?z rdf:type distribution:ElectricGenerator-NOTDEFINED) .
+
+[ifcToLbdDuctFitting-EXIT:(?z rdf:type ifc:IfcDuctFitting) (?z ifc:predefinedType_DuctFitting ifc:EXIT) -> (?z rdf:type distribution:DuctFitting-EXIT) .
+[ifcToLbdDuctFitting-USERDEFINED:(?z rdf:type ifc:IfcDuctFitting) (?z ifc:predefinedType_DuctFitting ifc:USERDEFINED) -> (?z rdf:type distribution:DuctFitting-USERDEFINED) .
+[ifcToLbdDuctFitting-OBSTRUCTION:(?z rdf:type ifc:IfcDuctFitting) (?z ifc:predefinedType_DuctFitting ifc:OBSTRUCTION) -> (?z rdf:type distribution:DuctFitting-OBSTRUCTION) .
+[ifcToLbdDuctFitting-CONNECTOR:(?z rdf:type ifc:IfcDuctFitting) (?z ifc:predefinedType_DuctFitting ifc:CONNECTOR) -> (?z rdf:type distribution:DuctFitting-CONNECTOR) .
+[ifcToLbdDuctFitting-ENTRY:(?z rdf:type ifc:IfcDuctFitting) (?z ifc:predefinedType_DuctFitting ifc:ENTRY) -> (?z rdf:type distribution:DuctFitting-ENTRY) .
+[ifcToLbdDuctFitting-BEND:(?z rdf:type ifc:IfcDuctFitting) (?z ifc:predefinedType_DuctFitting ifc:BEND) -> (?z rdf:type distribution:DuctFitting-BEND) .
+[ifcToLbdDuctFitting-TRANSITION:(?z rdf:type ifc:IfcDuctFitting) (?z ifc:predefinedType_DuctFitting ifc:TRANSITION) -> (?z rdf:type distribution:DuctFitting-TRANSITION) .
+[ifcToLbdDuctFitting-JUNCTION:(?z rdf:type ifc:IfcDuctFitting) (?z ifc:predefinedType_DuctFitting ifc:JUNCTION) -> (?z rdf:type distribution:DuctFitting-JUNCTION) .
+[ifcToLbdDuctFitting-NOTDEFINED:(?z rdf:type ifc:IfcDuctFitting) (?z ifc:predefinedType_DuctFitting ifc:NOTDEFINED) -> (?z rdf:type distribution:DuctFitting-NOTDEFINED) .
+
+[ifcToLbdJunctionBox-USERDEFINED:(?z rdf:type ifc:IfcJunctionBox) (?z ifc:predefinedType_JunctionBox ifc:USERDEFINED) -> (?z rdf:type distribution:JunctionBox-USERDEFINED) .
+[ifcToLbdJunctionBox-POWER:(?z rdf:type ifc:IfcJunctionBox) (?z ifc:predefinedType_JunctionBox ifc:POWER) -> (?z rdf:type distribution:JunctionBox-POWER) .
+[ifcToLbdJunctionBox-DATA:(?z rdf:type ifc:IfcJunctionBox) (?z ifc:predefinedType_JunctionBox ifc:DATA) -> (?z rdf:type distribution:JunctionBox-DATA) .
+[ifcToLbdJunctionBox-NOTDEFINED:(?z rdf:type ifc:IfcJunctionBox) (?z ifc:predefinedType_JunctionBox ifc:NOTDEFINED) -> (?z rdf:type distribution:JunctionBox-NOTDEFINED) .
+
+[ifcToLbdFlowInstrument-VOLTMETER_PEAK:(?z rdf:type ifc:IfcFlowInstrument) (?z ifc:predefinedType_FlowInstrument ifc:VOLTMETER_PEAK) -> (?z rdf:type distribution:FlowInstrument-VOLTMETER_PEAK) .
+[ifcToLbdFlowInstrument-POWERFACTORMETER:(?z rdf:type ifc:IfcFlowInstrument) (?z ifc:predefinedType_FlowInstrument ifc:POWERFACTORMETER) -> (?z rdf:type distribution:FlowInstrument-POWERFACTORMETER) .
+[ifcToLbdFlowInstrument-USERDEFINED:(?z rdf:type ifc:IfcFlowInstrument) (?z ifc:predefinedType_FlowInstrument ifc:USERDEFINED) -> (?z rdf:type distribution:FlowInstrument-USERDEFINED) .
+[ifcToLbdFlowInstrument-AMMETER:(?z rdf:type ifc:IfcFlowInstrument) (?z ifc:predefinedType_FlowInstrument ifc:AMMETER) -> (?z rdf:type distribution:FlowInstrument-AMMETER) .
+[ifcToLbdFlowInstrument-PRESSUREGAUGE:(?z rdf:type ifc:IfcFlowInstrument) (?z ifc:predefinedType_FlowInstrument ifc:PRESSUREGAUGE) -> (?z rdf:type distribution:FlowInstrument-PRESSUREGAUGE) .
+[ifcToLbdFlowInstrument-FREQUENCYMETER:(?z rdf:type ifc:IfcFlowInstrument) (?z ifc:predefinedType_FlowInstrument ifc:FREQUENCYMETER) -> (?z rdf:type distribution:FlowInstrument-FREQUENCYMETER) .
+[ifcToLbdFlowInstrument-PHASEANGLEMETER:(?z rdf:type ifc:IfcFlowInstrument) (?z ifc:predefinedType_FlowInstrument ifc:PHASEANGLEMETER) -> (?z rdf:type distribution:FlowInstrument-PHASEANGLEMETER) .
+[ifcToLbdFlowInstrument-THERMOMETER:(?z rdf:type ifc:IfcFlowInstrument) (?z ifc:predefinedType_FlowInstrument ifc:THERMOMETER) -> (?z rdf:type distribution:FlowInstrument-THERMOMETER) .
+[ifcToLbdFlowInstrument-VOLTMETER_RMS:(?z rdf:type ifc:IfcFlowInstrument) (?z ifc:predefinedType_FlowInstrument ifc:VOLTMETER_RMS) -> (?z rdf:type distribution:FlowInstrument-VOLTMETER_RMS) .
+[ifcToLbdFlowInstrument-NOTDEFINED:(?z rdf:type ifc:IfcFlowInstrument) (?z ifc:predefinedType_FlowInstrument ifc:NOTDEFINED) -> (?z rdf:type distribution:FlowInstrument-NOTDEFINED) .
+
+[ifcToLbdFireSuppressionTerminal-FIREHYDRANT:(?z rdf:type ifc:IfcFireSuppressionTerminal) (?z ifc:predefinedType_FireSuppressionTerminal ifc:FIREHYDRANT) -> (?z rdf:type distribution:FireSuppressionTerminal-FIREHYDRANT) .
+[ifcToLbdFireSuppressionTerminal-SPRINKLER:(?z rdf:type ifc:IfcFireSuppressionTerminal) (?z ifc:predefinedType_FireSuppressionTerminal ifc:SPRINKLER) -> (?z rdf:type distribution:FireSuppressionTerminal-SPRINKLER) .
+[ifcToLbdFireSuppressionTerminal-USERDEFINED:(?z rdf:type ifc:IfcFireSuppressionTerminal) (?z ifc:predefinedType_FireSuppressionTerminal ifc:USERDEFINED) -> (?z rdf:type distribution:FireSuppressionTerminal-USERDEFINED) .
+[ifcToLbdFireSuppressionTerminal-SPRINKLERDEFLECTOR:(?z rdf:type ifc:IfcFireSuppressionTerminal) (?z ifc:predefinedType_FireSuppressionTerminal ifc:SPRINKLERDEFLECTOR) -> (?z rdf:type distribution:FireSuppressionTerminal-SPRINKLERDEFLECTOR) .
+[ifcToLbdFireSuppressionTerminal-BREECHINGINLET:(?z rdf:type ifc:IfcFireSuppressionTerminal) (?z ifc:predefinedType_FireSuppressionTerminal ifc:BREECHINGINLET) -> (?z rdf:type distribution:FireSuppressionTerminal-BREECHINGINLET) .
+[ifcToLbdFireSuppressionTerminal-HOSEREEL:(?z rdf:type ifc:IfcFireSuppressionTerminal) (?z ifc:predefinedType_FireSuppressionTerminal ifc:HOSEREEL) -> (?z rdf:type distribution:FireSuppressionTerminal-HOSEREEL) .
+[ifcToLbdFireSuppressionTerminal-NOTDEFINED:(?z rdf:type ifc:IfcFireSuppressionTerminal) (?z ifc:predefinedType_FireSuppressionTerminal ifc:NOTDEFINED) -> (?z rdf:type distribution:FireSuppressionTerminal-NOTDEFINED) .
+
+[ifcToLbdAlarm-BREAKGLASSBUTTON:(?z rdf:type ifc:IfcAlarm) (?z ifc:predefinedType_Alarm ifc:BREAKGLASSBUTTON) -> (?z rdf:type distribution:Alarm-BREAKGLASSBUTTON) .
+[ifcToLbdAlarm-LIGHT:(?z rdf:type ifc:IfcAlarm) (?z ifc:predefinedType_Alarm ifc:LIGHT) -> (?z rdf:type distribution:Alarm-LIGHT) .
+[ifcToLbdAlarm-BELL:(?z rdf:type ifc:IfcAlarm) (?z ifc:predefinedType_Alarm ifc:BELL) -> (?z rdf:type distribution:Alarm-BELL) .
+[ifcToLbdAlarm-USERDEFINED:(?z rdf:type ifc:IfcAlarm) (?z ifc:predefinedType_Alarm ifc:USERDEFINED) -> (?z rdf:type distribution:Alarm-USERDEFINED) .
+[ifcToLbdAlarm-WHISTLE:(?z rdf:type ifc:IfcAlarm) (?z ifc:predefinedType_Alarm ifc:WHISTLE) -> (?z rdf:type distribution:Alarm-WHISTLE) .
+[ifcToLbdAlarm-MANUALPULLBOX:(?z rdf:type ifc:IfcAlarm) (?z ifc:predefinedType_Alarm ifc:MANUALPULLBOX) -> (?z rdf:type distribution:Alarm-MANUALPULLBOX) .
+[ifcToLbdAlarm-SIREN:(?z rdf:type ifc:IfcAlarm) (?z ifc:predefinedType_Alarm ifc:SIREN) -> (?z rdf:type distribution:Alarm-SIREN) .
+[ifcToLbdAlarm-NOTDEFINED:(?z rdf:type ifc:IfcAlarm) (?z ifc:predefinedType_Alarm ifc:NOTDEFINED) -> (?z rdf:type distribution:Alarm-NOTDEFINED) .
+
+[ifcToLbdUnitaryEquipment-USERDEFINED:(?z rdf:type ifc:IfcUnitaryEquipment) (?z ifc:predefinedType_UnitaryEquipment ifc:USERDEFINED) -> (?z rdf:type distribution:UnitaryEquipment-USERDEFINED) .
+[ifcToLbdUnitaryEquipment-SPLITSYSTEM:(?z rdf:type ifc:IfcUnitaryEquipment) (?z ifc:predefinedType_UnitaryEquipment ifc:SPLITSYSTEM) -> (?z rdf:type distribution:UnitaryEquipment-SPLITSYSTEM) .
+[ifcToLbdUnitaryEquipment-AIRHANDLER:(?z rdf:type ifc:IfcUnitaryEquipment) (?z ifc:predefinedType_UnitaryEquipment ifc:AIRHANDLER) -> (?z rdf:type distribution:UnitaryEquipment-AIRHANDLER) .
+[ifcToLbdUnitaryEquipment-ROOFTOPUNIT:(?z rdf:type ifc:IfcUnitaryEquipment) (?z ifc:predefinedType_UnitaryEquipment ifc:ROOFTOPUNIT) -> (?z rdf:type distribution:UnitaryEquipment-ROOFTOPUNIT) .
+[ifcToLbdUnitaryEquipment-DEHUMIDIFIER:(?z rdf:type ifc:IfcUnitaryEquipment) (?z ifc:predefinedType_UnitaryEquipment ifc:DEHUMIDIFIER) -> (?z rdf:type distribution:UnitaryEquipment-DEHUMIDIFIER) .
+[ifcToLbdUnitaryEquipment-AIRCONDITIONINGUNIT:(?z rdf:type ifc:IfcUnitaryEquipment) (?z ifc:predefinedType_UnitaryEquipment ifc:AIRCONDITIONINGUNIT) -> (?z rdf:type distribution:UnitaryEquipment-AIRCONDITIONINGUNIT) .
+[ifcToLbdUnitaryEquipment-NOTDEFINED:(?z rdf:type ifc:IfcUnitaryEquipment) (?z ifc:predefinedType_UnitaryEquipment ifc:NOTDEFINED) -> (?z rdf:type distribution:UnitaryEquipment-NOTDEFINED) .
+
+[ifcToLbdSolarDevice-USERDEFINED:(?z rdf:type ifc:IfcSolarDevice) (?z ifc:predefinedType_SolarDevice ifc:USERDEFINED) -> (?z rdf:type distribution:SolarDevice-USERDEFINED) .
+[ifcToLbdSolarDevice-SOLARPANEL:(?z rdf:type ifc:IfcSolarDevice) (?z ifc:predefinedType_SolarDevice ifc:SOLARPANEL) -> (?z rdf:type distribution:SolarDevice-SOLARPANEL) .
+[ifcToLbdSolarDevice-SOLARCOLLECTOR:(?z rdf:type ifc:IfcSolarDevice) (?z ifc:predefinedType_SolarDevice ifc:SOLARCOLLECTOR) -> (?z rdf:type distribution:SolarDevice-SOLARCOLLECTOR) .
+[ifcToLbdSolarDevice-NOTDEFINED:(?z rdf:type ifc:IfcSolarDevice) (?z ifc:predefinedType_SolarDevice ifc:NOTDEFINED) -> (?z rdf:type distribution:SolarDevice-NOTDEFINED) .
+
+[ifcToLbdLamp-METALHALIDE:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:METALHALIDE) -> (?z rdf:type distribution:Lamp-METALHALIDE) .
+[ifcToLbdLamp-TUNGSTENFILAMENT:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:TUNGSTENFILAMENT) -> (?z rdf:type distribution:Lamp-TUNGSTENFILAMENT) .
+[ifcToLbdLamp-HIGHPRESSUREMERCURY:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:HIGHPRESSUREMERCURY) -> (?z rdf:type distribution:Lamp-HIGHPRESSUREMERCURY) .
+[ifcToLbdLamp-USERDEFINED:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:USERDEFINED) -> (?z rdf:type distribution:Lamp-USERDEFINED) .
+[ifcToLbdLamp-COMPACTFLUORESCENT:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:COMPACTFLUORESCENT) -> (?z rdf:type distribution:Lamp-COMPACTFLUORESCENT) .
+[ifcToLbdLamp-HALOGEN:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:HALOGEN) -> (?z rdf:type distribution:Lamp-HALOGEN) .
+[ifcToLbdLamp-OLED:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:OLED) -> (?z rdf:type distribution:Lamp-OLED) .
+[ifcToLbdLamp-LED:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:LED) -> (?z rdf:type distribution:Lamp-LED) .
+[ifcToLbdLamp-FLUORESCENT:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:FLUORESCENT) -> (?z rdf:type distribution:Lamp-FLUORESCENT) .
+[ifcToLbdLamp-HIGHPRESSURESODIUM:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:HIGHPRESSURESODIUM) -> (?z rdf:type distribution:Lamp-HIGHPRESSURESODIUM) .
+[ifcToLbdLamp-NOTDEFINED:(?z rdf:type ifc:IfcLamp) (?z ifc:predefinedType_Lamp ifc:NOTDEFINED) -> (?z rdf:type distribution:Lamp-NOTDEFINED) .
+
+[ifcToLbdSpaceHeater-USERDEFINED:(?z rdf:type ifc:IfcSpaceHeater) (?z ifc:predefinedType_SpaceHeater ifc:USERDEFINED) -> (?z rdf:type distribution:SpaceHeater-USERDEFINED) .
+[ifcToLbdSpaceHeater-RADIATOR:(?z rdf:type ifc:IfcSpaceHeater) (?z ifc:predefinedType_SpaceHeater ifc:RADIATOR) -> (?z rdf:type distribution:SpaceHeater-RADIATOR) .
+[ifcToLbdSpaceHeater-CONVECTOR:(?z rdf:type ifc:IfcSpaceHeater) (?z ifc:predefinedType_SpaceHeater ifc:CONVECTOR) -> (?z rdf:type distribution:SpaceHeater-CONVECTOR) .
+[ifcToLbdSpaceHeater-NOTDEFINED:(?z rdf:type ifc:IfcSpaceHeater) (?z ifc:predefinedType_SpaceHeater ifc:NOTDEFINED) -> (?z rdf:type distribution:SpaceHeater-NOTDEFINED) .
+
+[ifcToLbdCompressor-OPENTYPE:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:OPENTYPE) -> (?z rdf:type distribution:Compressor-OPENTYPE) .
+[ifcToLbdCompressor-SEMIHERMETIC:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:SEMIHERMETIC) -> (?z rdf:type distribution:Compressor-SEMIHERMETIC) .
+[ifcToLbdCompressor-RECIPROCATING:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:RECIPROCATING) -> (?z rdf:type distribution:Compressor-RECIPROCATING) .
+[ifcToLbdCompressor-ROTARYVANE:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:ROTARYVANE) -> (?z rdf:type distribution:Compressor-ROTARYVANE) .
+[ifcToLbdCompressor-USERDEFINED:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:USERDEFINED) -> (?z rdf:type distribution:Compressor-USERDEFINED) .
+[ifcToLbdCompressor-SINGLESCREW:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:SINGLESCREW) -> (?z rdf:type distribution:Compressor-SINGLESCREW) .
+[ifcToLbdCompressor-ROLLINGPISTON:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:ROLLINGPISTON) -> (?z rdf:type distribution:Compressor-ROLLINGPISTON) .
+[ifcToLbdCompressor-SINGLESTAGE:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:SINGLESTAGE) -> (?z rdf:type distribution:Compressor-SINGLESTAGE) .
+[ifcToLbdCompressor-ROTARY:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:ROTARY) -> (?z rdf:type distribution:Compressor-ROTARY) .
+[ifcToLbdCompressor-SCROLL:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:SCROLL) -> (?z rdf:type distribution:Compressor-SCROLL) .
+[ifcToLbdCompressor-TWINSCREW:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:TWINSCREW) -> (?z rdf:type distribution:Compressor-TWINSCREW) .
+[ifcToLbdCompressor-DYNAMIC:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:DYNAMIC) -> (?z rdf:type distribution:Compressor-DYNAMIC) .
+[ifcToLbdCompressor-TROCHOIDAL:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:TROCHOIDAL) -> (?z rdf:type distribution:Compressor-TROCHOIDAL) .
+[ifcToLbdCompressor-WELDEDSHELLHERMETIC:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:WELDEDSHELLHERMETIC) -> (?z rdf:type distribution:Compressor-WELDEDSHELLHERMETIC) .
+[ifcToLbdCompressor-BOOSTER:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:BOOSTER) -> (?z rdf:type distribution:Compressor-BOOSTER) .
+[ifcToLbdCompressor-HERMETIC:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:HERMETIC) -> (?z rdf:type distribution:Compressor-HERMETIC) .
+[ifcToLbdCompressor-NOTDEFINED:(?z rdf:type ifc:IfcCompressor) (?z ifc:predefinedType_Compressor ifc:NOTDEFINED) -> (?z rdf:type distribution:Compressor-NOTDEFINED) .
+
+[ifcToLbdHumidifier-ASSISTEDNATURALGAS:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ASSISTEDNATURALGAS) -> (?z rdf:type distribution:Humidifier-ASSISTEDNATURALGAS) .
+[ifcToLbdHumidifier-ADIABATICAIRWASHER:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ADIABATICAIRWASHER) -> (?z rdf:type distribution:Humidifier-ADIABATICAIRWASHER) .
+[ifcToLbdHumidifier-ADIABATICPAN:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ADIABATICPAN) -> (?z rdf:type distribution:Humidifier-ADIABATICPAN) .
+[ifcToLbdHumidifier-ADIABATICCOMPRESSEDAIRNOZZLE:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ADIABATICCOMPRESSEDAIRNOZZLE) -> (?z rdf:type distribution:Humidifier-ADIABATICCOMPRESSEDAIRNOZZLE) .
+[ifcToLbdHumidifier-USERDEFINED:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:USERDEFINED) -> (?z rdf:type distribution:Humidifier-USERDEFINED) .
+[ifcToLbdHumidifier-ASSISTEDPROPANE:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ASSISTEDPROPANE) -> (?z rdf:type distribution:Humidifier-ASSISTEDPROPANE) .
+[ifcToLbdHumidifier-STEAMINJECTION:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:STEAMINJECTION) -> (?z rdf:type distribution:Humidifier-STEAMINJECTION) .
+[ifcToLbdHumidifier-ADIABATICATOMIZING:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ADIABATICATOMIZING) -> (?z rdf:type distribution:Humidifier-ADIABATICATOMIZING) .
+[ifcToLbdHumidifier-ASSISTEDELECTRIC:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ASSISTEDELECTRIC) -> (?z rdf:type distribution:Humidifier-ASSISTEDELECTRIC) .
+[ifcToLbdHumidifier-ADIABATICWETTEDELEMENT:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ADIABATICWETTEDELEMENT) -> (?z rdf:type distribution:Humidifier-ADIABATICWETTEDELEMENT) .
+[ifcToLbdHumidifier-ADIABATICRIGIDMEDIA:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ADIABATICRIGIDMEDIA) -> (?z rdf:type distribution:Humidifier-ADIABATICRIGIDMEDIA) .
+[ifcToLbdHumidifier-ASSISTEDSTEAM:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ASSISTEDSTEAM) -> (?z rdf:type distribution:Humidifier-ASSISTEDSTEAM) .
+[ifcToLbdHumidifier-ADIABATICULTRASONIC:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ADIABATICULTRASONIC) -> (?z rdf:type distribution:Humidifier-ADIABATICULTRASONIC) .
+[ifcToLbdHumidifier-ASSISTEDBUTANE:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:ASSISTEDBUTANE) -> (?z rdf:type distribution:Humidifier-ASSISTEDBUTANE) .
+[ifcToLbdHumidifier-NOTDEFINED:(?z rdf:type ifc:IfcHumidifier) (?z ifc:predefinedType_Humidifier ifc:NOTDEFINED) -> (?z rdf:type distribution:Humidifier-NOTDEFINED) .
+
+[ifcToLbdOutlet-TELEPHONEOUTLET:(?z rdf:type ifc:IfcOutlet) (?z ifc:predefinedType_Outlet ifc:TELEPHONEOUTLET) -> (?z rdf:type distribution:Outlet-TELEPHONEOUTLET) .
+[ifcToLbdOutlet-POWEROUTLET:(?z rdf:type ifc:IfcOutlet) (?z ifc:predefinedType_Outlet ifc:POWEROUTLET) -> (?z rdf:type distribution:Outlet-POWEROUTLET) .
+[ifcToLbdOutlet-COMMUNICATIONSOUTLET:(?z rdf:type ifc:IfcOutlet) (?z ifc:predefinedType_Outlet ifc:COMMUNICATIONSOUTLET) -> (?z rdf:type distribution:Outlet-COMMUNICATIONSOUTLET) .
+[ifcToLbdOutlet-USERDEFINED:(?z rdf:type ifc:IfcOutlet) (?z ifc:predefinedType_Outlet ifc:USERDEFINED) -> (?z rdf:type distribution:Outlet-USERDEFINED) .
+[ifcToLbdOutlet-AUDIOVISUALOUTLET:(?z rdf:type ifc:IfcOutlet) (?z ifc:predefinedType_Outlet ifc:AUDIOVISUALOUTLET) -> (?z rdf:type distribution:Outlet-AUDIOVISUALOUTLET) .
+[ifcToLbdOutlet-DATAOUTLET:(?z rdf:type ifc:IfcOutlet) (?z ifc:predefinedType_Outlet ifc:DATAOUTLET) -> (?z rdf:type distribution:Outlet-DATAOUTLET) .
+[ifcToLbdOutlet-NOTDEFINED:(?z rdf:type ifc:IfcOutlet) (?z ifc:predefinedType_Outlet ifc:NOTDEFINED) -> (?z rdf:type distribution:Outlet-NOTDEFINED) .
+
+[ifcToLbdLightFixture-DIRECTIONSOURCE:(?z rdf:type ifc:IfcLightFixture) (?z ifc:predefinedType_LightFixture ifc:DIRECTIONSOURCE) -> (?z rdf:type distribution:LightFixture-DIRECTIONSOURCE) .
+[ifcToLbdLightFixture-SECURITYLIGHTING:(?z rdf:type ifc:IfcLightFixture) (?z ifc:predefinedType_LightFixture ifc:SECURITYLIGHTING) -> (?z rdf:type distribution:LightFixture-SECURITYLIGHTING) .
+[ifcToLbdLightFixture-USERDEFINED:(?z rdf:type ifc:IfcLightFixture) (?z ifc:predefinedType_LightFixture ifc:USERDEFINED) -> (?z rdf:type distribution:LightFixture-USERDEFINED) .
+[ifcToLbdLightFixture-POINTSOURCE:(?z rdf:type ifc:IfcLightFixture) (?z ifc:predefinedType_LightFixture ifc:POINTSOURCE) -> (?z rdf:type distribution:LightFixture-POINTSOURCE) .
+[ifcToLbdLightFixture-NOTDEFINED:(?z rdf:type ifc:IfcLightFixture) (?z ifc:predefinedType_LightFixture ifc:NOTDEFINED) -> (?z rdf:type distribution:LightFixture-NOTDEFINED) .
+
+[ifcToLbdCableFitting-EXIT:(?z rdf:type ifc:IfcCableFitting) (?z ifc:predefinedType_CableFitting ifc:EXIT) -> (?z rdf:type distribution:CableFitting-EXIT) .
+[ifcToLbdCableFitting-USERDEFINED:(?z rdf:type ifc:IfcCableFitting) (?z ifc:predefinedType_CableFitting ifc:USERDEFINED) -> (?z rdf:type distribution:CableFitting-USERDEFINED) .
+[ifcToLbdCableFitting-CONNECTOR:(?z rdf:type ifc:IfcCableFitting) (?z ifc:predefinedType_CableFitting ifc:CONNECTOR) -> (?z rdf:type distribution:CableFitting-CONNECTOR) .
+[ifcToLbdCableFitting-ENTRY:(?z rdf:type ifc:IfcCableFitting) (?z ifc:predefinedType_CableFitting ifc:ENTRY) -> (?z rdf:type distribution:CableFitting-ENTRY) .
+[ifcToLbdCableFitting-TRANSITION:(?z rdf:type ifc:IfcCableFitting) (?z ifc:predefinedType_CableFitting ifc:TRANSITION) -> (?z rdf:type distribution:CableFitting-TRANSITION) .
+[ifcToLbdCableFitting-JUNCTION:(?z rdf:type ifc:IfcCableFitting) (?z ifc:predefinedType_CableFitting ifc:JUNCTION) -> (?z rdf:type distribution:CableFitting-JUNCTION) .
+[ifcToLbdCableFitting-NOTDEFINED:(?z rdf:type ifc:IfcCableFitting) (?z ifc:predefinedType_CableFitting ifc:NOTDEFINED) -> (?z rdf:type distribution:CableFitting-NOTDEFINED) .
+
+[ifcToLbdCooledBeam-USERDEFINED:(?z rdf:type ifc:IfcCooledBeam) (?z ifc:predefinedType_CooledBeam ifc:USERDEFINED) -> (?z rdf:type distribution:CooledBeam-USERDEFINED) .
+[ifcToLbdCooledBeam-PASSIVE:(?z rdf:type ifc:IfcCooledBeam) (?z ifc:predefinedType_CooledBeam ifc:PASSIVE) -> (?z rdf:type distribution:CooledBeam-PASSIVE) .
+[ifcToLbdCooledBeam-ACTIVE:(?z rdf:type ifc:IfcCooledBeam) (?z ifc:predefinedType_CooledBeam ifc:ACTIVE) -> (?z rdf:type distribution:CooledBeam-ACTIVE) .
+[ifcToLbdCooledBeam-NOTDEFINED:(?z rdf:type ifc:IfcCooledBeam) (?z ifc:predefinedType_CooledBeam ifc:NOTDEFINED) -> (?z rdf:type distribution:CooledBeam-NOTDEFINED) .
+
+[ifcToLbdCommunicationsAppliance-COMPUTER:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:COMPUTER) -> (?z rdf:type distribution:CommunicationsAppliance-COMPUTER) .
+[ifcToLbdCommunicationsAppliance-ANTENNA:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:ANTENNA) -> (?z rdf:type distribution:CommunicationsAppliance-ANTENNA) .
+[ifcToLbdCommunicationsAppliance-REPEATER:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:REPEATER) -> (?z rdf:type distribution:CommunicationsAppliance-REPEATER) .
+[ifcToLbdCommunicationsAppliance-MODEM:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:MODEM) -> (?z rdf:type distribution:CommunicationsAppliance-MODEM) .
+[ifcToLbdCommunicationsAppliance-USERDEFINED:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:USERDEFINED) -> (?z rdf:type distribution:CommunicationsAppliance-USERDEFINED) .
+[ifcToLbdCommunicationsAppliance-NETWORKBRIDGE:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:NETWORKBRIDGE) -> (?z rdf:type distribution:CommunicationsAppliance-NETWORKBRIDGE) .
+[ifcToLbdCommunicationsAppliance-NETWORKHUB:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:NETWORKHUB) -> (?z rdf:type distribution:CommunicationsAppliance-NETWORKHUB) .
+[ifcToLbdCommunicationsAppliance-ROUTER:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:ROUTER) -> (?z rdf:type distribution:CommunicationsAppliance-ROUTER) .
+[ifcToLbdCommunicationsAppliance-GATEWAY:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:GATEWAY) -> (?z rdf:type distribution:CommunicationsAppliance-GATEWAY) .
+[ifcToLbdCommunicationsAppliance-PRINTER:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:PRINTER) -> (?z rdf:type distribution:CommunicationsAppliance-PRINTER) .
+[ifcToLbdCommunicationsAppliance-FAX:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:FAX) -> (?z rdf:type distribution:CommunicationsAppliance-FAX) .
+[ifcToLbdCommunicationsAppliance-SCANNER:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:SCANNER) -> (?z rdf:type distribution:CommunicationsAppliance-SCANNER) .
+[ifcToLbdCommunicationsAppliance-NETWORKAPPLIANCE:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:NETWORKAPPLIANCE) -> (?z rdf:type distribution:CommunicationsAppliance-NETWORKAPPLIANCE) .
+[ifcToLbdCommunicationsAppliance-NOTDEFINED:(?z rdf:type ifc:IfcCommunicationsAppliance) (?z ifc:predefinedType_CommunicationsAppliance ifc:NOTDEFINED) -> (?z rdf:type distribution:CommunicationsAppliance-NOTDEFINED) .
+
+[ifcToLbdPipeFitting-EXIT:(?z rdf:type ifc:IfcPipeFitting) (?z ifc:predefinedType_PipeFitting ifc:EXIT) -> (?z rdf:type distribution:PipeFitting-EXIT) .
+[ifcToLbdPipeFitting-USERDEFINED:(?z rdf:type ifc:IfcPipeFitting) (?z ifc:predefinedType_PipeFitting ifc:USERDEFINED) -> (?z rdf:type distribution:PipeFitting-USERDEFINED) .
+[ifcToLbdPipeFitting-OBSTRUCTION:(?z rdf:type ifc:IfcPipeFitting) (?z ifc:predefinedType_PipeFitting ifc:OBSTRUCTION) -> (?z rdf:type distribution:PipeFitting-OBSTRUCTION) .
+[ifcToLbdPipeFitting-CONNECTOR:(?z rdf:type ifc:IfcPipeFitting) (?z ifc:predefinedType_PipeFitting ifc:CONNECTOR) -> (?z rdf:type distribution:PipeFitting-CONNECTOR) .
+[ifcToLbdPipeFitting-ENTRY:(?z rdf:type ifc:IfcPipeFitting) (?z ifc:predefinedType_PipeFitting ifc:ENTRY) -> (?z rdf:type distribution:PipeFitting-ENTRY) .
+[ifcToLbdPipeFitting-BEND:(?z rdf:type ifc:IfcPipeFitting) (?z ifc:predefinedType_PipeFitting ifc:BEND) -> (?z rdf:type distribution:PipeFitting-BEND) .
+[ifcToLbdPipeFitting-TRANSITION:(?z rdf:type ifc:IfcPipeFitting) (?z ifc:predefinedType_PipeFitting ifc:TRANSITION) -> (?z rdf:type distribution:PipeFitting-TRANSITION) .
+[ifcToLbdPipeFitting-JUNCTION:(?z rdf:type ifc:IfcPipeFitting) (?z ifc:predefinedType_PipeFitting ifc:JUNCTION) -> (?z rdf:type distribution:PipeFitting-JUNCTION) .
+[ifcToLbdPipeFitting-NOTDEFINED:(?z rdf:type ifc:IfcPipeFitting) (?z ifc:predefinedType_PipeFitting ifc:NOTDEFINED) -> (?z rdf:type distribution:PipeFitting-NOTDEFINED) .
+
+
+
+[ifcToLbdRamp-HALF_TURN_RAMP:(?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:HALF_TURN_RAMP) -> (?z rdf:type building:Ramp-HALF_TURN_RAMP) .
+[ifcToLbdRamp-USERDEFINED:(?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:USERDEFINED) -> (?z rdf:type building:Ramp-USERDEFINED) .
+[ifcToLbdRamp-TWO_STRAIGHT_RUN_RAMP:(?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:TWO_STRAIGHT_RUN_RAMP) -> (?z rdf:type building:Ramp-TWO_STRAIGHT_RUN_RAMP) .
+[ifcToLbdRamp-SPIRAL_RAMP:(?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:SPIRAL_RAMP) -> (?z rdf:type building:Ramp-SPIRAL_RAMP) .
+[ifcToLbdRamp-QUARTER_TURN_RAMP:(?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:QUARTER_TURN_RAMP) -> (?z rdf:type building:Ramp-QUARTER_TURN_RAMP) .
+[ifcToLbdRamp-TWO_QUARTER_TURN_RAMP:(?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:TWO_QUARTER_TURN_RAMP) -> (?z rdf:type building:Ramp-TWO_QUARTER_TURN_RAMP) .
+[ifcToLbdRamp-STRAIGHT_RUN_RAMP:(?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:STRAIGHT_RUN_RAMP) -> (?z rdf:type building:Ramp-STRAIGHT_RUN_RAMP) .
+[ifcToLbdRamp-NOTDEFINED:(?z rdf:type ifc:IfcRamp) (?z ifc:predefinedType_Ramp ifc:NOTDEFINED) -> (?z rdf:type building:Ramp-NOTDEFINED) .
+
+[ifcToLbdWindow-USERDEFINED:(?z rdf:type ifc:IfcWindow) (?z ifc:predefinedType_Window ifc:USERDEFINED) -> (?z rdf:type building:Window-USERDEFINED) .
+[ifcToLbdWindow-LIGHTDOME:(?z rdf:type ifc:IfcWindow) (?z ifc:predefinedType_Window ifc:LIGHTDOME) -> (?z rdf:type building:Window-LIGHTDOME) .
+[ifcToLbdWindow-SKYLIGHT:(?z rdf:type ifc:IfcWindow) (?z ifc:predefinedType_Window ifc:SKYLIGHT) -> (?z rdf:type building:Window-SKYLIGHT) .
+[ifcToLbdWindow-WINDOW:(?z rdf:type ifc:IfcWindow) (?z ifc:predefinedType_Window ifc:WINDOW) -> (?z rdf:type building:Window-WINDOW) .
+[ifcToLbdWindow-NOTDEFINED:(?z rdf:type ifc:IfcWindow) (?z ifc:predefinedType_Window ifc:NOTDEFINED) -> (?z rdf:type building:Window-NOTDEFINED) .
+
+[ifcToLbdBuildingElementProxy-PROVISIONFORSPACE:(?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:PROVISIONFORSPACE) -> (?z rdf:type building:BuildingElementProxy-PROVISIONFORSPACE) .
+[ifcToLbdBuildingElementProxy-USERDEFINED:(?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:USERDEFINED) -> (?z rdf:type building:BuildingElementProxy-USERDEFINED) .
+[ifcToLbdBuildingElementProxy-PARTIAL:(?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:PARTIAL) -> (?z rdf:type building:BuildingElementProxy-PARTIAL) .
+[ifcToLbdBuildingElementProxy-PROVISIONFORVOID:(?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:PROVISIONFORVOID) -> (?z rdf:type building:BuildingElementProxy-PROVISIONFORVOID) .
+[ifcToLbdBuildingElementProxy-COMPLEX:(?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:COMPLEX) -> (?z rdf:type building:BuildingElementProxy-COMPLEX) .
+[ifcToLbdBuildingElementProxy-ELEMENT:(?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:ELEMENT) -> (?z rdf:type building:BuildingElementProxy-ELEMENT) .
+[ifcToLbdBuildingElementProxy-NOTDEFINED:(?z rdf:type ifc:IfcBuildingElementProxy) (?z ifc:predefinedType_BuildingElementProxy ifc:NOTDEFINED) -> (?z rdf:type building:BuildingElementProxy-NOTDEFINED) .
+
+[ifcToLbdFooting-STRIP_FOOTING:(?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:STRIP_FOOTING) -> (?z rdf:type building:Footing-STRIP_FOOTING) .
+[ifcToLbdFooting-USERDEFINED:(?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:USERDEFINED) -> (?z rdf:type building:Footing-USERDEFINED) .
+[ifcToLbdFooting-PILE_CAP:(?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:PILE_CAP) -> (?z rdf:type building:Footing-PILE_CAP) .
+[ifcToLbdFooting-FOOTING_BEAM:(?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:FOOTING_BEAM) -> (?z rdf:type building:Footing-FOOTING_BEAM) .
+[ifcToLbdFooting-PAD_FOOTING:(?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:PAD_FOOTING) -> (?z rdf:type building:Footing-PAD_FOOTING) .
+[ifcToLbdFooting-CAISSON_FOUNDATION:(?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:CAISSON_FOUNDATION) -> (?z rdf:type building:Footing-CAISSON_FOUNDATION) .
+[ifcToLbdFooting-NOTDEFINED:(?z rdf:type ifc:IfcFooting) (?z ifc:predefinedType_Footing ifc:NOTDEFINED) -> (?z rdf:type building:Footing-NOTDEFINED) .
+
+[ifcToLbdStairFlight-SPIRAL:(?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:SPIRAL) -> (?z rdf:type building:StairFlight-SPIRAL) .
+[ifcToLbdStairFlight-USERDEFINED:(?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:USERDEFINED) -> (?z rdf:type building:StairFlight-USERDEFINED) .
+[ifcToLbdStairFlight-FREEFORM:(?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:FREEFORM) -> (?z rdf:type building:StairFlight-FREEFORM) .
+[ifcToLbdStairFlight-CURVED:(?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:CURVED) -> (?z rdf:type building:StairFlight-CURVED) .
+[ifcToLbdStairFlight-STRAIGHT:(?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:STRAIGHT) -> (?z rdf:type building:StairFlight-STRAIGHT) .
+[ifcToLbdStairFlight-NOTDEFINED:(?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:NOTDEFINED) -> (?z rdf:type building:StairFlight-NOTDEFINED) .
+[ifcToLbdStairFlight-WINDER:(?z rdf:type ifc:IfcStairFlight) (?z ifc:predefinedType_StairFlight ifc:WINDER) -> (?z rdf:type building:StairFlight-WINDER) .
+
+[ifcToLbdBeam-BEAM:(?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:BEAM) -> (?z rdf:type building:Beam-BEAM) .
+[ifcToLbdBeam-SPANDREL:(?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:SPANDREL) -> (?z rdf:type building:Beam-SPANDREL) .
+[ifcToLbdBeam-LINTEL:(?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:LINTEL) -> (?z rdf:type building:Beam-LINTEL) .
+[ifcToLbdBeam-USERDEFINED:(?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:USERDEFINED) -> (?z rdf:type building:Beam-USERDEFINED) .
+[ifcToLbdBeam-HOLLOWCORE:(?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:HOLLOWCORE) -> (?z rdf:type building:Beam-HOLLOWCORE) .
+[ifcToLbdBeam-JOIST:(?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:JOIST) -> (?z rdf:type building:Beam-JOIST) .
+[ifcToLbdBeam-T_BEAM:(?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:T_BEAM) -> (?z rdf:type building:Beam-T_BEAM) .
+[ifcToLbdBeam-NOTDEFINED:(?z rdf:type ifc:IfcBeam) (?z ifc:predefinedType_Beam ifc:NOTDEFINED) -> (?z rdf:type building:Beam-NOTDEFINED) .
+
+[ifcToLbdWall-SHEAR:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:SHEAR) -> (?z rdf:type building:Wall-SHEAR) .
+[ifcToLbdWall-STANDARD:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:STANDARD) -> (?z rdf:type building:Wall-STANDARD) .
+[ifcToLbdWall-SOLIDWALL:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:SOLIDWALL) -> (?z rdf:type building:Wall-SOLIDWALL) .
+[ifcToLbdWall-PLUMBINGWALL:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:PLUMBINGWALL) -> (?z rdf:type building:Wall-PLUMBINGWALL) .
+[ifcToLbdWall-PARAPET:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:PARAPET) -> (?z rdf:type building:Wall-PARAPET) .
+[ifcToLbdWall-USERDEFINED:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:USERDEFINED) -> (?z rdf:type building:Wall-USERDEFINED) .
+[ifcToLbdWall-MOVABLE:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:MOVABLE) -> (?z rdf:type building:Wall-MOVABLE) .
+[ifcToLbdWall-POLYGONAL:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:POLYGONAL) -> (?z rdf:type building:Wall-POLYGONAL) .
+[ifcToLbdWall-PARTITIONING:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:PARTITIONING) -> (?z rdf:type building:Wall-PARTITIONING) .
+[ifcToLbdWall-ELEMENTEDWALL:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:ELEMENTEDWALL) -> (?z rdf:type building:Wall-ELEMENTEDWALL) .
+[ifcToLbdWall-NOTDEFINED:(?z rdf:type ifc:IfcWall) (?z ifc:predefinedType_Wall ifc:NOTDEFINED) -> (?z rdf:type building:Wall-NOTDEFINED) .
+
+[ifcToLbdDoor-DOOR:(?z rdf:type ifc:IfcDoor) (?z ifc:predefinedType_Door ifc:DOOR) -> (?z rdf:type building:Door-DOOR) .
+[ifcToLbdDoor-TRAPDOOR:(?z rdf:type ifc:IfcDoor) (?z ifc:predefinedType_Door ifc:TRAPDOOR) -> (?z rdf:type building:Door-TRAPDOOR) .
+[ifcToLbdDoor-USERDEFINED:(?z rdf:type ifc:IfcDoor) (?z ifc:predefinedType_Door ifc:USERDEFINED) -> (?z rdf:type building:Door-USERDEFINED) .
+[ifcToLbdDoor-GATE:(?z rdf:type ifc:IfcDoor) (?z ifc:predefinedType_Door ifc:GATE) -> (?z rdf:type building:Door-GATE) .
+[ifcToLbdDoor-NOTDEFINED:(?z rdf:type ifc:IfcDoor) (?z ifc:predefinedType_Door ifc:NOTDEFINED) -> (?z rdf:type building:Door-NOTDEFINED) .
+
+[ifcToLbdStair-HALF_TURN_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:HALF_TURN_STAIR) -> (?z rdf:type building:Stair-HALF_TURN_STAIR) .
+[ifcToLbdStair-QUARTER_WINDING_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:QUARTER_WINDING_STAIR) -> (?z rdf:type building:Stair-QUARTER_WINDING_STAIR) .
+[ifcToLbdStair-SPIRAL_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:SPIRAL_STAIR) -> (?z rdf:type building:Stair-SPIRAL_STAIR) .
+[ifcToLbdStair-TWO_STRAIGHT_RUN_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:TWO_STRAIGHT_RUN_STAIR) -> (?z rdf:type building:Stair-TWO_STRAIGHT_RUN_STAIR) .
+[ifcToLbdStair-USERDEFINED:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:USERDEFINED) -> (?z rdf:type building:Stair-USERDEFINED) .
+[ifcToLbdStair-TWO_CURVED_RUN_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:TWO_CURVED_RUN_STAIR) -> (?z rdf:type building:Stair-TWO_CURVED_RUN_STAIR) .
+[ifcToLbdStair-CURVED_RUN_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:CURVED_RUN_STAIR) -> (?z rdf:type building:Stair-CURVED_RUN_STAIR) .
+[ifcToLbdStair-DOUBLE_RETURN_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:DOUBLE_RETURN_STAIR) -> (?z rdf:type building:Stair-DOUBLE_RETURN_STAIR) .
+[ifcToLbdStair-STRAIGHT_RUN_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:STRAIGHT_RUN_STAIR) -> (?z rdf:type building:Stair-STRAIGHT_RUN_STAIR) .
+[ifcToLbdStair-THREE_QUARTER_TURN_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:THREE_QUARTER_TURN_STAIR) -> (?z rdf:type building:Stair-THREE_QUARTER_TURN_STAIR) .
+[ifcToLbdStair-TWO_QUARTER_TURN_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:TWO_QUARTER_TURN_STAIR) -> (?z rdf:type building:Stair-TWO_QUARTER_TURN_STAIR) .
+[ifcToLbdStair-QUARTER_TURN_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:QUARTER_TURN_STAIR) -> (?z rdf:type building:Stair-QUARTER_TURN_STAIR) .
+[ifcToLbdStair-THREE_QUARTER_WINDING_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:THREE_QUARTER_WINDING_STAIR) -> (?z rdf:type building:Stair-THREE_QUARTER_WINDING_STAIR) .
+[ifcToLbdStair-HALF_WINDING_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:HALF_WINDING_STAIR) -> (?z rdf:type building:Stair-HALF_WINDING_STAIR) .
+[ifcToLbdStair-TWO_QUARTER_WINDING_STAIR:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:TWO_QUARTER_WINDING_STAIR) -> (?z rdf:type building:Stair-TWO_QUARTER_WINDING_STAIR) .
+[ifcToLbdStair-NOTDEFINED:(?z rdf:type ifc:IfcStair) (?z ifc:predefinedType_Stair ifc:NOTDEFINED) -> (?z rdf:type building:Stair-NOTDEFINED) .
+
+[ifcToLbdRailing-USERDEFINED:(?z rdf:type ifc:IfcRailing) (?z ifc:predefinedType_Railing ifc:USERDEFINED) -> (?z rdf:type building:Railing-USERDEFINED) .
+[ifcToLbdRailing-GUARDRAIL:(?z rdf:type ifc:IfcRailing) (?z ifc:predefinedType_Railing ifc:GUARDRAIL) -> (?z rdf:type building:Railing-GUARDRAIL) .
+[ifcToLbdRailing-BALUSTRADE:(?z rdf:type ifc:IfcRailing) (?z ifc:predefinedType_Railing ifc:BALUSTRADE) -> (?z rdf:type building:Railing-BALUSTRADE) .
+[ifcToLbdRailing-HANDRAIL:(?z rdf:type ifc:IfcRailing) (?z ifc:predefinedType_Railing ifc:HANDRAIL) -> (?z rdf:type building:Railing-HANDRAIL) .
+[ifcToLbdRailing-NOTDEFINED:(?z rdf:type ifc:IfcRailing) (?z ifc:predefinedType_Railing ifc:NOTDEFINED) -> (?z rdf:type building:Railing-NOTDEFINED) .
+
+[ifcToLbdChimney-USERDEFINED:(?z rdf:type ifc:IfcChimney) (?z ifc:predefinedType_Chimney ifc:USERDEFINED) -> (?z rdf:type building:Chimney-USERDEFINED) .
+[ifcToLbdChimney-NOTDEFINED:(?z rdf:type ifc:IfcChimney) (?z ifc:predefinedType_Chimney ifc:NOTDEFINED) -> (?z rdf:type building:Chimney-NOTDEFINED) .
+
+[ifcToLbdShadingDevice-USERDEFINED:(?z rdf:type ifc:IfcShadingDevice) (?z ifc:predefinedType_ShadingDevice ifc:USERDEFINED) -> (?z rdf:type building:ShadingDevice-USERDEFINED) .
+[ifcToLbdShadingDevice-JALOUSIE:(?z rdf:type ifc:IfcShadingDevice) (?z ifc:predefinedType_ShadingDevice ifc:JALOUSIE) -> (?z rdf:type building:ShadingDevice-JALOUSIE) .
+[ifcToLbdShadingDevice-SHUTTER:(?z rdf:type ifc:IfcShadingDevice) (?z ifc:predefinedType_ShadingDevice ifc:SHUTTER) -> (?z rdf:type building:ShadingDevice-SHUTTER) .
+[ifcToLbdShadingDevice-AWNING:(?z rdf:type ifc:IfcShadingDevice) (?z ifc:predefinedType_ShadingDevice ifc:AWNING) -> (?z rdf:type building:ShadingDevice-AWNING) .
+[ifcToLbdShadingDevice-NOTDEFINED:(?z rdf:type ifc:IfcShadingDevice) (?z ifc:predefinedType_ShadingDevice ifc:NOTDEFINED) -> (?z rdf:type building:ShadingDevice-NOTDEFINED) .
+
+[ifcToLbdSlab-ROOF:(?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:ROOF) -> (?z rdf:type building:Slab-ROOF) .
+[ifcToLbdSlab-FLOOR:(?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:FLOOR) -> (?z rdf:type building:Slab-FLOOR) .
+[ifcToLbdSlab-BASESLAB:(?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:BASESLAB) -> (?z rdf:type building:Slab-BASESLAB) .
+[ifcToLbdSlab-LANDING:(?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:LANDING) -> (?z rdf:type building:Slab-LANDING) .
+[ifcToLbdSlab-USERDEFINED:(?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:USERDEFINED) -> (?z rdf:type building:Slab-USERDEFINED) .
+[ifcToLbdSlab-NOTDEFINED:(?z rdf:type ifc:IfcSlab) (?z ifc:predefinedType_Slab ifc:NOTDEFINED) -> (?z rdf:type building:Slab-NOTDEFINED) .
+
+[ifcToLbdPlate-CURTAIN_PANEL:(?z rdf:type ifc:IfcPlate) (?z ifc:predefinedType_Plate ifc:CURTAIN_PANEL) -> (?z rdf:type building:Plate-CURTAIN_PANEL) .
+[ifcToLbdPlate-USERDEFINED:(?z rdf:type ifc:IfcPlate) (?z ifc:predefinedType_Plate ifc:USERDEFINED) -> (?z rdf:type building:Plate-USERDEFINED) .
+[ifcToLbdPlate-SHEET:(?z rdf:type ifc:IfcPlate) (?z ifc:predefinedType_Plate ifc:SHEET) -> (?z rdf:type building:Plate-SHEET) .
+[ifcToLbdPlate-NOTDEFINED:(?z rdf:type ifc:IfcPlate) (?z ifc:predefinedType_Plate ifc:NOTDEFINED) -> (?z rdf:type building:Plate-NOTDEFINED) .
+
+[ifcToLbdRampFlight-SPIRAL:(?z rdf:type ifc:IfcRampFlight) (?z ifc:predefinedType_RampFlight ifc:SPIRAL) -> (?z rdf:type building:RampFlight-SPIRAL) .
+[ifcToLbdRampFlight-USERDEFINED:(?z rdf:type ifc:IfcRampFlight) (?z ifc:predefinedType_RampFlight ifc:USERDEFINED) -> (?z rdf:type building:RampFlight-USERDEFINED) .
+[ifcToLbdRampFlight-STRAIGHT:(?z rdf:type ifc:IfcRampFlight) (?z ifc:predefinedType_RampFlight ifc:STRAIGHT) -> (?z rdf:type building:RampFlight-STRAIGHT) .
+[ifcToLbdRampFlight-NOTDEFINED:(?z rdf:type ifc:IfcRampFlight) (?z ifc:predefinedType_RampFlight ifc:NOTDEFINED) -> (?z rdf:type building:RampFlight-NOTDEFINED) .
+
+[ifcToLbdPile-DRIVEN:(?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:DRIVEN) -> (?z rdf:type building:Pile-DRIVEN) .
+[ifcToLbdPile-SUPPORT:(?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:SUPPORT) -> (?z rdf:type building:Pile-SUPPORT) .
+[ifcToLbdPile-USERDEFINED:(?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:USERDEFINED) -> (?z rdf:type building:Pile-USERDEFINED) .
+[ifcToLbdPile-COHESION:(?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:COHESION) -> (?z rdf:type building:Pile-COHESION) .
+[ifcToLbdPile-FRICTION:(?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:FRICTION) -> (?z rdf:type building:Pile-FRICTION) .
+[ifcToLbdPile-BORED:(?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:BORED) -> (?z rdf:type building:Pile-BORED) .
+[ifcToLbdPile-JETGROUTING:(?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:JETGROUTING) -> (?z rdf:type building:Pile-JETGROUTING) .
+[ifcToLbdPile-NOTDEFINED:(?z rdf:type ifc:IfcPile) (?z ifc:predefinedType_Pile ifc:NOTDEFINED) -> (?z rdf:type building:Pile-NOTDEFINED) .
+
+[ifcToLbdCurtainWall-USERDEFINED:(?z rdf:type ifc:IfcCurtainWall) (?z ifc:predefinedType_CurtainWall ifc:USERDEFINED) -> (?z rdf:type building:CurtainWall-USERDEFINED) .
+[ifcToLbdCurtainWall-NOTDEFINED:(?z rdf:type ifc:IfcCurtainWall) (?z ifc:predefinedType_CurtainWall ifc:NOTDEFINED) -> (?z rdf:type building:CurtainWall-NOTDEFINED) .
+
+[ifcToLbdMember-MEMBER:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:MEMBER) -> (?z rdf:type building:Member-MEMBER) .
+[ifcToLbdMember-BRACE:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:BRACE) -> (?z rdf:type building:Member-BRACE) .
+[ifcToLbdMember-MULLION:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:MULLION) -> (?z rdf:type building:Member-MULLION) .
+[ifcToLbdMember-STUD:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:STUD) -> (?z rdf:type building:Member-STUD) .
+[ifcToLbdMember-POST:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:POST) -> (?z rdf:type building:Member-POST) .
+[ifcToLbdMember-STRUT:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:STRUT) -> (?z rdf:type building:Member-STRUT) .
+[ifcToLbdMember-PLATE:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:PLATE) -> (?z rdf:type building:Member-PLATE) .
+[ifcToLbdMember-COLLAR:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:COLLAR) -> (?z rdf:type building:Member-COLLAR) .
+[ifcToLbdMember-USERDEFINED:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:USERDEFINED) -> (?z rdf:type building:Member-USERDEFINED) .
+[ifcToLbdMember-PURLIN:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:PURLIN) -> (?z rdf:type building:Member-PURLIN) .
+[ifcToLbdMember-CHORD:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:CHORD) -> (?z rdf:type building:Member-CHORD) .
+[ifcToLbdMember-RAFTER:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:RAFTER) -> (?z rdf:type building:Member-RAFTER) .
+[ifcToLbdMember-STRINGER:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:STRINGER) -> (?z rdf:type building:Member-STRINGER) .
+[ifcToLbdMember-NOTDEFINED:(?z rdf:type ifc:IfcMember) (?z ifc:predefinedType_Member ifc:NOTDEFINED) -> (?z rdf:type building:Member-NOTDEFINED) .
+
+[ifcToLbdColumn-USERDEFINED:(?z rdf:type ifc:IfcColumn) (?z ifc:predefinedType_Column ifc:USERDEFINED) -> (?z rdf:type building:Column-USERDEFINED) .
+[ifcToLbdColumn-COLUMN:(?z rdf:type ifc:IfcColumn) (?z ifc:predefinedType_Column ifc:COLUMN) -> (?z rdf:type building:Column-COLUMN) .
+[ifcToLbdColumn-PILASTER:(?z rdf:type ifc:IfcColumn) (?z ifc:predefinedType_Column ifc:PILASTER) -> (?z rdf:type building:Column-PILASTER) .
+[ifcToLbdColumn-NOTDEFINED:(?z rdf:type ifc:IfcColumn) (?z ifc:predefinedType_Column ifc:NOTDEFINED) -> (?z rdf:type building:Column-NOTDEFINED) .
+
+[ifcToLbdCovering-SKIRTINGBOARD:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:SKIRTINGBOARD) -> (?z rdf:type building:Covering-SKIRTINGBOARD) .
+[ifcToLbdCovering-CEILING:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:CEILING) -> (?z rdf:type building:Covering-CEILING) .
+[ifcToLbdCovering-USERDEFINED:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:USERDEFINED) -> (?z rdf:type building:Covering-USERDEFINED) .
+[ifcToLbdCovering-MEMBRANE:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:MEMBRANE) -> (?z rdf:type building:Covering-MEMBRANE) .
+[ifcToLbdCovering-MOLDING:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:MOLDING) -> (?z rdf:type building:Covering-MOLDING) .
+[ifcToLbdCovering-WRAPPING:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:WRAPPING) -> (?z rdf:type building:Covering-WRAPPING) .
+[ifcToLbdCovering-CLADDING:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:CLADDING) -> (?z rdf:type building:Covering-CLADDING) .
+[ifcToLbdCovering-INSULATION:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:INSULATION) -> (?z rdf:type building:Covering-INSULATION) .
+[ifcToLbdCovering-ROOFING:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:ROOFING) -> (?z rdf:type building:Covering-ROOFING) .
+[ifcToLbdCovering-SLEEVING:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:SLEEVING) -> (?z rdf:type building:Covering-SLEEVING) .
+[ifcToLbdCovering-FLOORING:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:FLOORING) -> (?z rdf:type building:Covering-FLOORING) .
+[ifcToLbdCovering-NOTDEFINED:(?z rdf:type ifc:IfcCovering) (?z ifc:predefinedType_Covering ifc:NOTDEFINED) -> (?z rdf:type building:Covering-NOTDEFINED) .
+
+[ifcToLbdRoof-GABLE_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:GABLE_ROOF) -> (?z rdf:type building:Roof-GABLE_ROOF) .
+[ifcToLbdRoof-DOME_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:DOME_ROOF) -> (?z rdf:type building:Roof-DOME_ROOF) .
+[ifcToLbdRoof-BUTTERFLY_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:BUTTERFLY_ROOF) -> (?z rdf:type building:Roof-BUTTERFLY_ROOF) .
+[ifcToLbdRoof-FLAT_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:FLAT_ROOF) -> (?z rdf:type building:Roof-FLAT_ROOF) .
+[ifcToLbdRoof-BARREL_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:BARREL_ROOF) -> (?z rdf:type building:Roof-BARREL_ROOF) .
+[ifcToLbdRoof-GAMBREL_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:GAMBREL_ROOF) -> (?z rdf:type building:Roof-GAMBREL_ROOF) .
+[ifcToLbdRoof-SHED_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:SHED_ROOF) -> (?z rdf:type building:Roof-SHED_ROOF) .
+[ifcToLbdRoof-USERDEFINED:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:USERDEFINED) -> (?z rdf:type building:Roof-USERDEFINED) .
+[ifcToLbdRoof-MANSARD_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:MANSARD_ROOF) -> (?z rdf:type building:Roof-MANSARD_ROOF) .
+[ifcToLbdRoof-FREEFORM:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:FREEFORM) -> (?z rdf:type building:Roof-FREEFORM) .
+[ifcToLbdRoof-PAVILION_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:PAVILION_ROOF) -> (?z rdf:type building:Roof-PAVILION_ROOF) .
+[ifcToLbdRoof-RAINBOW_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:RAINBOW_ROOF) -> (?z rdf:type building:Roof-RAINBOW_ROOF) .
+[ifcToLbdRoof-HIP_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:HIP_ROOF) -> (?z rdf:type building:Roof-HIP_ROOF) .
+[ifcToLbdRoof-HIPPED_GABLE_ROOF:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:HIPPED_GABLE_ROOF) -> (?z rdf:type building:Roof-HIPPED_GABLE_ROOF) .
+[ifcToLbdRoof-NOTDEFINED:(?z rdf:type ifc:IfcRoof) (?z ifc:predefinedType_Roof ifc:NOTDEFINED) -> (?z rdf:type building:Roof-NOTDEFINED) .
