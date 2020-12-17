@@ -6,16 +6,21 @@
 @prefix ifc: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
 @prefix ifc2x3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
 
-[connectedWith-IFC: (?c rdf:type ifc:IfcRelConnectsPorts) (?c ifc:relatingPort_IfcRelConnectsPorts ?p1) (?c ifc:relatedPort_IfcRelConnectsPorts ?p2)
-					 (?elt1 rdf:type sot:SystemComponent) (?elt2 rdf:type sot:SystemComponent)
-					 (?n1 ifc:relatingObject_IfcRelNests ?elt1) (?n1 ifc:relatedObjects_IfcRelNests ?list1) (?p1 list:isIn ?list1)
-					 (?n2 ifc:relatingObject_IfcRelNests ?elt2) (?n2 ifc:relatedObjects_IfcRelNests ?list2) (?p2 list:isIn ?list2)
-					 (?rel ifc:relatingPort_IfcRelConnectsPorts ?p1) (?rel ifc:relatedPort_IfcRelConnectsPorts ?p2)
+[connectedWith-IFC:
+	(?c rdf:type ifc:IfcRelConnectsPorts) (?c ifc:relatingPort_IfcRelConnectsPorts ?p1) (?c ifc:relatedPort_IfcRelConnectsPorts ?p2)
+	(?elt1 rdf:type ?cls1) (?cls1 rdfs:subClassOf sot:SystemComponent)
+	(?elt2 rdf:type ?cls2) (?cls2 rdfs:subClassOf sot:SystemComponent)
+	(?n1 ifc:relatingObject_IfcRelNests ?elt1) (?n1 ifc:relatedObjects_IfcRelNests ?list1) (?p1 list:isIn ?list1)
+	(?n2 ifc:relatingObject_IfcRelNests ?elt2) (?n2 ifc:relatedObjects_IfcRelNests ?list2) (?p2 list:isIn ?list2)
+	(?rel ifc:relatingPort_IfcRelConnectsPorts ?p1) (?rel ifc:relatedPort_IfcRelConnectsPorts ?p2)
 					 -> (?elt1 sot:connectedWith ?elt2)]
-[hasElements-IFC: (?s rdf:type sot:System) (?c ifc:relatingGroup_IfcRelAssignsToGroup ?s)
-				  (?c ifc:relatedObjects_IfcRelAssigns ?elt) (?elt rdf:type sot:SystemComponent)
+
+[hasElements-IFC:
+	(?s rdf:type ?cls) (?cls rdfs:subClassOf sot:System)
+	(?c ifc:relatingGroup_IfcRelAssignsToGroup ?s)
+	(?c ifc:relatedObjects_IfcRelAssigns ?elt)
+	(?elt rdf:type ?clse) (?clse rdfs:subClassOf* sot:SystemComponent)
 					-> (?s sot:hasElements ?elt)]
-					
+
 [isIn1: (?l list:hasNext ?elt) -> (?elt list:isIn ?l)]
 [isIn2: (?l list:isFollowedBy ?queue) (?elt list:isIn ?queue) -> (?elt list:isIn ?l)]
-					
