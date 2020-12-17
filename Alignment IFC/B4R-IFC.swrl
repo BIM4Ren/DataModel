@@ -1,0 +1,35 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix list: <https://w3id.org/list#> .
+@prefix bot: <https://w3id.org/bot#> .
+@prefix sot: <https://models.bim4ren.eu/sot#> .
+@prefix b4r-building: <https://models.bim4ren.eu/buildings#> .
+@prefix ifc4: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
+@prefix ifc2x3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
+@prefix distribution: <https://pi.pauwel.be/voc/distributionelement#>.
+@prefix building: <https://pi.pauwel.be/voc/buildingelement#>.
+
+@prefix ifc: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
+
+[equivalent1: (?a owl:equivalentClass ?b) -> (?a rdfs:subClassOf ?b) (?b rdfs:subClassOf ?a)]
+[equivalent2: (?a rdfs:subClassOf ?b) (?b rdfs:subClassOf ?a) -> (?a owl:equivalentClass ?b)]
+
+[transSubClass1: (?cls rdf:type owl:Class) -> (?cls rdfs:subClassOf ?cls)]
+[transSubClass1: (?cls1 rdfs:subClassOf ?cls2) (?cls2 rdfs:subClassOf ?cls3) -> (?cls1 rdfs:subClassOf ?cls3)]
+
+[relHasElement-IFC: (?z rdf:type ?cl) (?cl rdfs:subClassOf bot:Zone)
+					(?c ifc:relatingStructure_IfcRelContainedInSpatialStructure ?z)
+					(?c ifc:relatedElements_IfcRelContainedInSpatialStructure ?p) -> (?z bot:hasElement ?p)]
+
+[relContainsZone-IFC4: (?z1 rdf:type ?cl1) (?cl1 rdfs:subClassOf bot:Zone)
+					(?z2 rdf:type ?cl2) (?cl2 rdfs:subClassOf bot:Zone)
+					  (?rel ifc4:relatingObject_IfcRelAggregates ?z1)
+					  (?rel ifc4:relatedObjects_IfcRelAggregates ?z2)
+						-> (?z1 bot:containsZone ?z2)]
+[relContainsZone-IFC2x3:
+			(?z1 rdf:type ?cl1) (?cl1 rdfs:subClassOf bot:Zone)
+			(?z2 rdf:type ?cl2) (?cl2 rdfs:subClassOf bot:Zone)
+		  (?rel ifc2x3:relatingObject_IfcRelDecomposes ?z1)
+		  (?rel ifc2x3:relatedObjects_IfcRelDecomposes ?z2)
+		-> (?z1 bot:containsZone ?z2)]
