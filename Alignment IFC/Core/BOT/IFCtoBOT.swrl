@@ -3,15 +3,21 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix bot: <https://w3id.org/bot#> .
 @prefix b4r-building: <https://models.bim4ren.eu/buildings#> .
-@prefix ifc: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
+@prefix ifc4: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
 @prefix ifc2x3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
+@prefix ifc3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
 
-
-[relHasElement-IFC: (?z rdf:type bot:Zone)
+[relHasElement-IFC: (?z rdf:type ?cl) (?cl rdfs:subClassOf bot:Zone)
 					(?c ifc:relatingStructure_IfcRelContainedInSpatialStructure ?z)
 					(?c ifc:relatedElements_IfcRelContainedInSpatialStructure ?p) -> (?z bot:hasElement ?p)]
 
-[relContainsZone-IFC: (?z1 rdf:type bot:Zone) (?z2 rdf:type bot:Zone)
-					  (?rel ifc:relatingObject_IfcRelAggregates ?z1)
-					  (?rel ifc:relatedObjects_IfcRelAggregates ?z2)
+[relContainsZone-IFC4: (?z1 rdf:type ?cl1) (?cl1 rdfs:subClassOf bot:Zone)
+						(?z2 rdf:type ?cl2) (?cl2 rdfs:subClassOf bot:Zone)
+					  (?rel ifc4:relatingObject_IfcRelAggregates ?z1)
+					  (?rel ifc4:relatedObjects_IfcRelAggregates ?z2)
+						-> (?z1 bot:containsZone ?z2)]
+[relContainsZone-IFC2x3: (?z1 rdf:type ?cl1) (?cl1 rdfs:subClassOf bot:Zone)
+						(?z2 rdf:type ?cl2) (?cl2 rdfs:subClassOf bot:Zone)
+					  (?rel ifc2x3:relatingObject_IfcRelDecomposes ?z1)
+					  (?rel ifc2x3:relatedObjects_IfcRelDecomposes ?z2)
 						-> (?z1 bot:containsZone ?z2)]
