@@ -1,0 +1,8 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+[equivalent1: (?a owl:equivalentClass ?b) -> (?a rdfs:subClassOf ?b) (?b rdfs:subClassOf ?a)]
+[equivalent2: (?a rdfs:subClassOf ?b) (?b rdfs:subClassOf ?a) -> (?a owl:equivalentClass ?b)]
+
+[transSubClass1: (?cls rdf:type owl:Class) -> (?cls rdfs:subClassOf ?cls)]
+[transSubClass1: (?cls1 rdfs:subClassOf ?cls2) (?cls2 rdfs:subClassOf ?cls3) -> (?cls1 rdfs:subClassOf ?cls3)]
