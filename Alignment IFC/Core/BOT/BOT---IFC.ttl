@@ -3,9 +3,8 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .  
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix bot: <https://w3id.org/bot#> .
-@prefix b4r-building: <https://www.bim4ren.eu/buildings#> .
 @prefix ifc4: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
 @prefix ifc2x3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
 @base <https://models.bim4ren.eu/alignment/buildings-IFC> .
