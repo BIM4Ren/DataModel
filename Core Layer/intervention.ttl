@@ -57,6 +57,14 @@
 :Organization
   rdf:type owl:Class ;
 .
+:Parameterization
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Event ;
+.
+:Removal
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Event ;
+.
 :Repair
   rdf:type owl:Class ;
   rdfs:comment "Maintenance of an already installed elements. Can include change of parameters for HVAC systems or change of part of the elements."@en ;
