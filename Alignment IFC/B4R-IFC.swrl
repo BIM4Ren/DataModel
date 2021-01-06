@@ -5,12 +5,12 @@
 @prefix bot: <https://w3id.org/bot#> .
 @prefix sot: <https://models.bim4ren.eu/sot#> .
 @prefix b4r-building: <https://models.bim4ren.eu/buildings#> .
-@prefix ifc4: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
-@prefix ifc2x3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
+@prefix ifc4: <https://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
+@prefix ifc2x3: <https://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
 @prefix distribution: <https://pi.pauwel.be/voc/distributionelement#>.
 @prefix building: <https://pi.pauwel.be/voc/buildingelement#>.
 
-@prefix ifc: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
+@prefix ifc: <https://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
 
 [equivalent1: (?a owl:equivalentClass ?b) -> (?a rdfs:subClassOf ?b) (?b rdfs:subClassOf ?a)]
 [equivalent2: (?a rdfs:subClassOf ?b) (?b rdfs:subClassOf ?a) -> (?a owl:equivalentClass ?b)]

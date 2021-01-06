@@ -5,8 +5,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .  
 @prefix sot: <https://models.bim4ren.eu/sot#> .
-@prefix ifc4: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
-@prefix ifc2x3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
+@prefix ifc4: <https://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
+@prefix ifc2x3: <https://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
 @base <https://models.bim4ren.eu/alignment/sot-IFC> .
 
 <https://models.bim4ren.eu/alignment/sot-IFC> rdf:type owl:Ontology ;
@@ -16,8 +16,8 @@
     owl:versionIRI <https://models.bim4ren.eu/alignment/sot-IFC/0.1> ;
 	dcterms:creator "Pierre Bourreau" ;
     owl:imports 	<https://w3id.org/bot> , <https://models.bim4ren.eu/sot#> ,
-					<http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL> ,
-					<http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL>.
+					<https://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL> ,
+					<https://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL>.
 
 dcterms:title a owl:AnnotationProperty .
 dcterms:description a owl:AnnotationProperty .

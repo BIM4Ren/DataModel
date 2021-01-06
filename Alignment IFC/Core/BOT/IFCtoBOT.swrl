@@ -3,9 +3,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix bot: <https://w3id.org/bot#> .
 @prefix b4r-building: <https://models.bim4ren.eu/buildings#> .
-@prefix ifc4: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
-@prefix ifc2x3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
-@prefix ifc3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
+@prefix ifc4: <https://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
+@prefix ifc2x3: <https://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
+
+@prefix ifc: <https://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
 
 [relHasElement-IFC: (?z rdf:type ?cl) (?cl rdfs:subClassOf bot:Zone)
 					(?c ifc:relatingStructure_IfcRelContainedInSpatialStructure ?z)

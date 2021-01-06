@@ -3,8 +3,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sot: <https://models.bim4ren.eu/sot#> .
 @prefix list: <https://w3id.org/list#> .
-@prefix ifc: <http://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
-@prefix ifc2x3: <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
+@prefix ifc: <https://standards.buildingsmart.org/IFC/DEV/IFC4_1/OWL#> .
+@prefix ifc2x3: <https://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#> .
 
 [connectedWith-IFC:
 	(?c rdf:type ifc:IfcRelConnectsPorts) (?c ifc:relatingPort_IfcRelConnectsPorts ?p1) (?c ifc:relatedPort_IfcRelConnectsPorts ?p2)
