@@ -4,7 +4,7 @@
 # imports: https://w3id.org/def/basicsemantics-owl
 
 @prefix : <https://models.bim4ren.eu/domain/airQuality#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix property: <https://models.bim4ren.eu/property#> .
@@ -121,6 +121,6 @@
   rdf:type owl:ObjectProperty ;
   :pollutant :Pollutant ;
   rdfs:label "pression"@fr ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind :ComponentRelativeAbundance ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind :ComponentRelativeAbundance ;
 .

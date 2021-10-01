@@ -1,5 +1,5 @@
 @prefix : <https://models.bim4ren.eu/domain/thermal#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -21,7 +21,7 @@
 
 ###  https://models.bim4ren.eu/domain/thermal#airTightness
 :airTightness rdf:type owl:ObjectProperty ;
-                         rdfs:range bs:QuantityValue ;
+                         rdfs:range sml:QuantityValue ;
                          rdfs:label "air tighthness"@en ,
                                     "ermeticità all'aria"@it ,
                                     "estanqueidad"@es ,
@@ -112,7 +112,7 @@
 
 ###  https://models.bim4ren.eu/domain/thermal#load
 :load rdf:type owl:ObjectProperty ;
-                 rdfs:range bs:QuantityValue ;
+                 rdfs:range sml:QuantityValue ;
                  rdfs:label "carga"@es ,
                             "carico"@it ,
                             "charge"@fr ,
@@ -202,12 +202,12 @@
 
 ###  https://models.bim4ren.eu/domain/thermal#thermalEfficiency
 :thermalEfficiency rdf:type owl:ObjectProperty ;
-                              rdfs:range bs:QuantityValue ;
+                              rdfs:range sml:QuantityValue ;
                               rdfs:label "rendement"@fr ,
                                          "rendimento"@it ,
                                          "rendimiento térmico"@es ,
                                          "thermal efficiency"@en ;
-                              bs:quantityKind quantitykind:ThermalEfficiency;
+                              sml:hasQuantityKind quantitykind:ThermalEfficiency;
 							  skos:narrowMatch <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/04OYo0qSaHuO00025QrE$V>, 
 											   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3CMEg0qSGHuO00025QrE$V>, 
 											   <http://bsdd.buildingsmart.org/api/4.0/IfdConcept/3UEes0qSGHuO00025QrE$V>. 
@@ -217,7 +217,7 @@
 
 ###  https://models.bim4ren.eu/domain/thermal#thermalMass
 :thermalMass rdf:type owl:ObjectProperty ;
-                        rdfs:range bs:QuantityValue ;
+                        rdfs:range sml:QuantityValue ;
                         rdfs:label "masa térmica"@es ,
                                    "massa termica"@it ,
                                    "masse thermique"@fr ,
@@ -226,18 +226,18 @@
 
 ###  https://models.bim4ren.eu/domain/thermal#thermalResistance
 :thermalResistance rdf:type owl:ObjectProperty ;
-                              rdfs:range bs:QuantityValue ;
+                              rdfs:range sml:QuantityValue ;
                               rdfs:label "R" ,
                                          "resistencia termica"@es ,
                                          "resistenza termica"@it ,
                                          "résistence thermique"@fr ,
                                          "thermal resistance"@en ;
-                              bs:quantityKind quantitykind:ThermalResistance .
+                              sml:hasQuantityKind quantitykind:ThermalResistance .
 
 
 ###  https://models.bim4ren.eu/domain/thermal#thermalTransmittance
 :thermalTransmittance rdf:type owl:ObjectProperty ;
-                                 rdfs:range bs:QuantityValue ;
+                                 rdfs:range sml:QuantityValue ;
                                  rdfs:label "U" ,
                                             "coefficient de transfert thermique"@fr ,
                                             "coefficient of heat transfer"@en ,
@@ -245,18 +245,18 @@
                                             "transfert thermique"@fr ,
                                             "transmitancia térmica"@es ,
                                             "trasmittanza termica"@it ;
-                                 bs:quantityKind quantitykind:CoefficientOfHeatTransfer .
+                                 sml:hasQuantityKind quantitykind:CoefficientOfHeatTransfer .
 
 
 ###  https://models.bim4ren.eu/domain/thermal#transmittance
 :transmittance rdf:type owl:ObjectProperty ;
-                          rdfs:range bs:QuantityValue ;
+                          rdfs:range sml:QuantityValue ;
                           rdfs:label "T" ,
                                      "transmitancia"@es ,
                                      "transmittance"@en ,
                                      "transmittance"@fr ,
                                      "trasmissione"@it ;
-                          bs:quantityKind quantitykind:Transmittance .
+                          sml:hasQuantityKind quantitykind:Transmittance .
 
 
 ###  https://models.bim4ren.eu/domain/thermal#visibleTransmittance
@@ -309,27 +309,27 @@
 :HeatTransferElement rdf:type owl:Class ;
                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                   owl:onProperty :infraredTransmittance ;
-                                                  owl:someValuesFrom bs:QuantityValue
+                                                  owl:someValuesFrom sml:QuantityValue
                                                 ] ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :airTightness ;
-                                                  owl:allValuesFrom bs:QuantityValue
+                                                  owl:allValuesFrom sml:QuantityValue
                                                 ] ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :thermalMass ;
-                                                  owl:allValuesFrom bs:QuantityValue
+                                                  owl:allValuesFrom sml:QuantityValue
                                                 ] ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :thermalResistance ;
-                                                  owl:allValuesFrom bs:QuantityValue
+                                                  owl:allValuesFrom sml:QuantityValue
                                                 ] ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :thermalTransmittance ;
-                                                  owl:allValuesFrom bs:QuantityValue
+                                                  owl:allValuesFrom sml:QuantityValue
                                                 ] ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :visibleTransmittance ;
-                                                  owl:allValuesFrom bs:QuantityValue
+                                                  owl:allValuesFrom sml:QuantityValue
                                                 ] ;
                                 rdfs:comment "A heat transfer element is a passive element that can restrict or ease the transfer of heat between different zones."@en ;
                                 rdfs:label "Elément de transfert de chaleur"@fr ,
@@ -340,7 +340,7 @@
 :Producer rdf:type owl:Class ;
                      rdfs:subClassOf [ rdf:type owl:Restriction ;
                                        owl:onProperty :thermalEfficiency ;
-                                       owl:allValuesFrom bs:QuantityValue
+                                       owl:allValuesFrom sml:QuantityValue
                                      ] ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :maxTemperature ;
@@ -363,15 +363,15 @@
 :ThermoRegulatedElement rdf:type owl:Class ;
                                    rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                      owl:onProperty :maxTemperature ;
-                                                     owl:someValuesFrom bs:QuantityValue
+                                                     owl:someValuesFrom sml:QuantityValue
                                                    ] ,
                                                    [ rdf:type owl:Restriction ;
                                                      owl:onProperty :minTemperature ;
-                                                     owl:someValuesFrom bs:QuantityValue
+                                                     owl:someValuesFrom sml:QuantityValue
                                                    ] ,
                                                    [ rdf:type owl:Restriction ;
                                                      owl:onProperty :setPoint ;
-                                                     owl:someValuesFrom bs:QuantityValue
+                                                     owl:someValuesFrom sml:QuantityValue
                                                    ] ;
                                    rdfs:label "thermo-regulated element"@en ,
                                               "élément thermo-régulé"@fr .

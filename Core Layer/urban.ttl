@@ -3,7 +3,7 @@
 # imports: https://w3id.org/def/basicsemantics-owl
 
 @prefix : <https://models.bim4ren.eu/urban#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix property: <https://models.bim4ren.eu/property#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -192,7 +192,7 @@
   rdf:type owl:ObjectProperty ;
   rdfs:domain :Positioning ;
   rdfs:label "Altitude "@en ;
-  bs:quantityKind <http://qudt.org/vocab/quantitykind/Length> ;
+  sml:hasQuantityKind <http://qudt.org/vocab/quantitykind/Length> ;
 .
 :greenZoneRatio
   rdf:type owl:ObjectProperty ;

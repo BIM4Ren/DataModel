@@ -3,7 +3,7 @@
 # imports: https://w3id.org/def/basicsemantics-owl
 
 @prefix : <https://models.bim4ren.eu/property#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -23,7 +23,7 @@
   rdfs:label "accuratezza"@it ;
   rdfs:label "precisión"@es ;
   rdfs:label "précision"@fr ;
-  rdfs:range bs:QuantityValue ;
+  rdfs:range sml:QuantityValue ;
 .
 :angle
   rdf:type owl:ObjectProperty ;
@@ -31,8 +31,8 @@
   rdfs:label "angle"@fr ;
   rdfs:label "angolo"@it ;
   rdfs:label "angulo"@es ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:PlaneAngle ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:PlaneAngle ;
 .
 :area
   rdf:type owl:ObjectProperty ;
@@ -40,8 +40,8 @@
   rdfs:label "area"@it ;
   rdfs:label "surface"@fr ;
   rdfs:label "área"@es ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Area ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Area ;
 .
 :efficiency
   rdf:type owl:ObjectProperty ;
@@ -49,8 +49,8 @@
   rdfs:label "rendement"@fr ;
   rdfs:label "rendimento"@it ;
   rdfs:label "rendimiento"@es ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Efficiency ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Efficiency ;
 .
 :flowRate
   rdf:type owl:ObjectProperty ;
@@ -61,8 +61,8 @@
   rdfs:label "flusso"@it ;
   rdfs:label "portata"@it ;
   rdfs:label "temperatura"@it ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:VolumeFlowRate ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:VolumeFlowRate ;
 .
 :fromTime
   rdf:type owl:ObjectProperty ;
@@ -78,8 +78,8 @@
   rdfs:label "altura"@es ;
   rdfs:label "hauteur"@fr ;
   rdfs:label "height"@en ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Length ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Length ;
 .
 :power
   rdf:type owl:ObjectProperty ;
@@ -87,8 +87,8 @@
   rdfs:label "potere"@it ;
   rdfs:label "power"@en ;
   rdfs:label "puissance"@fr ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Power ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Power ;
 .
 :pressure
   rdf:type owl:ObjectProperty ;
@@ -96,8 +96,8 @@
   rdfs:label "pression"@fr ;
   rdfs:label "pressione"@it ;
   rdfs:label "pressure"@en ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Pressure ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Pressure ;
 .
 :price
   rdf:type owl:ObjectProperty ;
@@ -105,8 +105,8 @@
   rdfs:label "prezzo"@it ;
   rdfs:label "price"@en ;
   rdfs:label "prix"@fr ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Currency ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Currency ;
 .
 :ratio
   rdf:type owl:ObjectProperty ;
@@ -114,8 +114,8 @@
   rdfs:label "rapport"@fr ;
   rdfs:label "rapporto"@it ;
   rdfs:label "ratio"@en ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:DimensionlessRatio ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:DimensionlessRatio ;
 .
 :speed
   rdf:type owl:ObjectProperty ;
@@ -123,8 +123,8 @@
   rdfs:label "velocidad"@es ;
   rdfs:label "velocità"@it ;
   rdfs:label "vitesse"@fr ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Speed ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Speed ;
 .
 :temperature
   rdf:type owl:ObjectProperty ;
@@ -132,8 +132,8 @@
   rdfs:label "temperatura"@it ;
   rdfs:label "temperature"@en ;
   rdfs:label "température"@fr ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Temperature ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Temperature ;
 .
 :thickness
   rdf:type owl:ObjectProperty ;
@@ -141,8 +141,8 @@
   rdfs:label "spessore"@it ;
   rdfs:label "thickness"@en ;
   rdfs:label "épaisseur"@fr ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Length ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Length ;
 .
 :time
   rdf:type owl:ObjectProperty ;
@@ -150,8 +150,8 @@
   rdfs:label "temps"@fr ;
   rdfs:label "tiempo"@es ;
   rdfs:label "time"@en ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Time ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Time ;
 .
 :toTime
   rdf:type owl:ObjectProperty ;
@@ -167,8 +167,8 @@
   rdfs:label "volume"@fr ;
   rdfs:label "volume"@it ;
   rdfs:label "volumen"@es ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Volume ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Volume ;
 .
 :width
   rdf:type owl:ObjectProperty ;
@@ -176,6 +176,6 @@
   rdfs:label "largeur"@fr ;
   rdfs:label "larhezza"@it ;
   rdfs:label "width"@en ;
-  rdfs:range bs:QuantityValue ;
-  bs:quantityKind quantitykind:Length ;
+  rdfs:range sml:QuantityValue ;
+  sml:hasQuantityKind quantitykind:Length ;
 .

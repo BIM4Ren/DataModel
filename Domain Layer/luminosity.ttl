@@ -2,7 +2,7 @@
 # imports: https://models.bim4ren.eu/property#
 
 @prefix : <https://models.bim4ren.eu/domain/luminosity#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prop: <https://models.bim4ren.eu/property#> .
 @prefix property: <https://models.bim4ren.eu/property#> .
@@ -24,7 +24,7 @@
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:onProperty :reflection ;
-      owl:someValuesFrom bs:QuantityValue ;
+      owl:someValuesFrom sml:QuantityValue ;
     ] ;
 .
 :TransparentElement
@@ -34,12 +34,12 @@
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:onProperty :skyAngle ;
-      owl:someValuesFrom bs:QuantityValue ;
+      owl:someValuesFrom sml:QuantityValue ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:onProperty :transmittance ;
-      owl:someValuesFrom bs:QuantityValue ;
+      owl:someValuesFrom sml:QuantityValue ;
     ] ;
 .
 :reflection

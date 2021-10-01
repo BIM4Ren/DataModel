@@ -8,7 +8,7 @@
 @prefix b4r-prop: <http://www.bim4ren.eu/property#> .
 @prefix buildingelements: <https://pi.pauwel.be/voc/buildingelement#> .
 @prefix distributionelements: <https://pi.pauwel.be/voc/distributionelement#>.
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> . 
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @prefix b4r-thermal: <http://www.bim4ren.eu/domain/thermal#> .
 @prefix b4r-elec: <http://www.bim4ren.eu/domain/electrical#> .
 @prefix dot: <https://w3id.org/dot#> .
@@ -24,7 +24,7 @@ ex:Window_1
   a buildingelements:Window ;
   b4r-prop:height [
 			rdf:value "44.0"^^xsd:decimal ;
-			bs:unit unit:CentiM ;
+			sml:hasUnit unit:CentiM ;
 			b4r-prop:accuracy [
 						rdf:value "0.9"^^xsd:decimal ;
 						] ;
@@ -35,11 +35,11 @@ ex:boiler_1
 	a distributionelements:Boiler ; 
 	b4r-thermal:boilerEfficiency [
 					rdf:value "50"^^xsd:decimal ;
-					bs:unit unit:PERCENT;
+					sml:hasUnit unit:PERCENT;
 					b4r-thermal:efficiencyType b4r-thermal:CERTIFIED;
 					b4r-thermal:load [ 
 						rdf:value "50"^^xsd:decimal;
-						bs:unit unit:PERCENT;
+						sml:hasUnit unit:PERCENT;
 						] ;
 				] ;
 .
@@ -68,15 +68,15 @@ ex:fixedtariff_option1
 		a b4r-elec:FixedTariff ;
 			b4r-elec:kwhPrice [
 				rdf:value "0.1546"^^xsd:decimal ;
-				bs:unit unit:Euro;
+				sml:hasUnit unit:Euro;
 				] ;
 			b4r-elec:subscriptionPrice [
 				rdf:value "8.26"^^xsd:decimal ;
-				bs:unit unit:Euro;
+				sml:hasUnit unit:Euro;
 				] ;
 			b4r-elec:subscriptionPower [
 				rdf:value "3"^^xsd:integer ;
-				bs:unit unit:KiloV-A ;
+				sml:hasUnit unit:KiloV-A ;
 				] ;
 			b4r-elec:subscriptionType b4r-elec:MONTHLY ;
 .
@@ -85,15 +85,15 @@ ex:fixedtariff_option2
 		a b4r-elec:FixedTariff ;
 			b4r-elec:kwhPrice [
 				rdf:value "0.1587"^^xsd:decimal ;
-				bs:unit unit:Euro;
+				sml:hasUnit unit:Euro;
 				] ;
 			b4r-elec:subscriptionPrice [
 				rdf:value "11.97"^^xsd:decimal ;
-				bs:unit unit:Euro;
+				sml:hasUnit unit:Euro;
 				] ;
 			b4r-elec:subscriptionPower [
 				rdf:value "9"^^xsd:integer ;
-				bs:unit unit:KiloV-A ;
+				sml:hasUnit unit:KiloV-A ;
 				] ;
 			b4r-elec:subscriptionType b4r-elec:MONTHLY ;
 .
@@ -103,38 +103,38 @@ ex:peakOffPeakHourstariff_option1
 		b4r-elec:peakHours [
 				b4r-prop:fromTime [
 						rdf:value "22"^^xsd:integer ;
-						bs:unit unit:HR;
+						sml:hasUnit unit:HR;
 						] ;
 				b4r-prop:toTime [
 						rdf:value "6"^^xsd:integer ;
-						bs:unit unit:HR;
+						sml:hasUnit unit:HR;
 						] ;
 				b4r-elec:kwhPrice [
 						rdf:value "0.1337"^^xsd:decimal ;
-						bs:unit unit:EURO ;
+						sml:hasUnit unit:EURO ;
 						]				 ;
 				];
 		b4r-elec:off-PeakHours [
 				b4r-prop:fromTime [
 						rdf:value "6"^^xsd:integer ;
-						bs:unit unit:HR;
+						sml:hasUnit unit:HR;
 						] ;
 				b4r-prop:toTime [
 						rdf:value "22"^^xsd:integer ;
-						bs:unit unit:HR;
+						sml:hasUnit unit:HR;
 						] ;
 				b4r-elec:kwhPrice [
 						rdf:value "0.1781"^^xsd:decimal ;
-						bs:unit unit:EURO ;
+						sml:hasUnit unit:EURO ;
 						] ;
 				];	
 		b4r-elec:subscriptionPower [
 			rdf:value "6"^^xsd:integer ;
-			bs:unit unit:KiloV-A ;
+			sml:hasUnit unit:KiloV-A ;
 		] ;
 		b4r-elec:subscriptionPrice [
 			rdf:value "11.10"^^xsd:decimal ;
-			bs:unit unit:Euro;
+			sml:hasUnit unit:Euro;
 		] ;
 		b4r-elec:subscriptionType b4r-elec:MONTHLY ;
 .
@@ -143,23 +143,23 @@ ex:weekEndWeekDaystariff_option1
 		a b4r-elec:WeekEndWeekDaysTariff ;
 		b4r-elec:subscriptionPower [
 			rdf:value "6"^^xsd:integer ;
-			bs:unit unit:KiloV-A ;
+			sml:hasUnit unit:KiloV-A ;
 		] ;
 		b4r-elec:weekdaysHours [
 			b4r-elec:kwhPrice [
 				rdf:value "0.1707"^^xsd:decimal ;
-				bs:unit unit:EURO ;
+				sml:hasUnit unit:EURO ;
 			] ;
 		] ;
 		b4r-elec:weekendHours [
 			b4r-elec:kwhPrice [
 				rdf:value "0.1405"^^xsd:decimal ;
-				bs:unit unit:EURO ;
+				sml:hasUnit unit:EURO ;
 			] ;
 		] ;
 		b4r-elec:subscriptionPrice [
 			rdf:value "9.98"^^xsd:decimal ;
-			bs:unit unit:Euro;
+			sml:hasUnit unit:Euro;
 		] ;
 		b4r-elec:subscriptionType b4r-elec:MONTHLY ;
 .
@@ -167,23 +167,23 @@ ex:weekEndWeekDaystariff_option1
 ex:weekEndWeekDaystariff_option2
 		b4r-elec:subscriptionPower [
 			rdf:value "9"^^xsd:integer ;
-			bs:unit unit:KiloV-A ;
+			sml:hasUnit unit:KiloV-A ;
 		] ;
 		b4r-elec:weekdaysHours [
 			b4r-elec:kwhPrice [
 				rdf:value "0.1749"^^xsd:decimal ;
-				bs:unit unit:EURO ;
+				sml:hasUnit unit:EURO ;
 			] ;
 		] ;
 		b4r-elec:weekendHours [
 			b4r-elec:kwhPrice [
 				rdf:value "0.1426"^^xsd:decimal ;
-				bs:unit unit:EURO ;
+				sml:hasUnit unit:EURO ;
 			] ;
 		] ;
 		b4r-elec:subscriptionPrice [
 			rdf:value "11.84"^^xsd:decimal ;
-			bs:unit unit:Euro;
+			sml:hasUnit unit:Euro;
 		] ;
 		b4r-elec:subscriptionType b4r-elec:MONTHLY ;
 .

@@ -1,5 +1,5 @@
 @prefix : <https://models.bim4ren.eu/domain/electrical#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -35,17 +35,17 @@
 
 ###  https://models.bim4ren.eu/domain/electrical#meterPower
 :meterPower rdf:type owl:ObjectProperty ;
-                    rdfs:range bs:QuantityValue ;
+                    rdfs:range sml:QuantityValue ;
                     rdfs:label "poder de suscripción"@es ,
                                "potere di abbonamento"@it ,
                                "puissance souscrite d'abonnement"@fr ,
                                "subscription power"@en ;
-                    bs:quantityKind quantitykind:ApparentPower .
+                    sml:hasQuantityKind quantitykind:ApparentPower .
 
 
 ###  https://models.bim4ren.eu/domain/electrical#offPeakHours
 :offPeakHours rdf:type owl:ObjectProperty ;
-                      rdfs:range bs:QuantityValue ;
+                      rdfs:range sml:QuantityValue ;
                       rdfs:label "heures creuses"@fr ,
                                  "horas de poca actividad"@es ,
                                  "off-peak hours"@en ,
@@ -54,7 +54,7 @@
 
 ###  https://models.bim4ren.eu/domain/electrical#peakHours
 :peakHours rdf:type owl:ObjectProperty ;
-                   rdfs:range bs:QuantityValue ;
+                   rdfs:range sml:QuantityValue ;
                    rdfs:label "heures pleines"@fr ,
                               "horas pico"@es ,
                               "ore di punta"@it ,
@@ -100,7 +100,7 @@
 
 ###  https://models.bim4ren.eu/domain/electrical#weekEndHours
 :weekEndHours rdf:type owl:ObjectProperty ;
-                      rdfs:range bs:QuantityValue ;
+                      rdfs:range sml:QuantityValue ;
                       rdfs:label "heures week-end"@fr ,
                                  "horas de fin de semana"@es ,
                                  "ore del fine settimana"@it ,
@@ -109,7 +109,7 @@
 
 ###  https://models.bim4ren.eu/domain/electrical#weekdaysHours
 :weekdaysHours rdf:type owl:ObjectProperty ;
-                       rdfs:range bs:QuantityValue ;
+                       rdfs:range sml:QuantityValue ;
                        rdfs:label "heures semaine"@fr ,
                                   "horas entre semana"@es ,
                                   "ore feriali"@it ,
@@ -133,15 +133,15 @@ b4r-prop:kWhprice rdf:type owl:ObjectProperty ;
 :ElectricalConsumer rdf:type owl:Class ;
                             rdfs:subClassOf [ rdf:type owl:Restriction ;
                                               owl:onProperty :powerIn ;
-                                              owl:allValuesFrom bs:QuantityValue
+                                              owl:allValuesFrom sml:QuantityValue
                                             ] ,
 											[ rdf:type owl:Restriction ;
                                               owl:onProperty :electricalEfficiency ;
-                                              owl:someValuesFrom bs:QuantityValue
+                                              owl:someValuesFrom sml:QuantityValue
                                             ] ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty :powerOut ;
-                                              owl:allValuesFrom bs:QuantityValue
+                                              owl:allValuesFrom sml:QuantityValue
                                             ] .
 
 
@@ -149,11 +149,11 @@ b4r-prop:kWhprice rdf:type owl:ObjectProperty ;
 :ElectricalProducer rdf:type owl:Class ;
                             rdfs:subClassOf [ rdf:type owl:Restriction ;
                                               owl:onProperty :electricalEfficiency ;
-                                              owl:someValuesFrom bs:QuantityValue
+                                              owl:someValuesFrom sml:QuantityValue
                                             ] ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty :powerOut ;
-                                              owl:someValuesFrom bs:QuantityValue
+                                              owl:someValuesFrom sml:QuantityValue
                                             ] .
 
 
@@ -223,7 +223,7 @@ b4r-prop:SubscriptionType rdf:type owl:Class ;
 
 
 ###  https://w3id.org/def/basicsemantics-owl#QuantityValue
-bs:QuantityValue rdf:type owl:Class .
+sml:QuantityValue rdf:type owl:Class .
 
 
 #################################################################

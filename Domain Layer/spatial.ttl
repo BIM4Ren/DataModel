@@ -1,5 +1,5 @@
 @prefix : <https://models.bim4ren.eu/domain/spatial#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -67,19 +67,19 @@
                          rdfs:comment "An element that is characterized by its surface. For instance windows or space boundaries."@en ;
 						 rdfs:subClassOf [ rdf:type owl:Restriction ;
                                            owl:onProperty b4r-prop:area ;
-                                           owl:someValuesFrom bs:QuantityValue
+                                           owl:someValuesFrom sml:QuantityValue
                                          ] ,
 										 [ rdf:type owl:Restriction ;
                                            owl:onProperty b4r-prop:height ;
-                                           owl:someValuesFrom bs:QuantityValue
+                                           owl:someValuesFrom sml:QuantityValue
                                          ] ,
 										 [ rdf:type owl:Restriction ;
                                            owl:onProperty b4r-prop:width ;
-                                           owl:someValuesFrom bs:QuantityValue
+                                           owl:someValuesFrom sml:QuantityValue
                                          ] ,
 										 [ rdf:type owl:Restriction ;
                                            owl:onProperty :orientation ;
-                                           owl:someValuesFrom bs:QuantityValue
+                                           owl:someValuesFrom sml:QuantityValue
                                          ] .
 
 
@@ -88,11 +88,11 @@
 						rdfs:comment "An element that is characterized by a volume (i.e. for which the thickness is important."@en ;
 						rdfs:subClassOf [ rdf:type owl:Restriction ;
                                            owl:onProperty b4r-prop:volume ;
-                                           owl:someValuesFrom bs:QuantityValue
+                                           owl:someValuesFrom sml:QuantityValue
                                          ] ,
 										 [ rdf:type owl:Restriction ;
                                            owl:onProperty :orientation ;
-                                           owl:someValuesFrom bs:QuantityValue
+                                           owl:someValuesFrom sml:QuantityValue
                                          ].
 
 

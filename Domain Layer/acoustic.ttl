@@ -7,7 +7,7 @@
 @prefix b4r-prop: <https://models.bim4ren.eu/property#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> . 
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @base <https://models.bim4ren.eu/domain/acoustic#> .
 
 <https://models.bim4ren.eu/domain/acoustic#> rdf:type owl:Ontology ;
@@ -19,29 +19,29 @@
 
 ###  https://models.bim4ren.eu/domain/acoustic#intensity
 :intensity rdf:type owl:ObjectProperty ;
-           rdfs:range bs:QuantityValue ;
-			bs:quantityKind quantitykind:SignalStrength ;
+           rdfs:range sml:QuantityValue ;
+			sml:hasQuantityKind quantitykind:SignalStrength ;
 			rdfs:label "intensité sonore"@fr, "intensité acoustique"@fr ,
 						"acoustic intensity"@en ,
 						"sound intensity level"@en .
 
 :frequency rdf:type owl:ObjectProperty ;
-           rdfs:range bs:QuantityValue ;
-			bs:quantityKind quantitykind:Frequency ;
+           rdfs:range sml:QuantityValue ;
+			sml:hasQuantityKind quantitykind:Frequency ;
 			rdfs:label "fréquence"@fr ,
 						"frequency"@en .
 
 
 :duration rdf:type owl:ObjectProperty ;
-          rdfs:range bs:QuantityValue ;
-		  bs:quantityKind quantitykind:Time ;
+          rdfs:range sml:QuantityValue ;
+		  sml:hasQuantityKind quantitykind:Time ;
 		  rdfs:label "durée"@fr ,
 					 "duration"@en ,
 					 "duración"@es ,
 					 "durata"@it.
 								
 :absorptionCoefficient rdf:type owl:ObjectProperty ;
-						rdfs:range bs:QuantityValue ;
+						rdfs:range sml:QuantityValue ;
 						rdfs:subPropertyOf b4r-prop:ratio ;
 						:associatedFrequency :frequency ;
 						rdfs:range :AcousticInsulator ;
@@ -55,8 +55,8 @@
 :generate rdf:type owl:ObjectProperty .
 
 :acousticInsulationEfficiency rdf:type owl:ObjectProperty;
-							  rdfs:range bs:QuantityValue ;
-							  bs:quantityKind quantitykind:SignalStrength ;
+							  rdfs:range sml:QuantityValue ;
+							  sml:hasQuantityKind quantitykind:SignalStrength ;
 							  rdfs:label "efficacité d'isolation phonique"@fr, "efficacité d'isolation acoustique"@fr ,
 										 "acoustic insulation efficiency"@en .
 
@@ -106,15 +106,15 @@
 :Noise rdf:type owl:Class ;
 	   rdfs:subClassOf [ rdf:type owl:Restriction ;
                          owl:onProperty :intensity ;
-						 owl:someValuesFrom bs:QuantityValue
+						 owl:someValuesFrom sml:QuantityValue
                        ] ,
 					   [ rdf:type owl:Restriction ;
                          owl:onProperty :frequency ;
-                         owl:someValuesFrom bs:QuantityValue
+                         owl:someValuesFrom sml:QuantityValue
                        ] ,
 					   [ rdf:type owl:Restriction ;
                          owl:onProperty :duration ;
-                         owl:someValuesFrom bs:QuantityValue
+                         owl:someValuesFrom sml:QuantityValue
                        ] ;
 	   rdfs:label "noise"@en, "sound"@en ,
 				  "bruit"@fr, "son"@fr , "nuisance sonore"@fr ,
@@ -137,7 +137,7 @@
 :AcousticInsulator rdf:type owl:Class ;
 				   rdfs:subClassOf [ rdf:type owl:Restriction ;
 									 owl:onProperty :absorptionCoefficient ;
-									 owl:someValuesFrom bs:QuantityValue
+									 owl:someValuesFrom sml:QuantityValue
 									] ;
 				   rdfs:label "isolant accoustique"@fr , "isolant phonique"@fr ,
 							  "sound absorber"@en, "sound insulation"@en, "soundproofing"@en ,

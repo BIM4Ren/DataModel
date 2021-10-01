@@ -1,5 +1,5 @@
 @prefix : <https://models.bim4ren.eu/utils/energy#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -31,7 +31,7 @@
 
 
 ###  https://w3id.org/def/basicsemantics-owl#quantityKind
-bs:quantityKind rdf:type owl:AnnotationProperty .
+sml:hasQuantityKind rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -71,12 +71,12 @@ bs:quantityKind rdf:type owl:AnnotationProperty .
 
 ###  https://models.bim4ren.eu/utils/energy#normalizedEnergyConsumption
 :normalizedEnergyConsumption rdf:type owl:ObjectProperty ;
-                             rdfs:range bs:QuantityValue ;
+                             rdfs:range sml:QuantityValue ;
                              rdfs:label "consommation énergétique primaire annuelle"@fr ,
                                         "consumo energetico normalizado"@es ,
                                         "consumo energetico normalizzato"@it ,
                                         "normalized energy consumption"@en ;
-                             bs:quantityKind quantitykind:EnergyPerArea .
+                             sml:hasQuantityKind quantitykind:EnergyPerArea .
 
 
 #################################################################
@@ -132,11 +132,11 @@ bs:quantityKind rdf:type owl:AnnotationProperty .
                                 rdfs:subClassOf :Certification ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :maxEnergyConsumption ;
-                                                  owl:someValuesFrom bs:QuantityValue
+                                                  owl:someValuesFrom sml:QuantityValue
                                                 ] ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :minEnergyConsumption ;
-                                                  owl:someValuesFrom bs:QuantityValue
+                                                  owl:someValuesFrom sml:QuantityValue
                                                 ] ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :associatedLocation ;
@@ -165,7 +165,7 @@ bs:quantityKind rdf:type owl:AnnotationProperty .
 
 
 ###  https://w3id.org/def/basicsemantics-owl#QuantityValue
-bs:QuantityValue rdf:type owl:Class .
+sml:QuantityValue rdf:type owl:Class .
 
 
 #################################################################

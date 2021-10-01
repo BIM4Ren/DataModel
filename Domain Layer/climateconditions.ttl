@@ -4,7 +4,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix b4r-prop: <https://models.bim4ren.eu/property#> .
-@prefix bs: <https://w3id.org/def/basicsemantics-owl#> .
+@prefix sml: <https://w3id.org/sml/owl/def> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix : <https://models.bim4ren.eu/domain/climateconditions#> .
 
@@ -20,13 +20,13 @@
 
 ###  https://models.bim4ren.eu/domain/climateconditions#irradiance
 :irradiance rdf:type owl:ObjectProperty ;
-                       rdfs:range bs:QuantityValue ;
+                       rdfs:range sml:QuantityValue ;
                        rdfs:label "E" ,
                                   "irradiancia"@es ,
                                   "irradiance"@en ,
                                   "irradiance"@fr ,
                                   "irradianza"@it ;
-                       bs:quantityKind quantitykind:Irradiance .
+                       sml:hasQuantityKind quantitykind:Irradiance .
 					   
 					   
 ###  https://models.bim4ren.eu/domain/climateconditions#directNormalSolarIrradiance
@@ -83,24 +83,24 @@
 
 ###  https://models.bim4ren.eu/domain/climateconditions#atmosphericPressure
 :atmosphericPressure rdf:type owl:ObjectProperty ;
-								rdfs:range bs:QuantityValue ;
+								rdfs:range sml:QuantityValue ;
 								rdfs:label "Patm" ,
 										   "presión atmosférica"@es ,
                                            "atmospheric pressure"@en ,
                                            "pression atmosphérique"@fr ,
                                            "pressione atmosferica"@it ;
-								bs:quantityKind quantitykind:AtmosphericPressure .
+								sml:hasQuantityKind quantitykind:AtmosphericPressure .
 
 	
 ###  https://models.bim4ren.eu/domain/climateconditions#relativeHumidity
 :relativeHumidity rdf:type owl:ObjectProperty ;
-							 rdfs:range bs:QuantityValue ;
+							 rdfs:range sml:QuantityValue ;
 							 rdfs:label "RH" ,
 										"humedad relativa"@es ,
                                         "relative humidity"@en ,
                                         "humidité relative"@fr ,
                                         "umidità relativa"@it ;
-						    bs:quantityKind quantitykind:RelativeHumidity .
+						    sml:hasQuantityKind quantitykind:RelativeHumidity .
 
 	
 ###  https://models.bim4ren.eu/domain/climateconditions#windSpeed
@@ -115,7 +115,7 @@
 								 
 ###  https://models.bim4ren.eu/domain/climateconditions#windDirection
 :windDirection rdf:type owl:ObjectProperty ;
-                          rdfs:range bs:QuantityValue ;
+                          rdfs:range sml:QuantityValue ;
 				          rdfs:label "WindDir" , 
 								     "direction du vent"@fr ,
 									 "direzione del vento"@it ,
@@ -125,7 +125,7 @@
 
 ###  https://models.bim4ren.eu/domain/climateconditions#longitude
 :longitude rdf:type owl:ObjectProperty ;
-                      rdfs:range bs:QuantityValue ;
+                      rdfs:range sml:QuantityValue ;
 				      rdfs:label "Lon" , 
 								 "longitude"@fr ,
                                  "longitudine"@it ,
@@ -135,7 +135,7 @@
 
 ###  https://models.bim4ren.eu/domain/climateconditions#latitude
 :latitude rdf:type owl:ObjectProperty ;
-                     rdfs:range bs:QuantityValue ;
+                     rdfs:range sml:QuantityValue ;
 				     rdfs:label "Lat" , 
 								"latitude"@fr ,
                                 "latitudine"@it ,
